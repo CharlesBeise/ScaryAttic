@@ -1,9 +1,9 @@
 import unittest
-import main
+# import main
 import sys
 from io import StringIO
 from Classes.game import Game
-from Classes.player import Player
+# from Classes.player import Player
 
 
 class TestCase(unittest.TestCase):

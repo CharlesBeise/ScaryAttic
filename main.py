@@ -1,8 +1,9 @@
 from Classes.game import Game
-from Classes.player import Player
+# from Classes.player import Player
 
 
 saveFile = "saveStates.json"
+
 
 def gameStart(saveFile):
     # Initialize Game and load state
@@ -16,6 +17,7 @@ def gameStart(saveFile):
         if userInput.replace(" ", "").lower() == "exitgame":
             game.exitGame()
         # Parse user input for command/action
+
 
 if __name__ == "__main__":
 

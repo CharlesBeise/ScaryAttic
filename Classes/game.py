@@ -15,7 +15,7 @@ class Game:
 
     def isRunning(self):
         """
-        Returns True if Game is still being played or False if user 
+        Returns True if Game is still being played or False if user
         has exited the game.
         """
         return self.running
