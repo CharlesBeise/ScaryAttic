@@ -6,11 +6,11 @@ class Game:
     Represents an instance of the game ScaryAttic
     """
     def __init__(self) -> None:
-        running = True
-        currentSaveName = None
-        rooms = {}
-        items = {}
-        player = Player()
+        self.running = True
+        self.currentSaveName = None
+        self.rooms = {}
+        self.items = {}
+        self.player = Player()
         pass
 
     def saveGame(self):
