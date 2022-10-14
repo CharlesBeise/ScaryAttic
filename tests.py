@@ -6,7 +6,7 @@ class TestCase(unittest.TestCase):
 
     def test1(self):
         expected = "Welcome to the game!"
-        self.assertEqual(main.game_start(), expected)
+        self.assertEqual(main.gameStart(), expected)
 
 
 if __name__ == '__main__':
