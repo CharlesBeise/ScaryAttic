@@ -1,5 +1,6 @@
 from player import Player
 
+
 class Game:
     """
     Represents an instance of the game ScaryAttic
