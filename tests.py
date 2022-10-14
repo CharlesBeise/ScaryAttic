@@ -1,12 +1,12 @@
 import unittest
-import intro
+import main
 
 
 class TestCase(unittest.TestCase):
 
     def test1(self):
         expected = "Welcome to the game!"
-        self.assertEqual(intro.game_start(), expected)
+        self.assertEqual(main.game_start(), expected)
 
 
 if __name__ == '__main__':
