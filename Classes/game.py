@@ -43,7 +43,7 @@ class Game:
         """
         Saves the current state of a Game to file.
         """
-        if currentSaveName is None:
+        if self.currentSaveName is None:
             # TODO:: Prompt user to enter new save name
             # Write saveState object to file with new save name
             # Set currentSaveName to new save name
