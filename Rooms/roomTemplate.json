@@ -38,4 +38,7 @@
     "Shake/Ring" : null,
     "Flip" : null
   }
+  "items" : {
+    "Can Opener" : "true/false"
+  }
 }
