@@ -27,31 +27,51 @@ def placeHolder(decoy):
     take(decoy)
 
 
+def findCompounds(phrase):
+    """
+    This function takes the tokenized user input and replaces any relevant
+    compound words with a single word
+    """
+    # Conduct an initial parse of the user input to identify compound words
+    # (e.g., "pick up, look at, tin can")
+    for i in range(len(phrase)):
+        for key, value in compoundWords.items():
+            if phrase[i] == value:
+                if (i > 0) and (phrase[i - 1] == key):
+                    phrase[i - 1] = key + value
+                    phrase[i] = ""
+
+    return phrase
+
+
+def siftInput(longText):
+    """
+    This function picks out the necessary words to complete the user's
+    request
+    """
+    wordDict = {"Verb": "",
+                "Items": [],
+                "Combination": False}
+    for token in longText:
+        if token in verbList:
+            wordDict["Verb"] = verbDict[token]
+        elif token in itemList:
+            wordDict["Items"].append(token)
+        elif token in combinationWords:
+            wordDict["Combination"] = True
+
+    return wordDict
+
+
 def parse(userText):
     # Remove punctuation symbols and break command into individual words
     command, n = re.subn('[!?.,]', "", userText)
     tokens = command.lower().split()
 
-    # Conduct an initial parse of the user input to identify compound words
-    # (e.g., "pick up, look at, tin can")
-    for i in range(len(tokens)):
-        for key, value in compoundWords.items():
-            if tokens[i] == value:
-                if (i > 0) and (tokens[i - 1] == key):
-                    tokens[i - 1] = key + value
-                    tokens[i] = ""
+    tokens = findCompounds(tokens)
 
     # Conduct a second parse to identify the relevant words in the user command
-    parsedInput = {"Verb": "",
-                   "Items": [],
-                   "Combination": False}
-    for token in tokens:
-        if token in verbList:
-            parsedInput["Verb"] = verbDict[token]
-        elif token in itemList:
-            parsedInput["Items"].append(token)
-        elif token in combinationWords:
-            parsedInput["Combination"] = True
+    parsedInput = siftInput(tokens)
 
     """
     USAGE: globals()function(parameters)
