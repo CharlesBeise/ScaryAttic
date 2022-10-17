@@ -1,3 +1,6 @@
+__all__ = ['examine', 'take']
+
+
 def examine(item):
     print("That is an interesting", item)
 
