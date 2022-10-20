@@ -109,7 +109,7 @@ class Room:
         # TODO: Describe any items that were left here by the player
 
         return desc
-    
+
     # Switch value of a given conditional variable
     def toggleCondition(self, index):
         if self.conditions[index]:
