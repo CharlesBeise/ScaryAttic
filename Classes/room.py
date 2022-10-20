@@ -3,6 +3,7 @@ import json
 # Room class for the various rooms of the house
 # Each room will be an instance of the Room class
 
+
 class Room:
     def __init__(self, jsonData):
         # Load room data from JSON file
