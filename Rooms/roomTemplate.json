@@ -1,44 +1,23 @@
 {
-  "name" : null,
-  "longDescription" : null,
-  "shortDescription" : null,
-  "conditionalDescription" : {
-    "Ladder" : null,
-    "Flashlight" : null,
-    "Battery 1" : null,
-    "Battery 2" : null,
-    "Key" : null,
-    "Can opener" : null,
-    "Tin Can" : null,
-    "Silver Bell" : null,
-    "Combination Photo 1" : null,
-    "Combination Photo 2" : null,
-    "Combination Photo 3" : null
+  "name": "None",
+  "longDescription": "None",
+  "shortDescription": "None",
+  "conditionalDescription": {
+    "Ladder": "Description"
   },
-  "exits" : {
-    "Dining Room" : "east",
-    "Lower Hall" : "north",
-    "Family Room" : "south"
+  "exits": {
+    "Dining Room": "east",
+    "Lower Hall": "north",
+    "Family Room": "south"
   },
-  "features" : {
-    "moving boxes" : null,
-    "boxes" : null
+  "features": {
+    "moving boxes": "Feature description",
+    "boxes": "Feature description"
   },
-  "verbInteractions" : {
-    "Look at" : null,
-    "Take/Pick up" : null,
-    "Open" : null,
-    "Close" : null,
-    "Hide" : null,
-    "Listen" : null,
-    "Peel/Pull" : null,
-    "Use" : null,
-    "Drop/Leave" : null,
-    "Eat" : null,
-    "Shake/Ring" : null,
-    "Flip" : null
-  }
-  "items" : {
-    "Can Opener" : "true/false"
+  "verbInteractions": {
+    "Look at": "None"
+  },
+  "items": {
+    "Can Opener": "true/false"
   }
 }
