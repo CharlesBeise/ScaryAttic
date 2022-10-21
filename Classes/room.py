@@ -13,7 +13,6 @@ class Room:
         # Basic room data
         self.name = data["name"]
         self.longDescription = data["longDescription"]
-        self.longDescription = data["longDescription"]
         self.shortDescription = data["shortDescription"]
         self.locked = False
         self.visited = False
