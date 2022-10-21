@@ -4,7 +4,7 @@
     "shortDescription": "You are in the Garage. The door back to the Lower Hall is to the south.",
     "conditionalDescription": {
         "ladderTrue": "You have a bag of basic tools sitting along the north wall, next to a ladder and garden hose.",
-        "ladderFalse": "You have a bag of basic tools sitting along the north wall, next to a ladder and garden hose.",
+        "ladderFalse": "You have a bag of basic tools sitting along the north wall, next to a garden hose.",
         "doorOpen": "The roll-up Garage Door is to the east, and it is open. Rain is pouring in.",
         "doorClosed": "The roll-up Garage Door is to the east, and it is closed."
     },
