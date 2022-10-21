@@ -9,9 +9,13 @@ class Game:
         self.running = True
         self.saveFile = saveFile
         self.currentSaveName = None
-        self.rooms = {}
-        self.items = {}
+        self.rooms = []
+        self.items = []
         self.player = Player()
+
+        # Build instances of all the rooms
+        self.buildRooms()
+        # TODO: Rooms will need to be connected after all Rooms are created
 
     def isRunning(self):
         """
@@ -72,3 +76,13 @@ class Game:
             exitInput = input("Y / N: ").replace(" ", "").lower()
         if exitInput == "y" or exitInput == "yes":
             self.running = False
+
+    # Builds room instances automatically from files
+    def buildRooms(self):
+        # Iterate through all Room JSON Files and build the instances
+        dir = "Rooms"
+        for filename in os.listdir(dir):
+            file = os.path.join(dir, filename)
+            # If it's a valid file, create the Room
+            if os.path.isfile(file):
+                self.rooms.append(Room(file))
