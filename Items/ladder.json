@@ -1,0 +1,32 @@
+{
+  "name" : "ladder",
+  "description" : "It's a small aluminum ladder. Useful for reaching high places.",
+  "secondaryDescription" : "You drop the ladder underneath the attic hatch. You open the hatch and climb up.",
+  "itemInteractions" : {
+    "Ladder" : null,
+    "Flashlight" : "You shine the flashlight on the ladder.",
+    "Battery 1" : null,
+    "Battery 2" : null,
+    "Key" : null,
+    "Can opener" : null,
+    "Tin Can" : null,
+    "Silver Bell" : null,
+    "Combination Photo 1" : null,
+    "Combination Photo 2" : null,
+    "Combination Photo 3" : null
+  },
+  "verbInteractions" : {
+    "Look at" : "It's a small aluminum ladder. Useful for reaching high places.",
+    "Take/Pick up" : "You lift the ladder onto your shoulder.",
+    "Open" : null,
+    "Close" : null,
+    "Hide" : "The ladder is too big to hide there",
+    "Listen" : "You put your ear up against the ladder.......... Nothing happens.",
+    "Peel/Pull" : null,
+    "Use" : null,
+    "Drop/Leave" : null,
+    "Eat" : null,
+    "Shake/Ring" : null,
+    "Flip" : null
+  }
+}
