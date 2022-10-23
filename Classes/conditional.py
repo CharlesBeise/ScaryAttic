@@ -49,4 +49,3 @@ class Conditional:
         print(f"Conditional name: {self.name}\n"
               f"   When true: {self.trueDesc}\n"
               f"   When false: {self.falseDesc}")
-              
