@@ -23,9 +23,10 @@ class Room:
 
         # Add conditional items, if they exist for this room
         if "conditionalDescription" in data:
-            for i in data["conditionalDescription"]:
-                info = data["conditionalDescription"][i]
-                self.conditions.append(Cond(i, info))
+            for name in data["conditionalDescription"]:
+                status = data["conditionalDescription"][name]["status"]
+                info = data["conditionalDescription"][name]
+                self.conditions.append(Cond(name, status, info))
 
         # These variables are populated by the Game class
         self.exits = {}
