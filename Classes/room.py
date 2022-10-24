@@ -9,7 +9,6 @@ class Room:
 
     def __init__(self, roomFile):
         # Load room data from JSON file
-        # print(f"\n!!! New room created from file: {roomFile} !!!")
         data = json.load(open(roomFile))
 
         # Basic room data
@@ -36,8 +35,6 @@ class Room:
             for i in data["features"]:
                 self.features[i] = data["features"][i]
 
-        # self.printRoomDetails()
-
     def __eq__(self, other):
         """
         This method allows the Room instance to equal its name when
@@ -54,12 +51,6 @@ class Room:
         """
         return self.name
 
-    def setName(self, name):
-        """
-        Changes the room's Name
-        """
-        self.name = name
-
     def getLongDescription(self):
         """
         Get full long description for a room
@@ -68,8 +59,12 @@ class Room:
         desc = self.longDescription
 
         # Adds any conditional statements
+        if self.conditions:
+            desc = desc + " " + self.getConditionalDesc()
 
-        # TODO: Describe any items that were left here by the player
+        # Describe any items that were left here by the player
+        if self.items:
+            desc = desc + self.getItemDescriptions()
 
         return desc
 
@@ -81,16 +76,20 @@ class Room:
         desc = self.shortDescription
 
         # Adds any conditional statements
+        if self.conditions:
+            desc = desc + self.getConditionalDesc()
 
-        # TODO: Describe any items that were left here by the player
+        # Describe any items that were left here by the player
+        if self.items:
+            desc = desc + self.getItemDescriptions()
 
         return desc
 
-    def getConditionals(self):
+    def getConditionalDesc(self):
         """
         Get current-state conditional descriptions for a room
         """
-        tempStr = ""
+        tempStr = " "
 
         for index, item in enumerate(self.conditions):
             tempStr = tempStr + item.getDescription()
@@ -101,23 +100,52 @@ class Room:
 
         return tempStr
 
-    def toggleConditional(self, name):
+    def getItemDescriptions(self):
         """
-        Toggle the state of a given conditional based on its name
+        This function will describe any items dropped in the room
+        which do not normally belong here.
+        """
+        tempStr = " You left the "
+        tempItems = self.items
+
+        # Do not describe items that DO belong in this room by default
+        for item in tempItems:
+            for condition in self.conditions:
+                if item.name == condition.name:
+                    tempItems.remove(item)
+
+        # Describe the ones that DON'T belong
+        for index, item in enumerate(tempItems):
+            tempStr = tempStr + item.name
+
+            # Add a comma & space between additional items
+            if index != len(tempItems) - 1:
+                tempStr = tempStr + ", "
+
+        tempStr = tempStr + " here."
+
+        return tempStr
+
+    def setCondition(self, name, boolVal):
+        """
+        Sets the status of a given conditional based on its name to True/False
         """
         for i in self.conditions:
             if i.name.lower() == name.lower():
-                i.toggleStatus()
+                i.setStatus(boolVal)
                 break
 
-    def toggleLock(self):
+    def lock(self):
         """
-        Switches the 'locked' status of the room
+        Locks the room
         """
-        if self.locked:
-            self.locked = False
-        else:
-            self.locked = True
+        self.locked = True
+
+    def unlock(self):
+        """
+        Unlocks the room
+        """
+        self.locked = False
 
     def isLocked(self):
         """
@@ -125,14 +153,11 @@ class Room:
         """
         return self.locked
 
-    def toggleVisited(self):
+    def setVisited(self):
         """
-        Switches the 'visited' status of the room
+        Changes room from Unvisited to Visited
         """
-        if self.visited:
-            self.visited = False
-        else:
-            self.visited = True
+        self.visited = True
 
     def isVisited(self):
         """
@@ -152,6 +177,15 @@ class Room:
         """
         self.items.append(item)
 
+    def removeItem(self, itemName):
+        """
+        Removes an item from the room - items are instances of Item class
+        """
+        for item in self.items:
+            if item.name == itemName:
+                self.items.remove(item)
+                break
+
     # TODO: Add method for applicable verb actions?
 
     # TODO: The following two functions can be removed later, if desired.
@@ -168,12 +202,12 @@ class Room:
         """
         Prints room details for easier debugging
         """
-        print(f"- Name: {self.name}\n"
+        print(f"######## Room name: {self.name} ########\n"
               f"- Locked? {self.locked}\n"
               f"- Visited? {self.visited}\n"
               f"- Long description:\n{self.getLongDescription()}\n"
               f"- Short description:\n{self.getShortDescription()}\n"
-              f"- Conditionals:\n{self.getConditionals()}\n"
+              f"- Conditionals:\n{self.getConditionalDesc()}\n"
               f"- Exits: {self.exits}\n"
               f"- Items: {self.items}")
         self.printDict("Features", self.features)
