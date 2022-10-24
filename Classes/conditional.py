@@ -3,20 +3,22 @@ class Conditional:
     Conditionals are used in Rooms, as anything that may change status.
     It takes the conditionalDescription JSON data from the
     Room where it is located.
+
+    Data parameter is a dict of conditional descriptions from Room.
     """
-    def __init__(self, name, data):
+    def __init__(self, name, dataDict):
         # Name the conditional
         self.name = name.lower()
 
         # Get its current (or default) status
-        statusString = data["status"]
+        statusString = dataDict["status"]
         self.status = True
         if statusString.lower() == "false":
             self.status = False
 
         # Get both possible descriptions
-        self.trueDesc = data["true"]
-        self.falseDesc = data["false"]
+        self.trueDesc = dataDict["true"]
+        self.falseDesc = dataDict["false"]
 
     def getStatus(self):
         """
