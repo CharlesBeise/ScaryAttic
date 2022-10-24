@@ -8,8 +8,10 @@ class Room:
     """
 
     def __init__(self, roomFile):
+        file = open(roomFile)
+
         # Load room data from JSON file
-        data = json.load(open(roomFile))
+        data = json.load(file)
 
         # Basic room data
         self.name = data["name"]
@@ -34,6 +36,8 @@ class Room:
         if "features" in data:
             for i in data["features"]:
                 self.features[i] = data["features"][i]
+
+        file.close()
 
     def __eq__(self, other):
         """
