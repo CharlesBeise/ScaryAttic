@@ -18,14 +18,17 @@ class Conditional:
         self.trueDesc = data["true"]
         self.falseDesc = data["false"]
 
-    def toggleStatus(self):
+    def getStatus(self):
         """
-        Toggle condition status between True/False
+        Returns the Boolean status of this condition
         """
-        if self.status:
-            self.status = False
-        else:
-            self.status = True
+        return self.status
+
+    def setStatus(self, status):
+        """
+        Set status to True or False
+        """
+        self.status = status
 
     def getName(self):
         """
