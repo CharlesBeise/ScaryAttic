@@ -1,0 +1,33 @@
+{
+  "name": "flashlight3",
+  "description": "It's a red plastic flashlight, you've had it for as long as you can remember. It gives off a steady light.",
+  "secondaryDescription": "None",
+  "itemInteractions":
+  {
+    "Ladder": "None",
+    "Flashlight": "None",
+    "Battery": "None",
+    "Key": "None",
+    "Can opener": "None",
+    "Tin Can": "None",
+    "Silver Bell": "None",
+    "Combination Photo 1": "None",
+    "Combination Photo 2": "None",
+    "Combination Photo 3": "None"
+  },
+  "verbInteractions":
+  {
+    "Look at": "It's a red plastic flashlight, you've had it for as long as you can remember. It gives off a steady light.",
+    "Take/Pick up": "You pick up the flashlight and hold it in your hand.",
+    "Open": "You unscrew the cap of the flashlight. There are two batteries inside. You'd better leave those there.",
+    "Close": "None",
+    "Hide": "None",
+    "Listen": "None",
+    "Peel/Pull": "None",
+    "Use": "You shine the flashlight around the room. This creates shadows which shift around eerily.",
+    "Drop/Leave": "You set the flashlight down.",
+    "Eat": "None",
+    "Shake/Ring": "You shake the flashlight. It feels heavier now that there are batteries inside.",
+    "Flip": "None"
+  }
+}

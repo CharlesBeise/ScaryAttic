@@ -5,7 +5,7 @@
   "itemInteractions":
   {
     "Ladder": "None",
-    "Flashlight": "You shine the flashlight on the ladder.",
+    "Flashlight": "None",
     "Battery 1": "None",
     "Battery 2": "None",
     "Key": "None",
@@ -26,7 +26,7 @@
     "Listen": "You put your ear up against the ladder.......... Nothing happens.",
     "Peel/Pull": "None",
     "Use": "None",
-    "Drop/Leave": "None",
+    "Drop/Leave": "You set the ladder down and stretch your shoulders.",
     "Eat": "Unless you've had some serious dental work done I don't think that's a good idea.",
     "Shake/Ring": "None",
     "Flip": "None"
