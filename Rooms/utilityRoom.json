@@ -1,24 +1,21 @@
 {
-    "name": "None",
-    "longDescription": "None",
-    "shortDescription": "None",
+    "name": "Utility Room",
+    "longDescription": "You're in the Utility Room. The laundry machines are in here. You remember leaving some things in here earlier today, but it was mostly laundry supplies. The exit to the Upper Hall is to the north.",
+    "shortDescription": "You’re in the Utility Room. The laundry machines are in here. The exit to the Upper Hall is to the north.",
     "conditionalDescription": {
-      "Ladder": "Description"
     },
     "exits": {
-      "Dining Room": "east",
-      "Lower Hall": "north",
-      "Family Room": "south"
+      "Upper Hall": "north"
     },
     "features": {
-      "moving boxes": "Feature description",
-      "boxes": "Feature description"
+      "shelves": "Feature description",
+      "vents": "Feature description",
+      "detergent": "Feature description"
     },
     "verbInteractions": {
-      "Look at": "None"
     },
     "items": {
-      "Can Opener": "true/false"
+      "Flashlight": "Flashlight description"
     }
   }
   
