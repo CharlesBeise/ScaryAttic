@@ -1,6 +1,6 @@
 {
-  "name": "None",
-  "description": "None",
+  "name": "battery",
+  "description": "It looks like a standard C cell battery.",
   "secondaryDescription": "None",
   "itemInteractions":
   {
@@ -19,14 +19,14 @@
   "verbInteractions":
   {
     "Look at": "None",
-    "Take/Pick up": "None",
+    "Take/Pick up": "You'll need this for the flashlight.",
     "Open": "None",
     "Close": "None",
     "Hide": "None",
     "Listen": "None",
     "Peel/Pull": "None",
     "Use": "None",
-    "Drop/Leave": "None",
+    "Drop/Leave": "You set the battery down.",
     "Eat": "None",
     "Shake/Ring": "None",
     "Flip": "None"
