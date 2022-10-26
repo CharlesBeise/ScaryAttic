@@ -1,0 +1,33 @@
+{
+  "name": "Master Bedroom",
+  "longDescription": "You’re in the Master Bedroom of the house, where you sleep. The room is pitch black, except for the occasional flash of lightning through the window. You’re still standing next to the light switch and the door to the Upper Hall, to the east. There’s a closet on the north wall. Windows on the west and south walls. Your mattress, pillow, and blankets are in the middle of the floor. You can’t see much.",
+  "shortDescription": "You’re in the Master Bedroom. Your bed is on the floor. There’s a light switch and closet nearby.",
+  "conditionalDescription": {
+    "moving boxes": {
+      "status": "False",
+      "true": "There are two moving boxes containing a clock, battery, blankets, and clothes.",
+      "false": "There are two moving boxes of stuff underneath the west window."
+    }
+  },
+  "exits": {
+    "Upper Hall": "east"
+  },
+  "verbInteractions": {
+    "Look at": {
+      "moving boxes": "There are a couple boxes here filled with a clock, battery, extra blankets, and most of your clothes.",
+      "window": "The storm is getting worse. You're not going out there."
+    },
+    "Hide": {
+      "bed": "You curl up in your bed, pulling the blankets over yourself. You hear another THUMP from downstairs. You are not going to be able to sleep until you find out what it is.",
+      "closet": "It's not a very big closet. You probably couldn't fit in there if you tried."
+    },
+    "Open": {
+      "closet": "It's empty.",
+      "window": "Are you crazy? Not in this weather."
+    },
+    "Flip": {
+      "light switch": "The light won't turn on. Looks like the power is still out."
+    }
+  },
+  "items": ["battery"]
+}
