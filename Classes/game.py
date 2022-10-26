@@ -94,12 +94,14 @@ class Game:
         if exitInput == "y" or exitInput == "yes":
             self.running = False
 
-    # Builds room instances automatically from files
     def buildRooms(self):
+        """
+        Builds room instances automatically from files
+        """
         # Iterate through all Room JSON Files and build the instances
-        dir = "Rooms"
-        for filename in os.listdir(dir):
-            file = os.path.join(dir, filename)
+        room_dir = "Rooms"
+        for filename in os.listdir(room_dir):
+            file = os.path.join(room_dir, filename)
             # If it's a valid file, create the Room
             if os.path.isfile(file):
                 self.rooms.append(Room(file))
