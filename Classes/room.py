@@ -25,7 +25,7 @@ class Room:
         if "conditionalDescription" in data:
             for key, val in data["conditionalDescription"].items():
                 name = key
-                status = data["conditionalDescription"][key]["status"]
+                status = val["status"]
                 trueDesc = data["conditionalDescription"][key]["True"]
                 falseDesc = data["conditionalDescription"][key]["False"]
                 self.conditions.append(Cond(name, status, trueDesc, falseDesc))
