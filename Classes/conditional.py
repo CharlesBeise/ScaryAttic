@@ -20,11 +20,11 @@ class Conditional:
         # Get both possible descriptions
         try:
             self.trueDesc = dataDict["true"]
-        except:
+        except KeyError:
             self.trueDesc = dataDict["True"]
         try:
             self.falseDesc = dataDict["false"]
-        except:
+        except KeyError:
             self.falseDesc = dataDict["False"]
 
         self.printConditional()
