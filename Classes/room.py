@@ -26,8 +26,8 @@ class Room:
             for key, val in data["conditionalDescription"].items():
                 name = key
                 status = val["status"]
-                trueDesc = data["conditionalDescription"][key]["True"]
-                falseDesc = data["conditionalDescription"][key]["False"]
+                trueDesc = val["True"]
+                falseDesc = val["False"]
                 self.conditions.append(Cond(name, status, trueDesc, falseDesc))
 
         # These variables are populated by the Game class
