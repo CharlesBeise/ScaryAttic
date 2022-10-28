@@ -24,7 +24,6 @@ class Room:
         # Add conditional items, if they exist for this room
         if "conditionalDescription" in data:
             for key, val in data["conditionalDescription"].items():
-                name = key
                 info = val
                 self.conditions.append(Cond(key, info))
 
