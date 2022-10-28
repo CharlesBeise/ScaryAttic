@@ -5,13 +5,13 @@
     "conditionalDescription": {
         "ladder": {
             "status": "True",
-            "true": "You have a bag of basic tools sitting along the north wall, next to a ladder and garden hose.",
-            "false": "You have a bag of basic tools sitting along the north wall, next to a garden hose."
+            "True": "You have a bag of basic tools sitting along the north wall, next to a ladder and garden hose.",
+            "False": "You have a bag of basic tools sitting along the north wall, next to a garden hose."
         },
         "door": {
             "status": "False",
-            "true": "The roll-up Garage Door is to the east, and it is open. Rain is pouring in.",
-            "false": "The roll-up Garage Door is to the east, and it is closed."
+            "True": "The roll-up Garage Door is to the east, and it is open. Rain is pouring in.",
+            "False": "The roll-up Garage Door is to the east, and it is closed."
         }
     },
     "verbInteractions": {
