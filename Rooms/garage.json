@@ -14,11 +14,6 @@
             "false": "The roll-up Garage Door is to the east, and it is closed."
         }
     },
-    "features": {
-        "garage door": "It's a one-car garage door. The kind that rolls up to the ceiling.",
-        "tools": "You only have a few things in here. Nothing important.",
-        "ladder": "It's a small aluminum ladder. Useful for reaching high places."
-    },
     "verbInteractions": {
         "Look at": ["garage door", "door", "bag", "tool bag", "tools", "ladder"],
         "Pick up": ["bag", "tool bag", "tools", "ladder"],
