@@ -7,27 +7,17 @@ class Conditional:
     Data parameter is a dict of conditional descriptions from Room.
     """
     def __init__(self, name, dataDict):
-        print(dataDict)
         # Name the conditional
         self.name = name.lower()
 
-        # Get its current (or default) status
         statusString = dataDict["status"]
         self.status = True
         if statusString.lower() == "false":
             self.status = False
 
         # Get both possible descriptions
-        try:
-            self.trueDesc = dataDict["true"]
-        except KeyError:
-            self.trueDesc = dataDict["True"]
-        try:
-            self.falseDesc = dataDict["false"]
-        except KeyError:
-            self.falseDesc = dataDict["False"]
-
-        self.printConditional()
+        self.trueDesc = dataDict["True"]
+        self.falseDesc = dataDict["False"]
 
     def getStatus(self):
         """
