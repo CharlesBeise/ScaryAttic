@@ -9,6 +9,9 @@
             "False": "All of the cans look empty. They have no labels."
         }
     },
+    "exits": {
+        "Lower Hall": "west"
+    },
     "verbInteractions": {
         "Look at": {
             "bin": "It's full of empty tin cans.",
