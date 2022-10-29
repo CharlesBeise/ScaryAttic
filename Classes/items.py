@@ -14,11 +14,26 @@ class Item:
         self.itemInteractions = data["itemInteractions"]
         self.verbInteractions = data["verbInteractions"]
 
+    def getName(self):
+        """This function returns the Item's name"""
+        return self.name
+
+    def getDescription(self):
+        """This function returns the Item description"""
+        return self.description
+
+    def getSecondDescription(self):
+        """This function returns the secondary description of the Item"""
+        return self.secondaryDescription
+
     def combineItems(self, otherItem):
         """This function is called when a player tries to use a different Item
         object with this Item object"""
-        if self.itemInteractions[otherItem]:
-            return self.itemInteractions[otherItem]
+        if {self.name, otherItem.getName()} == {"flashlight", "battery"}:
+            print("Here we are")
+            return Item("flashlight3.json")
+        if self.itemInteractions.get(otherItem):
+            return self.itemInteractions[otherItem.getName()]
         else:
             return "Those items don't seem to work together"
 
@@ -29,3 +44,22 @@ class Item:
             return self.verbInteractions[verb]
         else:
             return "I don't think that will work"
+
+
+    def __eq__(self, other):
+        """Checking a comparison"""
+        if isinstance(other, str):
+            return self.name.lower() == other.lower()
+        return False
+
+
+if __name__ == "__main__":
+    ladder = Item("ladder.json")
+    battery = Item("battery.json")
+    flashlight = Item("flashlight1.json")
+    print(ladder.getDescription())
+    print(battery.getDescription())
+    print(flashlight.combineItems(ladder).getName())
+    # print(ladder == "Ladder")
+    # a = {"one", "two"}
+    # print(a == {"two", "one"})
