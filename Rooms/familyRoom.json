@@ -1,0 +1,26 @@
+{
+    "name": "Family Room",
+    "longDescription": "You're in the Family Room. The walls are a solid dark green, and the floor is covered by an antique rug. There's a large shelving unit holding the TV along the west wall. A couple moving boxes that you remember hold your favorite movies. There's a window on the south wall. The Kitchen is to the north, and the door to the Porch is to the east. Next to the east door is a coat rack and some hooks. As you look toward the door, you swear you can hear... scratching.",
+    "shortDescription": "You're in the Family Room. There's a large shelving unit holding the TV along the west wall. A couple moving boxes that hold your movies, and a window on the south wall. The Kitchen is to the north, and the Porch to the east. Next to the east door is a coat rack.",
+    "conditionalDescription": {
+        "key": {
+            "status": "True",
+            "True": "There are some hooks on the wall by the door. One of them holds a key.",
+            "False": "There are some hooks on the wall by the door."
+        }
+    },
+    "verbInteractions": {
+        "Look at": {
+            "shelves": "It's a heavy wooden shelving unit, made to hold entertainment equipment. There's not much in it yet.",
+            "moving boxes": "You glance through the moving boxes, but there's nothing useful in here.",
+            "tv": "You wish you could believe it was just the TV making noise in the house, but that seems unlikely with the power being out.",
+            "coat rack": "It's just a simple metal pole. Your jacket is hanging from it.",
+            "jacket": "It's mostly fake leather. There is nothing in the pockets.",
+            "hooks": "You glance through the moving boxes, but there's nothing useful in here.",
+            "key": "You glance through the moving boxes, but there's nothing useful in here."
+        },
+        "Pick up": {
+            "key": "You take the key from its hook."
+        }
+    }
+}

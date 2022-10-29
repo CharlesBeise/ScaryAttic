@@ -1,0 +1,29 @@
+{
+    "name": "Porch",
+    "longDescription": "You step out onto the Porch. It's mostly dry here, since it's covered by the roof, but you still feel the cold rain being blown against your face. The street is obscured by the dark and the storm. You shiver and wrap your arms around yourself. The three trees in the front yard look alive as they sway in the wind. The bushes along the edge of the house cast dark shadows across the floor with every flash of lightning. The door back to the Family room is to the east. Something has torn a gash in the wood of the door. You have no interest in leaving the porch.",
+    "shortDescription": "You're on the Porch. There are three trees in the yard, and some bushes along the edge of the house. The door back to the Family room is to the east, and there is a gash in the wood.",
+    "conditionalDescription": {
+        "dish empty": {
+            "status": "True",
+            "True": "A dirty dish sits against the wall that looks like it hasn't been washed in a while.",
+            "False": "The dish with cat food is sitting against the wall."
+        }
+    },
+    "verbInteractions": {
+        "Look at": {
+            "gash": "There's a chunk of wood scraped away. You don’t remember seeing it there before.",
+            "dish": "It's just a plate covered in smears of mud or dirt.",
+            "trees": "The bare branches reaching towards the porch kind of creep you out.",
+            "bushes": "Scraggly, dense bushes line the edge of the house."
+        },
+        "Pick up": {
+            "dish": "You'd rather not carry that around."
+        },
+        "Use": {
+            "cat food on dish": "You dump some of the cat food onto the plate."
+        },
+        "Shake": {
+            "silver bell": "You jingle the silver bell. There's a sudden, violent rustle from the bushes."
+        }
+    }
+}

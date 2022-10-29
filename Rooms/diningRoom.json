@@ -1,0 +1,26 @@
+{
+    "name": "Dining Room",
+    "longDescription": "You're in the Dining Room. The walls have wood paneling along the lower half of the room. The upper half is covered in a pinstripe wallpaper. There's a door to the Kitchen to the west, and a door to the Lower Hall to the north. Just as you start to feel like you've been worrying over nothing, you hear howling from outside. Loud, shrill, howling. Maybe it's the wind… Maybe you're just trying to make yourself feel better.",
+    "shortDescription": "You're in the Dining Room. There's a door to the Kitchen to the west, and a door to the Lower Hall to the north.",
+    "conditionalDescription": {
+        "wallpaper pulled": {
+            "status": "False",
+            "True": "There's a piece of wallpaper curling up on the far side of the room.",
+            "False": "There's a small hole in the wall."
+        }
+    },
+    "verbInteractions": {
+        "Look at": {
+            "wallpaper": "It's a flap of loose wallpaper. It was like that when you bought the place.",
+            "hole": "You look in the hole and can see a glint coming from a tiny silver bell.",
+            "empty hole": "You look in the hole, but there's nothing in it.",
+            "bell": "It's a small silver bell."
+        },
+        "Pick up": {
+            "bell": "You pull the bell out of the hole and slip it into your pocket."
+        },
+        "Pull": {
+            "wallpaper": "Feeling curious, you pull at the loose wallpaper. A patch of paper comes off, revealing a small hole in the wall."
+        }
+    }
+}
