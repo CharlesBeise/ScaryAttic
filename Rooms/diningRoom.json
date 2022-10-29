@@ -9,6 +9,10 @@
             "False": "There's a small hole in the wall."
         }
     },
+    "exits": {
+        "Kitchen": "west",
+        "Lower Hall": "north"
+    },
     "verbInteractions": {
         "Look at": {
             "wallpaper": "It's a flap of loose wallpaper. It was like that when you bought the place.",
