@@ -50,16 +50,16 @@ class Game:
         """
         Displays introduction at the start of a new game.
         """
-        part1 = """It's your first night in the new house. An old 2-story Victorian-style home nestled 
-            just outside the city. Most of your belongings are still scattered in boxes around the house. 
-            For tonight, it's just you and the mattress on the floor."""
-        part2 = """Somehow you're both exhausted from the move and unable to sleep. This is your first 
-            time seeing the house at night. Built a hundred years ago, the house is full of old wood, 
-            metal, and unfamiliar sounds. Rain starts to patter against the bedroom window."""
-        part3 = """Just as you start to drift off to sleep, you hear a THUMP from downstairs. It was 
-            loud, and you can't push it out of your mind. With a sigh, you get up to have a look and 
-            turn on the light. Suddenly, a flash fills the room and you hear the rumbling clap of thunder. 
-            The power in the house cuts out. Downstairs, you hear it again… THUMP."""
+        part1 = """It's your first night in the new house. An old 2-story Victorian-style home nestled
+             just outside the city. Most of your belongings are still scattered in boxes around the house.
+             For tonight, it's just you and the mattress on the floor."""
+        part2 = """Somehow you're both exhausted from the move and unable to sleep. This is your first
+             time seeing the house at night. Built a hundred years ago, the house is full of old wood,
+             metal, and unfamiliar sounds. Rain starts to patter against the bedroom window."""
+        part3 = """Just as you start to drift off to sleep, you hear a THUMP from downstairs. It was
+             loud, and you can't push it out of your mind. With a sigh, you get up to have a look and
+             turn on the light. Suddenly, a flash fills the room and you hear the rumbling clap of thunder.
+             The power in the house cuts out. Downstairs, you hear it again… THUMP."""
         print(part1)
         time.sleep(10)
         print(part2)
