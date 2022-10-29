@@ -16,7 +16,8 @@
         "Look at": {
             "moving boxes": "You rummage through your boxes, but most of it is office supplies and computer accessories. There's also a loose battery in the bottom of one of the boxes.",
             "desk": "It's a simple desk, without any drawers or extra shelves. But it does the job.",
-            "bookcase": "One of the things you liked about this house was the huge built-in bookcase here. You're not sure where exactly the movers put your boxes of books, but you were looking forward to organizing your new library... if you can just get through tonight."
+            "bookcase": "One of the things you liked about this house was the huge built-in bookcase here. You're not sure where exactly the movers put your boxes of books, but you were looking forward to organizing your new library... if you can just get through tonight.",
+            "battery": "It looks like a standard C cell battery."
         },
         "Hide": {
             "desk": "You cram yourself into the space under the desk. You almost can feel the house shaking in the wind of the storm… but maybe you're just imagining it."
