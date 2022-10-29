@@ -3,27 +3,32 @@
     "longDescription": "You are in the Garage of the house. It's mostly empty, as you left your car outside earlier today. The door leading back to the Lower Hall is to the south. You can hear the rain beating down hard outside.",
     "shortDescription": "You are in the Garage. The door back to the Lower Hall is to the south.",
     "conditionalDescription": {
-        "ladderTrue": "You have a bag of basic tools sitting along the north wall, next to a ladder and garden hose.",
-        "ladderFalse": "You have a bag of basic tools sitting along the north wall, next to a garden hose.",
-        "doorOpen": "The roll-up Garage Door is to the east, and it is open. Rain is pouring in.",
-        "doorClosed": "The roll-up Garage Door is to the east, and it is closed."
-    },
-    "exits": {
-        "Lower Hall": "south"
-    },
-    "features": {
-        "garage door": "It's a one-car garage door. The kind that rolls up to the ceiling.",
-        "tools": "You only have a few things in here. Nothing important.",
-        "ladder": "It's a small aluminum ladder. Useful for reaching high places."
+        "ladder": {
+            "status": "True",
+            "True": "You have a bag of basic tools sitting along the north wall, next to a ladder and garden hose.",
+            "False": "You have a bag of basic tools sitting along the north wall, next to a garden hose."
+        },
+        "door": {
+            "status": "False",
+            "True": "The roll-up Garage Door is to the east, and it is open. Rain is pouring in.",
+            "False": "The roll-up Garage Door is to the east, and it is closed."
+        }
     },
     "verbInteractions": {
-        "Look at": ["garage door", "door", "bag", "tool bag", "tools", "ladder"],
-        "Pick up": ["bag", "tool bag", "tools", "ladder"],
-        "Open": "garage door",
-        "Close": "garage door",
-        "Go to": ["lower hall", "south"]
-    },
-    "items": {
-        "ladder": "true"
+        "Look at": {
+            "garage door": "It's a thin metal door big enough for one car. It rolls up to the ceiling.",
+            "tool bag": "You only have a few things in here. Nothing important.",
+            "ladder": "It's a small aluminum ladder. Useful for reaching high places."
+        },
+        "Pick up": {
+            "tool bag": "You don't need that.",
+            "ladder": "You lift the ladder onto your shoulder."
+        },
+        "Open": {
+            "garage door": "You cross the garage and yank the roll-up door open. Wind and rain rush inside, drenching the floor. You peer into the darkness, but don't see anything outside, except, maybe... No. It’s nothing. No way you're going out in that rain."
+        },
+        "Close": {
+            "garage door": "You pull the Garage Door closed and immediately feel a little better without the wind and rain coming in."
+        }
     }
 }
