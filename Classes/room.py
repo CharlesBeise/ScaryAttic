@@ -20,6 +20,7 @@ class Room:
         self.locked = False
         self.visited = False
         self.conditions = []
+        self.exits = {}
 
         # Add conditional items, if they exist for this room
         if "conditionalDescription" in data:
@@ -35,8 +36,11 @@ class Room:
                     falseDesc = ""
                 self.conditions.append(Cond(name, status, trueDesc, falseDesc))
 
-        # These variables are populated by the Game class
-        self.exits = []
+        # Add room exits
+        for key, val in data["exits"].items():
+            self.exits[key] = val
+
+        # Items are populated by the Game class
         self.items = []
 
         file.close()
@@ -171,11 +175,25 @@ class Room:
         """
         return self.visited
 
-    def addExit(self, roomName, exitDirection):
+    def getAllExits(self):
         """
-        Adds an exit to this room - exits will be instances of Room class
+        Returns full exits data
         """
-        self.exits[roomName] = exitDirection
+        return self.exits
+
+    def isValidExit(self, exit):
+        """
+        Input a room name OR direction string, and a boolean value is returned.
+        Input parameter is case-insensitive and spaces are irrelevant.
+        """
+        toFind = exit.replace(" ", "").lower()
+
+        for key, val in self.exits.items():
+            shortKey = key.replace(" ", "").lower()
+            shortVal = val.replace(" ", "").lower()
+            if toFind == shortKey or toFind == shortVal:
+                return True
+        return False
 
     def addItem(self, item):
         """
@@ -204,6 +222,21 @@ class Room:
         for i in thisDict:
             print(f"{i} - {thisDict[i]}")
 
+    def printConditionalsTest(self):
+        """
+        Returns details of this room's conditional descriptions.
+        """
+        tempStr = ""
+        index = 1
+
+        for i in self.conditions:
+            tempStr = tempStr + str(index) + ". Name: '" + i.name + \
+                "'\n   When true: " + i.trueDesc + \
+                "\n   When false: " + i.falseDesc + "\n"
+            index = index + 1
+
+        return tempStr
+
     def printRoomDetails(self):
         """
         Prints room details for easier debugging
@@ -213,7 +246,7 @@ class Room:
               f"- Visited? {self.visited}\n"
               f"- Long description:\n{self.getLongDescription()}\n"
               f"- Short description:\n{self.getShortDescription()}\n"
-              f"- Conditionals:\n{self.getConditionalDesc()}\n"
               f"- Exits: {self.exits}\n"
-              f"- Items: {self.items}")
+              f"- Items: {self.items}\n"
+              f"- Conditionals:\n{self.printConditionalsTest()}")
         print("")
