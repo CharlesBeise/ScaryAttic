@@ -9,6 +9,9 @@
             "False": "The dish with cat food is sitting against the wall."
         }
     },
+    "exits": {
+        "Family Room": "west"
+    },
     "verbInteractions": {
         "Look at": {
             "gash": "There's a chunk of wood scraped away. You don’t remember seeing it there before.",
