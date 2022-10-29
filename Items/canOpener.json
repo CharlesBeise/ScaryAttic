@@ -1,0 +1,32 @@
+{
+    "name" : null,
+    "description" : null,
+    "secondaryDescription" : null,
+    "itemInteractions" : {
+      "Ladder" : null,
+      "Flashlight" : null,
+      "Battery 1" : null,
+      "Battery 2" : null,
+      "Key" : null,
+      "Can opener" : null,
+      "Tin Can" : null,
+      "Silver Bell" : null,
+      "Combination Photo 1" : null,
+      "Combination Photo 2" : null,
+      "Combination Photo 3" : null
+    },
+    "verbInteractions" : {
+      "Look at" : null,
+      "Take/Pick up" : null,
+      "Open" : null,
+      "Close" : null,
+      "Hide" : null,
+      "Listen" : null,
+      "Peel/Pull" : null,
+      "Use" : null,
+      "Drop/Leave" : null,
+      "Eat" : null,
+      "Shake/Ring" : null,
+      "Flip" : null
+    }
+  }
