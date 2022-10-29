@@ -9,6 +9,10 @@
             "False": "There are some hooks on the wall by the door."
         }
     },
+    "exits": {
+        "Kitchen": "north",
+        "Porch": "east"
+    },
     "verbInteractions": {
         "Look at": {
             "shelves": "It's a heavy wooden shelving unit, made to hold entertainment equipment. There's not much in it yet.",
