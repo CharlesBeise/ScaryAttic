@@ -21,8 +21,8 @@
             "ladder": "It's a small aluminum ladder. Useful for reaching high places."
         },
         "Pick up": {
-            "tool bag": "",
-            "ladder": ""
+            "tool bag": "You don't need that.",
+            "ladder": "You lift the ladder onto your shoulder."
         },
         "Open": {
             "garage door": "You cross the garage and yank the roll-up door open. Wind and rain rush inside, drenching the floor. You peer into the darkness, but don't see anything outside, except, maybe... No. It’s nothing. No way you're going out in that rain."
