@@ -15,10 +15,20 @@
         }
     },
     "verbInteractions": {
-        "Look at": ["garage door", "door", "bag", "tool bag", "tools", "ladder"],
-        "Pick up": ["bag", "tool bag", "tools", "ladder"],
-        "Open": "garage door",
-        "Close": "garage door",
-        "Go to": ["lower hall", "south"]
+        "Look at": {
+            "garage door": "It's a thin metal door big enough for one car. It rolls up to the ceiling.",
+            "tool bag": "You only have a few things in here. Nothing important.",
+            "ladder": "It's a small aluminum ladder. Useful for reaching high places."
+        },
+        "Pick up": {
+            "tool bag": "",
+            "ladder": ""
+        },
+        "Open": {
+            "garage door": "You cross the garage and yank the roll-up door open. Wind and rain rush inside, drenching the floor. You peer into the darkness, but don't see anything outside, except, maybe... No. It’s nothing. No way you're going out in that rain."
+        },
+        "Close": {
+            "garage door": "You pull the Garage Door closed and immediately feel a little better without the wind and rain coming in."
+        }
     }
 }
