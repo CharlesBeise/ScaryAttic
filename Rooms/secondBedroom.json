@@ -1,24 +1,35 @@
 {
-    "name": "None",
-    "longDescription": "None",
-    "shortDescription": "None",
+    "name": "Second Bedroom",
+    "longDescription": "You're in the Second Bedroom of the house. Your desk is against the north wall, and a large bookcase is built into the west wall. Everything looks strange and unfamiliar in the dark. There's a light switch next to you, and the east door leads back to the Upper Hall.",
+    "shortDescription": "You're in the Second Bedroom of the house. Everything looks strange and unfamiliar in the dark. A door to the east leads back to the Upper Hall.",
     "conditionalDescription": {
-      "Ladder": "Description"
+        "moving boxes": {
+            "status": "False",
+            "True": "There are moving boxes, containing office supplies and a battery, but the room is mostly empty otherwise.",
+            "False": "You left some moving boxes in here, but the room is mostly empty otherwise."
+        }
     },
     "exits": {
-      "Dining Room": "east",
-      "Lower Hall": "north",
-      "Family Room": "south"
-    },
-    "features": {
-      "moving boxes": "Feature description",
-      "boxes": "Feature description"
+        "Upper Hall": "east"
     },
     "verbInteractions": {
-      "Look at": "None"
+        "Look at": {
+            "moving boxes": "You rummage through your boxes, but most of it is office supplies and computer accessories. There's also a loose battery in the bottom of one of the boxes.",
+            "desk": "It's a simple desk, without any drawers or extra shelves. But it does the job.",
+            "bookcase": "One of the things you liked about this house was the huge built-in bookcase here. You're not sure where exactly the movers put your boxes of books, but you were looking forward to organizing your new library... if you can just get through tonight."
+        },
+        "Hide": {
+            "desk": "You cram yourself into the space under the desk. You almost can feel the house shaking in the wind of the storm… but maybe you're just imagining it."
+        },
+        "Pick up": {
+            "battery": "You take the battery from the box."
+        },
+        "Use": {
+            "light switch": "No luck. The lights won't turn on."
+        },
+        "Flip": {
+            "light switch": "No luck. The lights won't turn on."
+        }
     },
-    "items": {
-      "Can Opener": "true/false"
-    }
-  }
-  
+    "items": ["battery"]
+}

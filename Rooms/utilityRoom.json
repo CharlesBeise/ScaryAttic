@@ -1,21 +1,36 @@
 {
     "name": "Utility Room",
     "longDescription": "You're in the Utility Room. The laundry machines are in here. You remember leaving some things in here earlier today, but it was mostly laundry supplies. The exit to the Upper Hall is to the north.",
-    "shortDescription": "You’re in the Utility Room. The laundry machines are in here. The exit to the Upper Hall is to the north.",
+    "shortDescription": "You're in the Utility Room. The laundry machines are in here. The exit to the Upper Hall is to the north.",
     "conditionalDescription": {
+        "shelves": {
+            "status": "False",
+            "True": "and there are some shelves holding laundry detergent.",
+            "False": "and there are some shelves holding a flashlight and laundry detergent."
+        },
+        "noise": {
+            "status": "False",
+            "True": "You can hear the rain tapping through the laundry vents.",
+            "False": "Something is making a tapping noise."
+        }
     },
     "exits": {
-      "Upper Hall": "north"
-    },
-    "features": {
-      "shelves": "Feature description",
-      "vents": "Feature description",
-      "detergent": "Feature description"
+        "Upper Hall": "north"
     },
     "verbInteractions": {
+        "Look at": {
+            "vent": "Nothing here.",
+            "shelves": "Feeling along the wooden shelves, you can make out the shape of a flashlight, along with a couple bottles of laundry detergent.",
+            "detergent": "It's just some laundry detergent.",
+            "flashlight": "An old plastic flashlight that you've had for many years."
+        },
+        "Listen": {
+            "noise": "You listen closely for where the noise is coming from. It seems you can hear the rain's rhythmic tapping through the laundry vents. Not loud enough to be the source of the noise you heard earlier."
+        },
+        "Pick up": {
+            "detergent": "You probably don't need that.",
+            "flashlight": "You grab the flashlight and turn it on. It isn't working."
+        }
     },
-    "items": {
-      "Flashlight": "Flashlight description"
-    }
-  }
-  
+    "items": ["flashlight"]
+}
