@@ -216,5 +216,4 @@ class Room:
               f"- Conditionals:\n{self.getConditionalDesc()}\n"
               f"- Exits: {self.exits}\n"
               f"- Items: {self.items}")
-        self.printDict("Features", self.features)
         print("")
