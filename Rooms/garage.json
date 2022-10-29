@@ -14,6 +14,9 @@
             "False": "The roll-up Garage Door is to the east, and it is closed."
         }
     },
+    "exits": {
+        "Lower Hall": "south"
+    },
     "verbInteractions": {
         "Look at": {
             "garage door": "It's a thin metal door big enough for one car. It rolls up to the ceiling.",
