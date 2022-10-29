@@ -1,0 +1,24 @@
+{
+    "name": "Basement",
+    "longDescription": "You're in the Basement. The cement floor and brick walls bounce every small sound back at you. An eerie howl echoes from outside. There's a bin against one side of the room, along with a pile of cans. The door to the Lower Hall is to the west.",
+    "shortDescription": "You're in the Basement. There's a bin against one side of the room, along with a pile of cans. The Lower Hall is to the west.",
+    "conditionalDescription": {
+        "tin can": {
+            "status": "True",
+            "True": "All of the cans look empty except one. They have no labels.",
+            "False": "All of the cans look empty. They have no labels."
+        }
+    },
+    "exits": {
+        "Lower Hall": "west"
+    },
+    "verbInteractions": {
+        "Look at": {
+            "bin": "It's full of empty tin cans.",
+            "cans": "It's a pile of cans. It smells... unpleasant."
+        },
+        "Pick up": {
+            "can": "You grab the only unopened can."
+        }
+    }
+}

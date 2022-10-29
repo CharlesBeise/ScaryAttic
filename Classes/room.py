@@ -39,12 +39,6 @@ class Room:
         self.exits = []
         self.items = []
 
-        # Add features for the room, if they exist
-        self.features = {}
-        if "features" in data:
-            for i in data["features"]:
-                self.features[i] = data["features"][i]
-
         file.close()
 
     def __eq__(self, other):
@@ -222,5 +216,4 @@ class Room:
               f"- Conditionals:\n{self.getConditionalDesc()}\n"
               f"- Exits: {self.exits}\n"
               f"- Items: {self.items}")
-        self.printDict("Features", self.features)
         print("")
