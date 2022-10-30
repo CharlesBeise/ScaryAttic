@@ -59,11 +59,13 @@ class Game:
         """
         Displays introduction at the start of a new game.
         """
+        # Set directory path to narrative file
         path = os.path.realpath(__file__)
         dir = os.path.dirname(path)
         dir = dir.replace("Classes", "Narrative")
         os.chdir(dir)
 
+        # Open narrative file and print new game intro
         with open("../Narrative/newGameIntro.json") as introFile:
             newGameIntro = json.load(introFile)
         print("")
