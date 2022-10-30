@@ -10,7 +10,6 @@ def gameStart(saveFile):
     game = Game(saveFile)
     game.titleScreen()
     game.selectGameState()
-    # TODO:: Maybe this would be a good place for story/narrative depending on new/loaded game???
     # Begin user input loop to play game
     while game.isRunning():
         userInput = input("> ")
