@@ -5,8 +5,7 @@
     "itemInteractions" : {
         "Ladder" : "None",
         "Flashlight" : "None",
-        "Battery 1" : "None",
-        "Battery 2" : "None",
+        "Battery" : "None",
         "Key" : "None",
         "Can opener" : "You use the can opener to open the tin can and peel back the lid. It's... brown... and wet. You take a sniff and wince. Fishy, too. It smells like cat food.",
         "Tin Can" : "None",

@@ -5,8 +5,7 @@
     "itemInteractions" : {
         "Ladder" : "None",
         "Flashlight" : "None",
-        "Battery 1" : "None",
-        "Battery 2" : "None",
+        "Battery" : "None",
         "Key" : "None",
         "Can opener" : "The tin can is already open.",
         "Tin Can" : "None",
