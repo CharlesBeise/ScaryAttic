@@ -1,3 +1,4 @@
+import json
 import os
 import time
 from .player import Player
@@ -32,40 +33,48 @@ class Game:
         Displays game title screen.
         """
         # TODO:: print title screen
-        print("Welcome to the game! (placeholder)")
-        print("Enter the command 'exit game' to stop playing.")
+        print("Welcome to the game! (placeholder)\n")
+        print("Enter the command 'exit game' to stop playing.\n")
 
     def selectGameState(self):
         """
         Prompts the user to select a new game or load a saved game.
         """
-        # TODO::
-        # print message to input new game or load game
-        # if new game, then load initial game state
-        # else, then print names of available saveSates (not initial)
-        #   take input for selected save and load corresponding saveState
-        pass
+        while True:
+            # print message to input new game or load game
+            print("Enter 'New' to start a new game or 'Load' to load a saved game:")
+            userInput = input("> ")
+            if userInput.replace(" ", "").lower() == "new":
+                self.newGameIntro()
+                return  # Default game state is new game
+            if userInput.replace(" ", "").lower() == "load":
+                print("!!! UNDER CONSTRUCTION !!!")
+                # TODO::
+                # print names of available saveSates (not default state)
+                # take input for selected save and load corresponding saveState
+            else:
+                print("That's not a valid option.")
 
     def newGameIntro(self):
         """
         Displays introduction at the start of a new game.
         """
-        part1 = """It's your first night in the new house. An old 2-story Victorian-style home nestled
-             just outside the city. Most of your belongings are still scattered in boxes around the house.
-             For tonight, it's just you and the mattress on the floor."""
-        part2 = """Somehow you're both exhausted from the move and unable to sleep. This is your first
-             time seeing the house at night. Built a hundred years ago, the house is full of old wood,
-             metal, and unfamiliar sounds. Rain starts to patter against the bedroom window."""
-        part3 = """Just as you start to drift off to sleep, you hear a THUMP from downstairs. It was
-             loud, and you can't push it out of your mind. With a sigh, you get up to have a look and
-             turn on the light. Suddenly, a flash fills the room and you hear the rumbling clap of thunder.
-             The power in the house cuts out. Downstairs, you hear it again… THUMP."""
-        print(part1)
-        time.sleep(10)
-        print(part2)
-        time.sleep(10)
-        print(part3)
-        time.sleep(10)
+        # Set directory path to narrative file
+        path = os.path.realpath(__file__)
+        dir = os.path.dirname(path)
+        dir = dir.replace("Classes", "Narrative")
+        os.chdir(dir)
+
+        # Open narrative file and print new game intro
+        with open("../Narrative/newGameIntro.json") as introFile:
+            newGameIntro = json.load(introFile)
+        print("")
+        print(newGameIntro["newGameIntro1"], "\n")
+        time.sleep(5)
+        print(newGameIntro["newGameIntro2"], "\n")
+        time.sleep(5)
+        print(newGameIntro["newGameIntro3"], "\n")
+        time.sleep(5)
 
     def saveGame(self):
         """
