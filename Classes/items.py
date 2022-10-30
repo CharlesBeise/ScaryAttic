@@ -29,6 +29,8 @@ class Item:
     def combineItems(self, otherItem):
         """This function is called when a player tries to use a different Item
         object with this Item object"""
+        # TODO: I am still playing around with this. Will probably move it to
+        #  the actionverbs file.
         if {self.name, otherItem.getName()} == {"flashlight", "battery"}:
             print("Here we are")
             return Item("flashlight3.json")
@@ -45,21 +47,8 @@ class Item:
         else:
             return "I don't think that will work"
 
-
     def __eq__(self, other):
         """Checking a comparison"""
         if isinstance(other, str):
             return self.name.lower() == other.lower()
         return False
-
-
-if __name__ == "__main__":
-    ladder = Item("ladder.json")
-    battery = Item("battery.json")
-    flashlight = Item("flashlight1.json")
-    print(ladder.getDescription())
-    print(battery.getDescription())
-    print(flashlight.combineItems(ladder).getName())
-    # print(ladder == "Ladder")
-    # a = {"one", "two"}
-    # print(a == {"two", "one"})
