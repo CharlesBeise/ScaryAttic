@@ -47,7 +47,7 @@ class Game:
             if userInput.replace(" ", "").lower() == "new":
                 self.newGameIntro()
                 return  # Default game state is new game
-            if userInput.replace(" ", "").lower() == "load":   
+            if userInput.replace(" ", "").lower() == "load":
                 print("!!! UNDER CONSTRUCTION !!!")
                 # TODO::
                 # print names of available saveSates (not default state)
@@ -69,11 +69,11 @@ class Game:
         with open("../Narrative/newGameIntro.json") as introFile:
             newGameIntro = json.load(introFile)
         print("")
-        print(newGameIntro["newGameIntro1"],"\n")
+        print(newGameIntro["newGameIntro1"], "\n")
         time.sleep(5)
-        print(newGameIntro["newGameIntro2"],"\n")
+        print(newGameIntro["newGameIntro2"], "\n")
         time.sleep(5)
-        print(newGameIntro["newGameIntro3"],"\n")
+        print(newGameIntro["newGameIntro3"], "\n")
         time.sleep(5)
 
     def saveGame(self):
