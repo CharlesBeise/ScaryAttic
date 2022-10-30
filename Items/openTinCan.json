@@ -1,0 +1,31 @@
+{
+    "name" : "open tin can",
+    "description" : "An open can of some weird wet brown stuff. It smells like cat food.",
+    "secondaryDescription" : "None",
+    "itemInteractions" : {
+        "Ladder" : "None",
+        "Flashlight" : "None",
+        "Battery" : "None",
+        "Key" : "None",
+        "Can opener" : "The tin can is already open.",
+        "Tin Can" : "None",
+        "Silver Bell" : "None",
+        "Combination Photo 1" : "None",
+        "Combination Photo 2" : "None",
+        "Combination Photo 3" : "None"
+    },
+    "verbInteractions" : {
+        "Look at" : "An open can of some weird wet brown stuff. It smells like cat food.",
+        "Take/Pick up" : "You pick up the open tin can.",
+        "Open" : "The tin can is already open.",
+        "Close" : "The can is open and can't be closed.",
+        "Hide" : "None",
+        "Listen" : "None",
+        "Peel/Pull" : "None",
+        "Use" : "You could try feeding this to someone or something, but who would want it?",
+        "Drop/Leave" : "You set the open tin can down.",
+        "Eat" : "The open can smells awful. Thinking about eating it makes you nauseous.",
+        "Shake/Ring" : "You gently shake the can, trying not to spill its contents.",
+        "Flip" : "Flipping the can over would make a stinky mess. You already have enough cleaning to do."
+    }
+}
