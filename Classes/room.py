@@ -8,7 +8,7 @@ class Room:
     """
 
     def __init__(self, roomFile):
-        file = open(roomFile)
+        file = open(roomFile, encoding="utf8")
 
         # Load room data from JSON file
         data = json.load(file)

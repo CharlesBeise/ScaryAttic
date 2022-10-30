@@ -3,18 +3,14 @@ import json
 from actionVerbs import examine, take
 
 
-f = open('verbDictionary.json')
-verbDict = json.load(f)
+verbDict = json.load(open('verbDictionary.json'))
 verbList = list(verbDict.keys())
 
-f = open('combinationWords.json')
-combinationWords = json.load(f)
+combinationWords = json.load(open('combinationWords.json'))
 
-f = open('compoundWords.json')
-compoundWords = json.load(f)
+compoundWords = json.load(open('compoundWords.json'))
 
-f = open('itemList.json')
-itemList = json.load(f)
+itemList = json.load(open('itemList.json'))
 
 
 def placeHolder(decoy):
