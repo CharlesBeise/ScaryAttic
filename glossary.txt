@@ -1,0 +1,96 @@
+Purpose of this file:
+Anything that may be called by a different file or function should
+be named here so that the same name is used throughout the game.
+
+
+ROOMS:
+**************************
+Style:
+camelCase
+Start with lowercase letter
+No spaces
+**************************
+attic
+basement
+bathroom
+diningRoom
+familyRoom
+garage
+kitchen
+lowerHall
+masterBedroom
+porch
+secondBedroom
+upperHall
+utilityRoom
+
+ITEMS:
+**************************
+Style:
+camelCase
+Start with lowercase letter
+No spaces
+**************************
+battery
+canOpener
+flashlight1
+flashlight2
+flashlight3
+key
+ladder
+openTinCan   OR catFood ???
+polaroid1
+polaroid2
+polaroid3
+silverBell
+tinCan
+
+VERBS:
+**************************
+Style:
+Start with capital letter
+Space between words (Savegame and Loadgame are exceptions)
+Only use word before hyphen, words after hyphen are aliases that refer to first word
+**************************
+Look
+Look at
+Go - [Exit]
+Take - [Pick up]
+Help
+Inventory
+Savegame
+Loadgame
+Open
+Close
+Hide
+Listen
+Peel - [Pull]
+Use
+Drop - [Leave]
+Eat
+Shake - [Ring]
+Flip
+
+ACTION VERB FUNCTIONS:
+**************************
+Style:
+camelCase
+**************************
+look()
+lookAt()
+go()
+take()
+help()
+inventory()
+savegame()
+loadgame()
+open()
+close()
+hide()
+listen()
+peel()
+use()
+drop()
+eat()
+shake()
+flip()
