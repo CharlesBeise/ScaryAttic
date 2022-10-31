@@ -3,6 +3,7 @@ import os
 import time
 from .player import Player
 from .room import Room
+from .items import Item
 
 
 class Game:
@@ -19,6 +20,8 @@ class Game:
 
         # Build instances of all the rooms
         self.buildRooms()
+        self.buildItems()
+
         # TODO: Rooms will need to be connected after all Rooms are created
 
     def isRunning(self):
@@ -121,3 +124,18 @@ class Game:
             # If it's a valid file, create the Room
             if os.path.isfile(file):
                 self.rooms.append(Room(file))
+
+    def buildItems(self):
+        """
+        Builds the items and loads them into the correct rooms
+        """
+        with open("Items/defaultLocations.json") as f:
+            itemDict = json.load(f)
+        f.close()
+        for key, value in itemDict.items():
+            itemName = key + ".json"
+            file = os.path.join("Items", itemName)
+            item = Item(file)
+            for room in self.rooms:
+                if room == value:
+                    room.addItem(item)
