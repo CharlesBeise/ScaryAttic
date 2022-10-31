@@ -1,16 +1,17 @@
 import re
 import json
-from actionVerbs import examine, take
+from .actionVerbs import examine, take
+# from Classes.player import Player
 
 
-verbDict = json.load(open('verbDictionary.json'))
+verbDict = json.load(open('Language_Parser/verbDictionary.json'))
 verbList = list(verbDict.keys())
 
-combinationWords = json.load(open('combinationWords.json'))
+combinationWords = json.load(open('Language_Parser/combinationWords.json'))
 
-compoundWords = json.load(open('compoundWords.json'))
+compoundWords = json.load(open('Language_Parser/compoundWords.json'))
 
-itemList = json.load(open('itemList.json'))
+itemList = json.load(open('Language_Parser/itemList.json'))
 
 
 def placeHolder(decoy):
@@ -40,12 +41,13 @@ def findCompounds(phrase):
     return phrase
 
 
-def siftInput(longText):
+def siftInput(longText, player):
     """
     This function picks out the necessary words to complete the user's
     request
     """
-    wordDict = {"Verb": "",
+    wordDict = {"Player": player,
+                "Verb": "",
                 "Items": [],
                 "Combination": False}
     for token in longText:
@@ -59,7 +61,7 @@ def siftInput(longText):
     return wordDict
 
 
-def parse(userText):
+def parse(userText, player):
     # Remove punctuation symbols and break command into individual words
     command, n = re.subn('[!?.,]', "", userText)
     tokens = command.lower().split()
@@ -67,7 +69,7 @@ def parse(userText):
     tokens = findCompounds(tokens)
 
     # Conduct a second parse to identify the relevant words in the user command
-    parsedInput = siftInput(tokens)
+    parsedInput = siftInput(tokens, player)
 
     """
     USAGE: globals()function(parameters)
@@ -79,25 +81,6 @@ def parse(userText):
     Output: "Hello Susan"
     """
     if len(parsedInput["Items"]) == 1:
-        globals()[parsedInput["Verb"]](parsedInput["Items"][0])
+        globals()[parsedInput["Verb"]](parsedInput)
     elif len(parsedInput["Items"]) > 1:
         print("Combination action")
-
-
-if __name__ == "__main__":
-    while True:
-        userCommand = input("> ")
-        parse(userCommand)
-
-
-"""
-Current issues with the parser:
-
-- May be difficult to differentiate between when a user is talking about the
-"polaroid photo" or a random photo hanging on the wall.
-POSSIBLE SOLUTION: Only use the word "photo" to describe the polaroid photo.
-For anything else, use painting, portrait, or drawing
-
-- NOTE: I think we should use the term "examine" instead of "look at", this
-will help differentiate between "look" and "look at".
-"""
