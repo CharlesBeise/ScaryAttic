@@ -3,7 +3,7 @@ class Player:
     Represents a player of the game ScaryAttic.
     """
     def __init__(self) -> None:
-        self.location = None
+        self.location = None  # String name of current room
         self.inventory = []
 
     def getLocation(self):
