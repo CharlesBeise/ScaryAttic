@@ -1,0 +1,34 @@
+{
+  "name": "battery1",
+  "description": "It looks like a standard C cell battery.",
+  "secondaryDescription": "None",
+  "itemInteractions":
+  {
+    "Ladder": "None",
+    "Flashlight": "None",
+    "Battery 1": "None",
+    "Battery 2": "None",
+    "Key": "None",
+    "Can opener": "None",
+    "Tin Can": "None",
+    "Silver Bell": "None",
+    "Combination Photo 1": "None",
+    "Combination Photo 2": "None",
+    "Combination Photo 3": "None"
+  },
+  "verbInteractions":
+  {
+    "Look at": "None",
+    "Take/Pick up": "You'll need this for the flashlight.",
+    "Open": "None",
+    "Close": "None",
+    "Hide": "None",
+    "Listen": "None",
+    "Peel/Pull": "None",
+    "Use": "None",
+    "Drop/Leave": "You set the battery down.",
+    "Eat": "None",
+    "Shake/Ring": "None",
+    "Flip": "None"
+  }
+}
