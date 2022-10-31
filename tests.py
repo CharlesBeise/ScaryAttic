@@ -1,8 +1,7 @@
 import fnmatch
-import logging
 import os
 import random
-import sys
+# import sys
 import unittest
 # from io import StringIO
 from Classes.game import Game
