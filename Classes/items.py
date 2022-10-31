@@ -6,8 +6,7 @@ class Item:
 
     def __init__(self, itemFile):
         """Initializes the necessary variables for the Item object"""
-        itemLocation = "../Items/" + itemFile
-        data = json.load(open(itemLocation))
+        data = json.load(open(itemFile))
         self.name = data["name"]
         self.description = data["description"]
         self.secondaryDescription = data["secondaryDescription"]
