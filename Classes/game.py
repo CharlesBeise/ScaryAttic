@@ -21,8 +21,15 @@ class Game:
         # Build instances of all the rooms
         self.buildRooms()
         self.buildItems()
+        self.setRoom()
 
         # TODO: Rooms will need to be connected after all Rooms are created
+
+    def getPlayer(self):
+        """
+        Returns the Player object which the game creates
+        """
+        return self.player
 
     def isRunning(self):
         """
@@ -73,11 +80,11 @@ class Game:
             newGameIntro = json.load(introFile)
         print("")
         print(newGameIntro["newGameIntro1"], "\n")
-        time.sleep(5)
+        time.sleep(1)
         print(newGameIntro["newGameIntro2"], "\n")
-        time.sleep(5)
+        time.sleep(1)
         print(newGameIntro["newGameIntro3"], "\n")
-        time.sleep(5)
+        time.sleep(1)
 
     def saveGame(self):
         """
@@ -135,7 +142,23 @@ class Game:
         for key, value in itemDict.items():
             itemName = key + ".json"
             file = os.path.join("Items", itemName)
+            if type(value) == list:
+                item = Item(file)
+                for room in self.rooms:
+                    if room == value[0]:
+                        room.addItem(item)
+                value = value[1]
             item = Item(file)
             for room in self.rooms:
                 if room == value:
                     room.addItem(item)
+
+
+    def setRoom(self):
+        """
+        This assigns the starting location of the Player
+        """
+        for room in self.rooms:
+            if room == "Master Bedroom":
+                self.player.setLocation(room)
+                return
