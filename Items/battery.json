@@ -1,6 +1,6 @@
 {
-    "name": "can opener",
-    "description": "A basic can opener for opening cans of food. Nothing fancy, but it works.",
+    "name": "battery",
+    "description": "It looks like a standard C cell battery.",
     "secondaryDescription": "None",
     "itemInteractions": {
         "Ladder": "None",
@@ -8,7 +8,7 @@
         "Battery": "None",
         "Key": "None",
         "Can opener": "None",
-        "Tin Can": "You use the can opener to open the tin can and peel back the lid. It's... brown... and wet. You take a sniff and wince. Fishy, too. It smells like cat food.",
+        "Tin Can": "None",
         "Silver Bell": "None",
         "Combination Photo 1": "None",
         "Combination Photo 2": "None",
@@ -19,13 +19,13 @@
         "Close": "None",
         "Hide": "None",
         "Listen": "None",
-        "Use": "It could open a tin can if you had one.",
+        "Use": "None",
         "Eat": "None",
         "Flip": "None",
-        "Examine": "A basic can opener for opening cans of food. Nothing fancy, but it works.",
-        "Take": "You take the can opener from a drawer.",
+        "Examine": "None",
+        "Take": "You'll need this for the flashlight.",
         "Peel": "None",
-        "Drop": "You put the can opener down.",
+        "Drop": "You set the battery down.",
         "Shake": "None"
     }
 }

@@ -1,31 +1,31 @@
 {
-    "name" : "Polaroid #2",
-    "description" : "It's a picture of this house from the street. It looks empty without any trees out front. You wonder when this was taken.",
-    "secondaryDescription" : "None",
-    "itemInteractions" : {
-        "Ladder" : "None",
-        "Flashlight" : "None",
-        "Battery" : "None",
-        "Key" : "None",
-        "Can opener" : "None",
-        "Tin Can" : "None",
-        "Silver Bell" : "None",
-        "Combination Photo 1" : "None",
-        "Combination Photo 2" : "None",
-        "Combination Photo 3" : "None"
+    "name": "Polaroid #2",
+    "description": "It's a picture of this house from the street. It looks empty without any trees out front. You wonder when this was taken.",
+    "secondaryDescription": "None",
+    "itemInteractions": {
+        "Ladder": "None",
+        "Flashlight": "None",
+        "Battery": "None",
+        "Key": "None",
+        "Can opener": "None",
+        "Tin Can": "None",
+        "Silver Bell": "None",
+        "Combination Photo 1": "None",
+        "Combination Photo 2": "None",
+        "Combination Photo 3": "None"
     },
-    "verbInteractions" : {
-        "Look at" : "It's a picture of this house from the street. It looks empty without any trees out front. You wonder when this was taken.",
-        "Take/Pick up" : "You take the Polaroid with you.",
-        "Open" : "None",
-        "Close" : "None",
-        "Hide" : "None",
-        "Listen" : "None",
-        "Peel/Pull" : "None",
-        "Use" : "None",
-        "Drop/Leave" : "You set the Polaroid down.",
-        "Eat" : "That doesn't sound like a good idea.",
-        "Shake/Ring" : "It does nothing.",
-        "Flip" : "There's a number 5 on the back."
+    "verbInteractions": {
+        "Open": "None",
+        "Close": "None",
+        "Hide": "None",
+        "Listen": "None",
+        "Use": "None",
+        "Eat": "That doesn't sound like a good idea.",
+        "Flip": "There's a number 5 on the back.",
+        "Examine": "It's a picture of this house from the street. It looks empty without any trees out front. You wonder when this was taken.",
+        "Take": "You take the Polaroid with you.",
+        "Peel": "None",
+        "Drop": "You set the Polaroid down.",
+        "Shake": "It does nothing."
     }
 }

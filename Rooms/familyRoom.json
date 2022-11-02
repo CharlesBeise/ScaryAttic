@@ -14,7 +14,7 @@
         "Porch": "east"
     },
     "verbInteractions": {
-        "Look at": {
+        "Examine": {
             "shelves": "It's a heavy wooden shelving unit, made to hold entertainment equipment. There's not much in it yet.",
             "moving boxes": "You glance through the moving boxes, but there's nothing useful in here.",
             "tv": "You wish you could believe it was just the TV making noise in the house, but that seems unlikely with the power being out.",
@@ -23,7 +23,7 @@
             "hooks": "You glance through the moving boxes, but there's nothing useful in here.",
             "key": "You glance through the moving boxes, but there's nothing useful in here."
         },
-        "Pick up": {
+        "Take": {
             "key": "You take the key from its hook."
         }
     }

@@ -1,31 +1,31 @@
 {
-    "name" : "tin can",
-    "description" : "An unopened tin can with no label. Anything could be inside...",
-    "secondaryDescription" : "None",
-    "itemInteractions" : {
-        "Ladder" : "None",
-        "Flashlight" : "None",
-        "Battery" : "None",
-        "Key" : "None",
-        "Can opener" : "You use the can opener to open the tin can and peel back the lid. It's... brown... and wet. You take a sniff and wince. Fishy, too. It smells like cat food.",
-        "Tin Can" : "None",
-        "Silver Bell" : "None",
-        "Combination Photo 1" : "None",
-        "Combination Photo 2" : "None",
-        "Combination Photo 3" : "None"
+    "name": "tin can",
+    "description": "An unopened tin can with no label. Anything could be inside...",
+    "secondaryDescription": "None",
+    "itemInteractions": {
+        "Ladder": "None",
+        "Flashlight": "None",
+        "Battery": "None",
+        "Key": "None",
+        "Can opener": "You use the can opener to open the tin can and peel back the lid. It's... brown... and wet. You take a sniff and wince. Fishy, too. It smells like cat food.",
+        "Tin Can": "None",
+        "Silver Bell": "None",
+        "Combination Photo 1": "None",
+        "Combination Photo 2": "None",
+        "Combination Photo 3": "None"
     },
-    "verbInteractions" : {
-        "Look at" : "An unopened tin can with no label. Anything could be inside...",
-        "Take/Pick up" : "You pick up the unopened tin can.",
-        "Open" : "The can could probably be opened by a can opener.",
-        "Close" : "None",
-        "Hide" : "None",
-        "Listen" : "None",
-        "Peel/Pull" : "None",
-        "Use" : "The can could probably be opened by a can opener.",
-        "Drop/Leave" : "You set the tin can down.",
-        "Eat" : "None",
-        "Shake/Ring" : "Shaking the can, you can tell that it is full of something dense.",
-        "Flip" : "You flip the can over and there is nothing on the bottom."
+    "verbInteractions": {
+        "Open": "The can could probably be opened by a can opener.",
+        "Close": "None",
+        "Hide": "None",
+        "Listen": "None",
+        "Use": "The can could probably be opened by a can opener.",
+        "Eat": "None",
+        "Flip": "You flip the can over and there is nothing on the bottom.",
+        "Examine": "An unopened tin can with no label. Anything could be inside...",
+        "Take": "You pick up the unopened tin can.",
+        "Peel": "None",
+        "Drop": "You set the tin can down.",
+        "Shake": "Shaking the can, you can tell that it is full of something dense."
     }
 }

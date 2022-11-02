@@ -18,7 +18,7 @@
         "Upper Hall": "north"
     },
     "verbInteractions": {
-        "Look at": {
+        "Examine": {
             "vent": "Nothing here.",
             "shelves": "Feeling along the wooden shelves, you can make out the shape of a flashlight, along with a couple bottles of laundry detergent.",
             "detergent": "It's just some laundry detergent.",
@@ -27,10 +27,9 @@
         "Listen": {
             "noise": "You listen closely for where the noise is coming from. It seems you can hear the rain's rhythmic tapping through the laundry vents. Not loud enough to be the source of the noise you heard earlier."
         },
-        "Pick up": {
+        "Take": {
             "detergent": "You probably don't need that.",
             "flashlight": "You grab the flashlight and turn it on. It isn't working."
         }
-    },
-    "items": ["flashlight"]
+    }
 }

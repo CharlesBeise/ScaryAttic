@@ -18,12 +18,12 @@
         "Lower Hall": "south"
     },
     "verbInteractions": {
-        "Look at": {
+        "Examine": {
             "garage door": "It's a thin metal door big enough for one car. It rolls up to the ceiling.",
             "tool bag": "You only have a few things in here. Nothing important.",
             "ladder": "It's a small aluminum ladder. Useful for reaching high places."
         },
-        "Pick up": {
+        "Take": {
             "tool bag": "You don't need that.",
             "ladder": "You lift the ladder onto your shoulder."
         },

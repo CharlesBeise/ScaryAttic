@@ -1,31 +1,31 @@
 {
-    "name" : "Polaroid #1",
-    "description" : "It looks like a picture of this house, from the street. There's a tree you recognize from the front yard, but it's a lot smaller in this picture.",
-    "secondaryDescription" : "None",
-    "itemInteractions" : {
-        "Ladder" : "None",
-        "Flashlight" : "None",
-        "Battery" : "None",
-        "Key" : "None",
-        "Can opener" : "None",
-        "Tin Can" : "None",
-        "Silver Bell" : "None",
-        "Combination Photo 1" : "None",
-        "Combination Photo 2" : "None",
-        "Combination Photo 3" : "None"
+    "name": "Polaroid #1",
+    "description": "It looks like a picture of this house, from the street. There's a tree you recognize from the front yard, but it's a lot smaller in this picture.",
+    "secondaryDescription": "None",
+    "itemInteractions": {
+        "Ladder": "None",
+        "Flashlight": "None",
+        "Battery": "None",
+        "Key": "None",
+        "Can opener": "None",
+        "Tin Can": "None",
+        "Silver Bell": "None",
+        "Combination Photo 1": "None",
+        "Combination Photo 2": "None",
+        "Combination Photo 3": "None"
     },
-    "verbInteractions" : {
-        "Look at" : "It looks like a picture of this house, from the street. There's a tree you recognize from the front yard, but it's a lot smaller in this picture.",
-        "Take/Pick up" : "You'll hold onto the Polaroid for now.",
-        "Open" : "None",
-        "Close" : "None",
-        "Hide" : "None",
-        "Listen" : "None",
-        "Peel/Pull" : "None",
-        "Use" : "None",
-        "Drop/Leave" : "You set the Polaroid down.",
-        "Eat" : "Ew, no thank you.",
-        "Shake/Ring" : "It does nothing.",
-        "Flip" : "There's a number 9 on the back."
+    "verbInteractions": {
+        "Open": "None",
+        "Close": "None",
+        "Hide": "None",
+        "Listen": "None",
+        "Use": "None",
+        "Eat": "Ew, no thank you.",
+        "Flip": "There's a number 9 on the back.",
+        "Examine": "It looks like a picture of this house, from the street. There's a tree you recognize from the front yard, but it's a lot smaller in this picture.",
+        "Take": "You'll hold onto the Polaroid for now.",
+        "Peel": "None",
+        "Drop": "You set the Polaroid down.",
+        "Shake": "It does nothing."
     }
 }

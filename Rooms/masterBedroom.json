@@ -13,7 +13,7 @@
     "Upper Hall": "east"
   },
   "verbInteractions": {
-    "Look at": {
+    "Examine": {
       "moving boxes": "There are a couple boxes here filled with a clock, battery, extra blankets, and most of your clothes.",
       "window": "The storm is getting worse. You're not going out there."
     },
@@ -28,6 +28,5 @@
     "Flip": {
       "light switch": "The light won't turn on. Looks like the power is still out."
     }
-  },
-  "items": ["battery"]
+  }
 }
