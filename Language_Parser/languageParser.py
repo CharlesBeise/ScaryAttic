@@ -23,6 +23,7 @@ def placeHolder(decoy):
     """
     examine(decoy)
     take(decoy)
+    inventory(decoy)
 
 
 def findCompounds(phrase):
