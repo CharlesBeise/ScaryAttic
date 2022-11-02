@@ -15,7 +15,7 @@ def gameStart(saveFile):
     # Begin user input loop to play game
     while game.isRunning():
         userInput = input("> ")
-        parse(userInput, player)
+        parse(userInput, player, game)
         # if userInput.replace(" ", "").lower() == "exitgame":
         #     game.exitGame()
         # Parse user input for command/action
