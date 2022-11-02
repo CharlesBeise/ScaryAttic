@@ -1,6 +1,6 @@
 import re
 import json
-from Language_Parser.actionVerbs import examine, take, inventory
+from Language_Parser.actionVerbs import examine, take, inventory, drop
 from Classes.player import Player
 from Classes.game import Game
 
@@ -24,6 +24,7 @@ def placeHolder(decoy):
     examine(decoy)
     take(decoy)
     inventory(decoy)
+    drop(decoy)
 
 
 def findCompounds(phrase):
