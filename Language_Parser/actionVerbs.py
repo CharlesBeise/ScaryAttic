@@ -6,6 +6,13 @@ def examine(info):
 
 
 def take(info):
+    """
+    This function removes an item from the player's current room and adds it to
+    their inventory
+    """
+    if len(info["Items"]) == 0:
+        print("I don't think that will work.")
+        return
     game = info["Game"]
     item = info["Items"][0]
     player = game.getPlayer()
@@ -28,6 +35,7 @@ def drop(info):
     """
     if len(info["Items"]) == 0:
         print("I don't think that will work.")
+        return
     game = info["Game"]
     player = game.getPlayer()
     room = player.getLocation()
