@@ -55,7 +55,7 @@ def siftInput(longText, player: Player, game: Game):
                 "Combination": False}
     for token in longText:
         if token in verbList:
-            wordDict["Verb"].append(token)
+            wordDict["Verb"].append(verbDict[token])
         elif token in itemList:
             wordDict["Items"].append(token)
         elif token in combinationWords:
