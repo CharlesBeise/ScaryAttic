@@ -1,6 +1,7 @@
 import re
 import json
-from Language_Parser.actionVerbs import examine, take, inventory, drop
+from Language_Parser.actionVerbs import \
+    examine, take, inventory, drop, help, hide, listen, peel, use
 from Classes.player import Player
 from Classes.game import Game
 
@@ -25,6 +26,11 @@ def placeHolder(decoy):
     take(decoy)
     inventory(decoy)
     drop(decoy)
+    help(decoy)
+    hide(decoy)
+    listen(decoy)
+    peel(decoy)
+    use(decoy)
 
 
 def findCompounds(phrase):
@@ -57,10 +63,12 @@ def siftInput(longText, player: Player, game: Game):
     for token in longText:
         for key, value in verbDict.items():
             if token in value:
+                # print(f"Verb: {key}")
                 wordDict["Verb"].append(key)
                 break
         for key, value in itemDict.items():
             if token in value:
+                # print(f"Items: {key}")
                 wordDict["Items"].append(key)
                 break
         if token in combinationWords:
@@ -89,6 +97,9 @@ def parse(userText, player, game):
     Output: "Hello Susan"
     """
     if len(parsedInput["Verb"]) == 1:
-        globals()[parsedInput["Verb"][0]](parsedInput)
+        try:
+            globals()[parsedInput["Verb"][0]](parsedInput)
+        except KeyError:
+            print("I'm sorry, I don't understand that command.")
     else:
-        print("I'm sorry, I don't understand that command")
+        print("I'm sorry, I don't understand that command.")
