@@ -153,7 +153,6 @@ class Game:
                 if room == value:
                     room.addItem(item)
 
-
     def setRoom(self):
         """
         This assigns the starting location of the Player
