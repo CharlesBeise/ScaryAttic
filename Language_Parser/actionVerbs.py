@@ -1,4 +1,6 @@
-__all__ = ['examine', 'take', 'inventory', 'drop']
+__all__ = ['examine', 'take', 'inventory', 'drop', 'hide', 'help',
+           'listen', 'peel', 'use']
+
 
 """
 All functions take one parameter "info", which is a dict object containing the
@@ -74,8 +76,68 @@ def close(info):
     print("Close")
 
 
+def help(info):
+    response = "\n============= HELP =============\n" \
+               "To play the game, enter a command.\n" \
+               "Below is a list of verbs the game will accept.\n" \
+               "Combine these verbs with objects in order to progress.\n" \
+               "This is not an exhaustive list, so if you're stuck,\n" \
+               "try something different and keep exploring!\n\n"
+
+    help = "Help: Show this menu again."
+    inventory = "Inventory: Show the items you currently hold."
+    save = "Savegame: Save your current progress."
+    load = "Loadgame: Load an existing game file."
+    look = "Look: Display an extended description of the current room."
+    lookat = "Look at: Describe an object."
+    go = "Go: Switch rooms through a described exit."
+    take = "Take: Pick up an item."
+    drop = "Drop: Leave an item in the current room."
+    use = "Use: Use an object somewhere or with something."
+
+    keywords = [
+        help,
+        inventory,
+        save,
+        load,
+        look,
+        lookat,
+        go,
+        take,
+        drop,
+        use
+    ]
+
+    for word in keywords:
+        response = response + "- " + word + '\n'
+
+    print(response)
+
+
 def inventory(info):
-    response = "You currently have the following items: "
+    header = "\nCurrent inventory: \n" \
+             "-------------------\n"
+    content = ""
     for item in info["Player"].getInventory():
-        response = response + item.getName() + ','
-    print(response[:-1])
+        content = content + "- " + item.getName() + '\n'
+
+    if content != "":
+        print(header + content + "\n")
+    else:
+        print(header + "Empty" + "\n")
+
+
+def hide(info):
+    print("Hiding...")
+
+
+def peel(info):
+    print("Peeling...")
+
+
+def listen(info):
+    print("Listening...")
+
+
+def use(info):
+    print("Using...")
