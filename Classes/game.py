@@ -21,7 +21,7 @@ class Game:
         # Build instances of all the rooms
         self.buildRooms()
         self.buildItems()
-        self.setRoom()
+        self.setStartRoom()
 
         # TODO: Rooms will need to be connected after all Rooms are created
 
@@ -153,7 +153,7 @@ class Game:
                 if room == value:
                     room.addItem(item)
 
-    def setRoom(self):
+    def setStartRoom(self):
         """
         This assigns the starting location of the Player
         """

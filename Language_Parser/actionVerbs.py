@@ -1,5 +1,17 @@
 __all__ = ['examine', 'take', 'inventory', 'drop']
 
+"""
+All functions take one parameter "info", which is a dict object containing the
+folowing:
+{
+    "Player": Player object,
+    "Game": Game object,
+    "Verb": A list of verbs detected in the input
+    "Items": A list of items/features that the user can interact with
+    "Combination": True/False based on if a combination word was detected
+                    (and, on, with)
+"""
+
 
 def examine(info):
     pass
@@ -46,6 +58,20 @@ def drop(info):
                 player.removeInventory(item)
                 room.addItem(possession)
                 continue
+
+
+def openVerb(info):
+    """
+    This function allows a player to open an item or feature
+    """
+    print("Open")
+
+
+def close(info):
+    """
+    This function allows a player to close an item or feature
+    """
+    print("Close")
 
 
 def inventory(info):
