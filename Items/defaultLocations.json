@@ -1,8 +1,7 @@
 {
   "ladder": "Garage",
-  "flashlight1": "Utility Room",
-  "battery1": "Master Bedroom",
-  "battery2": "Second Bedroom",
+  "flashlight": "Utility Room",
+  "battery": ["Master Bedroom", "Second Bedroom"],
   "key": "Family Room",
   "canOpener": "Kitchen",
   "tinCan": "Basement",

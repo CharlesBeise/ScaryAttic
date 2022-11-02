@@ -38,7 +38,7 @@ flashlight2
 flashlight3
 key
 ladder
-openTinCan   OR catFood ???
+catFood
 polaroid1
 polaroid2
 polaroid3
@@ -53,7 +53,7 @@ Space between words (Savegame and Loadgame are exceptions)
 Only use word before hyphen, words after hyphen are aliases that refer to first word
 **************************
 Look
-Look at
+Examine
 Go - [Exit]
 Take - [Pick up]
 Help
@@ -77,7 +77,7 @@ Style:
 camelCase
 **************************
 look()
-lookAt()
+examine()
 go()
 take()
 help()

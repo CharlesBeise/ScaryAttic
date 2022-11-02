@@ -23,15 +23,14 @@
     "Staircase": "east"
   },
   "verbInteractions": {
-    "Look at": {
+    "Examine": {
       "painting": "There are three paintings. The first shows an old, thin woman sitting in the backyard with a child - perhaps her grandchild. The second shows a large group of people standing in front of the house with smiles on their faces, except for a young man near the back with a stern look. The third picture frame has an image of a woman in her 30's or 40's. She is smiling, but the smile isn’t quite reaching her eyes. Despite the fading of the photo, it feels like her gaze is looking straight through you. All three pictures are probably from at least a couple generations ago. One of the paintings is hanging slightly askew."
     },
     "Flip": {
       "painting": "You pull at the frames on the wall, and a small Polaroid photo falls to the floor."
     },
-    "Pull": {
+    "Peel": {
       "painting": "You pull at the frames on the wall, and a small Polaroid photo falls to the floor."
     }
-  },
-  "items": ["polaroid"]
+  }
 }

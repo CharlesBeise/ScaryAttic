@@ -41,10 +41,12 @@ class Item:
     def verbResponses(self, verb):
         """This function is called when a player tries to perform an action on
         this Item object"""
-        if self.verbInteractions[verb]:
-            return self.verbInteractions[verb]
-        else:
-            return "I don't think that will work"
+        response = "I don't think that will work."
+        try:
+            response = self.verbInteractions[verb]
+        except KeyError:
+            pass
+        return response
 
     def __eq__(self, other):
         """Checking a comparison"""

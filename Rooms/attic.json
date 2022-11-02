@@ -13,7 +13,7 @@
     "Upper Hall": "east"
   },
   "verbInteractions": {
-    "Look at": {
+    "Examine": {
       "box": "Just a bunch of thick coats, boots, scarves, and gloves.",
       "clothes": "Just a bunch of thick coats, boots, scarves, and gloves.",
       "vanity": "It's an engraved table with a mirror on top. The whole thing is painted white.",
@@ -22,6 +22,5 @@
     "Use": {
       "TODO": "IMPLEMENT HOW KEY AND CHEST WILL INTERACT"
     }
-  },
-  "items": ["polaroid"]
+  }
 }

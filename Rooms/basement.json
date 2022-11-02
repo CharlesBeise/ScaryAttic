@@ -13,11 +13,11 @@
         "Lower Hall": "west"
     },
     "verbInteractions": {
-        "Look at": {
+        "Examine": {
             "bin": "It's full of empty tin cans.",
             "cans": "It's a pile of cans. It smells... unpleasant."
         },
-        "Pick up": {
+        "Take": {
             "can": "You grab the only unopened can."
         }
     }

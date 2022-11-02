@@ -22,6 +22,8 @@
   "use": "use",
   "drop": "drop",
   "leave": "drop",
+  "putdown": "drop",
+  "discard": "drop",
   "eat": "eat",
   "shake": "shake",
   "ring": "shake",

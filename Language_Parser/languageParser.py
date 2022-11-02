@@ -1,6 +1,6 @@
 import re
 import json
-from Language_Parser.actionVerbs import examine, take, inventory
+from Language_Parser.actionVerbs import examine, take, inventory, drop
 from Classes.player import Player
 from Classes.game import Game
 
@@ -24,6 +24,7 @@ def placeHolder(decoy):
     examine(decoy)
     take(decoy)
     inventory(decoy)
+    drop(decoy)
 
 
 def findCompounds(phrase):
@@ -55,7 +56,7 @@ def siftInput(longText, player: Player, game: Game):
                 "Combination": False}
     for token in longText:
         if token in verbList:
-            wordDict["Verb"].append(token)
+            wordDict["Verb"].append(verbDict[token])
         elif token in itemList:
             wordDict["Items"].append(token)
         elif token in combinationWords:

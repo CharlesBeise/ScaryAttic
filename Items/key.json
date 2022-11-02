@@ -1,31 +1,31 @@
 {
-    "name" : "key",
-    "description" : "A small brass key that is old and tarnished.",
-    "secondaryDescription" : "None",
-    "itemInteractions" : {
-        "Ladder" : "None",
-        "Flashlight" : "None",
-        "Battery" : "None",
-        "Key" : "None",
-        "Can opener" : "None",
-        "Tin Can" : "None",
-        "Silver Bell" : "None",
-        "Combination Photo 1" : "None",
-        "Combination Photo 2" : "None",
-        "Combination Photo 3" : "None"
+    "name": "key",
+    "description": "A small brass key that is old and tarnished.",
+    "secondaryDescription": "None",
+    "itemInteractions": {
+        "Ladder": "None",
+        "Flashlight": "None",
+        "Battery": "None",
+        "Key": "None",
+        "Can opener": "None",
+        "Tin Can": "None",
+        "Silver Bell": "None",
+        "Combination Photo 1": "None",
+        "Combination Photo 2": "None",
+        "Combination Photo 3": "None"
     },
-    "verbInteractions" : {
-        "Look at" : "A small brass key that is old and tarnished.",
-        "Take/Pick up" : "You pick up the key.",
-        "Open" : "The key doesn't seem useful without a lock.",
-        "Close" : "The key doesn't seem useful without a lock.",
-        "Hide" : "None",
-        "Listen" : "None",
-        "Peel/Pull" : "None",
-        "Use" : "The key doesn't seem useful without a lock.",
-        "Drop/Leave" : "You set the key down.",
-        "Eat" : "Eating the key seems like a bad idea.",
-        "Shake/Ring" : "None",
-        "Flip" : "Each side of the key looks no different from the other."
+    "verbInteractions": {
+        "Open": "The key doesn't seem useful without a lock.",
+        "Close": "The key doesn't seem useful without a lock.",
+        "Hide": "None",
+        "Listen": "None",
+        "Use": "The key doesn't seem useful without a lock.",
+        "Eat": "Eating the key seems like a bad idea.",
+        "Flip": "Each side of the key looks no different from the other.",
+        "Examine": "A small brass key that is old and tarnished.",
+        "Take": "You pick up the key.",
+        "Peel": "None",
+        "Drop": "You set the key down.",
+        "Shake": "None"
     }
 }
