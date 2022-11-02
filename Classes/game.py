@@ -23,8 +23,6 @@ class Game:
         self.buildItems()
         self.setStartRoom()
 
-        # TODO: Rooms will need to be connected after all Rooms are created
-
     def getPlayer(self):
         """
         Returns the Player object which the game creates
@@ -43,7 +41,7 @@ class Game:
         Displays game title screen.
         """
         # TODO:: print title screen
-        print("Welcome to the game! (placeholder)\n")
+        print("Welcome to Scary Attic.\n")
         print("Enter the command 'exit game' to stop playing.\n")
 
     def selectGameState(self):
