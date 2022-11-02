@@ -1,5 +1,5 @@
 __pycache__
 Classes/__pycache__
-clues.json
-clues.py
-Items/lintFixer.py
+ignore/clues.json
+ignore/clues.py
+ignore/lintFixer.py
