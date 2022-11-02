@@ -208,7 +208,8 @@ class Room:
         for item in self.items:
             if item.name == itemName:
                 self.items.remove(item)
-                break
+                return item
+        return None
 
     # TODO: Add method for applicable verb actions?
 
