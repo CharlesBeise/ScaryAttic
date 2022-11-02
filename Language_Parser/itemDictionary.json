@@ -1,0 +1,16 @@
+{
+  "ladder": ["ladder"],
+  "flashlight": ["flashlight"],
+  "battery": ["battery"],
+  "key": ["key"],
+  "canopener": ["canopener"],
+  "tincan": ["tincan"],
+  "catfood": ["catfood"],
+  "bell": ["bell", "silverbell"],
+  "polaroid": ["polaroid", "polaroidphoto"],
+  "window": ["window"],
+  "cabinet": ["cabinet", "medicinecabinet"],
+  "bottle": ["bottle", "pillbottle"],
+  "closet": ["closet"],
+  "switch": ["switch", "lightswitch"]
+}

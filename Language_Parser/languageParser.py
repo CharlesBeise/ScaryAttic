@@ -12,7 +12,7 @@ combinationWords = json.load(open('Language_Parser/combinationWords.json'))
 
 compoundWords = json.load(open('Language_Parser/compoundWords.json'))
 
-itemList = json.load(open('Language_Parser/itemList.json'))
+itemDict = json.load(open('Language_Parser/itemDictionary.json'))
 
 
 def placeHolder(decoy):
@@ -55,11 +55,15 @@ def siftInput(longText, player: Player, game: Game):
                 "Items": [],
                 "Combination": False}
     for token in longText:
-        if token in verbList:
-            wordDict["Verb"].append(verbDict[token])
-        elif token in itemList:
-            wordDict["Items"].append(token)
-        elif token in combinationWords:
+        for key, value in verbDict.items():
+            if token in value:
+                wordDict["Verb"].append(key)
+                break
+        for key, value in itemDict.items():
+            if token in value:
+                wordDict["Items"].append(key)
+                break
+        if token in combinationWords:
             wordDict["Combination"] = True
 
     return wordDict
