@@ -10,8 +10,8 @@
         }
     },
     "exits": {
-        "Kitchen": "north",
-        "Porch": "east"
+        "kitchen": "north",
+        "porch": "east"
     },
     "verbInteractions": {
         "Examine": {

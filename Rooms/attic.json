@@ -10,7 +10,7 @@
     }
   },
   "exits": {
-    "Upper Hall": "east"
+    "upperHall": "east"
   },
   "verbInteractions": {
     "Examine": {

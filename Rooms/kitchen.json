@@ -15,9 +15,9 @@
         }
     },
     "exits": {
-        "Lower Hall": "north",
-        "Dining Room": "east",
-        "Family Room": "south"
+        "lowerHall": "north",
+        "diningRoom": "east",
+        "familyRoom": "south"
     },
     "verbInteractions": {
         "Examine": {

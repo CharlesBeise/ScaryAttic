@@ -10,11 +10,11 @@
         }
     },
     "exits": {
-        "Upper Hall": "east",
-        "Basement": "west",
-        "Kitchen": "southwest",
-        "Dining Room": "southeast",
-        "Garage": "north"
+        "upperHall": "east",
+        "basement": "west",
+        "kitchen": "southwest",
+        "diningRoom": "southeast",
+        "garage": "north"
     },
     "verbInteractions": {
         "Examine": {

@@ -15,12 +15,12 @@
     }
   },
   "exits": {
-    "Utility Room": "south",
-    "Bathroom": "west",
-    "Master Bedroom": "southwest",
-    "Second Bedroom": "northwest",
-    "Attic": "up",
-    "Staircase": "east"
+    "utilityRoom": "south",
+    "bathroom": "west",
+    "masterBedroom": "southwest",
+    "secondBedroom": "northwest",
+    "attic": "up",
+    "staircase": "east"
   },
   "verbInteractions": {
     "Examine": {

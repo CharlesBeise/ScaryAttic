@@ -15,7 +15,7 @@
         }
     },
     "exits": {
-        "Lower Hall": "south"
+        "lowerHall": "south"
     },
     "verbInteractions": {
         "Examine": {

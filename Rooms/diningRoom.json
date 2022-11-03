@@ -10,8 +10,8 @@
         }
     },
     "exits": {
-        "Kitchen": "west",
-        "Lower Hall": "north"
+        "kitchen": "west",
+        "lowerHall": "north"
     },
     "verbInteractions": {
         "Examine": {
