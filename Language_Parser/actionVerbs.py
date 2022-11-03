@@ -157,7 +157,9 @@ def goHelper(roomInfo, currentRoom):
         if roomInfo[0] == roomName.lower() or roomInfo[0] == direction:
             return roomName
     currentRoomName = currentRoom.getName().lower()
-    if roomInfo[0] == currentRoomName or roomInfo[1] == currentRoomName:
+    if roomInfo[0] == currentRoomName:
+        return currentRoom.getName()
+    if len(roomInfo[0]) == 2 and roomInfo[1] == currentRoomName:
         return currentRoom.getName()
     return None
 
@@ -184,3 +186,31 @@ def go(info):
             else:
                 print(room.getLongDescription())
                 room.setVisited()
+
+
+def look(info):
+    """
+    
+    """
+    pass
+
+
+def eat(info):
+    """
+    
+    """
+    pass
+
+
+def savegame(info):
+    """
+    
+    """
+    pass
+
+
+def loadgame(info):
+    """
+    
+    """
+    pass
