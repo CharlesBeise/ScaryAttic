@@ -117,7 +117,7 @@ class Room:
         which do not normally belong here.
         """
         tempStr = " You left the "
-        tempItems = self.items
+        tempItems = self.items.copy()
 
         # Do not describe items that DO belong in this room by default
         for item in tempItems:
