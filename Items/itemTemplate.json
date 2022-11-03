@@ -1,33 +1,31 @@
 {
-  "name": "None",
-  "description": "None",
-  "secondaryDescription": "None",
-  "itemInteractions":
-  {
-    "Ladder": "None",
-    "Flashlight": "None",
-    "Battery": "None",
-    "Key": "None",
-    "Can opener": "None",
-    "Tin Can": "None",
-    "Silver Bell": "None",
-    "Combination Photo 1": "None",
-    "Combination Photo 2": "None",
-    "Combination Photo 3": "None"
-  },
-  "verbInteractions":
-  {
-    "Look at": "None",
-    "Take/Pick up": "None",
-    "Open": "None",
-    "Close": "None",
-    "Hide": "None",
-    "Listen": "None",
-    "Peel/Pull": "None",
-    "Use": "None",
-    "Drop/Leave": "None",
-    "Eat": "None",
-    "Shake/Ring": "None",
-    "Flip": "None"
-  }
+    "name": "None",
+    "description": "None",
+    "secondaryDescription": "None",
+    "itemInteractions": {
+        "Ladder": "None",
+        "Flashlight": "None",
+        "Battery": "None",
+        "Key": "None",
+        "Can opener": "None",
+        "Tin Can": "None",
+        "Silver Bell": "None",
+        "Combination Photo 1": "None",
+        "Combination Photo 2": "None",
+        "Combination Photo 3": "None"
+    },
+    "verbInteractions": {
+        "Open": "None",
+        "Close": "None",
+        "Hide": "None",
+        "Listen": "None",
+        "Use": "None",
+        "Eat": "None",
+        "Flip": "None",
+        "Examine": "None",
+        "Take": "None",
+        "Peel": "None",
+        "Drop": "None",
+        "Shake": "None"
+    }
 }

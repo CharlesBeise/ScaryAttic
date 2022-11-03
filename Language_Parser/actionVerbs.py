@@ -1,37 +1,81 @@
-from Classes.player import Player
-from Classes.room import Room
+__all__ = ['examine', 'take', 'inventory', 'drop']
+
+"""
+All functions take one parameter "info", which is a dict object containing the
+folowing:
+{
+    "Player": Player object,
+    "Game": Game object,
+    "Verb": A list of verbs detected in the input
+    "Items": A list of items/features that the user can interact with
+    "Combination": True/False based on if a combination word was detected
+                    (and, on, with)
+"""
 
 
-__all__ = ['examine', 'take']
+def examine(info):
+    pass
 
 
-def examine(item):
-    print("That is an interesting", item)
-
-
-def take(item):
-    print("You have added the " + item + " to your inventory")
-
-def go(player: Player, destination: str, roomList: list):
+def take(info):
     """
-    Action moves player from one room to another. Takes Player and Room
-    objects as parameters and evaluates if specified movement is possible.
-    If possible, moves player and updates state.
+    This function removes an item from the player's current room and adds it to
+    their inventory
     """
-    currentRoom = player.getLocation().replace(" ", "").lower()
-    destination = destination.replace(" ", "").lower()
-    if currentRoom == destination:
-        print("You are already in that room.")
-    for room in roomList:
-        if room.getName().replace(" ", "").lower() == currentRoom:
-            # Get available exits from current room
-            available = room.getAllExits()
-            destinationRoom = room
-    if available:
-        for key, value in available.items():
-            # Determine if destination is available exit and update player
-            if key.replace(" ", "").lower() == destination or value.replace(" ", "").lower() == destination:
-                player.setLocation(key)
-                print(destinationRoom.getLongDescription())
+    if len(info["Items"]) == 0:
+        print("I don't think that will work.")
+        return
+    game = info["Game"]
+    item = info["Items"][0]
+    player = game.getPlayer()
+    room = player.getLocation()
+    result = room.removeItem(item)
+    if result:
+        player.addInventory(result)
+        for possession in player.getInventory():
+            if possession == item:
+                print(possession.verbResponses("Take"))
                 return
-    print("That is not somewhere you can go from your current location.")    
+    else:
+        print("You can't seem to find that item here.")
+
+
+def drop(info):
+    """
+    This function removes an item from the player's inventory and leaves it in
+    the player's current room.
+    """
+    if len(info["Items"]) == 0:
+        print("I don't think that will work.")
+        return
+    game = info["Game"]
+    player = game.getPlayer()
+    room = player.getLocation()
+    for item in info["Items"]:
+        for possession in player.getInventory():
+            if possession == item:
+                print(possession.verbResponses("Drop"))
+                player.removeInventory(item)
+                room.addItem(possession)
+                continue
+
+
+def openVerb(info):
+    """
+    This function allows a player to open an item or feature
+    """
+    print("Open")
+
+
+def close(info):
+    """
+    This function allows a player to close an item or feature
+    """
+    print("Close")
+
+
+def inventory(info):
+    response = "You currently have the following items: "
+    for item in info["Player"].getInventory():
+        response = response + item.getName() + ','
+    print(response[:-1])

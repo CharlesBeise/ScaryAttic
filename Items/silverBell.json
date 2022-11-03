@@ -1,31 +1,31 @@
 {
-    "name" : "silver bell",
-    "description" : "A tiny silver bell. It shines in the light.",
-    "secondaryDescription" : "None",
-    "itemInteractions" : {
-        "Ladder" : "None",
-        "Flashlight" : "None",
-        "Battery" : "None",
-        "Key" : "None",
-        "Can opener" : "None",
-        "Tin Can" : "None",
-        "Silver Bell" : "None",
-        "Combination Photo 1" : "None",
-        "Combination Photo 2" : "None",
-        "Combination Photo 3" : "None"
+    "name": "silver bell",
+    "description": "A tiny silver bell. It shines in the light.",
+    "secondaryDescription": "None",
+    "itemInteractions": {
+        "Ladder": "None",
+        "Flashlight": "None",
+        "Battery": "None",
+        "Key": "None",
+        "Can opener": "None",
+        "Tin Can": "None",
+        "Silver Bell": "None",
+        "Combination Photo 1": "None",
+        "Combination Photo 2": "None",
+        "Combination Photo 3": "None"
     },
-    "verbInteractions" : {
-        "Look at" : "A tiny silver bell. It shines in the light.",
-        "Take/Pick up" : "You pick up the bell and slip it into your pocket.",
-        "Open" : "None",
-        "Close" : "None",
-        "Hide" : "None",
-        "Listen" : "You can hear the bell jingle as it moves.",
-        "Peel/Pull" : "None",
-        "Use" : "There's nowhere to put it.",
-        "Drop/Leave" : "You leave the bell somewhere safe.",
-        "Eat" : "You'd definitely choke on that.",
-        "Shake/Ring" : "You shake the silver bell. It makes a pleasant tinkling sound.",
-        "Flip" : "None"
+    "verbInteractions": {
+        "Open": "None",
+        "Close": "None",
+        "Hide": "None",
+        "Listen": "You can hear the bell jingle as it moves.",
+        "Use": "There's nowhere to put it.",
+        "Eat": "You'd definitely choke on that.",
+        "Flip": "None",
+        "Examine": "A tiny silver bell. It shines in the light.",
+        "Take": "You pick up the bell and slip it into your pocket.",
+        "Peel": "None",
+        "Drop": "You leave the bell somewhere safe.",
+        "Shake": "You shake the silver bell. It makes a pleasant tinkling sound."
     }
 }

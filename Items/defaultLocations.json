@@ -1,0 +1,12 @@
+{
+  "ladder": "Garage",
+  "flashlight": "Utility Room",
+  "battery": ["Master Bedroom", "Second Bedroom"],
+  "key": "Family Room",
+  "canOpener": "Kitchen",
+  "tinCan": "Basement",
+  "silverBell": "Dining Room",
+  "polaroid1": "Upper Hall",
+  "polaroid2": "Kitchen",
+  "polaroid3": "Attic"
+}

@@ -4,5 +4,10 @@
   "can": "opener",
   "polaroid": "photo",
   "silver": "bell",
-  "look": "at"
+  "look": "at",
+  "put": "down",
+  "set": "down",
+  "medicine": "cabinet",
+  "light": "switch",
+  "pill": "bottle"
 }

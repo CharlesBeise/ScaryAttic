@@ -13,13 +13,13 @@
         "Family Room": "west"
     },
     "verbInteractions": {
-        "Look at": {
+        "Examine": {
             "gash": "There's a chunk of wood scraped away. You don't remember seeing it there before.",
             "dish": "It's just a plate covered in smears of mud or dirt.",
             "trees": "The bare branches reaching towards the porch kind of creep you out.",
             "bushes": "Scraggly, dense bushes line the edge of the house."
         },
-        "Pick up": {
+        "Take": {
             "dish": "You'd rather not carry that around."
         },
         "Use": {

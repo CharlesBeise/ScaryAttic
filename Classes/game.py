@@ -3,6 +3,7 @@ import os
 import time
 from .player import Player
 from .room import Room
+from .items import Item
 
 
 class Game:
@@ -19,7 +20,14 @@ class Game:
 
         # Build instances of all the rooms
         self.buildRooms()
-        # TODO: Rooms will need to be connected after all Rooms are created
+        self.buildItems()
+        self.setStartRoom()
+
+    def getPlayer(self):
+        """
+        Returns the Player object which the game creates
+        """
+        return self.player
 
     def isRunning(self):
         """
@@ -33,7 +41,7 @@ class Game:
         Displays game title screen.
         """
         # TODO:: print title screen
-        print("Welcome to the game! (placeholder)\n")
+        print("Welcome to Scary Attic.\n")
         print("Enter the command 'exit game' to stop playing.\n")
 
     def selectGameState(self):
@@ -70,11 +78,11 @@ class Game:
             newGameIntro = json.load(introFile)
         print("")
         print(newGameIntro["newGameIntro1"], "\n")
-        time.sleep(5)
+        time.sleep(1)
         print(newGameIntro["newGameIntro2"], "\n")
-        time.sleep(5)
+        time.sleep(1)
         print(newGameIntro["newGameIntro3"], "\n")
-        time.sleep(5)
+        time.sleep(1)
 
     def saveGame(self):
         """
@@ -121,3 +129,33 @@ class Game:
             # If it's a valid file, create the Room
             if os.path.isfile(file):
                 self.rooms.append(Room(file))
+
+    def buildItems(self):
+        """
+        Builds the items and loads them into the correct rooms
+        """
+        with open("Items/defaultLocations.json") as f:
+            itemDict = json.load(f)
+        f.close()
+        for key, value in itemDict.items():
+            itemName = key + ".json"
+            file = os.path.join("Items", itemName)
+            if type(value) == list:
+                item = Item(file)
+                for room in self.rooms:
+                    if room == value[0]:
+                        room.addItem(item)
+                value = value[1]
+            item = Item(file)
+            for room in self.rooms:
+                if room == value:
+                    room.addItem(item)
+
+    def setStartRoom(self):
+        """
+        This assigns the starting location of the Player
+        """
+        for room in self.rooms:
+            if room == "Master Bedroom":
+                self.player.setLocation(room)
+                return

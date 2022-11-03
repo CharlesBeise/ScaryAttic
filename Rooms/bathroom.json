@@ -13,7 +13,7 @@
     "Upper Hall": "east"
   },
   "verbInteractions": {
-    "Look at": {
+    "Examine": {
       "tub": "You inspect the tub, looking for anything that might be out of place. It desperately needs cleaning, but there is nothing unusual here.",
       "window": "It's very small, only meant for ventilation.",
       "medicine cabinet": "It's a shallow box on the wall, clearly more modern than the rest of the bathroom furnishing. The door has a mirror on it, and you catch a glance at yourself. You look pale...and tired.",
@@ -27,6 +27,5 @@
     "Flip": {
       "pill bottle": "You have had this prescription for years, but just now notice that the side effects of this medicine includes “seeing or hearing things that others do not see or hear”... You chuckle to yourself. Maybe you ARE imagining things..."
     }
-  },
-  "items": []
+  }
 }
