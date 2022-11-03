@@ -23,6 +23,12 @@ class Game:
         self.buildItems()
         self.setStartRoom()
 
+    def getRooms(self):
+        """
+        Returns the list of Room objects in the game
+        """
+        return self.rooms
+
     def getPlayer(self):
         """
         Returns the Player object which the game creates
