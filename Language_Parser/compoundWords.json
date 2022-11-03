@@ -9,5 +9,12 @@
   "set": "down",
   "medicine": "cabinet",
   "light": "switch",
-  "pill": "bottle"
+  "pill": "bottle",
+  "dining": "room",
+  "family": "room",
+  "lower": "hall",
+  "master": "bedroom",
+  "second": "bedroom",
+  "upper": "hall",
+  "utility": "room"
 }
