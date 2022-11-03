@@ -89,6 +89,7 @@ class Game:
         time.sleep(1)
         print(newGameIntro["newGameIntro3"], "\n")
         time.sleep(1)
+        print("(Enter 'help' at any time during the game for assistance.)")
 
     def saveGame(self):
         """
