@@ -22,18 +22,17 @@
     "verbInteractions": {
         "Examine": {
             "drawers": "[**drawers conditionalDescription**]",
-            "cabinets": "[**cabinets conditionalDescription**]",
+            "cabinet": "[**cabinets conditionalDescription**]",
             "sink": "The faucet is off and the sink is empty.",
             "polaroid": "An old polaroid photo. You haven't seen one of these in forever.",
-            "can opener": "A basic can opener for opening cans of food. Nothing fancy, but it works."
+            "canOpener": "A basic can opener for opening cans of food. Nothing fancy, but it works."
         },
         "Take": {
-            "can opener": "You take the can opener from a drawer.",
+            "canOpener": "You take the can opener from a drawer.",
             "polaroid": "You take the polaroid from the cabinets."
         },
         "Use": {
-            "sink": "You turn the water on, but nothing happens. You turn it back off.",
-            "faucet": "You turn the water on, but nothing happens. You turn it back off."
+            "sink": "You turn the water on, but nothing happens. You turn it back off."
         }
     }
 }
