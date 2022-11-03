@@ -1,5 +1,5 @@
 {
-  "name": "Bathroom",
+  "name": "bathroom",
   "longDescription": "You're in the Bathroom. It's a small, dank room. The sink is dripping, but you can barely hear it over the storm outside. On the west wall, there is a small window next to the claw foot tub. There's a medicine cabinet above the sink, and a towel hanging next to the door. The floor is covered in tile, the walls in dark floral wallpaper. The door back to the Upper Hall is to the east.",
   "shortDescription": "You're in the Bathroom The sink is quietly dripping. There's a window, tub, medicine cabinet, and towel in the room. The door to the Upper Hall is east.",
   "conditionalDescription": {

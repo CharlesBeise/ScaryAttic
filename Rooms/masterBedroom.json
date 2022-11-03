@@ -1,5 +1,5 @@
 {
-  "name": "Master Bedroom",
+  "name": "masterBedroom",
   "longDescription": "You're in the Master Bedroom of the house, where you sleep. The room is pitch black, except for the occasional flash of lightning through the window. You're still standing next to the light switch and the door to the Upper Hall, to the east. There's a closet on the north wall. Windows on the west and south walls. Your mattress, pillow, and blankets are in the middle of the floor. You can't see much.",
   "shortDescription": "You're in the Master Bedroom. Your bed is on the floor. There's a light switch and closet nearby.",
   "conditionalDescription": {

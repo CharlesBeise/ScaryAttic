@@ -1,5 +1,5 @@
 {
-  "name": "Upper Hall",
+  "name": "upperHall",
   "longDescription": "You're in the Upper Hall of the house. Without any windows, it is one of the darkest rooms in the house. It feels drafty, and a chill runs over you. You wish you could just go back to bed. You know that you will find the Utility Room to the south, the Bathroom to the west, the Master Bedroom to the southwest, and the Second Bedroom to the northwest. There is an Attic hatch in the ceiling. You are also aware of the old staircase just ahead to the east, which is too dangerous to navigate in the dark. You need to find some light.",
   "shortDescription": "You're in the Upper Hall. The Utility Room is to the south, the Bathroom west, the Master Bedroom southwest, and the Second Bedroom northwest. There is an Attic hatch in the ceiling. The old staircase is just ahead to the east - too dangerous to navigate in the dark.",
   "conditionalDescription": {
