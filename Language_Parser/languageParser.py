@@ -100,8 +100,8 @@ def parse(userText, player, game):
     def greeting(name):
         print("Hello " + name)
     func = "greeting"
-    globals()func(Susan)
-    Output: "Hello Susan"
+    globals()func(Clarice)
+    Output: "Hello Clarice"
     """
     if len(parsedInput["Verb"]) == 1:
         try:
