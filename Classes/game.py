@@ -162,6 +162,6 @@ class Game:
         This assigns the starting location of the Player
         """
         for room in self.rooms:
-            if room == "Master Bedroom":
+            if room.getName() == "masterBedroom":
                 self.player.setLocation(room)
                 return
