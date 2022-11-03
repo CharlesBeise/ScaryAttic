@@ -1,5 +1,5 @@
 __all__ = ['examine', 'take', 'inventory', 'drop', 'hide', 'help',
-           'listen', 'peel', 'use']
+           'listen', 'peel', 'use', 'go']
 
 
 """
@@ -159,7 +159,7 @@ def go(info):
         if len(roomInfo) == 0 or len(roomInfo) > 2:
             return None
         # Match name of connected Room to input room info
-        for roomName, direction in currentRoom.getAllExits():
+        for roomName, direction in currentRoom.getAllExits().items():
             if roomInfo[0] == roomName.lower() or roomInfo[0] == direction:
                 return roomName
         currentRoomName = currentRoom.getName().lower()
