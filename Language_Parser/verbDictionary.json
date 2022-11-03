@@ -7,7 +7,7 @@
   "inventory": ["inventory"],
   "savegame": ["savegame"],
   "loadgame": ["loadgame"],
-  "open": ["open"],
+  "openVerb": ["open"],
   "close": ["close", "shut"],
   "hide": ["hide"],
   "listen": ["listen"],
