@@ -2,10 +2,14 @@ import json
 
 
 class Item:
-    """This creates an instance of a usable item in the game"""
+    """
+    This creates an instance of a usable item in the game
+    """
 
     def __init__(self, itemFile):
-        """Initializes the necessary variables for the Item object"""
+        """
+        Initializes the necessary variables for the Item object
+        """
         data = json.load(open(itemFile))
         self.name = data["name"]
         self.description = data["description"]
@@ -14,20 +18,28 @@ class Item:
         self.verbInteractions = data["verbInteractions"]
 
     def getName(self):
-        """This function returns the Item's name"""
+        """
+        This function returns the Item's name
+        """
         return self.name
 
     def getDescription(self):
-        """This function returns the Item description"""
+        """
+        This function returns the Item description
+        """
         return self.description
 
     def getSecondDescription(self):
-        """This function returns the secondary description of the Item"""
+        """
+        This function returns the secondary description of the Item
+        """
         return self.secondaryDescription
 
     def combineItems(self, otherItem):
-        """This function is called when a player tries to use a different Item
-        object with this Item object"""
+        """
+        This function is called when a player tries to use a different Item
+        object with this Item object
+        """
         # TODO: I am still playing around with this. Will probably move it to
         #  the actionverbs file.
         if {self.name, otherItem.getName()} == {"flashlight", "battery"}:
@@ -39,8 +51,10 @@ class Item:
             return "Those items don't seem to work together"
 
     def verbResponses(self, verb):
-        """This function is called when a player tries to perform an action on
-        this Item object"""
+        """
+        This function is called when a player tries to perform an action on
+        this Item object
+        """
         response = "I don't think that will work."
         try:
             response = self.verbInteractions[verb]
