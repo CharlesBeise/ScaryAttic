@@ -16,7 +16,7 @@
     "verbInteractions": {
         "Examine": {
             "shelves": "It's a heavy wooden shelving unit, made to hold entertainment equipment. There's not much in it yet.",
-            "moving boxes": "You glance through the moving boxes, but there's nothing useful in here.",
+            "boxes": "You glance through the moving boxes, but there's nothing useful in here.",
             "tv": "You wish you could believe it was just the TV making noise in the house, but that seems unlikely with the power being out.",
             "coat rack": "It's just a simple metal pole. Your jacket is hanging from it.",
             "jacket": "It's mostly fake leather. There is nothing in the pockets.",

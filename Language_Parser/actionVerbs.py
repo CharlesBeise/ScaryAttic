@@ -1,5 +1,5 @@
 __all__ = ['examine', 'take', 'inventory', 'drop', 'hide', 'help',
-           'listen', 'peel', 'use', 'go']
+           'listen', 'peel', 'use', 'go', 'openVerb']
 
 
 """
@@ -63,11 +63,37 @@ def drop(info):
                 continue
 
 
+def openHelper(item, player, room):
+    """
+    This is a helper function for openVerb(), it handles the scenario where the
+    item the user is trying to open is an Item object
+    """
+    for possession in player.getInventory():
+        if possession == item:
+            if possession.verbResponses("Open") != "None":
+                print(possession.verbResponses("Open"))
+            else:
+                print("I don't think that will work.")
+            return True
+    if item in room.getItems():
+        print("You have to pick it up first.")
+        return True
+    return False
+
+
 def openVerb(info):
     """
     This function allows a player to open an item or feature
     """
-    print("Open")
+    if len(info["Items"]) == 0:
+        print("I don't think that will work.")
+        return
+    player = info["Player"]
+    item = info["Items"][0]
+    room = player.getLocation()
+    if openHelper(item, player, room):
+        return
+    print(room.verbResponses("Open", item))
 
 
 def close(info):
