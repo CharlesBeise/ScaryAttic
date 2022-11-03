@@ -1,12 +1,12 @@
 {
-  "ladder": "Garage",
-  "flashlight": "Utility Room",
-  "battery": ["Master Bedroom", "Second Bedroom"],
-  "key": "Family Room",
-  "canOpener": "Kitchen",
-  "tinCan": "Basement",
-  "silverBell": "Dining Room",
-  "polaroid1": "Upper Hall",
-  "polaroid2": "Kitchen",
-  "polaroid3": "Attic"
+  "ladder": "garage",
+  "flashlight": "utilityRoom",
+  "battery": ["masterBedroom", "secondBedroom"],
+  "key": "familyRoom",
+  "canOpener": "kitchen",
+  "tinCan": "basement",
+  "silverBell": "diningRoom",
+  "polaroid1": "upperHall",
+  "polaroid2": "kitchen",
+  "polaroid3": "attic"
 }

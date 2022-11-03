@@ -23,7 +23,7 @@
         "Eat": "None",
         "Flip": "None",
         "Examine": "None",
-        "Take": "You'll need this for the flashlight.",
+        "Take": "This might be useful. You'll hold onto it for now.",
         "Peel": "None",
         "Drop": "You set the battery down.",
         "Shake": "None"
