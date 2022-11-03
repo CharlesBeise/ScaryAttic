@@ -6,10 +6,11 @@ folowing:
 {
     "Player": Player object,
     "Game": Game object,
-    "Verb": A list of verbs detected in the input
-    "Items": A list of items/features that the user can interact with
+    "Verb": A list of verbs detected in the input,
+    "Items": A list of items/features that the user can interact with,
     "Combination": True/False based on if a combination word was detected
-                    (and, on, with)
+                    (and, on, with),
+    "Rooms": A list of Room name or directional words detected in input
 """
 
 
@@ -79,3 +80,40 @@ def inventory(info):
     for item in info["Player"].getInventory():
         response = response + item.getName() + ','
     print(response[:-1])
+
+
+def go(info):
+    """
+    Action function moves player from one room to another. Takes info
+    object as parameter and evaluates if specified movement is possible.
+    If possible, moves Player and updates state.
+    """
+    def goHelper(roomInfo, currentRoom):
+        """
+        Helper function returns a destination from room info list that
+        has been parsed from user input. If destination is invalid, then
+        returns None.
+        """
+        if len(roomInfo) == 0 or len(roomInfo) > 2:
+            return None
+        # Match name of connected Room to input room info
+        for roomName, direction in currentRoom.getAllExits():
+            if roomInfo[0] == roomName.lower() or roomInfo[0] == direction:
+                return roomName
+        currentRoomName = currentRoom.getName().lower()
+        if roomInfo[0] == currentRoomName or roomInfo[1] == currentRoomName:
+            return currentRoom.getName()
+        return None
+    
+    # Find current Room and name of destionation Room
+    currentRoom = info["Player"].getLocation()
+    destination = goHelper(info["Rooms"], currentRoom)
+    if destination is None:  # Invalid destination
+        print("You can only go to one room connected to this room.")
+    if currentRoom.getName() == destination:
+        print("You are already in that room.")
+    # Update Player location to valid destination Room
+    for room in info["Game"].getRooms():
+        if room.getName() == destination:
+            info["Player"].setLocation(room)
+            print(room.getLongDescription())
