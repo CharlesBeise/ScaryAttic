@@ -14,7 +14,7 @@ def gameStart(saveFile):
     player = game.getPlayer()
     # Begin user input loop to play game
     while game.isRunning():
-        userInput = input("> ")
+        userInput = input("\n> ")
         if userInput.replace(" ", "").lower() == "exitgame":
             game.exitGame()
         else:
