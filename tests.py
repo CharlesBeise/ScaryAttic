@@ -119,16 +119,16 @@ class TestCase(unittest.TestCase):
         expectedRooms = [
             "attic",
             "basement",
-            "dining room",
-            "family room",
+            "diningRoom",
+            "familyRoom",
             "garage",
             "kitchen",
-            "lower hall",
-            "master bedroom",
+            "lowerHall",
+            "masterBedroom",
             "porch",
-            "second bedroom",
-            "upper hall",
-            "utility room"
+            "secondBedroom",
+            "upperHall",
+            "utilityRoom"
         ]
 
         for roomName in expectedRooms:
