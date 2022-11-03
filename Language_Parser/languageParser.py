@@ -59,7 +59,12 @@ def siftInput(longText, player: Player, game: Game):
                 "Game": game,
                 "Verb": [],
                 "Items": [],
-                "Combination": False}
+                "Combination": False,
+                "Rooms": []}
+    roomList = ["north", "south", "east", "west",
+                "southwest", "southeast", "northwest", "northeast"]
+    for room in game.getRooms():
+        roomList.append(room.getName().lower())
     for token in longText:
         for key, value in verbDict.items():
             if token in value:
@@ -73,6 +78,8 @@ def siftInput(longText, player: Player, game: Game):
                 break
         if token in combinationWords:
             wordDict["Combination"] = True
+        if token in roomList:
+            wordDict["Rooms"].append(token)
 
     return wordDict
 

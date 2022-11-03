@@ -1,5 +1,5 @@
 {
-    "name": "Garage",
+    "name": "garage",
     "longDescription": "You are in the Garage of the house. It's mostly empty, as you left your car outside earlier today. The door leading back to the Lower Hall is to the south. You can hear the rain beating down hard outside.",
     "shortDescription": "You are in the Garage. The door back to the Lower Hall is to the south.",
     "conditionalDescription": {
@@ -15,7 +15,7 @@
         }
     },
     "exits": {
-        "Lower Hall": "south"
+        "lowerHall": "south"
     },
     "verbInteractions": {
         "Examine": {

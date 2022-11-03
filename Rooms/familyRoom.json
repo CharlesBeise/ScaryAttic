@@ -1,5 +1,5 @@
 {
-    "name": "Family Room",
+    "name": "familyRoom",
     "longDescription": "You're in the Family Room. The walls are a solid dark green, and the floor is covered by an antique rug. There's a large shelving unit holding the TV along the west wall. A couple moving boxes that you remember hold your favorite movies. There's a window on the south wall. The Kitchen is to the north, and the door to the Porch is to the east. Next to the east door is a coat rack and some hooks. As you look toward the door, you swear you can hear... scratching.",
     "shortDescription": "You're in the Family Room. There's a large shelving unit holding the TV along the west wall. A couple moving boxes that hold your movies, and a window on the south wall. The Kitchen is to the north, and the Porch to the east. Next to the east door is a coat rack.",
     "conditionalDescription": {
@@ -10,8 +10,8 @@
         }
     },
     "exits": {
-        "Kitchen": "north",
-        "Porch": "east"
+        "kitchen": "north",
+        "porch": "east"
     },
     "verbInteractions": {
         "Examine": {

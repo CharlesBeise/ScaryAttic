@@ -23,6 +23,12 @@ class Game:
         self.buildItems()
         self.setStartRoom()
 
+    def getRooms(self):
+        """
+        Returns the list of Room objects in the game
+        """
+        return self.rooms
+
     def getPlayer(self):
         """
         Returns the Player object which the game creates
@@ -157,6 +163,6 @@ class Game:
         This assigns the starting location of the Player
         """
         for room in self.rooms:
-            if room == "Master Bedroom":
+            if room.getName() == "masterBedroom":
                 self.player.setLocation(room)
                 return
