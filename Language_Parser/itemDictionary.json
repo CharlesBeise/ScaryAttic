@@ -4,7 +4,7 @@
   "battery": ["battery"],
   "key": ["key"],
   "canOpener": ["canopener"],
-  "tincan": ["tincan"],
+  "tinCan": ["tincan"],
   "catFood": ["catfood"],
   "silverBell": ["bell", "silverbell"],
   "polaroid": ["polaroid", "polaroidphoto"],
