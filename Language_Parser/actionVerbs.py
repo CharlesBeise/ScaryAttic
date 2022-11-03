@@ -144,29 +144,30 @@ def use(info):
     print("Using...")
 
 
+def goHelper(roomInfo, currentRoom):
+    """
+    Helper function returns a destination from room info list that
+    has been parsed from user input. If destination is invalid, then
+    returns None.
+    """
+    if len(roomInfo) == 0 or len(roomInfo) > 2:
+        return None
+    # Match name of connected Room to input room info
+    for roomName, direction in currentRoom.getAllExits().items():
+        if roomInfo[0] == roomName.lower() or roomInfo[0] == direction:
+            return roomName
+    currentRoomName = currentRoom.getName().lower()
+    if roomInfo[0] == currentRoomName or roomInfo[1] == currentRoomName:
+        return currentRoom.getName()
+    return None
+
+
 def go(info):
     """
     Action function moves player from one room to another. Takes info
     object as parameter and evaluates if specified movement is possible.
     If possible, moves Player and updates state.
     """
-    def goHelper(roomInfo, currentRoom):
-        """
-        Helper function returns a destination from room info list that
-        has been parsed from user input. If destination is invalid, then
-        returns None.
-        """
-        if len(roomInfo) == 0 or len(roomInfo) > 2:
-            return None
-        # Match name of connected Room to input room info
-        for roomName, direction in currentRoom.getAllExits().items():
-            if roomInfo[0] == roomName.lower() or roomInfo[0] == direction:
-                return roomName
-        currentRoomName = currentRoom.getName().lower()
-        if roomInfo[0] == currentRoomName or roomInfo[1] == currentRoomName:
-            return currentRoom.getName()
-        return None
-
     # Find current Room and name of destionation Room
     currentRoom = info["Player"].getLocation()
     destination = goHelper(info["Rooms"], currentRoom)
