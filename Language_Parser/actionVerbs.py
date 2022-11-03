@@ -178,4 +178,8 @@ def go(info):
     for room in info["Game"].getRooms():
         if room.getName() == destination:
             info["Player"].setLocation(room)
-            print(room.getLongDescription())
+            if room.isVisited():
+                print(room.getShortDescription())
+            else:
+                print(room.getLongDescription())
+                room.setVisited()
