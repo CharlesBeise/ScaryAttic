@@ -61,7 +61,7 @@ def siftInput(longText, player: Player, game: Game):
                 "Items": [],
                 "Combination": False,
                 "Rooms": []}
-    roomList = ["north", "south", "east", "west", 
+    roomList = ["north", "south", "east", "west",
                 "southwest", "southeast", "northwest", "northeast"]
     for room in game.getRooms():
         roomList.append(room.getName().lower())

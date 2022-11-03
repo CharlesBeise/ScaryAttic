@@ -166,7 +166,7 @@ def go(info):
         if roomInfo[0] == currentRoomName or roomInfo[1] == currentRoomName:
             return currentRoom.getName()
         return None
-    
+
     # Find current Room and name of destionation Room
     currentRoom = info["Player"].getLocation()
     destination = goHelper(info["Rooms"], currentRoom)
