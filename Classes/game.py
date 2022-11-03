@@ -166,3 +166,16 @@ class Game:
             if room.getName() == "masterBedroom":
                 self.player.setLocation(room)
                 return
+
+    def printGameState(self):
+        """
+        Prints all Room and Player attributes to console for testing
+        and debugging purposes.
+        """
+        print("------Current Player------")
+        print("Location:", self.getPlayer().getLocation().getName())
+        print("Inventory:", self.getPlayer().getInventory())
+        print("------Current Rooms------")
+        for room in self.getRooms():
+            room.printRoomDetails()
+            print("---")
