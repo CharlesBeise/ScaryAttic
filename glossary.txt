@@ -33,12 +33,10 @@ No spaces
 **************************
 battery
 canOpener
-flashlight1
-flashlight2
-flashlight3
+catFood
+flashlight
 key
 ladder
-catFood
 polaroid1
 polaroid2
 polaroid3
