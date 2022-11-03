@@ -46,8 +46,15 @@ class Game:
         """
         Displays game title screen.
         """
-        # TODO:: print title screen
-        print("Welcome to Scary Attic.\n")
+        print(" _____ _____   ___  ________   __   ___ _____ _____ _____ _____ ")
+        print("/  ___/  __ \ / _ \ | ___ \ \ / /  / _ \_   _|_   _|_   _/  __ \ ")
+        print("\ `--.| /  \// /_\ \| |_/ /\ V /  / /_\ \| |   | |   | | | /  \/")
+        print(" `--. \ |    |  _  ||    /  \ /   |  _  || |   | |   | | | |    ")
+        print("/\__/ / \__/\| | | || |\ \  | |   | | | || |   | |  _| |_| \__/\ ")
+        print("\____/ \____/\_| |_/\_| \_| \_/   \_| |_/\_/   \_/  \___/ \____/")
+        print("                                                                ")
+        print("                                                                ")
+        print("Welcome to Scary Attic: A Text-Based Adventure Game!\n")
         print("Enter the command 'exit game' to stop playing.\n")
 
     def selectGameState(self):
