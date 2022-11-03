@@ -189,28 +189,20 @@ def go(info):
 
 
 def look(info):
-    """
-    
-    """
+    """"""
     pass
 
 
 def eat(info):
-    """
-    
-    """
+    """"""
     pass
 
 
 def savegame(info):
-    """
-    
-    """
+    """"""
     pass
 
 
 def loadgame(info):
-    """
-    
-    """
+    """"""
     pass
