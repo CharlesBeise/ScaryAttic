@@ -57,7 +57,6 @@ class Game:
             for line in titleFile.readlines():
                 print(line.rstrip())
 
-
     def selectGameState(self):
         """
         Prompts the user to select a new game or load a saved game.
@@ -97,7 +96,6 @@ class Game:
                     time.sleep(1)
         print("(Enter the command 'exit game' to stop playing.)")
         print("(Enter 'help' at any time during the game for assistance.)")
-
 
     def saveGame(self):
         """
