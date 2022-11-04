@@ -17,11 +17,11 @@
         "Examine": {
             "wallpaper": "It's a flap of loose wallpaper. It was like that when you bought the place.",
             "hole": "You look in the hole and can see a glint coming from a tiny silver bell.",
-            "empty hole": "You look in the hole, but there's nothing in it.",
-            "bell": "It's a small silver bell."
+            "emptyhole": "You look in the hole, but there's nothing in it.",
+            "silverBell": "It's a small silver bell."
         },
         "Take": {
-            "bell": "You pull the bell out of the hole and slip it into your pocket."
+            "silverBell": "You pull the bell out of the hole and slip it into your pocket."
         },
         "Peel": {
             "wallpaper": "Feeling curious, you pull at the loose wallpaper. A patch of paper comes off, revealing a small hole in the wall."

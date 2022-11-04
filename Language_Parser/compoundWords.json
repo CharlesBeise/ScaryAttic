@@ -16,5 +16,13 @@
   "master": "bedroom",
   "second": "bedroom",
   "upper": "hall",
-  "utility": "room"
+  "utility": "room",
+  "moving": "boxes",
+  "empty": "hole",
+  "wall": "paper",
+  "bath": "tub",
+  "coat": "rack",
+  "tool": "bag",
+  "garage": "door",
+  "book": "case"
 }

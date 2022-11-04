@@ -1,5 +1,5 @@
 {
-    "name": "can opener",
+    "name": "canOpener",
     "description": "A basic can opener for opening cans of food. Nothing fancy, but it works.",
     "secondaryDescription": "None",
     "itemInteractions": {
