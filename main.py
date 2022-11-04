@@ -9,8 +9,8 @@ saveFile = "saveStates.json"
 def gameStart(saveFile):
     # Initialize Game and load state
     game = Game(saveFile)
-    game.titleScreen()
-    game.selectGameState()
+    # game.titleScreen()
+    # game.selectGameState()
     player = game.getPlayer()
     # Begin user input loop to play game
     while game.isRunning():
