@@ -74,8 +74,8 @@ class Room:
             desc = desc + " " + self.getConditionalDesc()
 
         # Describe any items that were left here by the player
-        if self.items:
-            desc = desc + self.getItemDescriptions()
+        # if self.items:
+        #     desc = desc + self.getItemDescriptions()
 
         return desc
 
@@ -91,8 +91,8 @@ class Room:
             desc = desc + self.getConditionalDesc()
 
         # Describe any items that were left here by the player
-        if self.items:
-            desc = desc + self.getItemDescriptions()
+        # if self.items:
+        #     desc = desc + self.getItemDescriptions()
 
         return desc
 
