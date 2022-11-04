@@ -20,7 +20,7 @@
     "masterBedroom": "southwest",
     "secondBedroom": "northwest",
     "attic": "up",
-    "staircase": "east"
+    "lowerHall": "east"
   },
   "verbInteractions": {
     "Examine": {

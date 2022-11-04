@@ -17,6 +17,7 @@ class Room:
         self.name = data["name"]
         self.longDescription = data["longDescription"]
         self.shortDescription = data["shortDescription"]
+        self.verbInteractions = data["verbInteractions"]
         self.locked = False
         self.visited = False
         self.conditions = []
@@ -73,8 +74,8 @@ class Room:
             desc = desc + " " + self.getConditionalDesc()
 
         # Describe any items that were left here by the player
-        if self.items:
-            desc = desc + self.getItemDescriptions()
+        # if self.items:
+        #     desc = desc + self.getItemDescriptions()
 
         return desc
 
@@ -90,8 +91,8 @@ class Room:
             desc = desc + self.getConditionalDesc()
 
         # Describe any items that were left here by the player
-        if self.items:
-            desc = desc + self.getItemDescriptions()
+        # if self.items:
+        #     desc = desc + self.getItemDescriptions()
 
         return desc
 
@@ -116,7 +117,7 @@ class Room:
         which do not normally belong here.
         """
         tempStr = " You left the "
-        tempItems = self.items
+        tempItems = self.items.copy()
 
         # Do not describe items that DO belong in this room by default
         for item in tempItems:
@@ -210,6 +211,24 @@ class Room:
                 self.items.remove(item)
                 return item
         return None
+
+    def getItems(self):
+        """
+        Returns the list of items in the room
+        """
+        return self.items
+
+    def verbResponses(self, verb, feature):
+        """
+        This function is called when a player tries to perform an action on
+        this Item object
+        """
+        response = "I don't think that will work."
+        try:
+            response = self.verbInteractions[verb][feature]
+        except KeyError:
+            pass
+        return response
 
     # TODO: Add method for applicable verb actions?
 

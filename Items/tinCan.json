@@ -1,5 +1,5 @@
 {
-    "name": "tin can",
+    "name": "tinCan",
     "description": "An unopened tin can with no label. Anything could be inside...",
     "secondaryDescription": "None",
     "itemInteractions": {

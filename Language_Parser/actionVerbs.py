@@ -1,5 +1,5 @@
 __all__ = ['examine', 'take', 'inventory', 'drop', 'hide', 'help',
-           'listen', 'peel', 'use', 'go']
+           'listen', 'peel', 'use', 'go', 'openVerb']
 
 
 """
@@ -20,6 +20,34 @@ def examine(info):
     pass
 
 
+def identifyPolaroid(player):
+    """
+    This is a helper function used to identify which polaroid the player is
+    referring to
+    """
+    items = player.getInventory()
+    options = []
+    for item in items:
+        if item.getName()[:-1] == "polaroid":
+            options.append(item.getName())
+    if len(options) == 0:
+        return None
+    elif len(options) == 1:
+        return options[0]
+    response = "Which one are you referring to: "
+    for option in options:
+        response = response + option + ', '
+    selection = input(response[:-2] + '?\n')
+    if selection == "polaroid1" and "polaroid1" in options:
+        return "polaroid1"
+    elif selection == "polaroid2" and "polaroid2" in options:
+        return "polaroid2"
+    elif selection == "polaroid3" and "polaroid3" in options:
+        return "polaroid3"
+    else:
+        return None
+
+
 def take(info):
     """
     This function removes an item from the player's current room and adds it to
@@ -32,7 +60,16 @@ def take(info):
     item = info["Items"][0]
     player = game.getPlayer()
     room = player.getLocation()
-    result = room.removeItem(item)
+    if item == "polaroid":
+        result = None
+        options = ["polaroid1", "polaroid2", "polaroid3"]
+        for i in range(len(options)):
+            result = room.removeItem(options[i])
+            if result:
+                item = options[i]
+                break
+    else:
+        result = room.removeItem(item)
     if result:
         player.addInventory(result)
         for possession in player.getInventory():
@@ -55,6 +92,11 @@ def drop(info):
     player = game.getPlayer()
     room = player.getLocation()
     for item in info["Items"]:
+        if item == "polaroid":
+            item = identifyPolaroid(player)
+            if item is None:
+                print("You don't have that.")
+                return
         for possession in player.getInventory():
             if possession == item:
                 print(possession.verbResponses("Drop"))
@@ -63,11 +105,37 @@ def drop(info):
                 continue
 
 
+def openHelper(item, player, room):
+    """
+    This is a helper function for openVerb(), it handles the scenario where the
+    item the user is trying to open is an Item object
+    """
+    for possession in player.getInventory():
+        if possession == item:
+            if possession.verbResponses("Open") != "None":
+                print(possession.verbResponses("Open"))
+            else:
+                print("I don't think that will work.")
+            return True
+    if item in room.getItems():
+        print("You have to pick it up first.")
+        return True
+    return False
+
+
 def openVerb(info):
     """
     This function allows a player to open an item or feature
     """
-    print("Open")
+    if len(info["Items"]) == 0:
+        print("I don't think that will work.")
+        return
+    player = info["Player"]
+    item = info["Items"][0]
+    room = player.getLocation()
+    if openHelper(item, player, room):
+        return
+    print(room.verbResponses("Open", item))
 
 
 def close(info):

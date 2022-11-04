@@ -26,7 +26,7 @@
             "cat food on dish": "You dump some of the cat food onto the plate."
         },
         "Shake": {
-            "silver bell": "You jingle the silver bell. There's a sudden, violent rustle from the bushes."
+            "silverBell": "You jingle the silver bell. There's a sudden, violent rustle from the bushes."
         }
     }
 }
