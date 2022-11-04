@@ -46,9 +46,16 @@ class Game:
         """
         Displays game title screen.
         """
-        # TODO:: print title screen
-        print("Welcome to Scary Attic.\n")
-        print("Enter the command 'exit game' to stop playing.\n")
+        # Set directory path to narrative file
+        path = os.path.realpath(__file__)
+        dir = os.path.dirname(path)
+        dir = dir.replace("Classes", "Narrative")
+        os.chdir(dir)
+
+        # Open title screen file and print title screen
+        with open("../Narrative/titleScreen.txt") as titleFile:
+            for line in titleFile.readlines():
+                print(line.rstrip())
 
     def selectGameState(self):
         """
@@ -80,15 +87,14 @@ class Game:
         os.chdir(dir)
 
         # Open narrative file and print new game intro
-        with open("../Narrative/newGameIntro.json") as introFile:
-            newGameIntro = json.load(introFile)
-        print("")
-        print(newGameIntro["newGameIntro1"], "\n")
-        time.sleep(1)
-        print(newGameIntro["newGameIntro2"], "\n")
-        time.sleep(1)
-        print(newGameIntro["newGameIntro3"], "\n")
-        time.sleep(1)
+        with open("../Narrative/newGameIntro.txt") as introFile:
+            lineCount = 0
+            for line in introFile.readlines():
+                print(line.rstrip())
+                lineCount += 1
+                if lineCount in [5, 10, 16]:
+                    time.sleep(1)
+        print("(Enter the command 'exit game' to stop playing.)")
         print("(Enter 'help' at any time during the game for assistance.)")
 
     def saveGame(self):
