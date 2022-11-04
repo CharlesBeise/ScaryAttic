@@ -93,7 +93,7 @@ def drop(info):
     room = player.getLocation()
     for item in info["Items"]:
         if item == "polaroid":
-            item = identifyPolaroid(game)
+            item = identifyPolaroid(player)
             if item is None:
                 print("You don't have that.")
                 return
