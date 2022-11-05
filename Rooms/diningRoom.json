@@ -17,7 +17,7 @@
         "Examine": {
             "wallpaper": "It's a flap of loose wallpaper. It was like that when you bought the place.",
             "hole": "You look in the hole and can see a glint coming from a tiny silver bell.",
-            "emptyhole": "You look in the hole, but there's nothing in it.",
+            "emptyHole": "You look in the hole, but there's nothing in it.",
             "silverBell": "It's a small silver bell."
         },
         "Take": {
