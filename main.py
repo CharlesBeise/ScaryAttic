@@ -17,6 +17,12 @@ def gameStart(saveFile):
         userInput = input("\n> ")
         if userInput.replace(" ", "").lower() == "exitgame":
             game.exitGame()
+        ########################################## TEST
+        elif userInput.replace(" ", "").lower() == "pickle":
+            game.pickleGameState("testfile.pickle")
+        elif userInput.replace(" ", "").lower() == "unpickle":
+            game.unpickleGameState("testfile.pickle")
+        ########################################## END TEST
         else:
             parse(userInput, player, game)
 

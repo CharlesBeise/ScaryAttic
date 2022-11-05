@@ -1,0 +1,4 @@
+# Ignore all save files created locally in this directory
+*
+# Do not ignore this file itself
+!.gitignore

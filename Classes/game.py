@@ -1,5 +1,6 @@
 import json
 import os
+import pickle
 import time
 from .player import Player
 from .room import Room
@@ -184,3 +185,36 @@ class Game:
         for room in self.getRooms():
             room.printRoomDetails()
             print("---")
+
+    ###################################################
+    # TESTING USE OF PICKLE TO SAVE AND LOAD GAME ATTRIBUTES
+    def pickleGameState(self, saveFile):
+        # Set directory path to save files
+        path = os.path.realpath(__file__)
+        dir = os.path.dirname(path)
+        dir = dir.replace("Classes", "SaveFiles")
+        os.chdir(dir)
+        # Save game state to save file
+        gameState = [self.rooms, self.player]
+        with open(saveFile, "wb") as file:
+            pickle.dump(gameState, file)
+            print("\nFILE PICKLED\n")
+
+    def unpickleGameState(self, savefile):
+        # Set directory path to save files
+        path = os.path.realpath(__file__)
+        dir = os.path.dirname(path)
+        dir = dir.replace("Classes", "SaveFiles")
+        os.chdir(dir)
+        # Load game state from save file
+        with open(savefile, "rb") as file:
+            gameState = pickle.load(file)
+            print("\nFILE UNPICKLED\n")
+        print("")
+        print("GAMESTATE ROOMS")
+        print(gameState[0])
+        print("")
+        print("GAMESTATE PLAYER")
+        print(gameState[1])
+        print("")
+    ###################################################
