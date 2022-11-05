@@ -30,6 +30,10 @@
         },
         "Flip": {
             "switch": "No luck. The lights won't turn on."
+        },
+        "Open": {
+            "boxes": "You rummage through your boxes, but most of it is office supplies and computer accessories. There's also a loose battery in the bottom of one of the boxes.",
+            "desk": "It's a simple desk, without any drawers or extra shelves. But it does the job."
         }
     }
 }

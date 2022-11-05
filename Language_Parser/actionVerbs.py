@@ -1,6 +1,6 @@
 __all__ = ['examine', 'take', 'inventory', 'drop', 'hide', 'help',
            'listen', 'peel', 'use', 'go', 'openVerb', 'look', 'eat',
-           'savegame', 'loadgame']
+           'savegame', 'loadgame', 'close', 'shake', 'flip']
 
 
 """
@@ -39,11 +39,11 @@ def identifyPolaroid(player):
     for option in options:
         response = response + option + ', '
     selection = input(response[:-2] + '?\n')
-    if selection == "polaroid1" and "polaroid1" in options:
+    if (selection == "polaroid1" or "1") and "polaroid1" in options:
         return "polaroid1"
-    elif selection == "polaroid2" and "polaroid2" in options:
+    elif (selection == "polaroid2" or "2") and "polaroid2" in options:
         return "polaroid2"
-    elif selection == "polaroid3" and "polaroid3" in options:
+    elif (selection == "polaroid3" or "3") and "polaroid3" in options:
         return "polaroid3"
     else:
         return None
@@ -106,15 +106,17 @@ def drop(info):
                 continue
 
 
-def openHelper(item, player, room):
+def verbHelper(item, player, room, option):
     """
     This is a helper function for openVerb(), it handles the scenario where the
-    item the user is trying to open is an Item object
+    item the user is trying to interact with is an Item object
     """
+    if item == "polaroid":
+        item = identifyPolaroid(player)
     for possession in player.getInventory():
         if possession == item:
-            if possession.verbResponses("Open") != "None":
-                print(possession.verbResponses("Open"))
+            if possession.verbResponses(option) != "None":
+                print(possession.verbResponses(option))
             else:
                 print("I don't think that will work.")
             return True
@@ -134,7 +136,7 @@ def openVerb(info):
     player = info["Player"]
     item = info["Items"][0]
     room = player.getLocation()
-    if openHelper(item, player, room):
+    if verbHelper(item, player, room, "Open"):
         return
     print(room.verbResponses("Open", item))
 
@@ -143,7 +145,45 @@ def close(info):
     """
     This function allows a player to close an item or feature
     """
-    print("Close")
+    if len(info["Items"]) == 0:
+        print("I don't think that will work.")
+        return
+    player = info["Player"]
+    item = info["Items"][0]
+    room = player.getLocation()
+    if verbHelper(item, player, room, "Close"):
+        return
+    print(room.verbResponses("Close", item))
+
+
+def shake(info):
+    """
+    This function allows a player to shake an item or feature
+    """
+    if len(info["Items"]) == 0:
+        print("I don't think that will work.")
+        return
+    player = info["Player"]
+    item = info["Items"][0]
+    room = player.getLocation()
+    if verbHelper(item, player, room, "Shake"):
+        return
+    print(room.verbResponses("Shake", item))
+
+
+def flip(info):
+    """
+    This function allows a player to shake an item or feature
+    """
+    if len(info["Items"]) == 0:
+        print("I don't think that will work.")
+        return
+    player = info["Player"]
+    item = info["Items"][0]
+    room = player.getLocation()
+    if verbHelper(item, player, room, "Flip"):
+        return
+    print(room.verbResponses("Flip", item))
 
 
 def help(info):
