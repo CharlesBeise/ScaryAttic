@@ -8,7 +8,7 @@
             "True": "You have a bag of basic tools sitting along the north wall, next to a ladder and garden hose.",
             "False": "You have a bag of basic tools sitting along the north wall, next to a garden hose."
         },
-        "door": {
+        "garageDoor": {
             "status": "False",
             "True": "The roll-up Garage Door is to the east, and it is open. Rain is pouring in.",
             "False": "The roll-up Garage Door is to the east, and it is closed."

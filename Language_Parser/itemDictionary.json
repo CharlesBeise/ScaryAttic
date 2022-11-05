@@ -23,7 +23,7 @@
   "table": ["table", "vanity"],
   "bandages": ["bandages", "bandage", "bandaids", "bandaid"],
   "tub": ["tub", "bathtub"],
-  "emptyHole": ["emptyHole"],
+  "emptyHole": ["emptyhole"],
   "shelves": ["shelves"],
   "tv": ["tv", "television"],
   "jacket": ["jacket"],
