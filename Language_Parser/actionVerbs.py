@@ -265,8 +265,30 @@ def look(info):
 
 
 def eat(info):
-    """"""
-    pass
+    """
+    Action function prints response to the Player attempting to eat various
+    Items or Room features.
+    """
+    if len(info["Items"]) == 0:
+        print("You're thinking about eating something, but what?")
+        return
+    # Get target name that the player wants to eat from input
+    eatTarget = info["Items"][0]
+    # Look for item with target name in player inventory and current room
+    inventoryList = info["Player"].getInventory()
+    roomItemList = info["Player"].getLocation().getItems()
+    allItems = inventoryList + roomItemList
+    for item in allItems:
+        if eatTarget == item.getName().lower():
+            # Get eat verb interaction for item
+            result = item.verbResponses("Eat")
+            if result == "None":
+                print("You can't eat that.")
+            else:
+                print(result)
+            return
+    # Look for Eat verb and target in current room verb interactions
+    print(info["Player"].getLocation().verbResponses("Eat", eatTarget))
 
 
 def savegame(info):
