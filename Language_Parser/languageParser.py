@@ -1,7 +1,7 @@
 import re
 import json
 from Language_Parser.actionVerbs import \
-    examine, take, inventory, drop, help, hide, listen, peel, use, go, openVerb
+    examine, take, inventory, drop, help, hide, listen, peel, use, go, openVerb, look, eat, savegame, loadgame
 from Classes.player import Player
 from Classes.game import Game
 
@@ -33,6 +33,10 @@ def placeHolder(decoy):
     use(decoy)
     go(decoy)
     openVerb(decoy)
+    look(decoy)
+    eat(decoy)
+    savegame(decoy)
+    loadgame(decoy)
 
 
 def findCompounds(phrase):
