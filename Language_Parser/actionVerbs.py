@@ -1,5 +1,6 @@
 __all__ = ['examine', 'take', 'inventory', 'drop', 'hide', 'help',
-           'listen', 'peel', 'use', 'go', 'openVerb']
+           'listen', 'peel', 'use', 'go', 'openVerb', 'look', 'eat',
+           'savegame', 'loadgame']
 
 
 """
@@ -257,8 +258,10 @@ def go(info):
 
 
 def look(info):
-    """"""
-    pass
+    """
+    Action function prints the long description of the Player's current room.
+    """
+    print(info["Player"].getLocation().getLongDescription())
 
 
 def eat(info):
