@@ -15,7 +15,6 @@ class Game:
         self.saveFile = saveFile
         self.currentSaveName = None
         self.rooms = []
-        self.items = []
         self.player = Player()
 
         # Build instances of all the rooms

@@ -45,5 +45,9 @@
   "painting": ["painting", "portrait"],
   "vent": ["vent"],
   "detergent": ["detergent"],
-  "noise": ["noise"]
+  "noise": ["noise"],
+  "mattress": ["mattress", "bed"],
+  "pillow": ["pillow", "pillows"],
+  "floor": ["floor", "ground"],
+  "blanket": ["blanket", "blankets"]
 }
