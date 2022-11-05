@@ -26,7 +26,7 @@ def identifyPolaroid(player):
     This is a helper function used to identify which polaroid the player is
     referring to
     """
-    items = player.getInventory()
+    items = player.getInventory() + player.getLocation().getItems()
     options = []
     for item in items:
         if item.getName()[:-1] == "polaroid":
@@ -278,8 +278,10 @@ def eat(info):
     inventoryList = info["Player"].getInventory()
     roomItemList = info["Player"].getLocation().getItems()
     allItems = inventoryList + roomItemList
+    if eatTarget == "polaroid":
+        eatTarget = identifyPolaroid(info["Player"])
     for item in allItems:
-        if eatTarget == item.getName().lower():
+        if eatTarget == item.getName():
             # Get eat verb interaction for item
             result = item.verbResponses("Eat")
             if result == "None":
