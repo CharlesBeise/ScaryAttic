@@ -33,6 +33,10 @@ def placeHolder(decoy):
     use(decoy)
     go(decoy)
     openVerb(decoy)
+    look(decoy)
+    eat(decoy)
+    savegame(decoy)
+    loadgame(decoy)
 
 
 def findCompounds(phrase):
