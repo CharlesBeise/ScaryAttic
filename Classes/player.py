@@ -8,9 +8,16 @@ class Player:
 
     def getLocation(self):
         """
-        Returns the Room where the Player is currently located.
+        Returns the Room (object) where the Player is currently located.
         """
         return self.location
+
+    def getLocationByName(self):
+        """
+        Returns the name (string) of the Room where the Player is
+        currently located.
+        """
+        return self.location.name
 
     def setLocation(self, room):
         """
