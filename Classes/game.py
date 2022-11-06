@@ -98,6 +98,7 @@ class Game:
         for room in self.rooms:
             if room == self.player.getLocationByName():
                 print(room.getLongDescription())
+                room.setVisited()
 
         # Offer instructions
         print("\n(Enter the command 'exit game' to stop playing, "
