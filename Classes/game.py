@@ -93,8 +93,15 @@ class Game:
                 lineCount += 1
                 if lineCount in [5, 10, 16]:
                     time.sleep(1)
-        print("(Enter the command 'exit game' to stop playing.)")
-        print("(Enter 'help' at any time during the game for assistance.)")
+
+        # Print first room description
+        for room in self.rooms:
+            if room == self.player.getLocationByName():
+                print(room.getLongDescription())
+
+        # Offer instructions
+        print("\n(Enter the command 'exit game' to stop playing, "
+              "or 'help' for assistance.)")
 
     def saveGame(self):
         """
