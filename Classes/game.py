@@ -95,10 +95,8 @@ class Game:
                     time.sleep(1)
 
         # Print first room description
-        for room in self.rooms:
-            if room == self.player.getLocationByName():
-                print(room.getLongDescription())
-                room.setVisited()
+        print(self.player.getLocation().getLongDescription())
+        self.player.getLocation().setVisited()
 
         # Offer instructions
         print("\n(Enter the command 'exit game' to stop playing, "
