@@ -2,7 +2,7 @@ import re
 import json
 from Language_Parser.actionVerbs import \
     examine, take, inventory, drop, help, hide, listen, peel, use, go, \
-    openVerb, look, eat, savegame, loadgame, close, shake, flip
+    openVerb, look, eat, savegame, loadgame, close, shake, flip  # noqa: F401
 from Classes.player import Player
 from Classes.game import Game
 
@@ -15,32 +15,6 @@ combinationWords = json.load(open('Language_Parser/combinationWords.json'))
 compoundWords = json.load(open('Language_Parser/compoundWords.json'))
 
 itemDict = json.load(open('Language_Parser/itemDictionary.json'))
-
-
-def placeHolder(decoy):
-    """
-    This is a temporary workaround for flake8 error F401. It doesn't like that
-    I don't explicitly call the imported functions, so they are being called in
-    this unused function
-    """
-    examine(decoy)
-    take(decoy)
-    inventory(decoy)
-    drop(decoy)
-    help(decoy)
-    hide(decoy)
-    listen(decoy)
-    peel(decoy)
-    use(decoy)
-    go(decoy)
-    openVerb(decoy)
-    look(decoy)
-    eat(decoy)
-    savegame(decoy)
-    loadgame(decoy)
-    close(decoy)
-    shake(decoy)
-    flip(decoy)
 
 
 def findCompounds(phrase):
