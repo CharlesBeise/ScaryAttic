@@ -1,5 +1,8 @@
 import json
+import textwrap
 from .conditional import Conditional as Cond
+
+fill_width = 75
 
 
 class Room:
@@ -77,7 +80,7 @@ class Room:
         # if self.items:
         #     desc = desc + self.getItemDescriptions()
 
-        return desc
+        return textwrap.fill(desc, fill_width)
 
     def getShortDescription(self):
         """
