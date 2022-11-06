@@ -23,7 +23,7 @@
             "dish": "You'd rather not carry that around."
         },
         "Use": {
-            "cat food on dish": "You dump some of the cat food onto the plate."
+            "catFood": "You dump some of the cat food onto the plate."
         },
         "Shake": {
             "silverBell": "You jingle the silver bell. There's a sudden, violent rustle from the bushes."

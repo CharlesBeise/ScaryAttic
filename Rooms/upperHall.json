@@ -31,6 +31,9 @@
     },
     "Peel": {
       "painting": "You pull at the frames on the wall, and a small Polaroid photo falls to the floor."
+    },
+    "Shake": {
+      "painting": "You pull at the frames on the wall, and a small Polaroid photo falls to the floor."
     }
   }
 }

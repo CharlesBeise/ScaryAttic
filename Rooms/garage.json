@@ -8,7 +8,7 @@
             "True": "You have a bag of basic tools sitting along the north wall, next to a ladder and garden hose.",
             "False": "You have a bag of basic tools sitting along the north wall, next to a garden hose."
         },
-        "door": {
+        "garageDoor": {
             "status": "False",
             "True": "The roll-up Garage Door is to the east, and it is open. Rain is pouring in.",
             "False": "The roll-up Garage Door is to the east, and it is closed."
@@ -19,7 +19,7 @@
     },
     "verbInteractions": {
         "Examine": {
-            "garage door": "It's a thin metal door big enough for one car. It rolls up to the ceiling.",
+            "garageDoor": "It's a thin metal door big enough for one car. It rolls up to the ceiling.",
             "bag": "You only have a few things in here. Nothing important.",
             "ladder": "It's a small aluminum ladder. Useful for reaching high places."
         },
@@ -28,10 +28,10 @@
             "ladder": "You lift the ladder onto your shoulder."
         },
         "Open": {
-            "garage door": "You cross the garage and yank the roll-up door open. Wind and rain rush inside, drenching the floor. You peer into the darkness, but don't see anything outside, except, maybe... No. It's nothing. No way you're going out in that rain."
+            "garageDoor": "You cross the garage and yank the roll-up door open. Wind and rain rush inside, drenching the floor. You peer into the darkness, but don't see anything outside, except, maybe... No. It's nothing. No way you're going out in that rain."
         },
         "Close": {
-            "garage door": "You pull the Garage Door closed and immediately feel a little better without the wind and rain coming in."
+            "garageDoor": "You pull the Garage Door closed and immediately feel a little better without the wind and rain coming in."
         }
     }
 }
