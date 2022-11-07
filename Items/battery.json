@@ -22,7 +22,7 @@
         "Use": "None",
         "Eat": "None",
         "Flip": "None",
-        "Examine": "None",
+        "Examine": "It looks like a standard C cell battery.",
         "Take": "This might be useful. You'll hold onto it for now.",
         "Peel": "None",
         "Drop": "You set the battery down.",

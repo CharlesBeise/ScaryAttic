@@ -18,7 +18,32 @@ folowing:
 
 
 def examine(info):
-    pass
+    """
+    Action function prints Item or Room feature details (specified by
+    verbInteractions attribute).
+    """
+    if len(info["Items"]) == 0:
+        print("I don't think that will work.")
+        return
+    # Get target name that the player wants to examine from input
+    examineTarget = info["Items"][0]
+    if examineTarget == "polaroid":
+        examineTarget = identifyPolaroid(info["Player"])
+    # Look for item with target name in player inventory and current room
+    inventoryList = info["Player"].getInventory()
+    roomItemList = info["Player"].getLocation().getItems()
+    allItems = inventoryList + roomItemList
+    for item in allItems:
+        if examineTarget == item.getName():
+            # Get examine verb interaction for item
+            result = item.verbResponses("Examine")
+            if result == "None":  # This should not occur for defined Items
+                print("There is no information about this item.")
+            else:
+                print(result)
+            return
+    # Look for Examine verb and target in current room verb interactions
+    print(info["Player"].getLocation().verbResponses("Examine", examineTarget))
 
 
 def identifyPolaroid(player):
