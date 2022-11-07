@@ -92,5 +92,7 @@ def parse(userText, player, game):
             globals()[parsedInput["Verb"][0]](parsedInput)
         except KeyError:
             print("I'm sorry, I don't understand that command.")
+    elif len(parsedInput["Verb"]) == 0 and len(parsedInput["Rooms"]) > 0:
+        go(parsedInput)
     else:
         print("I'm sorry, I don't understand that command.")
