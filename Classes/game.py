@@ -237,6 +237,7 @@ class Game:
         loadedGame = self.unpickleGameState(loadFile)
         self.setRooms(loadedGame[0])
         self.setPlayer(loadedGame[1])
+        self.setSaveFile(loadFile)
         print("\nGame load successful!\n")
         self.displayStartMessages()
         return True
