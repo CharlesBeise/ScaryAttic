@@ -80,6 +80,15 @@ class Game:
             for line in titleFile.readlines():
                 print(line.rstrip())
 
+    def displayStartMessages(self):
+        """
+        Prints the long description for the room where the Player is
+        currently located and offers instructions for playing.
+        """
+        print(self.getPlayer().getLocation().getLongDescription())
+        print("\n(Enter the command 'exit game' to stop playing, "
+              "or 'help' for assistance.)")
+
     def newGameIntro(self):
         """
         Displays introduction at the start of a new game.
@@ -98,8 +107,8 @@ class Game:
                 lineCount += 1
                 if lineCount in [5, 10, 16]:
                     time.sleep(1)
-        print("(Enter the command 'exit game' to stop playing.)")
-        print("(Enter 'help' at any time during the game for assistance.)")
+        self.displayStartMessages()
+        self.getPlayer().getLocation().setVisited()
 
     def getAllSavedGames(self):
         # Set directory path to save files
@@ -226,7 +235,9 @@ class Game:
         loadedGame = self.unpickleGameState(loadFile)
         self.setRooms(loadedGame[0])
         self.setPlayer(loadedGame[1])
-        print("Game load successful!")
+        print("Game load successful!\n")
+        self.displayStartMessages()
+        return True
 
     def exitGame(self):
         """
