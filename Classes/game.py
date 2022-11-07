@@ -142,13 +142,13 @@ class Game:
             else:
                 print("That's not a valid option.")
 
-    def pickleGameState(self, saveFile):
+    def pickleGameState(self, saveFileName):
         """
         Pickles the current state of all Rooms and the Player in the
         current Game. The pickled data is written to the specified
         save file.
         """
-        saveFile = saveFile + ".pickle"
+        saveFile = saveFileName + ".pickle"
         # Set directory path to save files
         path = os.path.realpath(__file__)
         dir = os.path.dirname(path)
@@ -159,19 +159,19 @@ class Game:
         with open(saveFile, "wb") as file:
             pickle.dump(gameState, file)
 
-    def unpickleGameState(self, savefile):
+    def unpickleGameState(self, saveFileName):
         """
         Reads a save file and unpickles the state of all Rooms and the
         Player from the specified file.
         """
-        saveFile = saveFile + ".pickle"
+        saveFile = saveFileName + ".pickle"
         # Set directory path to save files
         path = os.path.realpath(__file__)
         dir = os.path.dirname(path)
         dir = dir.replace("Classes", "SaveFiles")
         os.chdir(dir)
         # Load game state from save file
-        with open(savefile, "rb") as file:
+        with open(saveFile, "rb") as file:
             gameState = pickle.load(file)
         return gameState
 
