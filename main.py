@@ -3,12 +3,9 @@ from Classes.game import Game
 from Language_Parser.languageParser import parse
 
 
-saveFile = "saveStates.json"
-
-
-def gameStart(saveFile):
+def gameStart():
     # Initialize Game and load state
-    game = Game(saveFile)
+    game = Game()
     game.titleScreen()
     game.selectGameState()
     player = game.getPlayer()
@@ -17,16 +14,10 @@ def gameStart(saveFile):
         userInput = input("\n> ")
         if userInput.replace(" ", "").lower() == "exitgame":
             game.exitGame()
-        ########################################## TEST
-        elif userInput.replace(" ", "").lower() == "pickle":
-            game.pickleGameState("testfile.pickle")
-        elif userInput.replace(" ", "").lower() == "unpickle":
-            game.unpickleGameState("testfile.pickle")
-        ########################################## END TEST
         else:
             parse(userInput, player, game)
 
 
 if __name__ == "__main__":
 
-    gameStart(saveFile)
+    gameStart()
