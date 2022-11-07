@@ -19,7 +19,8 @@ folowing:
 
 def examine(info):
     """
-    Action function prints Item or feature details 
+    Action function prints Item or Room feature details (specified by
+    verbInteractions attribute).
     """
     if len(info["Items"]) == 0:
         print("I don't think that will work.")
