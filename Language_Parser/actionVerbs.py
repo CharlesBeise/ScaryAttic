@@ -334,10 +334,16 @@ def eat(info):
 
 
 def savegame(info):
-    """"""
-    pass
+    """
+    Action function allows the player to save the current state of
+    the Game.
+    """
+    info["Game"].saveGame()
 
 
 def loadgame(info):
-    """"""
-    pass
+    """
+    Action function allows the player to load and play a previously
+    saved game state.
+    """
+    info["Game"].loadGame()

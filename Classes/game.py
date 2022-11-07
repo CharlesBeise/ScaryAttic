@@ -1,5 +1,6 @@
 import json
 import os
+import pickle
 import time
 from .player import Player
 from .room import Room
@@ -10,10 +11,9 @@ class Game:
     """
     Represents an instance of the game ScaryAttic.
     """
-    def __init__(self, saveFile) -> None:
+    def __init__(self) -> None:
         self.running = True
-        self.saveFile = saveFile
-        self.currentSaveName = None
+        self.saveFile = None
         self.rooms = []
         self.player = Player()
 
@@ -24,15 +24,39 @@ class Game:
 
     def getRooms(self):
         """
-        Returns the list of Room objects in the game
+        Returns the list of Room objects in the current game.
         """
         return self.rooms
 
+    def setRooms(self, rooms):
+        """
+        Assigns a list of Room objects to rooms in the game.
+        """
+        self.rooms = rooms
+
     def getPlayer(self):
         """
-        Returns the Player object which the game creates
+        Returns the Player object for the current game.
         """
         return self.player
+
+    def setPlayer(self, player):
+        """
+        Assigns a Player object to the player of the game
+        """
+        self.player = player
+
+    def getSaveFile(self):
+        """
+        Returns the name of the last file where the current game was saved.
+        """
+        return self.saveFile
+
+    def setSaveFile(self, saveFile):
+        """
+        Assigns a file name to where the current game was last saved.
+        """
+        self.saveFile = saveFile
 
     def isRunning(self):
         """
@@ -56,24 +80,14 @@ class Game:
             for line in titleFile.readlines():
                 print(line.rstrip())
 
-    def selectGameState(self):
+    def displayStartMessages(self):
         """
-        Prompts the user to select a new game or load a saved game.
+        Prints the long description for the room where the Player is
+        currently located and offers instructions for playing.
         """
-        while True:
-            # print message to input new game or load game
-            print("Enter 'New' to start a new game or 'Load' to load a saved game:")
-            userInput = input("> ")
-            if userInput.replace(" ", "").lower() == "new":
-                self.newGameIntro()
-                return  # Default game state is new game
-            if userInput.replace(" ", "").lower() == "load":
-                print("!!! UNDER CONSTRUCTION !!!")
-                # TODO::
-                # print names of available saveSates (not default state)
-                # take input for selected save and load corresponding saveState
-            else:
-                print("That's not a valid option.")
+        print(self.getPlayer().getLocation().getLongDescription())
+        print("\n(Enter the command 'exit game' to stop playing, "
+              "or 'help' for assistance.)")
 
     def newGameIntro(self):
         """
@@ -93,36 +107,140 @@ class Game:
                 lineCount += 1
                 if lineCount in [5, 10, 16]:
                     time.sleep(1)
+        self.displayStartMessages()
+        self.getPlayer().getLocation().setVisited()
 
-        # Print first room description
-        print(self.player.getLocation().getLongDescription())
-        self.player.getLocation().setVisited()
+    def getAllSavedGames(self):
+        # Set directory path to save files
+        path = os.path.realpath(__file__)
+        dir = os.path.dirname(path)
+        dir = dir.replace("Classes", "SaveFiles")
+        savedGameFiles = os.listdir(dir)
+        if ".gitignore" in savedGameFiles:
+            savedGameFiles.remove(".gitignore")
+        savedGameNames = []
+        for file in savedGameFiles:
+            fileParts = file.split(".")
+            savedGameNames.append(fileParts[0])
+        return savedGameNames
 
-        # Offer instructions
-        print("\n(Enter the command 'exit game' to stop playing, "
-              "or 'help' for assistance.)")
+    def selectGameState(self):
+        """
+        Prompts the user to select a new game or load a saved game.
+        """
+        while True:
+            # print message to input new game or load game
+            print("Enter 'New' to start a new game or 'Load' to load a saved game:")
+            userInput = input("> ")
+            if userInput.replace(" ", "").lower() == "new":
+                self.newGameIntro()
+                return  # Default game state is new game
+            if userInput.replace(" ", "").lower() == "load":
+                if self.loadGame():
+                    return
+            else:
+                print("That's not a valid option.")
+
+    def pickleGameState(self, saveFileName):
+        """
+        Pickles the current state of all Rooms and the Player in the
+        current Game. The pickled data is written to the specified
+        save file.
+        """
+        saveFile = saveFileName + ".pickle"
+        # Set directory path to save files
+        path = os.path.realpath(__file__)
+        dir = os.path.dirname(path)
+        dir = dir.replace("Classes", "SaveFiles")
+        os.chdir(dir)
+        # Save game state to save file
+        gameState = [self.rooms, self.player]
+        with open(saveFile, "wb") as file:
+            pickle.dump(gameState, file)
+
+    def unpickleGameState(self, saveFileName):
+        """
+        Reads a save file and unpickles the state of all Rooms and the
+        Player from the specified file.
+        """
+        saveFile = saveFileName + ".pickle"
+        # Set directory path to save files
+        path = os.path.realpath(__file__)
+        dir = os.path.dirname(path)
+        dir = dir.replace("Classes", "SaveFiles")
+        os.chdir(dir)
+        # Load game state from save file
+        with open(saveFile, "rb") as file:
+            gameState = pickle.load(file)
+        return gameState
+
+    def promptSaveFileName(self, savedGames):
+        """
+        Prompts the user to enter a file name where the current game will
+        be saved. If the name exists, the user is asked to overwrite the
+        existing file or enter a new file name.
+        """
+        fileChosen = False
+        while not fileChosen:
+            saveName = input("Please enter a file name where this game will be saved: ")
+            if saveName in savedGames:
+                print("This file already exists. Would you like to save over it?")
+                saveOverInput = input("Y / N: ").replace(" ", "").lower()
+                while saveOverInput not in ["y", "yes", "n", "no"]:
+                    print("Your response was not valid. Would you like to save over the file?")
+                    saveOverInput = input("Y / N: ").replace(" ", "").lower()
+                if saveOverInput in ["y", "yes"]:
+                    fileChosen = True
+            else:
+                fileChosen = True
+        return saveName
 
     def saveGame(self):
         """
         Saves the current state of a Game to file.
         """
-        if self.currentSaveName is None:
-            # TODO:: Prompt user to enter new save name
-            # Write saveState object to file with new save name
-            # Set currentSaveName to new save name
-            pass
-        # TODO:: overwrite game state to saveState with name==currentSaveName
-        # overwrite player inventory and location
-        # overwrite room states
+        savedGames = self.getAllSavedGames()
+        currentSaveFile = self.getSaveFile()
+        # If save files exist, print list of files
+        if len(savedGames) > 0:
+            print("These are the existing save files:")
+            for file in savedGames:
+                print("    ", file)
+            if currentSaveFile:
+                print("Your current game was last saved in", currentSaveFile)
+        # Prompt user to enter a file name for saving
+        currentSaveFile = self.promptSaveFileName(savedGames)
+        self.setSaveFile(currentSaveFile)
+        # Save the current game to file
+        self.pickleGameState(currentSaveFile)
+        print("Game save successful!")
 
-    def loadGame(self, loadName):
+    def loadGame(self):
         """
         Loads a Game state from file.
         """
-        # TODO:: Set state of game to state with loadName
-        # Update user inventory and location states
-        # Update room states
-        self.currentSaveName = loadName
+        fileChosen = False
+        savedGames = self.getAllSavedGames()
+        if len(savedGames) == 0:
+            print("There are no saved games yet.")
+            return False
+        print("These are the existing save files:")
+        for file in savedGames:
+            print("    ", file)
+        while not fileChosen:
+            loadFile = input("Please enter which save file you want to load: ")
+            if loadFile in savedGames:
+                fileChosen = True
+            else:
+                print("That save file does not exist.")
+        # Load the chosen game file
+        loadedGame = self.unpickleGameState(loadFile)
+        self.setRooms(loadedGame[0])
+        self.setPlayer(loadedGame[1])
+        self.setSaveFile(loadFile)
+        print("\nGame load successful!\n")
+        self.displayStartMessages()
+        return True
 
     def exitGame(self):
         """

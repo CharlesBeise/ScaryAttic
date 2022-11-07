@@ -38,7 +38,7 @@ def randomStr(s):
 
 
 class TestCase(unittest.TestCase):
-    testGame = Game("saveStates.json")
+    testGame = Game()
     directionList = [
         "north",
         "south",

@@ -3,12 +3,9 @@ from Classes.game import Game
 from Language_Parser.languageParser import parse
 
 
-saveFile = "saveStates.json"
-
-
-def gameStart(saveFile):
+def gameStart():
     # Initialize Game and load state
-    game = Game(saveFile)
+    game = Game()
     game.titleScreen()
     game.selectGameState()
     player = game.getPlayer()
@@ -23,4 +20,4 @@ def gameStart(saveFile):
 
 if __name__ == "__main__":
 
-    gameStart(saveFile)
+    gameStart()
