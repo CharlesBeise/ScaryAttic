@@ -115,12 +115,15 @@ class Game:
         path = os.path.realpath(__file__)
         dir = os.path.dirname(path)
         dir = dir.replace("Classes", "SaveFiles")
-        savedGames = os.listdir(dir)
-        if ".gitignore" in savedGames:
-            savedGames.remove(".gitignore")
-        for file in savedGames:
-            file = file.split(".")[0]
-        return savedGames
+        savedGameFiles = os.listdir(dir)
+        if ".gitignore" in savedGameFiles:
+            savedGameFiles.remove(".gitignore")
+        savedGameNames = []
+        for file in savedGameFiles:
+            fileParts = file.split(".")
+            savedGameNames.append(fileParts[0])
+        print(savedGameNames)
+        return savedGameNames
 
     def selectGameState(self):
         """
