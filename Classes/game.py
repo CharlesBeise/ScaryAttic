@@ -122,7 +122,6 @@ class Game:
         for file in savedGameFiles:
             fileParts = file.split(".")
             savedGameNames.append(fileParts[0])
-        print(savedGameNames)
         return savedGameNames
 
     def selectGameState(self):
