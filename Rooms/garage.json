@@ -2,16 +2,19 @@
     "name": "garage",
     "longDescription": "You are in the Garage of the house. It's mostly empty, as you left your car outside earlier today. The door leading back to the Lower Hall is to the south. You can hear the rain beating down hard outside.",
     "shortDescription": "You are in the Garage. The door back to the Lower Hall is to the south.",
-    "conditionalDescription": {
+    "lockRoom": "False",
+    "conditionals": {
         "ladder": {
-            "status": "True",
-            "True": "You have a bag of basic tools sitting along the north wall, next to a ladder and garden hose.",
-            "False": "You have a bag of basic tools sitting along the north wall, next to a garden hose."
+            "triggerSequence": ["ladder"],
+            "loop": "False",
+            "0": "You have a bag of basic tools sitting along the north wall, next to a ladder and garden hose.",
+            "1": "You have a bag of basic tools sitting along the north wall, next to a garden hose."
         },
         "garageDoor": {
-            "status": "False",
-            "True": "The roll-up Garage Door is to the east, and it is open. Rain is pouring in.",
-            "False": "The roll-up Garage Door is to the east, and it is closed."
+            "triggerSequence": ["garagedoor"],
+            "loop": "True",
+            "0": "The roll-up garage door is to the east, and it is closed.",
+            "1": "The roll-up garage door is to the east, and it is open. Rain is pouring in."
         }
     },
     "exits": {
@@ -31,7 +34,7 @@
             "garageDoor": "You cross the garage and yank the roll-up door open. Wind and rain rush inside, drenching the floor. You peer into the darkness, but don't see anything outside, except, maybe... No. It's nothing. No way you're going out in that rain."
         },
         "Close": {
-            "garageDoor": "You pull the Garage Door closed and immediately feel a little better without the wind and rain coming in."
+            "garageDoor": "You pull the garage door closed and immediately feel a little better without the wind and rain coming in."
         }
     }
 }

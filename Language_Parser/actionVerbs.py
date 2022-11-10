@@ -16,9 +16,44 @@ folowing:
     "Rooms": A list of Room name or directional words detected in input
 """
 
+# Generic message to be used when input cannot be processed successfully
+errorString = "I'm not sure what you mean. Try something else."
+
 
 def examine(info):
-    pass
+    """
+    Action function prints Item or Room feature details (specified by
+    verbInteractions attribute).
+    """
+    # No item requested
+    if len(info["Items"]) == 0:
+        print(errorString)
+        return
+
+    # Get target name that the player wants to examine from input
+    examineTarget = info["Items"][0]
+
+    if examineTarget == "polaroid":
+        examineTarget = identifyPolaroid(info["Player"])
+
+    # Gather list of accessible items
+    inventoryList = info["Player"].getInventory()
+    roomItemList = info["Player"].getLocation().getAccessibleItems()
+    allItems = inventoryList + roomItemList
+
+    # Look for item with target name in player inventory and current room
+    for item in allItems:
+        if examineTarget == item.getName():
+            # Get examine verb interaction for item
+            result = item.verbResponses("Examine")
+            if result == "None":  # This should not occur for defined Items
+                print("There is no information about this item.")
+            else:
+                print(result)
+            return
+
+    # Look for Examine verb and target in current room verb interactions
+    print(info["Player"].getLocation().verbResponses("Examine", examineTarget))
 
 
 def identifyPolaroid(player):
@@ -54,31 +89,38 @@ def take(info):
     This function removes an item from the player's current room and adds it to
     their inventory
     """
+    # No object requested
     if len(info["Items"]) == 0:
-        print("I don't think that will work.")
+        print(errorString)
         return
+
     game = info["Game"]
     item = info["Items"][0]
     player = game.getPlayer()
     room = player.getLocation()
+
+    # Make sure player can only take items that are accessible
     if item == "polaroid":
         result = None
         options = ["polaroid1", "polaroid2", "polaroid3"]
         for i in range(len(options)):
-            result = room.removeItem(options[i])
+            result = room.removeAccessibleItem(options[i])
+            room.triggerCondition(item)
             if result:
                 item = options[i]
                 break
     else:
-        result = room.removeItem(item)
-    if result:
+        result = room.removeAccessibleItem(item)
+        room.triggerCondition(item)
+
+    if result and result != 1:      # If result == 1, the item was not found
         player.addInventory(result)
         for possession in player.getInventory():
             if possession == item:
                 print(possession.verbResponses("Take"))
                 return
     else:
-        print("You can't seem to find that item here.")
+        print(errorString)
 
 
 def drop(info):
@@ -87,7 +129,7 @@ def drop(info):
     the player's current room.
     """
     if len(info["Items"]) == 0:
-        print("I don't think that will work.")
+        print(errorString)
         return
     game = info["Game"]
     player = game.getPlayer()
@@ -118,9 +160,9 @@ def verbHelper(item, player, room, option):
             if possession.verbResponses(option) != "None":
                 print(possession.verbResponses(option))
             else:
-                print("I don't think that will work.")
+                print(errorString)
             return True
-    if item in room.getItems():
+    if item in room.getAccessibleItems():
         print("You have to pick it up first.")
         return True
     return False
@@ -131,7 +173,7 @@ def openVerb(info):
     This function allows a player to open an item or feature
     """
     if len(info["Items"]) == 0:
-        print("I don't think that will work.")
+        print(errorString)
         return
     player = info["Player"]
     item = info["Items"][0]
@@ -146,7 +188,7 @@ def close(info):
     This function allows a player to close an item or feature
     """
     if len(info["Items"]) == 0:
-        print("I don't think that will work.")
+        print(errorString)
         return
     player = info["Player"]
     item = info["Items"][0]
@@ -161,7 +203,7 @@ def shake(info):
     This function allows a player to shake an item or feature
     """
     if len(info["Items"]) == 0:
-        print("I don't think that will work.")
+        print(errorString)
         return
     player = info["Player"]
     item = info["Items"][0]
@@ -173,10 +215,10 @@ def shake(info):
 
 def flip(info):
     """
-    This function allows a player to shake an item or feature
+    This function allows a player to flip over an item or feature
     """
     if len(info["Items"]) == 0:
-        print("I don't think that will work.")
+        print(errorString)
         return
     player = info["Player"]
     item = info["Items"][0]
@@ -238,15 +280,48 @@ def inventory(info):
 
 
 def hide(info):
-    print("Hiding...")
+    """
+    Action function allows the player to hide somewhere.
+    """
+    if len(info["Items"]) == 0:
+        print(errorString)
+        return
+    player = info["Player"]
+    item = info["Items"][0]
+    room = player.getLocation()
+    if verbHelper(item, player, room, "Hide"):
+        return
+    print(room.verbResponses("Hide", item))
 
 
 def peel(info):
-    print("Peeling...")
+    """
+    Action function allows the player to peel/pull something.
+    """
+    if len(info["Items"]) == 0:
+        print(errorString)
+        return
+    player = info["Player"]
+    item = info["Items"][0]
+    room = player.getLocation()
+    if verbHelper(item, player, room, "Peel"):
+        return
+    print(room.verbResponses("Peel", item))
 
 
 def listen(info):
-    print("Listening...")
+    """
+    Action function allows the player to listen to something.
+    """
+    if len(info["Items"]) == 0:
+        print(errorString)
+        return
+    player = info["Player"]
+    item = info["Items"][0]
+    room = player.getLocation()
+    if verbHelper(item, player, room, "Listen"):
+        return
+    print(room.verbResponses("Listen", item))
 
 
 def use(info):
@@ -279,7 +354,7 @@ def go(info):
     object as parameter and evaluates if specified movement is possible.
     If possible, moves Player and updates state.
     """
-    # Find current Room and name of destionation Room
+    # Find current Room and name of destination Room
     currentRoom = info["Player"].getLocation()
     destination = goHelper(info["Rooms"], currentRoom)
     if destination is None:  # Invalid destination

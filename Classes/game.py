@@ -1,10 +1,13 @@
 import json
 import os
 import pickle
+import textwrap
 import time
 from .player import Player
 from .room import Room
 from .items import Item
+
+fill_width = 75
 
 
 class Game:
@@ -21,6 +24,9 @@ class Game:
         self.buildRooms()
         self.buildItems()
         self.setStartRoom()
+
+        for r in self.rooms:
+            r.printRoomDetails()
 
     def getRooms(self):
         """
@@ -101,12 +107,10 @@ class Game:
 
         # Open narrative file and print new game intro
         with open("../Narrative/newGameIntro.txt") as introFile:
-            lineCount = 0
-            for line in introFile.readlines():
-                print(line.rstrip())
-                lineCount += 1
-                if lineCount in [5, 10, 16]:
-                    time.sleep(1)
+            for line in introFile.read().split('\n'):
+                print(f"{textwrap.fill(line, fill_width)}\n")
+                time.sleep(1)
+
         self.displayStartMessages()
         self.getPlayer().getLocation().setVisited()
 
@@ -133,9 +137,11 @@ class Game:
             print("Enter 'New' to start a new game or 'Load' to load a saved game:")
             userInput = input("> ")
             if userInput.replace(" ", "").lower() == "new":
+                print("")
                 self.newGameIntro()
                 return  # Default game state is new game
             if userInput.replace(" ", "").lower() == "load":
+                print("")
                 if self.loadGame():
                     return
             else:
@@ -273,19 +279,33 @@ class Game:
         with open("Items/defaultLocations.json") as f:
             itemDict = json.load(f)
         f.close()
-        for key, value in itemDict.items():
-            itemName = key + ".json"
-            file = os.path.join("Items", itemName)
-            if type(value) == list:
+
+        # Open the item's file
+        for itemName, value in itemDict.items():
+            itemPath = itemName + ".json"
+            file = os.path.join("Items", itemPath)
+
+            # Set location and visibility
+            location = value["location"]
+            visible = False
+            if value["visible"].lower() == "true":
+                visible = True
+
+            # Place the items
+            if type(location) == list:
                 item = Item(file)
                 for room in self.rooms:
-                    if room == value[0]:
-                        room.addItem(item)
-                value = value[1]
+                    if room == location[0] and visible:
+                        room.addVisibleItem(item)
+                    elif room == location[0] and not visible:
+                        room.addHiddenItem(item)
+                location = location[1]
             item = Item(file)
             for room in self.rooms:
-                if room == value:
-                    room.addItem(item)
+                if room == location and visible:
+                    room.addVisibleItem(item)
+                elif room == location and not visible:
+                    room.addHiddenItem(item)
 
     def setStartRoom(self):
         """
