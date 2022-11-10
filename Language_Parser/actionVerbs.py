@@ -25,11 +25,6 @@ def examine(info):
     Action function prints Item or Room feature details (specified by
     verbInteractions attribute).
     """
-def examine(info):
-    """
-    Action function prints Item or Room feature details (specified by
-    verbInteractions attribute).
-    """
     # No item requested
     if len(info["Items"]) == 0:
         print(errorString)
