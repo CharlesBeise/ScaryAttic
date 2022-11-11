@@ -1,6 +1,6 @@
 {
     "name": "diningRoom",
-    "longDescription": "You're in the Dining Room. The walls have wood paneling along the lower half of the room. The upper half is covered in a pinstripe wallpaper. There's a door to the Kitchen to the west, and a door to the Lower Hall to the north. Just as you start to feel like you've been worrying over nothing, you hear howling from outside. Loud, shrill, howling. Maybe it's the wind… Maybe you're just trying to make yourself feel better.",
+    "longDescription": "You're in the Dining Room. The walls have wood paneling along the lower half of the room. The upper half is covered in a pinstripe wallpaper. There's a door to the Kitchen to the west, and a door to the Lower Hall to the north. Just as you start to feel like you've been worrying over nothing, you hear howling from outside. Loud, shrill, howling. Maybe it's the wind... Maybe you're just trying to make yourself feel better.",
     "shortDescription": "You're in the Dining Room. There's a door to the Kitchen to the west, and a door to the Lower Hall to the north.",
     "conditionalDescription": {
         "wallpaper pulled": {
