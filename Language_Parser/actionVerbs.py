@@ -14,7 +14,11 @@ folowing:
     "Combination": True/False based on if a combination word was detected
                     (and, on, with),
     "Rooms": A list of Room name or directional words detected in input
+}
 """
+
+# Generic message to be used when input cannot be processed successfully
+errorString = "I'm not sure what you mean. Try something else."
 
 
 def examine(info):
@@ -80,7 +84,7 @@ def take(info):
     their inventory
     """
     if len(info["Items"]) == 0:
-        print("I don't think that will work.")
+        print(errorString)
         return
     game = info["Game"]
     item = info["Items"][0]
@@ -112,7 +116,7 @@ def drop(info):
     the player's current room.
     """
     if len(info["Items"]) == 0:
-        print("I don't think that will work.")
+        print(errorString)
         return
     game = info["Game"]
     player = game.getPlayer()
@@ -143,7 +147,7 @@ def verbHelper(item, player, room, option):
             if possession.verbResponses(option) != "None":
                 print(possession.verbResponses(option))
             else:
-                print("I don't think that will work.")
+                print(errorString)
             return True
     if item in room.getItems():
         print("You have to pick it up first.")
@@ -156,7 +160,7 @@ def openVerb(info):
     This function allows a player to open an item or feature
     """
     if len(info["Items"]) == 0:
-        print("I don't think that will work.")
+        print(errorString)
         return
     player = info["Player"]
     item = info["Items"][0]
@@ -171,7 +175,7 @@ def close(info):
     This function allows a player to close an item or feature
     """
     if len(info["Items"]) == 0:
-        print("I don't think that will work.")
+        print(errorString)
         return
     player = info["Player"]
     item = info["Items"][0]
@@ -186,7 +190,7 @@ def shake(info):
     This function allows a player to shake an item or feature
     """
     if len(info["Items"]) == 0:
-        print("I don't think that will work.")
+        print(errorString)
         return
     player = info["Player"]
     item = info["Items"][0]
@@ -201,7 +205,7 @@ def flip(info):
     This function allows a player to shake an item or feature
     """
     if len(info["Items"]) == 0:
-        print("I don't think that will work.")
+        print(errorString)
         return
     player = info["Player"]
     item = info["Items"][0]
@@ -263,15 +267,48 @@ def inventory(info):
 
 
 def hide(info):
-    print("Hiding...")
+    """
+    Action function allows the player to hide somewhere.
+    """
+    if len(info["Items"]) == 0:
+        print(errorString)
+        return
+    player = info["Player"]
+    item = info["Items"][0]
+    room = player.getLocation()
+    if verbHelper(item, player, room, "Hide"):
+        return
+    print(room.verbResponses("Hide", item))
 
 
 def peel(info):
-    print("Peeling...")
+    """
+    Action function allows the player to peel/pull something.
+    """
+    if len(info["Items"]) == 0:
+        print(errorString)
+        return
+    player = info["Player"]
+    item = info["Items"][0]
+    room = player.getLocation()
+    if verbHelper(item, player, room, "Peel"):
+        return
+    print(room.verbResponses("Peel", item))
 
 
 def listen(info):
-    print("Listening...")
+    """
+    Action function allows the player to listen to something.
+    """
+    if len(info["Items"]) == 0:
+        print(errorString)
+        return
+    player = info["Player"]
+    item = info["Items"][0]
+    room = player.getLocation()
+    if verbHelper(item, player, room, "Listen"):
+        return
+    print(room.verbResponses("Listen", item))
 
 
 def use(info):
