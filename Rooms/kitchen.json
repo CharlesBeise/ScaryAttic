@@ -6,7 +6,7 @@
         "cabinets": {
             "status": "False",
             "True": "The cabinets contain salt, pepper, and paper plates.",
-            "False": "There's not much in here yet. Salt, pepper, paper plates, and… a Polaroid photo that you don't remember seeing before."
+            "False": "There's not much in here yet. Salt, pepper, paper plates, and... a Polaroid photo that you don't remember seeing before."
         },
         "drawers": {
             "status": "False",
@@ -21,10 +21,10 @@
     },
     "verbInteractions": {
         "Examine": {
-            "drawers": "[**drawers conditionalDescription**]",
-            "cabinet": "[**cabinets conditionalDescription**]",
+            "drawers": "You have a quick look through the drawers in the kitchen. Some plastic silverware and a can opener.",
+            "cabinet": "You search through the kitchen cabinets. There's not much here yet. Salt, pepper, paper plates, and... What's this? A Polaroid photo?",
             "sink": "The faucet is off and the sink is empty.",
-            "polaroid": "An old polaroid photo. You haven't seen one of these in forever.",
+            "polaroid": "An old polaroid photo. Weird.",
             "canOpener": "A basic can opener for opening cans of food. Nothing fancy, but it works."
         },
         "Take": {
