@@ -17,6 +17,9 @@ folowing:
 }
 """
 
+# Generic message to be used when input cannot be processed successfully
+errorString = "I'm not sure what you mean. Try something else."
+
 
 def examine(info):
     """
