@@ -14,9 +14,10 @@
   },
   "verbInteractions": {
     "Examine": {
-      "box": "Just a bunch of thick coats, boots, scarves, and gloves.",
+      "box": "The box contains a bunch of thick coats, boots, scarves, and gloves.",
       "clothes": "Just a bunch of thick coats, boots, scarves, and gloves.",
       "table": "It's an engraved table with a mirror on top. The whole thing is painted white."
+      "chest": "It's a sturdy chest with a padlock on the front."
     },
     "Use": {
       "TODO": "IMPLEMENT HOW KEY AND CHEST WILL INTERACT"
