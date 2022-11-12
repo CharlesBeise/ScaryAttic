@@ -98,7 +98,7 @@ class Game:
         Displays introduction at the start of a new game.
         """
         print("")
-        
+
         # Set directory path to narrative file
         path = os.path.realpath(__file__)
         dir = os.path.dirname(path)
@@ -110,7 +110,7 @@ class Game:
             for line in introFile.read().split('\n'):
                 print(f"{textwrap.fill(line, fill_width)}\n")
                 time.sleep(1)
-                
+
         self.displayStartMessages()
         self.getPlayer().getLocation().setVisited()
 
@@ -224,7 +224,7 @@ class Game:
         Loads a Game state from file.
         """
         print("")
-        
+
         fileChosen = False
         savedGames = self.getAllSavedGames()
         if len(savedGames) == 0:
