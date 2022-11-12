@@ -23,7 +23,7 @@
             "rack": "It's just a simple metal pole. Your jacket is hanging from it.",
             "jacket": "It's mostly fake leather. There is nothing in the pockets.",
             "hooks": "There are four hooks screwed into the wall. One of them is holding a key.",
-            "key": "It's a tarnished brass key. What could this be for?"
+            "key": "It's smaller than a house key, made of tarnished brass. What could this be for?"
         },
         "Take": {
             "key": "You take the key from its hook."
