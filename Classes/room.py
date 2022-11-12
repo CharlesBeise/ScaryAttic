@@ -212,13 +212,13 @@ class Room:
         Removes a dropped item from the room.
         This should be used when the player "picks up" a dropped item.
         Input "itemName" should be an item's name string.
-        Returns the item if removed, or 1 if item wasn't found.
+        Returns the item if removed, or None if item wasn't found.
         """
         for item in self.droppedItems:
             if item.name == itemName:
                 self.droppedItems.remove(item)
                 return item
-        return 1
+        return None
 
     def getDroppedItems(self):
         """
@@ -239,13 +239,13 @@ class Room:
         """
         Removes a hidden item from the room.
         Input "itemName" should be an item's name string.
-        Returns the item if removed, or 1 if item wasn't found.
+        Returns the item if removed, or None if item wasn't found.
         """
         for item in self.hiddenItems:
             if item.name == itemName:
                 self.hiddenItems.remove(item)
                 return item
-        return 1
+        return None
 
     def getHiddenItems(self):
         """
@@ -264,13 +264,13 @@ class Room:
         """
         Removes a visible item from the room.
         Input "itemName" should be an item's name string.
-        Returns the item if removed, or 1 if item wasn't found.
+        Returns the item if removed, or None if item wasn't found.
         """
         for item in self.visibleItems:
             if item.name == itemName:
                 self.visibleItems.remove(item)
                 return item
-        return 1
+        return None
 
     def getVisibleItems(self):
         """
@@ -312,15 +312,15 @@ class Room:
         Removes a visible item from the room.
         This can be used for moving an item from the room to the inventory.
         Input "itemName" should be an item's name string.
-        Returns the item if removed, or 1 if item wasn't found.
+        Returns the item if removed, or None if item wasn't found.
         """
         # Check visible items
         result = self.removeVisibleItem(itemName)
-        if result == 1:
+        if result is None:
             result = self.removeDroppedItem(itemName)
-            if result == 1:
-                # If it's on neither list, return 1
-                return 1
+            if result is None:
+                # If it's on neither list, return None
+                return None
         return result
 
     def verbResponses(self, verb, feature):
@@ -334,8 +334,6 @@ class Room:
         except KeyError:
             pass
         return response
-
-    # TODO: Add method for applicable verb actions?
 
     # TODO: The following two functions can be removed later, if desired.
 
