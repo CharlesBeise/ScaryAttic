@@ -125,8 +125,7 @@ class Room:
 
     def getItemDescriptions(self):
         """
-        This function will describe any items dropped in the room
-        which do not normally belong here.
+        This function will describe any items dropped in the room.
         """
         tempStr = " You left the "
 
@@ -136,8 +135,6 @@ class Room:
             # Add a comma & space between additional items
             if index != len(self.droppedItems) - 1:
                 tempStr = tempStr + ", "
-
-        tempStr = tempStr + " here."
 
         tempStr = tempStr + " here."
 
