@@ -24,5 +24,7 @@
   "coat": "rack",
   "tool": "bag",
   "garage": "door",
-  "book": "case"
+  "book": "case",
+  "pile": "of",
+  "pileof": "cans"
 }
