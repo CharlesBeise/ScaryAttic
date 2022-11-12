@@ -1,10 +1,14 @@
 import json
 import os
 import pickle
+import textwrap
 import time
 from .player import Player
 from .room import Room
 from .items import Item
+
+# Width of the text on screen
+fill_width = 75
 
 
 class Game:
@@ -93,6 +97,8 @@ class Game:
         """
         Displays introduction at the start of a new game.
         """
+        print("")
+
         # Set directory path to narrative file
         path = os.path.realpath(__file__)
         dir = os.path.dirname(path)
@@ -101,12 +107,10 @@ class Game:
 
         # Open narrative file and print new game intro
         with open("../Narrative/newGameIntro.txt") as introFile:
-            lineCount = 0
-            for line in introFile.readlines():
-                print(line.rstrip())
-                lineCount += 1
-                if lineCount in [5, 10, 16]:
-                    time.sleep(1)
+            for line in introFile.read().split('\n'):
+                print(f"{textwrap.fill(line, fill_width)}\n")
+                time.sleep(1)
+
         self.displayStartMessages()
         self.getPlayer().getLocation().setVisited()
 
@@ -219,6 +223,8 @@ class Game:
         """
         Loads a Game state from file.
         """
+        print("")
+
         fileChosen = False
         savedGames = self.getAllSavedGames()
         if len(savedGames) == 0:
