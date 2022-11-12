@@ -107,12 +107,10 @@ class Game:
 
         # Open narrative file and print new game intro
         with open("../Narrative/newGameIntro.txt") as introFile:
-            lineCount = 0
-            for line in introFile.readlines():
-                print(line.rstrip())
-                lineCount += 1
-                if lineCount in [5, 10, 16]:
-                    time.sleep(1)
+            for line in introFile.read().split('\n'):
+                print(f"{textwrap.fill(line, fill_width)}\n")
+                time.sleep(1)
+                
         self.displayStartMessages()
         self.getPlayer().getLocation().setVisited()
 
