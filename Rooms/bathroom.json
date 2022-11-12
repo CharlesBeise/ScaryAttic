@@ -1,38 +1,38 @@
 {
-  "name": "bathroom",
-  "longDescription": "You're in the Bathroom. It's a small, dank room. The sink is dripping, but you can barely hear it over the storm outside. On the west wall, there is a small window next to the claw foot tub. There's a medicine cabinet above the sink, and a towel hanging next to the door. The floor is covered in tile, the walls in dark floral wallpaper. The door back to the Upper Hall is to the east.",
-  "shortDescription": "You're in the Bathroom The sink is quietly dripping. There's a window, tub, medicine cabinet, and towel in the room. The door to the Upper Hall is east.",
-  "conditionalDescription": {
-    "cabinet": {
-      "status": "False",
-      "True": "The medicine cabinet contains some bandages and a pill bottle.",
-      "False": "There's a medicine cabinet above the sink"
+    "name": "bathroom",
+    "longDescription": "You're in the Bathroom. It's a small, dank room. The sink is dripping, but you can barely hear it over the storm outside. On the west wall, there is a small window next to the claw foot tub. There's a medicine cabinet above the sink, and a towel hanging next to the door. The floor is covered in tile, the walls in dark floral wallpaper. The door back to the Upper Hall is to the east.",
+    "shortDescription": "You're in the Bathroom The sink is quietly dripping. There's a window, tub, medicine cabinet, and towel in the room. The door to the Upper Hall is east.",
+    "conditionalDescription": {
+        "cabinet": {
+            "status": "False",
+            "True": "The medicine cabinet contains some bandages and a pill bottle.",
+            "False": "There's a medicine cabinet above the sink"
+        }
+    },
+    "exits": {
+        "upperHall": "east"
+    },
+    "verbInteractions": {
+        "Examine": {
+            "tub": "You inspect the tub, looking for anything that might be out of place. It desperately needs cleaning, but there is nothing unusual here.",
+            "window": "It's very small, only meant for ventilation.",
+            "cabinet": "It's a shallow box on the wall, clearly more modern than the rest of the bathroom furnishing. The door has a mirror on it, and you catch a glance at yourself. You look pale...and tired.",
+            "bandages": "Some cheap bandages. You hope you won't need them.",
+            "pills": "It's your prescription for anxiety medication. Lot of good it's doing for you right now...",
+            "towel": "It's a red hand towel with an embroidered trim.",
+            "sink": "The brass-colored faucet is dripping quietly.",
+            "walls": "The wallpaper looks old, but you kinda like it.",
+            "floor": "The floor tiles are in a black and white checker pattern."
+        },
+        "Hide": {
+            "tub": "For a moment, you consider stepping into the tub, but you decide against it."
+        },
+        "Open": {
+            "window": "You don't need to do that. There's probaly enough dampness and mold in here already.",
+            "cabinet": "With a creak, you swing the cabinet door open. There's a box of bandages and a bottle of medicine inside."
+        },
+        "Flip": {
+            "bottle": "You have had this prescription for years, but just now notice that the side effects of this medicine includes “seeing or hearing things that others do not see or hear”... You chuckle to yourself. Maybe you ARE imagining things..."
+        }
     }
-  },
-  "exits": {
-    "upperHall": "east"
-  },
-  "verbInteractions": {
-    "Examine": {
-      "tub": "You inspect the tub, looking for anything that might be out of place. It desperately needs cleaning, but there is nothing unusual here.",
-      "window": "It's very small, only meant for ventilation.",
-      "cabinet": "It's a shallow box on the wall, clearly more modern than the rest of the bathroom furnishing. The door has a mirror on it, and you catch a glance at yourself. You look pale...and tired.",
-      "bandages": "Some cheap bandages. You hope you won't need them.",
-      "pills": "It's your prescription for anxiety medication. Lot of good it's doing for you right now...",
-      "towel": "It's a red hand towel with an embroidered trim.",
-      "sink": "The brass-colored faucet is dripping quietly.",
-      "walls": "The wallpaper looks old, but you kinda like it.",
-      "floor": "The floor tiles are in a black and white checker pattern."
-    },
-    "Hide": {
-        "tub": "For a moment, you consider stepping into the tub, but you decide against it."
-    },
-    "Open": {
-      "window": "You don't need to do that. There's probaly enough dampness and mold in here already.",
-      "cabinet": "With a creak, you swing the cabinet door open. There's a box of bandages and a bottle of medicine inside."
-    },
-    "Flip": {
-      "bottle": "You have had this prescription for years, but just now notice that the side effects of this medicine includes “seeing or hearing things that others do not see or hear”... You chuckle to yourself. Maybe you ARE imagining things..."
-    }
-  }
 }
