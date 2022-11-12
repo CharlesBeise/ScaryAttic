@@ -1,7 +1,7 @@
 {
     "name": "secondBedroom",
     "longDescription": "You're in the Second Bedroom of the house. Your desk is against the north wall, and a large bookcase is built into the west wall. Everything looks strange and unfamiliar in the dark. There's a light switch next to you, and the east door leads back to the Upper Hall.",
-    "shortDescription": "You're in the Second Bedroom of the house. Everything looks strange and unfamiliar in the dark. A door to the east leads back to the Upper Hall.",
+    "shortDescription": "You're in the Second Bedroom of the house. A door to the east leads back to the Upper Hall.",
     "conditionalDescription": {
         "boxes": {
             "status": "False",
@@ -20,7 +20,7 @@
             "battery": "It looks like a standard C cell battery."
         },
         "Hide": {
-            "desk": "You cram yourself into the space under the desk. You almost can feel the house shaking in the wind of the storm… but maybe you're just imagining it."
+            "desk": "You cram yourself into the space under the desk. You almost can feel the house shaking in the wind of the storm... but maybe you're just imagining it."
         },
         "Take": {
             "battery": "You take the battery from the box."

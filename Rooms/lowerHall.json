@@ -18,9 +18,9 @@
     },
     "verbInteractions": {
         "Examine": {
-            "shadow": "Slowly, you approach the strange shadow… then feel silly. It's just a pile of boxes left by the movers.",
-            "corner": "Slowly, you approach the strange shadow… then feel silly. It's just a pile of boxes left by the movers.",
-            "mouse": "The mouse appears to be frozen in place. But as you take a closer look you see that the mouse is actually dead…. and it died recently.",
+            "stairs": "The stairs are narrow and uneven. They're a little dangerous even when the light is on.",
+            "shadow": "You approach the strange shadow with caution... then feel silly. It's just another pile of boxes left by the movers.",
+            "mouse": "The mouse appears to be frozen in place. But as you take a closer look you see that the mouse is actually dead... and it died recently.",
             "boxes": "Those boxes are just full of your books."
         },
         "Take": {

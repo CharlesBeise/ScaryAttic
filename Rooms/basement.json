@@ -15,7 +15,7 @@
     "verbInteractions": {
         "Examine": {
             "bin": "It's full of empty tin cans.",
-            "can": "It's a pile of cans. It smells... unpleasant."
+            "canPile": "It's a pile of cans. It smells... unpleasant."
         },
         "Take": {
             "can": "You grab the only unopened can."

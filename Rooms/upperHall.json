@@ -24,16 +24,18 @@
   },
   "verbInteractions": {
     "Examine": {
+      "hatch": "It's a square hole in the ceiling. There's a handle to pull down the hatch.",
+      "stairs": "The stairs are narrow and uneven. They're a little dangerous even when the light is on.",
       "painting": "There are three paintings. The first shows an old, thin woman sitting in the backyard with a child - perhaps her grandchild. The second shows a large group of people standing in front of the house with smiles on their faces, except for a young man near the back with a stern look. The third picture frame has an image of a woman in her 30's or 40's. She is smiling, but the smile isn’t quite reaching her eyes. Despite the fading of the photo, it feels like her gaze is looking straight through you. All three pictures are probably from at least a couple generations ago. One of the paintings is hanging slightly askew."
     },
     "Flip": {
-      "painting": "You pull at the frames on the wall, and a small Polaroid photo falls to the floor."
+      "painting": "You flip the frames on the wall over, and a Polaroid photo falls to the floor."
     },
     "Peel": {
-      "painting": "You pull at the frames on the wall, and a small Polaroid photo falls to the floor."
+      "painting": "You pull at the frames on the wall, and a Polaroid photo falls to the floor."
     },
     "Shake": {
-      "painting": "You pull at the frames on the wall, and a small Polaroid photo falls to the floor."
+      "painting": "You give the frames on the wall a wiggle, and a Polaroid photo falls to the floor."
     }
   }
 }
