@@ -8,7 +8,7 @@
     "bushes": ["bushes", "bush"],
     "cabinet": ["cabinet", "medicinecabinet", "cabinets"],
     "canOpener": ["canopener"],
-    "canPile": ["cans", "pileofcans"],
+    "canPile": ["cans", "pileofcans", "pile"],
     "catFood": ["catfood"],
     "closet": ["closet"],
     "clothes": ["clothes"],
