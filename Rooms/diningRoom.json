@@ -3,11 +3,14 @@
     "longDescription": "You're in the Dining Room. The walls have wood paneling along the lower half of the room. The upper half is covered in a pinstripe wallpaper. There's a door to the Kitchen to the west, and a door to the Lower Hall to the north. Just as you start to feel like you've been worrying over nothing, you hear more howling from outside. Loud, shrill, howling. Maybe it's the wind... Maybe you're just trying to make yourself feel better.",
     "shortDescription": "You're in the Dining Room. There's a door to the Kitchen to the west, and a door to the Lower Hall to the north.",
     "lockRoom": "False",
-    "conditionalDescription": {
-        "wallpaper pulled": {
-            "status": "False",
-            "True": "There's a piece of wallpaper curling up on the far side of the room.",
-            "False": "There's a small hole in the wall."
+    "conditionals": {
+        "wallpaper": {
+            "triggerSequence": ["wallpaper", "hole", "silverBell"],
+            "loop": "False",
+            "0": "There's a piece of wallpaper curling up on the far side of the room.",
+            "1": "There's a small hole in the wall.",
+            "2": "There's a small hole in the wall. It looks like there's a silver bell inside.",
+            "3": "There's a small hole in the wall."
         }
     },
     "exits": {

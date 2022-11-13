@@ -3,11 +3,12 @@
     "longDescription": "It's very dark here in the Lower Hall. You are grateful to have some light. The stairs to the east lead back to the Upper Hall. Across from you to the west, there is another set of stairs leading to the Basement. The door to the Garage is to the north. Southwest leads to the Kitchen, southeast to the Dining Room. As you step into the hall you see a mouse hiding in the corner of the room.",
     "shortDescription": "You're in the Lower Hall. The east stairs lead back to the Upper Hall. To the west, another set of stairs lead to the Basement. The Garage is to the north. Southwest leads to the Kitchen, southeast to the Dining Room.",
     "lockRoom": "True",
-    "conditionalDescription": {
+    "conditionals": {
         "shadow": {
-            "status": "False",
-            "True": "There is a pile of boxes casting a shadow.",
-            "False": "There's a dark shadow in the corner that looks uncomfortably… human-shaped."
+            "triggerSequence": ["shadow"],
+            "loop": "False",
+            "0": "There's a dark shadow in the corner that looks uncomfortably... human-shaped.",
+            "1": "There is a stack of boxes in the corner."
         }
     },
     "exits": {

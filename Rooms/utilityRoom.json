@@ -3,16 +3,19 @@
     "longDescription": "You're in the Utility Room. The laundry machines are in here. You remember leaving some things in here earlier today, but it was mostly laundry supplies. The exit to the Upper Hall is to the north.",
     "shortDescription": "You're in the Utility Room. The exit to the Upper Hall is to the north.",
     "lockRoom": "False",
-    "conditionalDescription": {
+    "conditionals": {
         "shelves": {
-            "status": "False",
-            "True": "and there are some shelves holding laundry detergent.",
-            "False": "and there are some shelves holding a flashlight and laundry detergent."
+            "triggerSequence": ["shelves", "flashlight"],
+            "loop": "False",
+            "0": "There is a shelf on the wall, but you can't see what it's holding.",
+            "1": "There is a shelf on the wall, holding a flashlight and a couple bottles of laundry detergent.",
+            "2": "There is a shelf on the wall, holding a couple bottles of laundry detergent."
         },
         "noise": {
-            "status": "False",
-            "True": "You can hear the rain tapping through the laundry vents.",
-            "False": "Something is making a tapping noise."
+            "triggerSequence": ["noise"],
+            "loop": "False",
+            "0": "Something is making a tapping noise.",
+            "1": "You can hear the rain tapping through the laundry vents."
         }
     },
     "exits": {

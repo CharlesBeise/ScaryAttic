@@ -3,11 +3,14 @@
     "longDescription": "You're in the Attic of the house. The rain is louder up here, closer to the roof. The hatch that leads to the Upper Hall is to the east. There are only a few things up here, but none of them are yours. There's a wooden chest, a box full of winter clothes, and a vanity table. The ceilings and floor are covered in unfinished wood and bits of loose insulation.",
     "shortDescription": "You're in the Attic of the house. The hatch to the Upper Hall is to the east. There's a wooden chest, a box full of winter clothes, and a vanity table with a mirror.",
     "lockRoom": "True",
-    "conditionalDescription": {
+    "conditionals": {
         "chest": {
-            "status": "False",
-            "True": "There's nothing in here except a Polaroid photo.",
-            "False": "It's a sturdy chest with a padlock. It won't open."
+            "triggerSequence": ["chest", "key", "polaroid"],
+            "loop": "False",
+            "0": "",
+            "1": "The chest is locked with a padlock.",
+            "2": "The chest contains a Polaroid.",
+            "3": "The chest is empty."
         }
     },
     "exits": {
@@ -19,6 +22,13 @@
             "clothes": "Just a bunch of thick coats, boots, scarves, and gloves.",
             "table": "It's an engraved table with a mirror on top. The whole thing is painted white.",
             "chest": "It's a sturdy chest with a padlock on the front."
+        },
+        "Open": {
+            "chest": {
+                "locked": "It's a sturdy chest with a padlock. It won't open.",
+                "unlocked": "There's nothing in here except a Polaroid.",
+                "empty": "There's nothing in here."
+            }
         },
         "Use": {
             "key": "IMPLEMENT HOW KEY AND CHEST WILL INTERACT"

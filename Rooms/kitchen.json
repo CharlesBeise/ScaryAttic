@@ -3,16 +3,20 @@
     "longDescription": "You're in the Kitchen. This was the room that made you want to buy the place. It was renovated more recently than the rest of the house. Tall wooden cabinets and drawers line the walls for storage. The sink is located on the west wall below the window. The tree outside is scratching at the glass in the wind. The Lower Hall is to the north, the Dining Room to the east, and the Family Room to the south.",
     "shortDescription": "You're in the Kitchen. Cabinets and drawers line the walls. The sink is below the west window. The Lower Hall is to the north, the Dining Room to the east, and the Family Room to the south.",
     "lockRoom": "False",
-    "conditionalDescription": {
+    "conditionals": {
         "cabinets": {
-            "status": "False",
-            "True": "The cabinets contain salt, pepper, and paper plates.",
-            "False": "There's not much in here yet. Salt, pepper, paper plates, and... a Polaroid photo that you don't remember seeing before."
+            "triggerSequence": ["cabinet", "polaroid"],
+            "loop": "False",
+            "0": "Tall cabinets line the walls above the counter.",
+            "1": "The cabinets above the counter contain salt, pepper, paper plates, and a Polaroid.",
+            "2": "The cabinets above the counter contain salt, pepper, paper plates."
         },
         "drawers": {
-            "status": "False",
-            "True": "You have a quick look through the drawers in the kitchen.",
-            "False": "You have a quick look through the drawers in the kitchen. Some plastic silverware and a can opener."
+            "triggerSequence": ["drawers", "canOpener"],
+            "loop": "False",
+            "0": "There are several drawers at waist height.",
+            "1": "There are several drawers containing some plastic silverware and a can opener.",
+            "2": "There are several drawers containing some plastic silverware."
         }
     },
     "exits": {

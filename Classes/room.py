@@ -31,18 +31,24 @@ class Room:
             self.locked = True
 
         # Add conditional items, if they exist for this room
-        if "conditionalDescription" in data:
-            for key, val in data["conditionalDescription"].items():
-                name = key
+        if "conditionals" in data:
+            for key, val in data["conditionals"].items():
                 try:
-                    status = val["status"]
-                    trueDesc = val["True"]
-                    falseDesc = val["False"]
-                except KeyError:
-                    status = ""
-                    trueDesc = ""
-                    falseDesc = ""
-                self.conditions.append(Cond(name, status, trueDesc, falseDesc))
+                    names = val['triggerSequence']
+                    loop = val['loop']
+                    descriptions = []
+
+                    # Get all step descriptions
+                    for i in range(len(val) - 2):
+                        descriptions.append(val[str(i)])
+                except (KeyError, ValueError):
+                    print(
+                        f"Error building room conditionals: '{self.name}'")
+                    names = []
+                    loop = ""
+                    descriptions = []
+
+                self.conditions.append(Cond(names, loop, descriptions))
 
         # Add room exits
         for key, val in data["exits"].items():
@@ -110,7 +116,7 @@ class Room:
         if self.droppedItems:
             desc = desc + self.getItemDescriptions()
 
-        return desc
+        return textwrap.fill(desc, fill_width)
 
     def getConditionalDesc(self):
         """
@@ -118,18 +124,21 @@ class Room:
         """
         tempStr = " "
 
-        for index, item in enumerate(self.conditions):
-            tempStr = tempStr + item.getDescription()
+        for index, condition in enumerate(self.conditions):
+            # Empty descriptions will be skipped
+            if condition.getDescription() != "":
+                tempStr = tempStr + condition.getDescription()
 
-            # Add a space between additional items
-            if index != len(self.conditions) - 1:
-                tempStr = tempStr + " "
+                # Add a separator between any additional items
+                if index != len(self.conditions) - 1:
+                    tempStr = tempStr + " "
 
         return tempStr
 
     def getItemDescriptions(self):
         """
-        This function will describe any items dropped in the room.
+        This function will describe any items dropped in the room
+        which do not normally belong here.
         """
         tempStr = " You left the "
 
@@ -144,14 +153,28 @@ class Room:
 
         return tempStr
 
-    def setCondition(self, name, boolVal):
+    def triggerCondition(self, name):
         """
-        Sets the status of a given conditional based on its name to True/False
+        Call this method to move a named condition to its next step.
+        Input "name" should be a string for the condition being triggered.
         """
-        for i in self.conditions:
-            if i.name.lower() == name.lower():
-                i.setStatus(boolVal)
+        conditionFound = False
+
+        # If the condition matches one of our conditions, try to trigger it
+        for condition in self.conditions:
+            # print(f"Does condName '{condName}' == trigger '{condition.trigger}'?")
+            if name == condition.trigger:
+                # print("It does.")
+                condition.triggerCondition(name)
+                conditionFound = True
                 break
+
+        # This small block of code is a work in progress and will
+        # probably change later...
+        # Unlocks items when necessary
+        if conditionFound:
+            if self.name == "masterBedroom" and "box" in name:
+                self.unlockItem("battery")
 
     def lock(self):
         """
@@ -332,45 +355,25 @@ class Room:
         This function is called when a player tries to perform an action on
         this Item object
         """
-        response = "I don't think that will work."
+        response = "I'm not sure what you mean. Try something else."
         try:
             response = self.verbInteractions[verb][feature]
+            self.triggerCondition(feature)
         except KeyError:
             pass
-        return response
+        return textwrap.fill(response, fill_width)
 
-    # TODO: The following two functions can be removed later, if desired.
-
-    def printDict(self, dictName, thisDict):
-        """
-        Prints a 'pretty' version of a dict
-        """
-        print(f"- {dictName}:")
-        for i in thisDict:
-            print(f"{i} - {thisDict[i]}")
-
-    def printConditionalsTest(self):
-        """
-        Returns details of this room's conditional descriptions.
-        """
-        tempStr = ""
-        index = 1
-
-        for i in self.conditions:
-            tempStr = tempStr + str(index) + ". Name: '" + i.name + \
-                "'\n   When true: " + i.trueDesc + \
-                "\n   When false: " + i.falseDesc + "\n"
-            index = index + 1
-
-        return tempStr
+    # TODO: The following function can be removed later, if desired.
 
     def printRoomDetails(self):
         """
         Prints room details for easier debugging
         """
+
         dropItems = ""
         hidItems = ""
         visItems = ""
+        conditions = ""
 
         if self.droppedItems:
             for d in self.droppedItems:
@@ -384,6 +387,11 @@ class Room:
             for v in self.visibleItems:
                 visItems = visItems + v.name + ", "
 
+        if self.conditions:
+            for c in self.conditions:
+                for name in c.names:
+                    conditions = conditions + name + ", "
+
         print(f"######## Room name: {self.name} ########\n"
               f"- Locked? {self.locked}\n"
               f"- Visited? {self.visited}\n"
@@ -393,5 +401,5 @@ class Room:
               f"- Hidden items: {hidItems[:-2]}\n"
               f"- Visible items: {visItems[:-2]}\n"
               f"- Dropped items: {dropItems[:-2]}\n"
-              f"- Conditionals:\n{self.printConditionalsTest()}")
+              f"- Condition triggers: {conditions[:-2]}")
         print("")
