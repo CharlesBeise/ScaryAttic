@@ -1,7 +1,8 @@
 {
     "name": "utilityRoom",
     "longDescription": "You're in the Utility Room. The laundry machines are in here. You remember leaving some things in here earlier today, but it was mostly laundry supplies. The exit to the Upper Hall is to the north.",
-    "shortDescription": "You're in the Utility Room. The laundry machines are in here. The exit to the Upper Hall is to the north.",
+    "shortDescription": "You're in the Utility Room. The exit to the Upper Hall is to the north.",
+    "lockRoom": "False",
     "conditionalDescription": {
         "shelves": {
             "status": "False",
