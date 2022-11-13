@@ -264,7 +264,7 @@ def help(info):
     for word in keywords:
         response = response + "- " + word + '\n'
 
-    print(response)
+    print(response[:-1])
 
 
 def inventory(info):
