@@ -47,9 +47,6 @@ class Conditional:
         """
         Increments current state by one step.
         Use this to move the condition's progress forward.
-
-        Returns 0 if successful.
-        Returns 1 otherwise.
         """
         # If needed, increment to the next trigger
         self.nextTrigger()
@@ -71,29 +68,25 @@ class Conditional:
     def nextTrigger(self):
         """
         This function increments the trigger word for the condition.
-        Returns 0 for success, or 1 for failure.
         """
         # If there are more triggers in line, set the next trigger
         if self.trigger != self.names[-1]:
-            # print(f"TRIGGER NAME: {self.trigger}")
-            # print(f"NAMES: {self.names}")
             index = self.names.index(self.trigger)
             self.trigger = self.names[index + 1]
-            # print(f"NEW TRIGGER: {self.trigger}")
 
     def setStep(self, name, step):
         """
         This function will set a condition to a certain step.
         Input "name" is the name of the condition to change.
         Input "step" is an integer for which step to set.
-        Returns 0 for success, or 1 for failure.
+        Returns 0 for success, or None for failure.
         """
         # Look for the named condition
         for condition in self.names:
             if name == condition:
                 self.currentStep = step
                 return 0
-        return 1
+        return None
 
     def getNames(self):
         """
