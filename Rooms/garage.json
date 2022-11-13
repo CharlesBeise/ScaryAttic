@@ -2,6 +2,7 @@
     "name": "garage",
     "longDescription": "You are in the Garage of the house. It's mostly empty, as you left your car outside earlier today. The door leading back to the Lower Hall is to the south. You can hear the rain beating down hard outside.",
     "shortDescription": "You are in the Garage. The door back to the Lower Hall is to the south.",
+    "lockRoom": "False",
     "conditionalDescription": {
         "ladder": {
             "status": "True",
@@ -31,7 +32,7 @@
             "garageDoor": "You cross the garage and yank the roll-up door open. Wind and rain rush inside, drenching the floor. You peer into the darkness, but don't see anything outside, except, maybe... No. It's nothing. No way you're going out in that rain."
         },
         "Close": {
-            "garageDoor": "You pull the Garage Door closed and immediately feel a little better without the wind and rain coming in."
+            "garageDoor": "You pull the garage door closed and immediately feel a little better without the wind and rain coming in."
         }
     }
 }

@@ -1,7 +1,8 @@
 {
     "name": "kitchen",
-    "longDescription": "You're in the Kitchen. This was the room that made you want to buy the place. It was clearly renovated more recently than the rest of the house. Tall wooden cabinets and drawers line the walls for storage. The sink is located on the west wall below the window. The tree outside is scratching at the glass in the wind. The Lower Hall is to the north, the Dining Room to the east, and the Family Room to the south.",
+    "longDescription": "You're in the Kitchen. This was the room that made you want to buy the place. It was renovated more recently than the rest of the house. Tall wooden cabinets and drawers line the walls for storage. The sink is located on the west wall below the window. The tree outside is scratching at the glass in the wind. The Lower Hall is to the north, the Dining Room to the east, and the Family Room to the south.",
     "shortDescription": "You're in the Kitchen. Cabinets and drawers line the walls. The sink is below the west window. The Lower Hall is to the north, the Dining Room to the east, and the Family Room to the south.",
+    "lockRoom": "False",
     "conditionalDescription": {
         "cabinets": {
             "status": "False",

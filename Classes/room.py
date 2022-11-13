@@ -26,6 +26,10 @@ class Room:
         self.conditions = []
         self.exits = {}
 
+        # Set certain rooms to be locked by default
+        if data["lockRoom"] == "True":
+            self.locked = True
+
         # Add conditional items, if they exist for this room
         if "conditionalDescription" in data:
             for key, val in data["conditionalDescription"].items():

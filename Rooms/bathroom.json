@@ -1,7 +1,8 @@
 {
     "name": "bathroom",
-    "longDescription": "You're in the Bathroom. It's a small, dank room. The sink is dripping, but you can barely hear it over the storm outside. On the west wall, there is a small window next to the claw foot tub. There's a medicine cabinet above the sink, and a towel hanging next to the door. The floor is covered in tile, the walls in dark floral wallpaper. The door back to the Upper Hall is to the east.",
+    "longDescription": "You're in the Bathroom. It's a cramped, dank room. The sink is dripping, but you can barely hear it over the storm outside. On the west wall, there is a small window next to the claw foot tub. There's a medicine cabinet above the sink, and a towel hanging next to the door. The floor is covered in tile, the walls in dark floral wallpaper. The door back to the Upper Hall is to the east.",
     "shortDescription": "You're in the Bathroom The sink is quietly dripping. There's a window, tub, medicine cabinet, and towel in the room. The door to the Upper Hall is east.",
+    "lockRoom": "False",
     "conditionalDescription": {
         "cabinet": {
             "status": "False",
@@ -32,7 +33,8 @@
             "cabinet": "With a creak, you swing the cabinet door open. There's a box of bandages and a bottle of medicine inside."
         },
         "Flip": {
-            "bottle": "You have had this prescription for years, but just now notice that the side effects of this medicine includes “seeing or hearing things that others do not see or hear”... You chuckle to yourself. Maybe you ARE imagining things..."
+            "switch": "The light isn't working in here either.",
+            "pills": "You have had this prescription for years, but just now notice that the side effects of this medicine includes “seeing or hearing things that others do not see or hear”... You chuckle to yourself. Maybe you ARE imagining things..."
         }
     }
 }
