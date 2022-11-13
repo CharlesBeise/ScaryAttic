@@ -14,6 +14,7 @@ folowing:
     "Combination": True/False based on if a combination word was detected
                     (and, on, with),
     "Rooms": A list of Room name or directional words detected in input
+}
 """
 
 # Generic message to be used when input cannot be processed successfully
