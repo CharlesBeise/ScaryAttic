@@ -3,11 +3,12 @@
     "longDescription": "You're in the Bathroom. It's a cramped, dank room. The sink is dripping, but you can barely hear it over the storm outside. On the west wall, there is a small window next to the claw foot tub. There's a medicine cabinet above the sink, and a towel hanging next to the door. The floor is covered in tile, the walls in dark floral wallpaper. The door back to the Upper Hall is to the east.",
     "shortDescription": "You're in the Bathroom The sink is quietly dripping. There's a window, tub, medicine cabinet, and towel in the room. The door to the Upper Hall is east.",
     "lockRoom": "False",
-    "conditionalDescription": {
+    "conditionals": {
         "cabinet": {
-            "status": "False",
-            "True": "The medicine cabinet contains some bandages and a pill bottle.",
-            "False": "There's a medicine cabinet above the sink"
+            "triggerSequence": ["cabinet"],
+            "loop": "False",
+            "0": "There's a medicine cabinet above the sink.",
+            "1": "There's a medicine cabinet, containing some bandages and a pill bottle."
         }
     },
     "exits": {
@@ -29,12 +30,12 @@
             "tub": "For a moment, you consider stepping into the tub, but you decide against it."
         },
         "Open": {
-            "window": "You don't need to do that. There's probaly enough dampness and mold in here already.",
-            "cabinet": "With a creak, you swing the cabinet door open. There's a box of bandages and a bottle of medicine inside."
+            "window": "You don't need to do that. There's probably enough dampness and mold in here already.",
+            "cabinet": "The cabinet creaks as you swing the door open. There’s a box of bandages and a bottle of medicine inside."
         },
         "Flip": {
             "switch": "The light isn't working in here either.",
-            "pills": "You have had this prescription for years, but just now notice that the side effects of this medicine includes “seeing or hearing things that others do not see or hear”... You chuckle to yourself. Maybe you ARE imagining things..."
+            "pills": "You have had this prescription for years, but just now notice that the side effects of this medicine include 'seeing or hearing things that others do not see or hear'... You chuckle to yourself. Maybe you ARE imagining things..."
         }
     }
 }

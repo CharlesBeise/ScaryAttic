@@ -14,7 +14,6 @@ folowing:
     "Combination": True/False based on if a combination word was detected
                     (and, on, with),
     "Rooms": A list of Room name or directional words detected in input
-}
 """
 
 # Generic message to be used when input cannot be processed successfully
@@ -26,17 +25,23 @@ def examine(info):
     Action function prints Item or Room feature details (specified by
     verbInteractions attribute).
     """
+    # No item requested
     if len(info["Items"]) == 0:
-        print("I don't think that will work.")
+        print(errorString)
         return
+
     # Get target name that the player wants to examine from input
     examineTarget = info["Items"][0]
+
     if examineTarget == "polaroid":
         examineTarget = identifyPolaroid(info["Player"])
-    # Look for item with target name in player inventory and current room
+
+    # Gather list of accessible items
     inventoryList = info["Player"].getInventory()
-    roomItemList = info["Player"].getLocation().getItems()
+    roomItemList = info["Player"].getLocation().getAccessibleItems()
     allItems = inventoryList + roomItemList
+
+    # Look for item with target name in player inventory and current room
     for item in allItems:
         if examineTarget == item.getName():
             # Get examine verb interaction for item
@@ -46,6 +51,7 @@ def examine(info):
             else:
                 print(result)
             return
+
     # Look for Examine verb and target in current room verb interactions
     print(info["Player"].getLocation().verbResponses("Examine", examineTarget))
 
@@ -83,31 +89,38 @@ def take(info):
     This function removes an item from the player's current room and adds it to
     their inventory
     """
+    # No object requested
     if len(info["Items"]) == 0:
         print(errorString)
         return
+
     game = info["Game"]
     item = info["Items"][0]
     player = game.getPlayer()
     room = player.getLocation()
+
+    # Make sure player can only take items that are accessible
     if item == "polaroid":
         result = None
         options = ["polaroid1", "polaroid2", "polaroid3"]
         for i in range(len(options)):
-            result = room.removeItem(options[i])
+            result = room.removeAccessibleItem(options[i])
+            room.triggerCondition(item)
             if result:
                 item = options[i]
                 break
     else:
-        result = room.removeItem(item)
-    if result:
+        result = room.removeAccessibleItem(item)
+        room.triggerCondition(item)
+
+    if result and result != 1:      # If result == 1, the item was not found
         player.addInventory(result)
         for possession in player.getInventory():
             if possession == item:
                 print(possession.verbResponses("Take"))
                 return
     else:
-        print("You can't seem to find that item here.")
+        print(errorString)
 
 
 def drop(info):
@@ -149,7 +162,7 @@ def verbHelper(item, player, room, option):
             else:
                 print(errorString)
             return True
-    if item in room.getItems():
+    if item in room.getAccessibleItems():
         print("You have to pick it up first.")
         return True
     return False
@@ -202,7 +215,7 @@ def shake(info):
 
 def flip(info):
     """
-    This function allows a player to shake an item or feature
+    This function allows a player to flip over an item or feature
     """
     if len(info["Items"]) == 0:
         print(errorString)
@@ -341,7 +354,7 @@ def go(info):
     object as parameter and evaluates if specified movement is possible.
     If possible, moves Player and updates state.
     """
-    # Find current Room and name of destionation Room
+    # Find current Room and name of destination Room
     currentRoom = info["Player"].getLocation()
     destination = goHelper(info["Rooms"], currentRoom)
     if destination is None:  # Invalid destination

@@ -3,11 +3,13 @@
     "longDescription": "You're in the Family Room. The walls are a solid dark green, and the floor is covered by an antique rug. There's a large shelving unit holding the TV along the west wall. A couple moving boxes that you remember hold your favorite movies. There's a window on the south wall. The Kitchen is to the north, and the door to the Porch is to the east. Next to the east door is a coat rack and some hooks. As you look toward the door, you swear you can hear... scratching.",
     "shortDescription": "You're in the Family Room. There's a large shelving unit holding the TV along the west wall. A couple moving boxes that hold your movies, and a window on the south wall. The Kitchen is to the north, and the Porch to the east. Next to the east door is a coat rack.",
     "lockRoom": "False",
-    "conditionalDescription": {
+    "conditionals": {
         "key": {
-            "status": "True",
-            "True": "There are some hooks on the wall by the door. One of them holds a key.",
-            "False": "There are some hooks on the wall by the door."
+            "triggerSequence": ["hooks", "key"],
+            "loop": "False",
+            "0": "There are some hooks on the wall by the door.",
+            "1": "There are some hooks on the wall by the door. One of them holds a key.",
+            "2": "There are some hooks on the wall by the door."
         }
     },
     "exits": {
@@ -18,7 +20,7 @@
         "Examine": {
             "walls": "The paint is a rich green. Your favorite color.",
             "floor": "The floor is a nice dark hardwood, the same as most of the house.",
-            "shelves": "It's a heavy wooden shelving unit, made to hold entertainment equipment. There's not much in it yet.",
+            "shelves": "It’s a heavy wooden shelving unit, made to hold entertainment equipment. There’s not much in it yet.",
             "boxes": "You glance through the moving boxes, but there's nothing useful in here.",
             "tv": "You wish you could believe it was just the TV making noise in the house, but that seems unlikely with the power being out.",
             "rack": "It's just a simple metal pole. Your jacket is hanging from it.",
