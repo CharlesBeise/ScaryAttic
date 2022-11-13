@@ -27,7 +27,7 @@
             "chest": {
                 "locked": "It's a sturdy chest with a padlock. It won't open.",
                 "unlocked": "There's nothing in here except a Polaroid.",
-                "empty": "There's nothing in here except a Polaroid."
+                "empty": "There's nothing in here."
             }
         },
         "Use": {
