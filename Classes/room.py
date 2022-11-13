@@ -44,8 +44,17 @@ class Room:
         for key, val in data["exits"].items():
             self.exits[key] = val
 
-        # Items are populated by the Game class
-        self.items = []
+        # Dropped Items are things dropped by the player during gameplay,
+        # whether the item originally belonged in the room or not.
+        self.droppedItems = []
+
+        # Unlocked Items belong in the room by default,
+        # but are VISIBLE and ACCESSIBLE to the player.
+        self.visibleItems = []
+
+        # Hidden Items belong in the room by default,
+        # but they are INVISIBLE and INACCESSIBLE to the player.
+        self.hiddenItems = []
 
         file.close()
 
@@ -74,11 +83,11 @@ class Room:
 
         # Adds any conditional statements
         if self.conditions:
-            desc = desc + " " + self.getConditionalDesc()
+            desc = desc + self.getConditionalDesc()
 
         # Describe any items that were left here by the player
-        # if self.items:
-        #     desc = desc + self.getItemDescriptions()
+        if self.droppedItems:
+            desc = desc + self.getItemDescriptions()
 
         return textwrap.fill(desc, fill_width)
 
@@ -94,8 +103,8 @@ class Room:
             desc = desc + self.getConditionalDesc()
 
         # Describe any items that were left here by the player
-        # if self.items:
-        #     desc = desc + self.getItemDescriptions()
+        if self.droppedItems:
+            desc = desc + self.getItemDescriptions()
 
         return desc
 
@@ -116,24 +125,15 @@ class Room:
 
     def getItemDescriptions(self):
         """
-        This function will describe any items dropped in the room
-        which do not normally belong here.
+        This function will describe any items dropped in the room.
         """
         tempStr = " You left the "
-        tempItems = self.items.copy()
 
-        # Do not describe items that DO belong in this room by default
-        for item in tempItems:
-            for condition in self.conditions:
-                if item.name == condition.name:
-                    tempItems.remove(item)
-
-        # Describe the ones that DON'T belong
-        for index, item in enumerate(tempItems):
+        for index, item in enumerate(self.droppedItems):
             tempStr = tempStr + item.name
 
             # Add a comma & space between additional items
-            if index != len(tempItems) - 1:
+            if index != len(self.droppedItems) - 1:
                 tempStr = tempStr + ", "
 
         tempStr = tempStr + " here."
@@ -199,27 +199,129 @@ class Room:
                 return True
         return False
 
-    def addItem(self, item):
+    def addDroppedItem(self, item):
         """
-        Adds an item to the room - items will be instances of Item class
+        Adds a dropped item to the room.
+        This should be used when the player "drops" items.
+        Input "item" should be Item object.
         """
-        self.items.append(item)
+        self.droppedItems.append(item)
 
-    def removeItem(self, itemName):
+    def removeDroppedItem(self, itemName):
         """
-        Removes an item from the room - items are instances of Item class
+        Removes a dropped item from the room.
+        This should be used when the player "picks up" a dropped item.
+        Input "itemName" should be an item's name string.
+        Returns the item if removed, or None if item wasn't found.
         """
-        for item in self.items:
+        for item in self.droppedItems:
             if item.name == itemName:
-                self.items.remove(item)
+                self.droppedItems.remove(item)
                 return item
         return None
 
-    def getItems(self):
+    def getDroppedItems(self):
         """
-        Returns the list of items in the room
+        Returns the list of items dropped in the room.
+        Does NOT include items which are in their default locations.
         """
-        return self.items
+        return self.droppedItems
+
+    def addHiddenItem(self, item):
+        """
+        Adds a hidden item to the room.
+        This should be used when the Game class builds the items.
+        Input "item" should be Item object.
+        """
+        self.hiddenItems.append(item)
+
+    def removeHiddenItem(self, itemName):
+        """
+        Removes a hidden item from the room.
+        Input "itemName" should be an item's name string.
+        Returns the item if removed, or None if item wasn't found.
+        """
+        for item in self.hiddenItems:
+            if item.name == itemName:
+                self.hiddenItems.remove(item)
+                return item
+        return None
+
+    def getHiddenItems(self):
+        """
+        Returns the list of hidden items in the room.
+        """
+        return self.hiddenItems
+
+    def addVisibleItem(self, item):
+        """
+        Adds a visible item to the room.
+        Input "item" should be Item object.
+        """
+        self.visibleItems.append(item)
+
+    def removeVisibleItem(self, itemName):
+        """
+        Removes a visible item from the room.
+        Input "itemName" should be an item's name string.
+        Returns the item if removed, or None if item wasn't found.
+        """
+        for item in self.visibleItems:
+            if item.name == itemName:
+                self.visibleItems.remove(item)
+                return item
+        return None
+
+    def getVisibleItems(self):
+        """
+        Returns the list of visible items in the room.
+        """
+        return self.visibleItems
+
+    def unlockItem(self, itemName):
+        """
+        Switches an item from hidden to visible.
+        Input "itemName" should be an item's name string.
+        """
+        for item in self.hiddenItems:
+            if item.name == itemName:
+                self.addVisibleItem(item)
+                self.removeHiddenItem(item)
+
+    def isItemLocked(self, itemName):
+        """
+        Returns boolean for whether an item is accessible by the player or not.
+        Input "itemName" should be an item's name string.
+        """
+        for item in self.getAccessibleItems():
+            if item.name == itemName:
+                return False
+            else:
+                return True
+
+    def getAccessibleItems(self):
+        """
+        Returns the list of all items in the room which are
+        visible and accessible to the player. Includes both
+        dropped and visible room items.
+        """
+        return self.droppedItems + self.visibleItems
+
+    def removeAccessibleItem(self, itemName):
+        """
+        Removes a visible item from the room.
+        This can be used for moving an item from the room to the inventory.
+        Input "itemName" should be an item's name string.
+        Returns the item if removed, or None if item wasn't found.
+        """
+        # Check visible items
+        result = self.removeVisibleItem(itemName)
+        if result is None:
+            result = self.removeDroppedItem(itemName)
+            if result is None:
+                # If it's on neither list, return None
+                return None
+        return result
 
     def verbResponses(self, verb, feature):
         """
@@ -232,8 +334,6 @@ class Room:
         except KeyError:
             pass
         return response
-
-    # TODO: Add method for applicable verb actions?
 
     # TODO: The following two functions can be removed later, if desired.
 
@@ -264,12 +364,30 @@ class Room:
         """
         Prints room details for easier debugging
         """
+        dropItems = ""
+        hidItems = ""
+        visItems = ""
+
+        if self.droppedItems:
+            for d in self.droppedItems:
+                dropItems = dropItems + d.name + ", "
+
+        if self.hiddenItems:
+            for h in self.hiddenItems:
+                hidItems = hidItems + h.name + ", "
+
+        if self.visibleItems:
+            for v in self.visibleItems:
+                visItems = visItems + v.name + ", "
+
         print(f"######## Room name: {self.name} ########\n"
               f"- Locked? {self.locked}\n"
               f"- Visited? {self.visited}\n"
               f"- Long description:\n{self.getLongDescription()}\n"
               f"- Short description:\n{self.getShortDescription()}\n"
               f"- Exits: {self.exits}\n"
-              f"- Items: {self.items}\n"
+              f"- Hidden items: {hidItems[:-2]}\n"
+              f"- Visible items: {visItems[:-2]}\n"
+              f"- Dropped items: {dropItems[:-2]}\n"
               f"- Conditionals:\n{self.printConditionalsTest()}")
         print("")

@@ -279,19 +279,33 @@ class Game:
         with open("Items/defaultLocations.json") as f:
             itemDict = json.load(f)
         f.close()
-        for key, value in itemDict.items():
-            itemName = key + ".json"
-            file = os.path.join("Items", itemName)
-            if type(value) == list:
+
+        # Open the item's file
+        for itemName, value in itemDict.items():
+            itemPath = itemName + ".json"
+            file = os.path.join("Items", itemPath)
+
+            # Set location and visibility
+            location = value["location"]
+            visible = False
+            if value["visible"].lower() == "true":
+                visible = True
+
+            # Place the items
+            if type(location) == list:
                 item = Item(file)
                 for room in self.rooms:
-                    if room == value[0]:
-                        room.addItem(item)
-                value = value[1]
+                    if room == location[0] and visible:
+                        room.addVisibleItem(item)
+                    elif room == location[0] and not visible:
+                        room.addHiddenItem(item)
+                location = location[1]
             item = Item(file)
             for room in self.rooms:
-                if room == value:
-                    room.addItem(item)
+                if room == location and visible:
+                    room.addVisibleItem(item)
+                elif room == location and not visible:
+                    room.addHiddenItem(item)
 
     def setStartRoom(self):
         """

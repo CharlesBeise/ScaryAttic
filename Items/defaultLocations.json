@@ -1,12 +1,42 @@
 {
-  "ladder": "garage",
-  "flashlight": "utilityRoom",
-  "battery": ["masterBedroom", "secondBedroom"],
-  "key": "familyRoom",
-  "canOpener": "kitchen",
-  "tinCan": "basement",
-  "silverBell": "diningRoom",
-  "polaroid1": "upperHall",
-  "polaroid2": "kitchen",
-  "polaroid3": "attic"
+    "ladder": {
+        "location": "garage",
+        "visible": "True"
+    },
+    "flashlight": {
+        "location": "utilityRoom",
+        "visible": "False"
+    },
+    "battery": {
+        "location": ["masterBedroom", "secondBedroom"],
+        "visible": "False"
+    },
+    "key": {
+        "location": "familyRoom",
+        "visible": "False"
+    },
+    "canOpener": {
+        "location": "kitchen",
+        "visible": "False"
+    },
+    "tinCan": {
+        "location": "basement",
+        "visible": "True"
+    },
+    "silverBell": {
+        "location": "diningRoom",
+        "visible": "False"
+    },
+    "polaroid1": {
+        "location": "upperHall",
+        "visible": "False"
+    },
+    "polaroid2": {
+        "location": "kitchen",
+        "visible": "False"
+    },
+    "polaroid3": {
+        "location": "attic",
+        "visible": "False"
+    }
 }
