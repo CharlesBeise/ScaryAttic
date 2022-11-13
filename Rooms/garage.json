@@ -11,7 +11,7 @@
             "1": "You have a bag of basic tools sitting along the north wall, next to a garden hose."
         },
         "garageDoor": {
-            "triggerSequence": ["garagedoor"],
+            "triggerSequence": ["garageDoor"],
             "loop": "True",
             "0": "The roll-up garage door is to the east, and it is closed.",
             "1": "The roll-up garage door is to the east, and it is open. Rain is pouring in."

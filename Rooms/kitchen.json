@@ -12,7 +12,7 @@
             "2": "The cabinets above the counter contain salt, pepper, paper plates."
         },
         "drawers": {
-            "triggerSequence": ["drawers", "canopener"],
+            "triggerSequence": ["drawers", "canOpener"],
             "loop": "False",
             "0": "There are several drawers at waist height.",
             "1": "There are several drawers containing some plastic silverware and a can opener.",

@@ -5,7 +5,7 @@
     "lockRoom": "True",
     "conditionals": {
         "tincan": {
-            "triggerSequence": ["canpile"],
+            "triggerSequence": ["canPile"],
             "loop": "False",
             "0": "All of the cans look empty except one. They have no labels.",
             "1": "All of the cans look empty. They have no labels."

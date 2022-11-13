@@ -5,7 +5,7 @@
     "lockRoom": "False",
     "conditionals": {
         "wallpaper": {
-            "triggerSequence": ["wallpaper", "hole", "silverbell"],
+            "triggerSequence": ["wallpaper", "hole", "silverBell"],
             "loop": "False",
             "0": "There's a piece of wallpaper curling up on the far side of the room.",
             "1": "There's a small hole in the wall.",

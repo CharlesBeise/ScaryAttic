@@ -158,21 +158,22 @@ class Room:
         Call this method to move a named condition to its next step.
         Input "name" should be a string for the condition being triggered.
         """
-        condName = name.lower()
         conditionFound = False
 
         # If the condition matches one of our conditions, try to trigger it
         for condition in self.conditions:
             # print(f"Does condName '{condName}' == trigger '{condition.trigger}'?")
-            if condName == condition.trigger:
+            if name == condition.trigger:
                 # print("It does.")
-                condition.triggerCondition(condName)
+                condition.triggerCondition(name)
                 conditionFound = True
                 break
 
+        # This small block of code is a work in progress and will
+        # probably change later...
         # Unlocks items when necessary
         if conditionFound:
-            if self.name == "masterBedroom" and "box" in condName:
+            if self.name == "masterBedroom" and "box" in name:
                 self.unlockItem("battery")
 
     def lock(self):
