@@ -114,7 +114,7 @@ def take(info):
         result = room.removeAccessibleItem(item)
         room.triggerCondition(item)
 
-    if result and result != 1:      # If result == 1, the item was not found
+    if result:
         player.addInventory(result)
         for possession in player.getInventory():
             if possession == item:
