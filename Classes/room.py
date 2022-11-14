@@ -345,9 +345,6 @@ class Room:
         result = self.removeVisibleItem(itemName)
         if result is None:
             result = self.removeDroppedItem(itemName)
-            if result is None:
-                # If it's on neither list, return None
-                return None
         return result
 
     def verbResponses(self, verb, feature):
