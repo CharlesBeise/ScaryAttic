@@ -62,7 +62,7 @@ def identifyPolaroid(player):
     This is a helper function used to identify which polaroid the player is
     referring to
     """
-    items = player.getInventory() + player.getLocation().getItems()
+    items = player.getInventory() + player.getLocation().getAccessibleItems()
     options = []
     for item in items:
         if item.getName()[:-1] == "polaroid":
@@ -145,7 +145,7 @@ def drop(info):
             if possession == item:
                 print(possession.verbResponses("Drop"))
                 player.removeInventory(item)
-                room.addItem(possession)
+                room.addDroppedItem(possession)
                 continue
 
 
@@ -264,7 +264,7 @@ def help(info):
     for word in keywords:
         response = response + "- " + word + '\n'
 
-    print(response)
+    print(response[:-1])
 
 
 def inventory(info):
@@ -272,12 +272,12 @@ def inventory(info):
              "-------------------\n"
     content = ""
     for item in info["Player"].getInventory():
-        content = content + "- " + item.getName() + '\n'
+        content = content + "- " + item.getName()
 
     if content != "":
-        print(header + content + "\n")
+        print(header + content)
     else:
-        print(header + "Empty" + "\n")
+        print(header + "Empty")
 
 
 def hide(info):
@@ -359,7 +359,7 @@ def go(info):
     currentRoom = info["Player"].getLocation()
     destination = goHelper(info["Rooms"], currentRoom)
     if destination is None:  # Invalid destination
-        print("You can only go to one room connected to this room.")
+        print("Please enter one valid room or direction after 'go'.")
     if currentRoom.getName() == destination:
         print("You are already in that room.")
     # Update Player location to valid destination Room
@@ -392,7 +392,7 @@ def eat(info):
     eatTarget = info["Items"][0]
     # Look for item with target name in player inventory and current room
     inventoryList = info["Player"].getInventory()
-    roomItemList = info["Player"].getLocation().getItems()
+    roomItemList = info["Player"].getLocation().getAccessibleItems()
     allItems = inventoryList + roomItemList
     if eatTarget == "polaroid":
         eatTarget = identifyPolaroid(info["Player"])
