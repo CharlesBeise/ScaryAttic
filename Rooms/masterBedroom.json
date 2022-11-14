@@ -9,8 +9,8 @@
             "loop": "False",
             "type": "room",
             "0": "There are two moving boxes of stuff underneath the west window.",
-            "1": "There are two moving boxes containing a clock, battery, blankets, and clothes.",
-            "2": "There are two moving boxes containing a clock, blankets, and clothes."
+            "1": "There are two moving boxes containing a clock, battery, sheets, and clothes.",
+            "2": "There are two moving boxes containing a clock, sheets, and clothes."
         },
         "boxes": {
             "triggerSequence": ["boxes", "battery"],
