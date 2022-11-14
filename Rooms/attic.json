@@ -7,6 +7,7 @@
         "chest": {
             "triggerSequence": ["chest", "key", "polaroid"],
             "loop": "False",
+            "type": "room",
             "0": "",
             "1": "The chest is locked with a padlock.",
             "2": "The chest contains a Polaroid.",

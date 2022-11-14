@@ -7,6 +7,7 @@
         "shelves": {
             "triggerSequence": ["shelves", "flashlight"],
             "loop": "False",
+            "type": "room",
             "0": "There is a shelf on the wall, but you can't see what it's holding.",
             "1": "There is a shelf on the wall, holding a flashlight and a couple bottles of laundry detergent.",
             "2": "There is a shelf on the wall, holding a couple bottles of laundry detergent."
@@ -14,6 +15,7 @@
         "noise": {
             "triggerSequence": ["noise"],
             "loop": "False",
+            "type": "room",
             "0": "Something is making a tapping noise.",
             "1": "You can hear the rain tapping through the laundry vents."
         }

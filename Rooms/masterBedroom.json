@@ -7,9 +7,31 @@
         "boxes": {
             "triggerSequence": ["boxes", "battery"],
             "loop": "False",
+            "type": "room",
             "0": "There are two moving boxes of stuff underneath the west window.",
             "1": "There are two moving boxes containing a clock, battery, blankets, and clothes.",
             "2": "There are two moving boxes containing a clock, blankets, and clothes."
+        },
+        "clock": {
+            "triggerSequence": ["boxes"],
+            "loop": "False",
+            "type": "feature",
+            "0": "",
+            "1": "It's a clock radio. You normally use it for your morning alarms."
+        },
+        "sheets": {
+            "triggerSequence": ["boxes"],
+            "loop": "False",
+            "type": "feature",
+            "0": "",
+            "1": "There are a couple bags of bedding. Some of them don't fit your current bed."
+        },
+        "clothes": {
+            "triggerSequence": ["boxes"],
+            "loop": "False",
+            "type": "feature",
+            "0": "",
+            "1": "Some t-shirts and shorts, mostly."
         }
     },
     "exits": {
@@ -17,13 +39,16 @@
     },
     "verbInteractions": {
         "Examine": {
-            "boxes": "There are a couple boxes here filled with a clock, battery, extra blankets, and most of your clothes.",
+            "boxes": "There are a couple boxes here filled with a clock, battery, extra bed sheets, and most of your clothes.",
             "window": "The storm is getting worse. The antique window glass rattles in the wind. You're not going out there.",
             "closet": "It's a very small closet.",
             "walls": "The walls are painted cream. You're not a fan of the color.",
             "floor": "The floor is a nice dark hardwood, the same as most of the house.",
             "pillow": "Soft... and useless, when you can't sleep.",
-            "blanket": "It's a blue and white quilt that you've owned for many years. Your mom made it for you."
+            "blanket": "It's a blue and white quilt that you've owned for many years. Your mom made it for you.",
+            "sheets": "conditional",
+            "clock": "conditional",
+            "clothes": "conditional"
         },
         "Hide": {
             "mattress": "You curl up in your bed, pulling the blankets over yourself. You hear another THUMP from downstairs. You are not going to be able to sleep until you find out what it is.",

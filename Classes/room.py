@@ -34,21 +34,26 @@ class Room:
         if "conditionals" in data:
             for key, val in data["conditionals"].items():
                 try:
-                    names = val['triggerSequence']
+                    name = key
+                    seq = val['triggerSequence']
                     loop = val['loop']
+                    type = val['type']
                     descriptions = []
 
                     # Get all step descriptions
-                    for i in range(len(val) - 2):
+                    for i in range(len(val) - 3):
                         descriptions.append(val[str(i)])
                 except (KeyError, ValueError):
                     print(
                         f"Error building room conditionals: '{self.name}'")
-                    names = []
-                    loop = ""
-                    descriptions = []
+                    name, seq, loop, type, descriptions = "", [], "", "", []
 
-                self.conditions.append(Cond(names, loop, descriptions))
+                self.conditions.append(Cond(
+                    name,
+                    seq,
+                    loop,
+                    type,
+                    descriptions))
 
         # Add room exits
         for key, val in data["exits"].items():
@@ -120,13 +125,14 @@ class Room:
 
     def getConditionalDesc(self):
         """
-        Get current-state conditional descriptions for a room
+        Get current-state conditional descriptions for a room.
+        Only includes conditions of the "room" type.
         """
         tempStr = " "
 
         for index, condition in enumerate(self.conditions):
             # Empty descriptions will be skipped
-            if condition.getDescription() != "":
+            if condition.getDescription() != "" and condition.type == "room":
                 tempStr = tempStr + condition.getDescription()
 
                 # Add a separator between any additional items
@@ -162,12 +168,9 @@ class Room:
 
         # If the condition matches one of our conditions, try to trigger it
         for condition in self.conditions:
-            # print(f"Does condName '{condName}' == trigger '{condition.trigger}'?")
             if name == condition.trigger:
-                # print("It does.")
                 condition.triggerCondition(name)
                 conditionFound = True
-                break
 
         # This small block of code is a work in progress and will
         # probably change later...
@@ -352,12 +355,26 @@ class Room:
         This function is called when a player tries to perform an action on
         this Item object
         """
-        response = "I'm not sure what you mean. Try something else."
         try:
             response = self.verbInteractions[verb][feature]
-            self.triggerCondition(feature)
         except KeyError:
-            pass
+            response = None
+
+        # Conditional responses have to be retrieved from conditions
+        if response == "conditional":
+            # Look for the condition and get its current description
+            for cond in self.conditions:
+                if cond.name == feature:
+                    response = cond.getDescription()
+
+        # Trigger any conditions with this interaction.
+        # If there is no valid trigger, this should do nothing.
+        self.triggerCondition(feature)
+
+        # Failure or empty descriptions provide an error
+        if response is None or response == "" or response == "conditional":
+            response = "I'm not sure what you mean. Try something else."
+
         return textwrap.fill(response, fill_width)
 
     # TODO: The following function can be removed later, if desired.

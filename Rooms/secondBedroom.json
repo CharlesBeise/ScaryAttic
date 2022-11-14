@@ -7,6 +7,7 @@
         "boxes": {
             "triggerSequence": ["boxes", "battery"],
             "loop": "False",
+            "type": "room",
             "0": "You left some moving boxes in here earlier today, but the room is mostly empty otherwise.",
             "1": "There are moving boxes, containing office supplies and a battery, but the room is mostly empty otherwise.",
             "2": "There are moving boxes, containing office supplies, but the room is mostly empty otherwise."
