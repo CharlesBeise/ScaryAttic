@@ -7,6 +7,7 @@
         "shadow": {
             "triggerSequence": ["shadow"],
             "loop": "False",
+            "type": "room",
             "0": "There's a dark shadow in the corner that looks uncomfortably... human-shaped.",
             "1": "There is a stack of boxes in the corner."
         }

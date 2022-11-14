@@ -7,6 +7,7 @@
         "dish": {
             "triggerSequence": ["catFood"],
             "loop": "False",
+            "type": "room",
             "0": "A dirty dish sits against the wall that looks like it hasn't been washed in a while.",
             "1": "The dish with cat food is sitting against the wall."
         }

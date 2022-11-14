@@ -6,15 +6,20 @@ class Conditional:
 
     Input "name" as String for this condition.
     Input "loop" expects a string reading "True" or "False".
+    Input "type" designates whether this condition applies to the room
+       description or a feature description.
     Input "descriptions" takes a list of descriptions per step.
     """
-    def __init__(self, names, loop, descriptions):
-        # Names contains a sequence of all trigger words for this condition
-        self.names = names
+    def __init__(self, name, seq, loop, type, descriptions):
+        # The name of the condition
+        self.name = name
+
+        # List containing full trigger sequence
+        self.seq = seq
 
         # Attribute "trigger" is the current name of this condition,
         # which is required to proceed to the next step.
-        self.trigger = self.names[0]
+        self.trigger = self.seq[0]
 
         # Loop attribute determines if this is a condition that can
         # toggle back and forth (True) or if it only progresses forward (False)
@@ -22,6 +27,9 @@ class Conditional:
             self.loop = True
         else:
             self.loop = False
+
+        # Type attribute is expected to be either "room" or "feature"
+        self.type = type.lower()
 
         # Initialize current state of the condition
         self.currentStep = 0
@@ -34,11 +42,11 @@ class Conditional:
 
     def __eq__(self, other):
         """
-        This method allows the Condition instance to its current trigger
+        This method allows the Condition instance to its name
         when compared to a String.
         """
         if isinstance(other, str):
-            if other.lower() == self.trigger:
+            if other.lower() == self.name:
                 return True
         else:
             return False
@@ -70,9 +78,9 @@ class Conditional:
         This function increments the trigger word for the condition.
         """
         # If there are more triggers in line, set the next trigger
-        if self.trigger != self.names[-1]:
-            index = self.names.index(self.trigger)
-            self.trigger = self.names[index + 1]
+        if self.trigger != self.seq[-1]:
+            index = self.seq.index(self.trigger)
+            self.trigger = self.seq[index + 1]
 
     def setStep(self, name, step):
         """
@@ -82,7 +90,7 @@ class Conditional:
         Returns 0 for success, or None for failure.
         """
         # Look for the named condition
-        for condition in self.names:
+        for condition in self.seq:
             if name == condition:
                 self.currentStep = step
                 return 0
@@ -92,7 +100,7 @@ class Conditional:
         """
         Get all acceptable names of this condition
         """
-        return self.names
+        return self.seq
 
     def getDescription(self):
         """
@@ -106,8 +114,10 @@ class Conditional:
         """
         Prints condition status for debugging purposes
         """
-        print(f"\nCondition names: {self.names}")
+        print(f"\nCondition name: {self.name}")
+        print(f"Trigger sequence: {self.trigger}")
         print(f"Current trigger: {self.trigger}")
+        print(f"Type of condition: {self.type}")
         print(f"Looping? {self.loop}")
         print("Descriptions:")
         for i in range(self.totalSteps):

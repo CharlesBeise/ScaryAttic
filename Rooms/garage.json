@@ -7,12 +7,14 @@
         "ladder": {
             "triggerSequence": ["ladder"],
             "loop": "False",
+            "type": "room",
             "0": "You have a bag of basic tools sitting along the north wall, next to a ladder and garden hose.",
             "1": "You have a bag of basic tools sitting along the north wall, next to a garden hose."
         },
         "garageDoor": {
             "triggerSequence": ["garageDoor"],
             "loop": "True",
+            "type": "room",
             "0": "The roll-up garage door is to the east, and it is closed.",
             "1": "The roll-up garage door is to the east, and it is open. Rain is pouring in."
         }

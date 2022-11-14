@@ -7,6 +7,7 @@
         "key": {
             "triggerSequence": ["hooks", "key"],
             "loop": "False",
+            "type": "room",
             "0": "There are some hooks on the wall by the door.",
             "1": "There are some hooks on the wall by the door. One of them holds a key.",
             "2": "There are some hooks on the wall by the door."

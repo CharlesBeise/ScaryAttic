@@ -7,6 +7,7 @@
         "cabinets": {
             "triggerSequence": ["cabinet", "polaroid"],
             "loop": "False",
+            "type": "room",
             "0": "Tall cabinets line the walls above the counter.",
             "1": "The cabinets above the counter contain salt, pepper, paper plates, and a Polaroid.",
             "2": "The cabinets above the counter contain salt, pepper, paper plates."
@@ -14,6 +15,7 @@
         "drawers": {
             "triggerSequence": ["drawers", "canOpener"],
             "loop": "False",
+            "type": "room",
             "0": "There are several drawers at waist height.",
             "1": "There are several drawers containing some plastic silverware and a can opener.",
             "2": "There are several drawers containing some plastic silverware."

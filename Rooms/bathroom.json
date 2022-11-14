@@ -7,6 +7,7 @@
         "cabinet": {
             "triggerSequence": ["cabinet"],
             "loop": "False",
+            "type": "room",
             "0": "There's a medicine cabinet above the sink.",
             "1": "There's a medicine cabinet, containing some bandages and a pill bottle."
         }
