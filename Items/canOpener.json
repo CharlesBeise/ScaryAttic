@@ -3,16 +3,16 @@
     "description": "A basic can opener for opening cans of food. Nothing fancy, but it works.",
     "secondaryDescription": "None",
     "itemInteractions": {
-        "Ladder": "None",
-        "Flashlight": "None",
-        "Battery": "None",
-        "Key": "None",
-        "Can opener": "None",
-        "Tin Can": "You use the can opener to open the tin can and peel back the lid. It's... brown... and wet. You take a sniff and wince. Fishy, too. It smells like cat food.",
-        "Silver Bell": "None",
-        "Combination Photo 1": "None",
-        "Combination Photo 2": "None",
-        "Combination Photo 3": "None"
+        "ladder": "None",
+        "flashlight": "None",
+        "battery": "None",
+        "key": "None",
+        "canOpener": "None",
+        "tinCan": "You use the can opener to open the tin can and peel back the lid. It's... brown... and wet. You take a sniff and wince. Fishy, too. It smells like cat food.",
+        "silverBell": "None",
+        "polaroid1": "None",
+        "polaroid2": "None",
+        "polaroid3": "None"
     },
     "verbInteractions": {
         "Open": "None",
