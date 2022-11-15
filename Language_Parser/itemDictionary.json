@@ -10,6 +10,7 @@
     "canOpener": ["canopener"],
     "canPile": ["cans", "pileofcans", "pile"],
     "catFood": ["catfood"],
+    "ceiling": ["ceiling", "roof"],
     "chest": ["chest"],
     "clock": ["clock"],
     "closet": ["closet"],
