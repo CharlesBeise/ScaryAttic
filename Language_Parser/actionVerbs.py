@@ -429,7 +429,7 @@ def go(info):
     for room in info["Game"].getRooms():
         if room.getName() == destination:
             if room.isLocked():
-                goLockedHelper(destination, currentRoom)
+                goLockedHelper(destination)
                 return
             info["Player"].setLocation(room)
             if room.isVisited():
