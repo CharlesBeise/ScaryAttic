@@ -6,6 +6,7 @@
     "conditionals": {
         "stairs": {
             "triggerSequence": ["flashlight"],
+            "triggerVerbs": [["Use"]],
             "loop": "True",
             "type": "room",
             "0": "The old staircase is just ahead to the east - too dangerous to navigate in the dark.",
@@ -13,12 +14,23 @@
         },
         "light": {
             "triggerSequence": ["flashlight", "painting", "polaroid"],
+            "triggerVerbs": [["Use"], ["Flip", "Shake", "Pull"], ["Take"]],
             "loop": "True",
             "type": "room",
             "0": "",
             "1": "With your flashlight, you can better see the walls, which still have photos from before you moved here. The previous owners seemed in a rush to sell the place, for some reason unknown to you, and they chose to leave some of their old furnishings - along with a few personal items, it seems. There are three framed pictures on the wall - various photos of a stranger's family. They look... mostly happy.",
             "2": "With your flashlight, you can better see the walls, which still have photos from before you moved here. The previous owners seemed in a rush to sell the place, for some reason unknown to you, and they chose to leave some of their old furnishings - along with a few personal items, it seems. There are three framed pictures on the wall - various photos of a stranger's family. They look... mostly happy. A Polaroid is sitting on the ground below.",
             "3": "With your flashlight, you can better see the walls, which still have photos from before you moved here. The previous owners seemed in a rush to sell the place, for some reason unknown to you, and they chose to leave some of their old furnishings - along with a few personal items, it seems. There are three framed pictures on the wall - various photos of a stranger's family. They look... mostly happy."
+        },
+        "painting": {
+            "triggerSequence": ["flashlight", "painting", "painting", "painting"],
+            "triggerVerbs": [["Use"], ["Examine"], ["Flip", "Shake", "Peel", "Single"], ["Examine", "Flip", "Shake", "Peel"]],
+            "loop": "False",
+            "type": "feature",
+            "0": "",
+            "1": "There are three paintings. The first shows an old, thin woman sitting in the backyard with a child - perhaps her grandchild. The second shows a large group of people standing in front of the house with smiles on their faces, except for a young man near the back with a stern look. The third picture frame has an image of a woman in her 30's or 40's. She is smiling, but the smile isn’t quite reaching her eyes. Despite the fading of the photo, it feels like her gaze is looking straight through you. All three pictures are probably from at least a couple generations ago. One of the paintings is hanging slightly askew.",
+            "2": "You reach out and grab the painting, as you pull it away from the wall a Polaroid photo falls to the floor.",
+            "3": "There are three paintings. The first shows an old, thin woman sitting in the backyard with a child - perhaps her grandchild. The second shows a large group of people standing in front of the house with smiles on their faces, except for a young man near the back with a stern look. The third picture frame has an image of a woman in her 30's or 40's. She is smiling, but the smile isn’t quite reaching her eyes. Despite the fading of the photo, it feels like her gaze is looking straight through you. All three pictures are probably from at least a couple generations ago."
         }
     },
     "exits": {
@@ -33,16 +45,16 @@
         "Examine": {
             "hatch": "It's a square hole in the ceiling. There's a handle to pull down the hatch.",
             "stairs": "The stairs are narrow and uneven. They're a little dangerous even when the light is on.",
-            "painting": "There are three paintings. The first shows an old, thin woman sitting in the backyard with a child - perhaps her grandchild. The second shows a large group of people standing in front of the house with smiles on their faces, except for a young man near the back with a stern look. The third picture frame has an image of a woman in her 30's or 40's. She is smiling, but the smile isn’t quite reaching her eyes. Despite the fading of the photo, it feels like her gaze is looking straight through you. All three pictures are probably from at least a couple generations ago. One of the paintings is hanging slightly askew."
+            "painting": "conditional"
         },
         "Flip": {
-            "painting": "You flip the frames on the wall over, and a Polaroid photo falls to the floor."
+            "painting": "conditional"
         },
         "Peel": {
-            "painting": "You pull at the frames on the wall, and a Polaroid photo falls to the floor."
+            "painting": "conditional"
         },
         "Shake": {
-            "painting": "You give the frames on the wall a wiggle, and a Polaroid photo falls to the floor."
+            "painting": "conditional"
         }
     }
 }

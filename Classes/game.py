@@ -267,10 +267,11 @@ class Game:
         # Iterate through all Room JSON Files and build the instances
         room_dir = "Rooms"
         for filename in os.listdir(room_dir):
-            file = os.path.join(room_dir, filename)
-            # If it's a valid file, create the Room
-            if os.path.isfile(file):
-                self.rooms.append(Room(file))
+            if filename == "masterBedroom.json" or filename == "upperHall.json" or filename == "utilityRoom.json":
+                file = os.path.join(room_dir, filename)
+                # If it's a valid file, create the Room
+                if os.path.isfile(file):
+                    self.rooms.append(Room(file))
 
     def buildItems(self):
         """

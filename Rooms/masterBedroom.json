@@ -6,6 +6,7 @@
     "conditionals": {
         "boxesRoom": {
             "triggerSequence": ["boxes", "battery"],
+            "triggerVerbs": [["Examine", "Open"], ["Take"]],
             "loop": "False",
             "type": "room",
             "0": "There are two moving boxes of stuff underneath the west window.",
@@ -14,13 +15,16 @@
         },
         "boxes": {
             "triggerSequence": ["boxes", "battery"],
+            "triggerVerbs": [["Examine", "Open"], ["Take"]],
             "loop": "False",
             "type": "feature",
             "0": "There are a couple boxes here filled with a clock, battery, extra bed sheets, and most of your clothes.",
-            "1": "There are a couple boxes here filled with a clock, extra bed sheets, and most of your clothes."
+            "1": "There are a couple boxes here filled with a clock, battery, extra bed sheets, and most of your clothes.",
+            "2": "There are a couple boxes here filled with a clock, extra bed sheets, and most of your clothes."
         },
         "clock": {
             "triggerSequence": ["boxes"],
+            "triggerVerbs": [["Examine", "Open"]],
             "loop": "False",
             "type": "feature",
             "0": "",
@@ -28,6 +32,7 @@
         },
         "sheets": {
             "triggerSequence": ["boxes"],
+            "triggerVerbs": [["Examine", "Open"]],
             "loop": "False",
             "type": "feature",
             "0": "",
@@ -35,6 +40,7 @@
         },
         "clothes": {
             "triggerSequence": ["boxes"],
+            "triggerVerbs": [["Examine", "Open"]],
             "loop": "False",
             "type": "feature",
             "0": "",

@@ -6,6 +6,7 @@
     "conditionals": {
         "shelves": {
             "triggerSequence": ["shelves", "flashlight"],
+            "triggerVerbs": [["Examine"], ["Take"]],
             "loop": "False",
             "type": "room",
             "0": "There is a shelf on the wall, but you can't see what it's holding.",
@@ -14,6 +15,7 @@
         },
         "noise": {
             "triggerSequence": ["noise"],
+            "triggerVerbs": [["Listen"]],
             "loop": "False",
             "type": "room",
             "0": "Something is making a tapping noise.",
