@@ -47,7 +47,8 @@ class Room:
                 except (KeyError, ValueError):
                     print(
                         f"Error building room conditionals: '{self.name}'")
-                    name, seq, verbs, loop, type, descriptions = "", [], [], "", "", []
+                    name, seq, verbs, loop, type, descriptions = "", [], [], \
+                                                                 "", "", []
 
                 self.conditions.append(Cond(
                     name,
@@ -178,19 +179,25 @@ class Room:
         # probably change later...
         # Unlocks items when necessary
         if conditionFound:
-            if self.name == "masterBedroom" and "box" in name:
-                self.unlockItem("battery")
-            elif self.name == "utilityRoom" and "shelves" in name:
-                self.unlockItem("flashlight")
-            elif self.name == "secondBedroom" and "box" in name:
-                self.unlockItem("battery")
-            elif self.name == "upperHall" and "painting" in name and verb in \
-                    ["Shake", "Flip", "Peel"]:
-                self.unlockItem("polaroid1")
-            elif self.name == "kitchen" and "drawer" in name:
-                self.unlockItem("canOpener")
-            elif self.name == "kitchen" and "cabinet" in name:
-                self.unlockItem("polaroid2")
+            self.checkUnlock(name, verb)
+
+    def checkUnlock(self, name, verb):
+        """
+        Temporary way of unlocking items
+        """
+        if self.name == "masterBedroom" and "box" in name:
+            self.unlockItem("battery")
+        elif self.name == "utilityRoom" and "shelves" in name:
+            self.unlockItem("flashlight")
+        elif self.name == "secondBedroom" and "box" in name:
+            self.unlockItem("battery")
+        elif self.name == "upperHall" and "painting" in name and verb in \
+                ["Shake", "Flip", "Peel"]:
+            self.unlockItem("polaroid1")
+        elif self.name == "kitchen" and "drawer" in name:
+            self.unlockItem("canOpener")
+        elif self.name == "kitchen" and "cabinet" in name:
+            self.unlockItem("polaroid2")
 
     def lock(self):
         """
