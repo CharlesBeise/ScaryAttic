@@ -293,11 +293,10 @@ class Game:
                 visible = True
 
             # Create an instance for each location
-            for loc in value["location"]:
+            for i in range(len(location)-1):
                 item = Item(file)
-
                 # Store it
-                if loc == "storage":
+                if location[i] == "storage":
                     self.itemStorage.append(item)
                     break
                 for room in self.rooms:
