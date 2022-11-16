@@ -178,6 +178,16 @@ class Room:
         if conditionFound:
             if self.name == "masterBedroom" and "box" in name:
                 self.unlockItem("battery")
+            elif self.name == "utilityRoom" and "shelves" in name:
+                self.unlockItem("flashlight")
+            elif self.name == "secondBedroom" and "box" in name:
+                self.unlockItem("battery")
+            elif self.name == "upperHall" and "painting" in name:
+                self.unlockItem("polaroid1")
+            elif self.name == "kitchen" and "drawer" in name:
+                self.unlockItem("canOpener")
+            elif self.name == "kitchen" and "cabinet" in name:
+                self.unlockItem("polaroid2")
 
     def lock(self):
         """
