@@ -384,9 +384,7 @@ def combineItemAndFeature(player, item, feature):
             # Call 'use' description
 
             # Trigger condition
-            currentRoom.triggerCondition(feature)
-            # TODO: This line will need to be changed to the following later:
-            # currentRoom.triggerCondition(feature, "Use")
+            currentRoom.triggerCondition(feature, "Use")
         else:
             response = "That won't work."
         return response
