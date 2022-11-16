@@ -329,7 +329,66 @@ def use(info):
     print("Using...")
 
 
-def goHelper(roomInfo, currentRoom):
+def goStairsHelper(roomTarget, currentRoomName):
+    """
+    Helper function returns the destination room name when the player
+    only specifies a form of stairs as a destination. If the current
+    room has no stairs, then returns None.
+    """
+    stairsDict = {
+        "attic": {"upstairs": None, "downstairs": "upperHall"},
+        "upperHall": {"upstairs": "attic", "downstairs": "lowerHall"},
+        "lowerHall": {"upstairs": "upperHall", "downstairs": "basement"},
+        "basement": {"upstairs": "lowerHall", "downstairs": None}
+    }
+    # Confirm this room has stairs
+    if currentRoomName not in stairsDict.keys():
+        return None
+    # If stairs in this room go up, return room name above
+    if roomTarget in ["upstairs", "up"] and stairsDict[currentRoomName]["upstairs"] is not None:
+        return stairsDict[currentRoomName]["upstairs"]
+    # If stairs in this room go down, return room name below
+    if roomTarget in ["downstairs", "down"] and stairsDict[currentRoomName]["downstairs"] is not None:
+        return stairsDict[currentRoomName]["downstairs"]
+    # Determine upstairs or downstairs if not specified
+    if roomTarget not in ["stairs", "staircase"]:
+        return None
+    if stairsDict[currentRoomName]["upstairs"] is not None:
+        if stairsDict[currentRoomName]["downstairs"] is not None:
+            # If more than one stairs in this room, prompt for which stairs
+            stairsInput = input("Which stairs? Up or down?\n")
+            if stairsInput in ["up", "upstairs"]:
+                return stairsDict[currentRoomName]["upstairs"]
+            elif stairsInput in ["down", "downstairs"]:
+                return stairsDict[currentRoomName]["downstairs"]
+            else:
+                return None
+        # If only upstairs, return room name upstairs
+        else:
+            return stairsDict[currentRoomName]["upstairs"]
+    # If only downstairs, return room name downstairs
+    elif stairsDict[currentRoomName]["downstairs"] is not None:
+        return stairsDict[currentRoomName]["downstairs"]
+    return None
+
+
+def goLockedHelper(destination):
+    """
+    Helper function prints the appropriate response to the player
+    attempting to enter a locked room. Response depends on destination.
+    """
+    lockedResponse = {
+        "attic": "The attic door is too high to reach.",
+        "lowerHall": "It's too dark to go down the stairs safely.",
+        "basement": "There is a combination lock on the basement door."
+    }
+    if destination in lockedResponse.keys():
+        print(lockedResponse[destination])
+    else:
+        print("That room is locked.")
+
+
+def goRoomHelper(roomInfo, currentRoom):
     """
     Helper function returns a destination from room info list that
     has been parsed from user input. If destination is invalid, then
@@ -337,6 +396,8 @@ def goHelper(roomInfo, currentRoom):
     """
     if len(roomInfo) == 0 or len(roomInfo) > 2:
         return None
+    if roomInfo[0] in ["stairs", "staircase", "upstairs", "downstairs", "up", "down"]:
+        return goStairsHelper(roomInfo[0], currentRoom.getName())
     # Match name of connected Room to input room info
     for roomName, direction in currentRoom.getAllExits().items():
         if roomInfo[0] == roomName.lower() or roomInfo[0] == direction:
@@ -344,7 +405,7 @@ def goHelper(roomInfo, currentRoom):
     currentRoomName = currentRoom.getName().lower()
     if roomInfo[0] == currentRoomName:
         return currentRoom.getName()
-    if len(roomInfo[0]) == 2 and roomInfo[1] == currentRoomName:
+    if len(roomInfo) == 2 and roomInfo[1] == currentRoomName:
         return currentRoom.getName()
     return None
 
@@ -357,14 +418,19 @@ def go(info):
     """
     # Find current Room and name of destination Room
     currentRoom = info["Player"].getLocation()
-    destination = goHelper(info["Rooms"], currentRoom)
+    destination = goRoomHelper(info["Rooms"], currentRoom)
     if destination is None:  # Invalid destination
-        print("Please enter one valid room or direction after 'go'.")
+        print(errorString)
+        return
     if currentRoom.getName() == destination:
         print("You are already in that room.")
+        return
     # Update Player location to valid destination Room
     for room in info["Game"].getRooms():
         if room.getName() == destination:
+            if room.isLocked():
+                goLockedHelper(destination)
+                return
             info["Player"].setLocation(room)
             if room.isVisited():
                 print(room.getShortDescription())
