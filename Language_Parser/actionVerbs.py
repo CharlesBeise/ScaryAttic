@@ -344,16 +344,16 @@ def goStairsHelper(roomTarget, currentRoomName):
     if currentRoomName not in stairsDict.keys():
         return None
     # If stairs in this room go up, return room name above
-    if roomTarget in ["upstairs", "up"] and stairsDict[currentRoomName]["upstairs"] != None:
-            return stairsDict[currentRoomName]["upstairs"]
+    if roomTarget in ["upstairs", "up"] and stairsDict[currentRoomName]["upstairs"] is not None:
+        return stairsDict[currentRoomName]["upstairs"]
     # If stairs in this room go down, return room name below
-    if roomTarget in ["downstairs", "down"] and stairsDict[currentRoomName]["downstairs"] != None:
-            return stairsDict[currentRoomName]["downstairs"]    
+    if roomTarget in ["downstairs", "down"] and stairsDict[currentRoomName]["downstairs"] is not None:
+        return stairsDict[currentRoomName]["downstairs"]
     # Determine upstairs or downstairs if not specified
     if roomTarget not in ["stairs", "staircase"]:
         return None
-    if stairsDict[currentRoomName]["upstairs"] != None:
-        if stairsDict[currentRoomName]["downstairs"] != None:
+    if stairsDict[currentRoomName]["upstairs"] is not None:
+        if stairsDict[currentRoomName]["downstairs"] is not None:
             # If more than one stairs in this room, prompt for which stairs
             stairsInput = input("Which stairs? Up or down?\n")
             if stairsInput in ["up", "upstairs"]:
@@ -366,7 +366,7 @@ def goStairsHelper(roomTarget, currentRoomName):
         else:
             return stairsDict[currentRoomName]["upstairs"]
     # If only downstairs, return room name downstairs
-    elif stairsDict[currentRoomName]["downstairs"] != None:
+    elif stairsDict[currentRoomName]["downstairs"] is not None:
         return stairsDict[currentRoomName]["downstairs"]
     return None
 
