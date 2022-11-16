@@ -330,7 +330,6 @@ class Game:
         for item in self.itemStorage:
             if itemName == item.name:
                 self.itemStorage.remove(item)
-                print(f"Removed {item.name} from storage")
                 return item
         return False
 
