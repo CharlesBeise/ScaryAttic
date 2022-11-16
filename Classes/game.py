@@ -20,6 +20,7 @@ class Game:
         self.saveFile = None
         self.rooms = []
         self.player = Player()
+        self.itemStorage = []
 
         # Build instances of all the rooms
         self.buildRooms()
@@ -285,27 +286,27 @@ class Game:
             itemPath = itemName + ".json"
             file = os.path.join("Items", itemPath)
 
-            # Set location and visibility
+            # Set location and visibility for this item
             location = value["location"]
             visible = False
             if value["visible"].lower() == "true":
                 visible = True
 
-            # Place the items
-            if type(location) == list:
+            # Create an instance for each location
+            for loc in value["location"]:
                 item = Item(file)
+
+                # Store it
+                if loc == "storage":
+                    self.itemStorage.append(item)
+                    break
                 for room in self.rooms:
-                    if room == location[0] and visible:
+                    if room == location and visible:
                         room.addVisibleItem(item)
-                    elif room == location[0] and not visible:
+                        break
+                    elif room == location and not visible:
                         room.addHiddenItem(item)
-                location = location[1]
-            item = Item(file)
-            for room in self.rooms:
-                if room == location and visible:
-                    room.addVisibleItem(item)
-                elif room == location and not visible:
-                    room.addHiddenItem(item)
+                        break
 
     def setStartRoom(self):
         """
@@ -315,6 +316,31 @@ class Game:
             if room.getName() == "masterBedroom":
                 self.player.setLocation(room)
                 return
+
+    def addToItemStorage(self, item):
+        """
+        Adds an Item to game storage.
+        """
+        self.itemStorage.append(item)
+
+    def removeFromItemStorage(self, item):
+        """
+        Removes an Item from game storage.
+        Returns True if successful, False if not.
+        """
+        if item in self.itemStorage:
+            self.itemStorage.append(item)
+            return True
+        return False
+
+    def getAllAccessibleItems(self):
+        """
+        Retrieves a list including all accessible items from both the room
+        and the player's inventory.
+        """
+        inventory = self.player.getInventory()
+        room = self.player.getLocation().getAccessibleItems()
+        return inventory + room
 
     def printGameState(self):
         """
