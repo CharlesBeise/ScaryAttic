@@ -20,6 +20,14 @@
             "type": "room",
             "0": "Something is making a tapping noise.",
             "1": "You can hear the rain tapping through the laundry vents."
+        },
+        "flashlight": {
+            "triggerSequence": ["shelves", "flashlight"],
+            "loop": "False",
+            "type": "feature",
+            "0": "",
+            "1": "There's a flashlight on the shelf.",
+            "2": ""
         }
     },
     "exits": {
@@ -30,14 +38,14 @@
             "vent": "Nothing here.",
             "shelves": "Feeling along the wooden shelves, you can make out the shape of a flashlight, along with a couple bottles of laundry detergent.",
             "detergent": "It's just some laundry detergent.",
-            "flashlight": "It's a red plastic flashlight. You've had it for as long as you can remember."
+            "flashlight": "conditional"
         },
         "Listen": {
             "noise": "You listen closely for where the noise is coming from. It seems you can hear the rain's rhythmic tapping through the laundry vents. Not loud enough to be the source of the noise you heard earlier."
         },
         "Take": {
             "detergent": "You probably don't need that.",
-            "flashlight": "You grab the flashlight and turn it on. It isn't working."
+            "flashlight": "You grab the flashlight and push the switch. It isn't working."
         }
     }
 }

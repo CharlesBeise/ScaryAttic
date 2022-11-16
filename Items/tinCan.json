@@ -3,16 +3,16 @@
     "description": "An unopened tin can with no label. Anything could be inside...",
     "secondaryDescription": "None",
     "itemInteractions": {
-        "Ladder": "None",
-        "Flashlight": "None",
-        "Battery": "None",
-        "Key": "None",
-        "Can opener": "You use the can opener to open the tin can and peel back the lid. It's... brown... and wet. You take a sniff and wince. Fishy, too. It smells like cat food.",
-        "Tin Can": "None",
-        "Silver Bell": "None",
-        "Combination Photo 1": "None",
-        "Combination Photo 2": "None",
-        "Combination Photo 3": "None"
+        "ladder": "None",
+        "flashlight": "None",
+        "battery": "None",
+        "key": "None",
+        "canOpener": "You use the can opener to open the tin can and peel back the lid. It's... brown... and wet. You take a sniff and wince. Fishy, too. It smells like cat food.",
+        "tinCan": "None",
+        "silverBell": "None",
+        "polaroid1": "None",
+        "polaroid2": "None",
+        "polaroid3": "None"
     },
     "verbInteractions": {
         "Open": "The can could probably be opened by a can opener.",

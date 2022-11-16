@@ -3,16 +3,16 @@
     "description": "It looks like a standard C cell battery.",
     "secondaryDescription": "None",
     "itemInteractions": {
-        "Ladder": "None",
-        "Flashlight": "None",
-        "Battery": "None",
-        "Key": "None",
-        "Can opener": "None",
-        "Tin Can": "None",
-        "Silver Bell": "None",
-        "Combination Photo 1": "None",
-        "Combination Photo 2": "None",
-        "Combination Photo 3": "None"
+        "ladder": "None",
+        "flashlight": "None",
+        "battery": "None",
+        "key": "None",
+        "canOpener": "None",
+        "tinCan": "None",
+        "silverBell": "None",
+        "polaroid1": "None",
+        "polaroid2": "None",
+        "polaroid3": "None"
     },
     "verbInteractions": {
         "Open": "None",

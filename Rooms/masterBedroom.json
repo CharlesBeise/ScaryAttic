@@ -77,6 +77,10 @@
         "Flip": {
             "switch": "The light won't turn on. Looks like the power is still out.",
             "mattress": "It's probably not a good idea to make a mess right now."
+        },
+        "Use": {
+            "switch": "The light won't turn on. Looks like the power is still out.",
+            "mattress": "You curl up in your bed, pulling the blankets over yourself. You hear another THUMP from downstairs. You are not going to be able to sleep until you find out what it is."
         }
     }
 }
