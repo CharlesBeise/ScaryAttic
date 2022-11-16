@@ -35,21 +35,6 @@ class Item:
         """
         return self.secondaryDescription
 
-    def combineItems(self, otherItem):
-        """
-        This function is called when a player tries to use a different Item
-        object with this Item object
-        """
-        # TODO: I am still playing around with this. Will probably move it to
-        #  the actionverbs file.
-        if {self.name, otherItem.getName()} == {"flashlight", "battery"}:
-            print("Here we are")
-            return Item("flashlight3.json")
-        if self.itemInteractions.get(otherItem):
-            return self.itemInteractions[otherItem.getName()]
-        else:
-            return "Those items don't seem to work together"
-
     def verbResponses(self, verb):
         """
         This function is called when a player tries to perform an action on
