@@ -10,8 +10,8 @@
             "loop": "False",
             "type": "room",
             "0": "There is a shelf on the wall, but you can't see what it's holding.",
-            "1": "There is a shelf on the wall, holding a flashlight and a couple bottles of laundry detergent.",
-            "2": "There is a shelf on the wall, holding a couple bottles of laundry detergent."
+            "1": "There is a shelf on the wall, holding a flashlight and a couple containers of laundry detergent.",
+            "2": "There is a shelf on the wall, holding a couple containers of laundry detergent."
         },
         "noise": {
             "triggerSequence": ["noise"],
@@ -37,7 +37,7 @@
     "verbInteractions": {
         "Examine": {
             "vent": "Nothing here.",
-            "shelves": "Feeling along the wooden shelves, you can make out the shape of a flashlight, along with a couple bottles of laundry detergent.",
+            "shelves": "Feeling along the wooden shelves, you can make out the shape of a flashlight, along with a couple containers of laundry detergent.",
             "detergent": "It's just some laundry detergent.",
             "flashlight": "conditional"
         },

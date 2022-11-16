@@ -16,7 +16,7 @@
     "closet": ["closet"],
     "clothes": ["clothes"],
     "desk": ["desk"],
-    "detergent": ["detergent", "bottle", "bottles"],
+    "detergent": ["detergent", "container", "containers"],
     "dish": ["dish", "bowl", "plate"],
     "drawers": ["drawers", "drawer"],
     "emptyHole": ["emptyhole"],
