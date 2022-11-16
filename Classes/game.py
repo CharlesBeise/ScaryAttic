@@ -322,7 +322,7 @@ class Game:
         """
         self.itemStorage.append(item)
 
-    def removeFromItemStorage(self, item):
+    def removeFromItemStorage(self, itemName):
         """
         Take an item string name and tries to remove that item from storage.
         Returns the item if successful, False if not.
