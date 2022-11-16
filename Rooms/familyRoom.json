@@ -6,6 +6,7 @@
     "conditionals": {
         "key": {
             "triggerSequence": ["hooks", "key"],
+            "triggerVerbs": [["Examine"], ["Take"]],
             "loop": "False",
             "type": "room",
             "0": "There are some hooks on the wall by the door.",

@@ -4,13 +4,23 @@
     "shortDescription": "You're in the Second Bedroom of the house. A door to the east leads back to the Upper Hall.",
     "lockRoom": "False",
     "conditionals": {
-        "boxes": {
+        "boxesRoom": {
             "triggerSequence": ["boxes", "battery"],
+            "triggerVerbs": [["Examine", "Open"], ["Take"]],
             "loop": "False",
             "type": "room",
             "0": "You left some moving boxes in here earlier today, but the room is mostly empty otherwise.",
             "1": "There are moving boxes, containing office supplies and a battery, but the room is mostly empty otherwise.",
             "2": "There are moving boxes, containing office supplies, but the room is mostly empty otherwise."
+        },
+        "boxes": {
+            "triggerSequence": ["boxes", "battery"],
+            "triggerVerbs": [["Examine", "Open"], ["Take"]],
+            "loop": "False",
+            "type": "feature",
+            "0": "You rummage through your boxes, but most of it is office supplies and computer accessories. There's also a loose battery in the bottom of one of the boxes.",
+            "1": "You rummage through your boxes, but most of it is office supplies and computer accessories. There's also a loose battery in the bottom of one of the boxes.",
+            "2": "You rummage through your boxes, but most of it is office supplies and computer accessories."
         }
     },
     "exits": {
@@ -18,16 +28,13 @@
     },
     "verbInteractions": {
         "Examine": {
-            "boxes": "You rummage through your boxes, but most of it is office supplies and computer accessories. There's also a loose battery in the bottom of one of the boxes.",
+            "boxes": "conditional",
             "desk": "It's a simple desk, without any drawers or extra shelves. But it does the job.",
             "bookcase": "One of the things you liked about this house was the huge built-in bookcase here. You're not sure where exactly the movers put your boxes of books, but you were looking forward to organizing your new library... if you can just get through tonight.",
             "battery": "It looks like a standard C cell battery."
         },
         "Hide": {
             "desk": "You cram yourself into the space under the desk. You almost can feel the house shaking in the wind of the storm... but maybe you're just imagining it."
-        },
-        "Take": {
-            "battery": "You take the battery from the box."
         },
         "Use": {
             "switch": "No luck. The lights won't turn on."
@@ -36,7 +43,7 @@
             "switch": "No luck. The lights won't turn on."
         },
         "Open": {
-            "boxes": "You rummage through your boxes, but most of it is office supplies and computer accessories. There's also a loose battery in the bottom of one of the boxes.",
+            "boxes": "conditional",
             "desk": "It's a simple desk, without any drawers or extra shelves. But it does the job."
         }
     }
