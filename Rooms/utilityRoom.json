@@ -23,6 +23,7 @@
         },
         "flashlight": {
             "triggerSequence": ["shelves", "flashlight"],
+            "triggerVerbs": [["Examine"], ["Take"]],
             "loop": "False",
             "type": "feature",
             "0": "",
