@@ -300,10 +300,10 @@ class Game:
                     self.itemStorage.append(item)
                     break
                 for room in self.rooms:
-                    if room == location and visible:
+                    if room == location[i] and visible:
                         room.addVisibleItem(item)
                         break
-                    elif room == location and not visible:
+                    elif room == location[i] and not visible:
                         room.addHiddenItem(item)
                         break
 
