@@ -1,6 +1,14 @@
 {
-    "ladder": {
-        "location": ["garage"],
+    "battery": {
+        "location": ["masterBedroom", "secondBedroom"],
+        "visible": "False"
+    },
+    "canOpener": {
+        "location": ["kitchen"],
+        "visible": "False"
+    },
+    "catFood": {
+        "location": ["storage"],
         "visible": "True"
     },
     "flashlight": {
@@ -15,25 +23,13 @@
         "location": ["storage"],
         "visible": "True"
     },
-    "battery": {
-        "location": ["masterBedroom", "secondBedroom"],
-        "visible": "False"
-    },
     "key": {
         "location": ["familyRoom"],
         "visible": "False"
     },
-    "canOpener": {
-        "location": ["kitchen"],
-        "visible": "False"
-    },
-    "tinCan": {
-        "location": ["basement"],
+    "ladder": {
+        "location": ["garage"],
         "visible": "True"
-    },
-    "silverBell": {
-        "location": ["diningRoom"],
-        "visible": "False"
     },
     "polaroid1": {
         "location": ["upperHall"],
@@ -46,5 +42,13 @@
     "polaroid3": {
         "location": ["attic"],
         "visible": "False"
+    },
+    "silverBell": {
+        "location": ["diningRoom"],
+        "visible": "False"
+    },
+    "tinCan": {
+        "location": ["basement"],
+        "visible": "True"
     }
 }
