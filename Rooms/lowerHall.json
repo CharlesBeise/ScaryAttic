@@ -6,6 +6,7 @@
     "conditionals": {
         "shadow": {
             "triggerSequence": ["shadow"],
+            "triggerVerbs": [["Examine"]],
             "loop": "False",
             "type": "room",
             "0": "There's a dark shadow in the corner that looks uncomfortably... human-shaped.",

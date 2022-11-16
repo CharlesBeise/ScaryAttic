@@ -36,21 +36,24 @@ class Room:
                 try:
                     name = key
                     seq = val['triggerSequence']
+                    verbs = val['triggerVerbs']
                     loop = val['loop']
                     type = val['type']
                     descriptions = []
 
                     # Get all step descriptions
-                    for i in range(len(val) - 3):
+                    for i in range(len(val) - 4):
                         descriptions.append(val[str(i)])
                 except (KeyError, ValueError):
                     print(
                         f"Error building room conditionals: '{self.name}'")
-                    name, seq, loop, type, descriptions = "", [], "", "", []
+                    name, seq, verbs, loop, type, descriptions = "", [], [], \
+                                                                 "", "", []
 
                 self.conditions.append(Cond(
                     name,
                     seq,
+                    verbs,
                     loop,
                     type,
                     descriptions))
@@ -159,7 +162,7 @@ class Room:
 
         return tempStr
 
-    def triggerCondition(self, name):
+    def triggerConditionRoom(self, name, verb):
         """
         Call this method to move a named condition to its next step.
         Input "name" should be a string for the condition being triggered.
@@ -168,26 +171,33 @@ class Room:
 
         # If the condition matches one of our conditions, try to trigger it
         for condition in self.conditions:
-            if name == condition.trigger:
-                condition.triggerCondition(name)
-                conditionFound = True
+            if name == condition.trigger and verb in condition.triggerVerbs:
+                if condition.triggerCondition(name):
+                    conditionFound = True
 
         # This small block of code is a work in progress and will
         # probably change later...
         # Unlocks items when necessary
         if conditionFound:
-            if self.name == "masterBedroom" and "box" in name:
-                self.unlockItem("battery")
-            elif self.name == "utilityRoom" and "shelves" in name:
-                self.unlockItem("flashlight")
-            elif self.name == "secondBedroom" and "box" in name:
-                self.unlockItem("battery")
-            elif self.name == "upperHall" and "painting" in name:
-                self.unlockItem("polaroid1")
-            elif self.name == "kitchen" and "drawer" in name:
-                self.unlockItem("canOpener")
-            elif self.name == "kitchen" and "cabinet" in name:
-                self.unlockItem("polaroid2")
+            self.checkUnlock(name, verb)
+
+    def checkUnlock(self, name, verb):
+        """
+        Temporary way of unlocking items
+        """
+        if self.name == "masterBedroom" and "box" in name:
+            self.unlockItem("battery")
+        elif self.name == "utilityRoom" and "shelves" in name:
+            self.unlockItem("flashlight")
+        elif self.name == "secondBedroom" and "box" in name:
+            self.unlockItem("battery")
+        elif self.name == "upperHall" and "painting" in name and verb in \
+                ["Shake", "Flip", "Peel"]:
+            self.unlockItem("polaroid1")
+        elif self.name == "kitchen" and "drawer" in name:
+            self.unlockItem("canOpener")
+        elif self.name == "kitchen" and "cabinet" in name:
+            self.unlockItem("polaroid2")
 
     def lock(self):
         """
@@ -374,12 +384,16 @@ class Room:
         if response == "conditional":
             # Look for the condition and get its current description
             for cond in self.conditions:
-                if cond.name == feature:
+                # Only the specified verbs are allowed to get the next
+                # description, however "Examine" is always able to get the
+                # description
+                if cond.name == feature and \
+                        (verb == "Examine" or verb in cond.triggerVerbs):
                     response = cond.getDescription()
 
         # Trigger any conditions with this interaction.
         # If there is no valid trigger, this should do nothing.
-        self.triggerCondition(feature)
+        self.triggerConditionRoom(feature, verb)
 
         # Failure or empty descriptions provide an error
         if response is None or response == "" or response == "conditional":

@@ -10,16 +10,18 @@ class Conditional:
        description or a feature description.
     Input "descriptions" takes a list of descriptions per step.
     """
-    def __init__(self, name, seq, loop, type, descriptions):
+    def __init__(self, name, seq, verbs, loop, type, descriptions):
         # The name of the condition
         self.name = name
 
         # List containing full trigger sequence
         self.seq = seq
+        self.verbs = verbs
 
         # Attribute "trigger" is the current name of this condition,
         # which is required to proceed to the next step.
         self.trigger = self.seq[0]
+        self.triggerVerbs = self.verbs[0]
 
         # Loop attribute determines if this is a condition that can
         # toggle back and forth (True) or if it only progresses forward (False)
@@ -57,30 +59,34 @@ class Conditional:
         Use this to move the condition's progress forward.
         """
         # If needed, increment to the next trigger
-        self.nextTrigger()
+        result = self.nextTrigger()
 
         # print(f"Incrementing to condition: {self.trigger}")
 
         # If this condition loops, it will go back around to step 0 at the
         # end of its steps
-        if self.loop and self.currentStep == (self.totalSteps - 1):
+        if self.loop and self.currentStep >= (self.totalSteps - 1):
             self.currentStep = 0
-            return 0
-        # Conditions that do not loop will STOP at the end of their steps
-        elif not self.loop and self.currentStep == (self.totalSteps - 1):
-            return 0
-        # All other cases increment normally
-        else:
+        elif self.loop:
             self.currentStep += 1
+        # If this condition has not reached its final step yet
+        elif not self.loop and self.currentStep < (self.totalSteps - 1):
+            self.currentStep += 1
+
+        return result
 
     def nextTrigger(self):
         """
         This function increments the trigger word for the condition.
         """
         # If there are more triggers in line, set the next trigger
-        if self.trigger != self.seq[-1]:
-            index = self.seq.index(self.trigger)
+        index = self.seq.index(self.trigger)
+        if index != len(self.seq) - 1:
             self.trigger = self.seq[index + 1]
+            self.triggerVerbs = self.verbs[index + 1]
+            return True
+        else:
+            return False
 
     def setStep(self, name, step):
         """

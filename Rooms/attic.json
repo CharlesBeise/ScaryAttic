@@ -6,6 +6,7 @@
     "conditionals": {
         "chest": {
             "triggerSequence": ["chest", "key", "polaroid"],
+            "triggerVerbs": [["Examine"], ["Use", "Open"], ["Take"]],
             "loop": "False",
             "type": "room",
             "0": "",
@@ -22,14 +23,10 @@
             "box": "The box contains a bunch of thick coats, boots, scarves, and gloves.",
             "clothes": "Just a bunch of thick coats, boots, scarves, and gloves.",
             "table": "It's an engraved table with a mirror on top. The whole thing is painted white.",
-            "chest": "It's a sturdy chest with a padlock on the front."
+            "chest": "conditional"
         },
         "Open": {
-            "chest": {
-                "locked": "It's a sturdy chest with a padlock. It won't open.",
-                "unlocked": "There's nothing in here except a Polaroid.",
-                "empty": "There's nothing in here."
-            }
+            "chest": "conditional"
         },
         "Use": {
             "key": "IMPLEMENT HOW KEY AND CHEST WILL INTERACT"

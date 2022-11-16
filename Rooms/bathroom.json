@@ -6,6 +6,7 @@
     "conditionals": {
         "cabinet": {
             "triggerSequence": ["cabinet"],
+            "triggerVerbs": [["Examine","Open"]],
             "loop": "False",
             "type": "room",
             "0": "There's a medicine cabinet above the sink.",

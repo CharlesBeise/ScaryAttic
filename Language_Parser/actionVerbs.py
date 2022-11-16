@@ -106,13 +106,13 @@ def take(info):
         options = ["polaroid1", "polaroid2", "polaroid3"]
         for i in range(len(options)):
             result = room.removeAccessibleItem(options[i])
-            room.triggerCondition(item)
+            room.triggerConditionRoom(item, "Take")
             if result:
                 item = options[i]
                 break
     else:
         result = room.removeAccessibleItem(item)
-        room.triggerCondition(item)
+        room.triggerConditionRoom(item, "Take")
 
     if result:
         player.addInventory(result)
@@ -326,7 +326,16 @@ def listen(info):
 
 
 def use(info):
-    print("Using...")
+    if len(info["Items"]) == 0:
+        print(errorString)
+        return
+    player = info["Player"]
+    item = info["Items"][0]
+    room = player.getLocation()
+    if verbHelper(item, player, room, "Use"):
+        room.triggerConditionRoom(item, "Use")
+        return
+    print(room.verbResponses("Use", item))
 
 
 def goStairsHelper(roomTarget, currentRoomName):

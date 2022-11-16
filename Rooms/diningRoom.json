@@ -6,6 +6,7 @@
     "conditionals": {
         "wallpaper": {
             "triggerSequence": ["wallpaper", "hole", "silverBell"],
+            "triggerVerbs": [["Peel"], ["Examine"], ["Take"]],
             "loop": "False",
             "type": "room",
             "0": "There's a piece of wallpaper curling up on the far side of the room.",
@@ -23,7 +24,7 @@
             "wallpaper": "It's a flap of loose wallpaper. It was like that when you bought the place.",
             "hole": "You look in the hole and can see a glint coming from a tiny silver bell.",
             "emptyHole": "You look in the hole, but there's nothing in it.",
-            "silverBell": "It's a small silver bell."
+            "silverBell": "conditional"
         },
         "Take": {
             "silverBell": "You pull the bell out of the hole and slip it into your pocket."
