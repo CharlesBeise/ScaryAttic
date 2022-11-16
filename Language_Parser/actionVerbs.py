@@ -336,7 +336,8 @@ def goStairsHelper(roomTarget, currentRoomName):
     room has no stairs, then returns None.
     """
     stairsDict = {
-        "upperHall": {"upstairs": None, "downstairs": "lowerHall"},
+        "attic": {"upstairs": None, "downstairs": "upperHall"},
+        "upperHall": {"upstairs": "attic", "downstairs": "lowerHall"},
         "lowerHall": {"upstairs": "upperHall", "downstairs": "basement"},
         "basement": {"upstairs": "lowerHall", "downstairs": None}
     }
