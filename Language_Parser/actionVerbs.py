@@ -272,10 +272,10 @@ def inventory(info):
              "-------------------\n"
     content = ""
     for item in info["Player"].getInventory():
-        content = content + "- " + item.getName()
+        content = content + "- " + item.getName() + "\n"
 
     if content != "":
-        print(header + content)
+        print(header + content[:-1])
     else:
         print(header + "Empty")
 
