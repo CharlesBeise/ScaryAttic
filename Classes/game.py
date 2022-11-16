@@ -324,12 +324,14 @@ class Game:
 
     def removeFromItemStorage(self, item):
         """
-        Removes an Item from game storage.
-        Returns True if successful, False if not.
+        Take an item string name and tries to remove that item from storage.
+        Returns the item if successful, False if not.
         """
-        if item in self.itemStorage:
-            self.itemStorage.append(item)
-            return True
+        for item in self.itemStorage:
+            if itemName == item.name:
+                self.itemStorage.remove(item)
+                print(f"Removed {item.name} from storage")
+                return item
         return False
 
     def getAllAccessibleItems(self):
