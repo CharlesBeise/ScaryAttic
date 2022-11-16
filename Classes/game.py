@@ -293,17 +293,17 @@ class Game:
                 visible = True
 
             # Create an instance for each location
-            for i in range(len(location)-1):
+            for loc in location:
                 item = Item(file)
                 # Store it
-                if location[i] == "storage":
+                if loc == "storage":
                     self.itemStorage.append(item)
                     break
                 for room in self.rooms:
-                    if room == location[i] and visible:
+                    if room == loc and visible:
                         room.addVisibleItem(item)
                         break
-                    elif room == location[i] and not visible:
+                    elif room == loc and not visible:
                         room.addHiddenItem(item)
                         break
 
