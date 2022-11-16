@@ -371,7 +371,7 @@ def goStairsHelper(roomTarget, currentRoomName):
     return None
 
 
-def goLockedHelper(destination, currentRoom):
+def goLockedHelper(destination):
     """
     Helper function prints the appropriate response to the player
     attempting to enter a locked room. Response depends on destination.
