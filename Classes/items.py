@@ -17,6 +17,12 @@ class Item:
         self.itemInteractions = data["itemInteractions"]
         self.verbInteractions = data["verbInteractions"]
 
+        # Items without ASCII art are just assigned an empty string
+        self.image = ""
+        if "polaroid" in self.name:
+            self.image = self.readImageFromFile()
+            print(f"Image for {self.name}:\n{self.image}")
+
     def getName(self):
         """
         This function returns the Item's name
@@ -28,6 +34,10 @@ class Item:
         This function returns the Item description
         """
         return self.description
+        if self.image != "":
+            return self.image + "\n" + self.description
+        else:
+            return self.description
 
     def getSecondDescription(self):
         """
@@ -61,6 +71,21 @@ class Item:
         except KeyError:
             pass
         return response
+
+    def getImage(self):
+        """
+        This function returns the item's ASCII art string, when applicable
+        """
+        return self.image
+
+    def readImageFromFile(self):
+        """
+        Gets ASCII art for this item from file and saves it to
+        the image attribute. Returns the image as a string.
+        """
+        with open("Art/" + self.name + ".txt") as imageFile:
+            image = imageFile.read()
+            return image
 
     def __eq__(self, other):
         """Checking a comparison"""

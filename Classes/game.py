@@ -70,6 +70,13 @@ class Game:
         """
         return self.running
 
+    def getImage(self, filename):
+        """
+        Returns ASCII art from a given file name.
+        """
+        with open("../Art/" + filename + ".txt") as imageFile:
+            return imageFile.read()
+
     def titleScreen(self):
         """
         Displays game title screen.
@@ -80,10 +87,12 @@ class Game:
         dir = dir.replace("Classes", "Narrative")
         os.chdir(dir)
 
-        # Open title screen file and print title screen
-        with open("../Narrative/titleScreen.txt") as titleFile:
-            for line in titleFile.readlines():
-                print(line.rstrip())
+        welcome = "Welcome to Scary Attic: A Text-Based Adventure Game!"
+        titleImage = self.getImage("titleScreen")
+        houseImage = self.getImage("introHouse")
+
+        print(f"{houseImage}\n{titleImage}\n"
+              f"          {welcome}\n")
 
     def displayStartMessages(self):
         """
@@ -279,7 +288,6 @@ class Game:
         """
         with open("Items/defaultLocations.json") as f:
             itemDict = json.load(f)
-        f.close()
 
         # Open the item's file
         for itemName, value in itemDict.items():
