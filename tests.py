@@ -166,7 +166,7 @@ class TestCase(unittest.TestCase):
         validVerbs = [
             "Look", "Look at", "Examine", "Go", "Exit", "Take", "Pick up",
             "Help", "Inventory", "Savegame", "Loadgame", "Open", "Close",
-            "Hide", "Listen", "Peel", "Pull", "Use", "Drop" ,"Leave"
+            "Hide", "Listen", "Peel", "Pull", "Use", "Drop", "Leave"
             "Eat", "Shake", "Ring", "Flip"
             ]
         # Verbs the game doesn't recognize
