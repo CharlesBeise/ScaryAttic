@@ -21,7 +21,6 @@ class Item:
         self.image = ""
         if "polaroid" in self.name:
             self.image = self.readImageFromFile()
-            print(f"Image for {self.name}:\n{self.image}")
 
     def getName(self):
         """
