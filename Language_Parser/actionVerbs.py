@@ -418,8 +418,8 @@ def batteryFlashlight(player, game, itemData1, itemData2):
     removeOldItem(player, itemData2["object"], itemData2["location"])
 
     # If the flashlight is still upgradable, get the upgrade name
-    if itemData2["itemIndex"] < numFlashlights:
-        upgradeIndex = str(itemData2["itemIndex"] + 1)
+    if itemData2["index"] < numFlashlights:
+        upgradeIndex = str(itemData2["index"] + 1)
 
         # Place the upgrade back where the old one was
         upgrade = game.removeFromItemStorage(
@@ -545,10 +545,10 @@ def getItemDataForUse(player, itemName):
     digits = [int(i) for i in itemUseData["object"].name if i.isdigit()]
     try:
         itemIndex = int("".join(str(i) for i in digits))
-        itemUseData["itemIndex"] = itemIndex
+        itemUseData["index"] = itemIndex
     # Sets step to 1 if it doesn't exist
     except ValueError:
-        itemUseData["itemIndex"] = 1
+        itemUseData["index"] = 1
 
     return itemUseData
 
