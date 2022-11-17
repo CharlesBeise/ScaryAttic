@@ -201,8 +201,10 @@ class TestCase(unittest.TestCase):
                     results = [verbTarget, targetVerb, verb, target]
 
                     for res in results:
-                        self.assertIsInstance(res, str, f"{res} is not String")
-                        self.assertNotEqual(res, "", f"{res} is empty String")
+                        self.assertIsInstance(
+                            randomStr(res), str, f"{res} is not String")
+                        self.assertNotEqual(
+                            randomStr(res), "", f"{res} is empty String")
 
     def test_attic(self):
         pass
