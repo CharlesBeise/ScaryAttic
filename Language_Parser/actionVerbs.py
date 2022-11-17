@@ -2,7 +2,6 @@ __all__ = ['examine', 'take', 'inventory', 'drop', 'hide', 'help',
            'listen', 'peel', 'use', 'go', 'openVerb', 'look', 'eat',
            'savegame', 'loadgame', 'close', 'shake', 'flip']
 
-
 """
 All functions take one parameter "info", which is a dict object containing the
 folowing:
@@ -354,7 +353,7 @@ def placeNewItem(player, item, location):
 def combineItemAndFeature(player, item, feature):
     """
     Helper function for 'useHandler'.
-    Takes player and game data, and two strings of the item and feature names.
+    Takes player, and two strings of the item and feature names.
     Returns None if the combination fails.
     """
     # Since order of words doesn't matter, choose an order for processing
@@ -380,8 +379,8 @@ def combineItemAndFeature(player, item, feature):
         # Case for "catFood", "dish"
         if {item, feature} == {"catFood", "dish"} and currentRoom == "porch":
             # Remove catFood from inventory
-            removeOldItem(player, itemData[1], itemData[2])
-            # Call 'use' description
+            removeOldItem(player, itemData["itemObject"], itemData["location"])
+            # TODO: Call 'use' description
 
             # Trigger condition
             currentRoom.triggerCondition(feature, "Use")
@@ -398,11 +397,11 @@ def canOpenerCatFood(player, game, itemData2):
     applies the can opener item to the tin can to get cat food.
     """
     # Remove & consume tinCan
-    removeOldItem(player, itemData2[1], itemData2[2])
+    removeOldItem(player, itemData2["itemObject"], itemData2["location"])
 
     # Replace the tinCan with the catFood from Game storage
     catFood = game.removeFromItemStorage("catFood")
-    placeNewItem(player, catFood, itemData2[2])
+    placeNewItem(player, catFood, itemData2["location"])
 
 
 def batteryFlashlight(player, game, itemData1, itemData2):
@@ -413,21 +412,19 @@ def batteryFlashlight(player, game, itemData1, itemData2):
     numFlashlights = 3
 
     # Battery and previous flashlight are removed & consumed
-    removeOldItem(player, itemData1[1], itemData1[2])
+    removeOldItem(player, itemData1["itemObject"], itemData1["location"])
 
     # Remove existing flashlight from its location
-    removeOldItem(player, itemData2[1], itemData2[2])
+    removeOldItem(player, itemData2["itemObject"], itemData2["location"])
 
     # If the flashlight is still upgradable, get the upgrade name
-    if itemData2[3] < numFlashlights:
-        if itemData2[3] != 0:
-            upgradeIndex = str(itemData2[3] + 1)
-        else:
-            upgradeIndex = "2"
+    if itemData2["itemIndex"] < numFlashlights:
+        upgradeIndex = str(itemData2["itemIndex"] + 1)
 
         # Place the upgrade back where the old one was
-        upgrade = game.removeFromItemStorage(itemData2[0] + upgradeIndex)
-        placeNewItem(player, upgrade, itemData2[2])
+        upgrade = game.removeFromItemStorage(
+            itemData2["itemName"] + upgradeIndex)
+        placeNewItem(player, upgrade, itemData2["location"])
         game.removeFromItemStorage(upgrade.name)
 
 
@@ -450,27 +447,25 @@ def combineTwoItems(player, game, item1, item2):
         itemData1 = []  # canOpener doesn't need data
         itemData2 = getItemDataForUse(player, item2)
     else:
-        itemData1 = []
-        itemData2 = []
+        return None
 
     # Look up item interaction response, if there is one
     try:
-        response = itemData2[1].itemInteractions[itemData1[0]]
+        response = itemData2["itemObject"].\
+            itemInteractions[itemData1["itemName"]]
         # If that doesn't get a valid response, try swapping the items
         if response == "None":
-            response = itemData1[1].itemInteractions[itemData2[0]]
+            response = itemData1["itemObject"].\
+                itemInteractions[itemData2["itemName"]]
     except (KeyError, ValueError, IndexError):
-        response = None
+        return None
 
     # Handle valid cases here
-    if response != "None":
-        if {item1, item2} == {"battery", "flashlight"}:
-            batteryFlashlight(player, game, itemData1, itemData2)
-        elif {item1, item2} == {"canOpener", "tinCan"}:
-            canOpenerCatFood(player, game, itemData2)
-        return response
-    else:
-        return None
+    if {item1, item2} == {"battery", "flashlight"}:
+        batteryFlashlight(player, game, itemData1, itemData2)
+    elif {item1, item2} == {"canOpener", "tinCan"}:
+        canOpenerCatFood(player, game, itemData2)
+    return response
 
 
 def isItem(itemName, allItems):
@@ -522,37 +517,38 @@ def getItemDataForUse(player, itemName):
     roomVis = player.getLocation().getVisibleItems()
     roomDrop = player.getLocation().getDroppedItems()
 
-    # "itemUseData" list will hold, in this order:
-    # [0] itemName (str): the item name provided by player
-    # [1] itemObject (Item): the actual Item instance
-    # [2] location (str): "inv", "roomVis", or "roomDrop"
-    # [3] itemIndex (int): the current index of an item with multiple modes
-    itemUseData = [itemName]
+    # "itemUseData" dict will hold, in this order:
+    # itemName (str): the item name provided by player
+    # itemObject (Item): the actual Item instance
+    # location (str): "inv", "roomVis", or "roomDrop"
+    # itemIndex (int): the current index of an item with multiple modes
+    itemUseData = {"itemName": itemName}
 
     # Locate item object
     for item in inv:
         if itemName == item.name:
-            itemUseData.append(item)
-            itemUseData.append("inv")
+            itemUseData["itemObject"] = item
+            itemUseData["location"] = "inv"
             break
     for item in roomVis:
         if itemName == item.name:
-            itemUseData.append(item)
-            itemUseData.append("roomVis")
+            itemUseData["itemObject"] = item
+            itemUseData["location"] = "roomVis"
             break
     for item in roomDrop:
         if itemName == item.name:
-            itemUseData.append(item)
-            itemUseData.append("roomDrop")
+            itemUseData["itemObject"] = item
+            itemUseData["location"] = "roomDrop"
             break
 
     # Get step index for the current item (count starts with 1)
-    itemIndex = [int(i) for i in itemUseData[1].name if i.isdigit()]
-    if itemIndex:
-        itemUseData.append(itemIndex)
+    digits = [int(i) for i in itemUseData["itemObject"].name if i.isdigit()]
+    try:
+        itemIndex = int("".join(str(i) for i in digits))
+        itemUseData["itemIndex"] = itemIndex
     # Sets step to 1 if it doesn't exist
-    else:
-        itemUseData.append(1)
+    except ValueError:
+        itemUseData["itemIndex"] = 1
 
     return itemUseData
 
