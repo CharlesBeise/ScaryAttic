@@ -1,14 +1,8 @@
 import fnmatch
 import os
 import random
-# import sys
 import unittest
-# from io import StringIO
 from Classes.game import Game
-
-
-# from Classes.player import Player
-# import main
 
 
 def randomSpaces(s):
@@ -162,6 +156,53 @@ class TestCase(unittest.TestCase):
                 self.assertTrue(room.isValidExit(randDir),
                                 f"{randDir} should be a "
                                 f"valid exit in {room.name}")
+
+    def test_roomVerbs(self):
+        """
+        Make sure all rooms return a valid and non-empty response string
+        with function verbResponses.
+        """
+        # Verbs the game should recognize
+        validVerbs = [
+            "Look", "Look at", "Examine", "Go", "Exit", "Take", "Pick up",
+            "Help", "Inventory", "Savegame", "Loadgame", "Open", "Close",
+            "Hide", "Listen", "Peel", "Pull", "Use", "Drop" ,"Leave"
+            "Eat", "Shake", "Ring", "Flip"
+            ]
+        # Verbs the game doesn't recognize
+        invalidVerbs = [
+            "Sneeze", "Kick", "Catch"
+            ]
+        # Items that exist
+        validItems = [
+            "battery", "canOpener", "catFood", "flashlight", "key", "ladder",
+            "polaroid1", "polaroid2", "polaroid3", "silverBell", "tinCan"
+            ]
+        # Room features that exist
+        validFeatures = [
+            "window", "wall", "boxes", "cabinet"
+            ]
+        # Items/features that do not exist
+        invalidTargets = [
+            "cat", "dog", "paper"
+            ]
+
+        verbs = validVerbs + invalidVerbs
+        targets = validItems + validFeatures + invalidTargets
+
+        # Build tests
+        for verb in verbs:
+            for target in targets:
+                for room in self.testGame.rooms:
+                    verbTarget = room.verbResponses(verb, target)
+                    targetVerb = room.verbResponses(target, verb)
+                    verb = room.verbResponses(verb, "")
+                    target = room.verbResponses(target, "")
+                    results = [verbTarget, targetVerb, verb, target]
+
+                    for res in results:
+                        self.assertIsInstance(res, str, f"{res} is not String")
+                        self.assertNotEqual(res, "", f"{res} is empty String")
 
     def test_attic(self):
         pass
