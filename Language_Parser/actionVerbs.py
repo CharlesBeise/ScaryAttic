@@ -379,7 +379,7 @@ def combineItemAndFeature(player, item, feature):
         # Case for "catFood", "dish"
         if {item, feature} == {"catFood", "dish"} and currentRoom == "porch":
             # Remove catFood from inventory
-            removeOldItem(player, itemData["itemObject"], itemData["location"])
+            removeOldItem(player, itemData["object"], itemData["location"])
             # TODO: Call 'use' description
 
             # Trigger condition
@@ -397,7 +397,7 @@ def canOpenerCatFood(player, game, itemData2):
     applies the can opener item to the tin can to get cat food.
     """
     # Remove & consume tinCan
-    removeOldItem(player, itemData2["itemObject"], itemData2["location"])
+    removeOldItem(player, itemData2["object"], itemData2["location"])
 
     # Replace the tinCan with the catFood from Game storage
     catFood = game.removeFromItemStorage("catFood")
@@ -412,10 +412,10 @@ def batteryFlashlight(player, game, itemData1, itemData2):
     numFlashlights = 3
 
     # Battery and previous flashlight are removed & consumed
-    removeOldItem(player, itemData1["itemObject"], itemData1["location"])
+    removeOldItem(player, itemData1["object"], itemData1["location"])
 
     # Remove existing flashlight from its location
-    removeOldItem(player, itemData2["itemObject"], itemData2["location"])
+    removeOldItem(player, itemData2["object"], itemData2["location"])
 
     # If the flashlight is still upgradable, get the upgrade name
     if itemData2["itemIndex"] < numFlashlights:
@@ -423,7 +423,7 @@ def batteryFlashlight(player, game, itemData1, itemData2):
 
         # Place the upgrade back where the old one was
         upgrade = game.removeFromItemStorage(
-            itemData2["itemName"] + upgradeIndex)
+            itemData2["name"] + upgradeIndex)
         placeNewItem(player, upgrade, itemData2["location"])
         game.removeFromItemStorage(upgrade.name)
 
@@ -451,12 +451,12 @@ def combineTwoItems(player, game, item1, item2):
 
     # Look up item interaction response, if there is one
     try:
-        response = itemData2["itemObject"].\
-            itemInteractions[itemData1["itemName"]]
+        response = itemData2["object"].\
+            itemInteractions[itemData1["name"]]
         # If that doesn't get a valid response, try swapping the items
         if response == "None":
-            response = itemData1["itemObject"].\
-                itemInteractions[itemData2["itemName"]]
+            response = itemData1["object"].\
+                itemInteractions[itemData2["name"]]
     except (KeyError, ValueError, IndexError):
         return None
 
@@ -518,31 +518,31 @@ def getItemDataForUse(player, itemName):
     roomDrop = player.getLocation().getDroppedItems()
 
     # "itemUseData" dict will hold, in this order:
-    # itemName (str): the item name provided by player
-    # itemObject (Item): the actual Item instance
+    # name (str): the item name provided by player
+    # object (Item): the actual Item instance
     # location (str): "inv", "roomVis", or "roomDrop"
     # itemIndex (int): the current index of an item with multiple modes
-    itemUseData = {"itemName": itemName}
+    itemUseData = {"name": itemName}
 
     # Locate item object
     for item in inv:
         if itemName == item.name:
-            itemUseData["itemObject"] = item
+            itemUseData["object"] = item
             itemUseData["location"] = "inv"
             break
     for item in roomVis:
         if itemName == item.name:
-            itemUseData["itemObject"] = item
+            itemUseData["object"] = item
             itemUseData["location"] = "roomVis"
             break
     for item in roomDrop:
         if itemName == item.name:
-            itemUseData["itemObject"] = item
+            itemUseData["object"] = item
             itemUseData["location"] = "roomDrop"
             break
 
     # Get step index for the current item (count starts with 1)
-    digits = [int(i) for i in itemUseData["itemObject"].name if i.isdigit()]
+    digits = [int(i) for i in itemUseData["object"].name if i.isdigit()]
     try:
         itemIndex = int("".join(str(i) for i in digits))
         itemUseData["itemIndex"] = itemIndex
