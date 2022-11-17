@@ -32,7 +32,6 @@ class Item:
         """
         This function returns the Item description
         """
-        return self.description
         if self.image != "":
             return self.image + "\n" + self.description
         else:
