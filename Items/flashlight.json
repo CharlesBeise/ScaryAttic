@@ -23,7 +23,7 @@
         "Eat": "None",
         "Flip": "None",
         "Examine": "It's a red plastic flashlight. You've had it for as long as you can remember.",
-        "Take": "You grab the flashlight and turn it on. It isn't working.",
+        "Take": "You grab the flashlight and push the switch. It isn't working.",
         "Peel": "None",
         "Drop": "You set the flashlight down.",
         "Shake": "No good. Still not working."
