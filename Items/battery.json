@@ -1,5 +1,6 @@
 {
     "name": "battery",
+    "inventoryName": "Battery",
     "description": "It looks like a standard C cell battery.",
     "secondaryDescription": "None",
     "itemInteractions": {

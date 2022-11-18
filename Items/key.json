@@ -1,5 +1,6 @@
 {
     "name": "key",
+    "inventoryName": "Key",
     "description": "A small brass key that is old and tarnished.",
     "secondaryDescription": "None",
     "itemInteractions": {

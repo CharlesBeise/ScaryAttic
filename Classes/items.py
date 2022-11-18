@@ -12,6 +12,7 @@ class Item:
         """
         data = json.load(open(itemFile))
         self.name = data["name"]
+        self.inventoryName = data["inventoryName"]
         self.description = data["description"]
         self.secondaryDescription = data["secondaryDescription"]
         self.itemInteractions = data["itemInteractions"]
@@ -27,6 +28,13 @@ class Item:
         This function returns the Item's name
         """
         return self.name
+
+    def getInventoryName(self):
+        """
+        This function returns the name to be used for the Item in the player's
+        inventory
+        """
+        return self.inventoryName
 
     def getDescription(self):
         """

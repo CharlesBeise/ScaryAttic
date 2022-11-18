@@ -1,5 +1,6 @@
 {
     "name": "canOpener",
+    "inventoryName": "Can Opener",
     "description": "A basic can opener for opening cans of food. Nothing fancy, but it works.",
     "secondaryDescription": "None",
     "itemInteractions": {

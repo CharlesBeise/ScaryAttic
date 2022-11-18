@@ -1,5 +1,6 @@
 {
     "name": "flashlight3",
+    "inventoryName": "Flashlight",
     "description": "It's a red plastic flashlight, you've had it for as long as you can remember. It gives off a steady light.",
     "secondaryDescription": "None",
     "itemInteractions": {

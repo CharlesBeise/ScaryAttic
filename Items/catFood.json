@@ -1,5 +1,6 @@
 {
     "name": "catFood",
+    "inventoryName": "Cat Food",
     "description": "An open can of some weird wet brown stuff. It smells like cat food.",
     "secondaryDescription": "None",
     "itemInteractions": {

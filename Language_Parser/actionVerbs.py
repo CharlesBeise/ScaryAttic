@@ -136,7 +136,7 @@ def drop(info):
     player = game.getPlayer()
     room = player.getLocation()
     for item in info["Items"]:
-        if item == "polaroid":
+        if item in "polaroid":
             item = identifyPolaroid(player)
             if item is None:
                 print("You don't have that.")
@@ -147,6 +147,8 @@ def drop(info):
                 player.removeInventory(item)
                 room.addDroppedItem(possession)
                 return
+    print(errorString)
+    return
 
 
 def verbHelper(item, player, room, option):
@@ -272,7 +274,7 @@ def inventory(info):
              "-------------------\n"
     content = ""
     for item in info["Player"].getInventory():
-        content = content + "- " + item.getName() + "\n"
+        content = content + "- " + item.getInventoryName() + "\n"
 
     if content != "":
         print(header + content[:-1])
