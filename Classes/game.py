@@ -118,7 +118,7 @@ class Game:
         # Open narrative file and print new game intro
         with open("../Narrative/newGameIntro.txt") as introFile:
             for line in introFile.read().split('\n'):
-                print(f"{textwrap.fill(line, fill_width)}\n")
+                print(f"{textwrap.fill(line, fillWidth)}\n")
                 time.sleep(1)
         print("                                  *****\n")
 
