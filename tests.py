@@ -194,11 +194,15 @@ class TestCase(unittest.TestCase):
         for verb in verbs:
             for target in targets:
                 for room in self.testGame.rooms:
-                    verbTarget = room.verbResponses(verb, target)
-                    targetVerb = room.verbResponses(target, verb)
-                    verb = room.verbResponses(verb, "")
-                    target = room.verbResponses(target, "")
-                    results = [verbTarget, targetVerb, verb, target]
+                    testVT = room.verbResponses(verb, target)
+                    testTV = room.verbResponses(target, verb)
+                    testV1 = room.verbResponses(verb, "")
+                    testT1 = room.verbResponses(target, "")
+                    testV2 = room.verbResponses("", verb)
+                    testT2 = room.verbResponses("", target)
+                    testEmpty = room.verbResponses(None, None)
+                    results = [testVT, testTV, testV1, testT1, testV2,
+                               testT2, testEmpty]
 
                     for res in results:
                         self.assertIsInstance(
