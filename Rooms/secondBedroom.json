@@ -6,7 +6,7 @@
     "conditionals": {
         "boxesRoom": {
             "triggerSequence": ["boxes", "battery"],
-            "triggerVerbs": [["Examine", "Open"], ["Take"]],
+            "triggerVerbs": [["Examine", "Open"], ["Take", "Use"]],
             "loop": "False",
             "type": "room",
             "0": "You left some moving boxes in here earlier today, but the room is mostly empty otherwise.",
@@ -15,7 +15,7 @@
         },
         "boxes": {
             "triggerSequence": ["boxes", "battery"],
-            "triggerVerbs": [["Examine", "Open"], ["Take"]],
+            "triggerVerbs": [["Examine", "Open"], ["Take", "Use"]],
             "loop": "False",
             "type": "feature",
             "0": "You rummage through your boxes, but most of it is office supplies and computer accessories. There's also a loose battery in the bottom of one of the boxes.",

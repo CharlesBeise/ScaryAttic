@@ -8,7 +8,7 @@ from .room import Room
 from .items import Item
 
 # Width of the text on screen
-fill_width = 75
+fillWidth = 75
 
 
 class Game:
@@ -120,6 +120,7 @@ class Game:
             for line in introFile.read().split('\n'):
                 print(f"{textwrap.fill(line, fill_width)}\n")
                 time.sleep(1)
+        print("                                  *****\n")
 
         self.displayStartMessages()
         self.getPlayer().getLocation().setVisited()
