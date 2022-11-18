@@ -376,7 +376,7 @@ class Room:
             result = self.removeDroppedItem(itemName)
         return result
 
-    def verbResponses(self, verb, feature):
+    def verbResponses(self, verb, feature, trigger=True):
         """
         This function is called when a player tries to perform an action on
         this Item object
@@ -399,7 +399,8 @@ class Room:
 
         # Trigger any conditions with this interaction.
         # If there is no valid trigger, this should do nothing.
-        self.triggerConditionRoom(feature, verb)
+        if trigger:
+            self.triggerConditionRoom(feature, verb)
 
         # Failure or empty descriptions provide an error
         if response is None or response == "" or response == "conditional":
