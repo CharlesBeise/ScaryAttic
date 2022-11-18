@@ -50,3 +50,12 @@ class Player:
             return True
         else:
             return False
+
+    def hasFlashlight(self):
+        """
+        Returns True or False if player has a working flashlight.
+        (Needs flashlight3: flashlight + both batteries)
+        """
+        if "flashlight3" in self.inventory:
+            return True
+        return False

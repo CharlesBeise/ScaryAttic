@@ -351,6 +351,28 @@ class Game:
         room = self.player.getLocation().getAccessibleItems()
         return inventory + room
 
+    def lockRoomByName(self, roomName):
+        """
+        Locks a room with the given name.
+        Returns True if successful, False if not.
+        """
+        for room in self.rooms:
+            if room == roomName:
+                room.lock()
+                return True
+        return False
+
+    def unlockRoomByName(self, roomName):
+        """
+        Unlocks a room with the given name.
+        Returns True if successful, False if not.
+        """
+        for room in self.rooms:
+            if room == roomName:
+                room.unlock()
+                return True
+        return False
+
     def printGameState(self):
         """
         Prints all Room and Player attributes to console for testing
