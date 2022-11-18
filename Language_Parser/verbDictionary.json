@@ -1,6 +1,6 @@
 {
   "look": ["look"],
-  "examine": ["lookat", "examine", "inspect"],
+  "examine": ["lookat", "lookin", "lookinside", "examine", "inspect"],
   "go": ["go", "exit"],
   "take": ["take", "grab", "pickup"],
   "help": ["help"],

@@ -6,7 +6,7 @@
     "conditionals": {
         "boxesRoom": {
             "triggerSequence": ["boxes", "battery"],
-            "triggerVerbs": [["Examine", "Open"], ["Take"]],
+            "triggerVerbs": [["Examine", "Open"], ["Take", "Use"]],
             "loop": "False",
             "type": "room",
             "0": "There are two moving boxes of stuff underneath the west window.",
@@ -15,7 +15,7 @@
         },
         "boxes": {
             "triggerSequence": ["boxes", "battery"],
-            "triggerVerbs": [["Examine", "Open"], ["Take"]],
+            "triggerVerbs": [["Examine", "Open"], ["Take", "Use"]],
             "loop": "False",
             "type": "feature",
             "0": "There are a couple boxes here filled with a clock, battery, extra bed sheets, and most of your clothes.",
@@ -80,6 +80,7 @@
         },
         "Use": {
             "switch": "The light won't turn on. Looks like the power is still out.",
+            "window": "You're on the second story of the house. You're not going out there.",
             "mattress": "You curl up in your bed, pulling the blankets over yourself. You hear another THUMP from downstairs. You are not going to be able to sleep until you find out what it is."
         }
     }

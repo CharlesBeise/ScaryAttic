@@ -6,6 +6,7 @@
     "conditionals": {
         "dish": {
             "triggerSequence": ["catFood"],
+            "triggerVerbs": [["Use"]],
             "loop": "False",
             "type": "room",
             "0": "A dirty dish sits against the wall that looks like it hasn't been washed in a while.",

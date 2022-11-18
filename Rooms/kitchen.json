@@ -4,19 +4,39 @@
     "shortDescription": "You're in the Kitchen. Cabinets and drawers line the walls. The sink is below the west window. The Lower Hall is to the north, the Dining Room to the east, and the Family Room to the south.",
     "lockRoom": "False",
     "conditionals": {
-        "cabinets": {
+        "cabinetsRoom": {
             "triggerSequence": ["cabinet", "polaroid"],
+            "triggerVerbs": [["Open", "Examine"], ["Take"]],
             "loop": "False",
             "type": "room",
             "0": "Tall cabinets line the walls above the counter.",
             "1": "The cabinets above the counter contain salt, pepper, paper plates, and a Polaroid.",
             "2": "The cabinets above the counter contain salt, pepper, paper plates."
         },
-        "drawers": {
+        "drawersRoom": {
             "triggerSequence": ["drawers", "canOpener"],
+            "triggerVerbs": [["Open", "Examine"], ["Take"]],
             "loop": "False",
             "type": "room",
             "0": "There are several drawers at waist height.",
+            "1": "There are several drawers containing some plastic silverware and a can opener.",
+            "2": "There are several drawers containing some plastic silverware."
+        },
+        "cabinet": {
+            "triggerSequence": ["cabinet", "polaroid"],
+            "triggerVerbs": [["Open", "Examine"], ["Take"]],
+            "loop": "False",
+            "type": "feature",
+            "0": "The cabinets above the counter contain salt, pepper, paper plates, and a Polaroid.",
+            "1": "The cabinets above the counter contain salt, pepper, paper plates, and a Polaroid.",
+            "2": "The cabinets above the counter contain salt, pepper, paper plates."
+        },
+        "drawers": {
+            "triggerSequence": ["drawers", "canOpener"],
+            "triggerVerbs": [["Open", "Examine"], ["Take"]],
+            "loop": "False",
+            "type": "feature",
+            "0": "There are several drawers containing some plastic silverware and a can opener.",
             "1": "There are several drawers containing some plastic silverware and a can opener.",
             "2": "There are several drawers containing some plastic silverware."
         }
@@ -28,22 +48,18 @@
     },
     "verbInteractions": {
         "Examine": {
-            "drawers": "You have a quick look through the drawers in the kitchen. Some plastic silverware and a can opener.",
-            "cabinet": "You search through the kitchen cabinets. There's not much here yet. Salt, pepper, paper plates, and... What's this? A Polaroid photo?",
+            "drawers": "conditional",
+            "cabinet": "conditional",
             "sink": "The faucet is off and the sink is empty.",
             "polaroid": "An old polaroid photo. Weird.",
             "canOpener": "A basic can opener for opening cans of food. Nothing fancy, but it works."
-        },
-        "Take": {
-            "canOpener": "You take the can opener from a drawer.",
-            "polaroid": "You take the polaroid from the cabinets."
         },
         "Use": {
             "sink": "You turn the water on, but nothing happens. You turn it back off."
         },
         "Open": {
-            "drawers": "You have a quick look through the drawers in the kitchen. Some plastic silverware and a can opener.",
-            "cabinet": "You search through the kitchen cabinets. There's not much here yet. Salt, pepper, paper plates, and... What's this? A Polaroid photo?"
+            "drawers": "conditional",
+            "cabinet": "conditional"
         }
     }
 }

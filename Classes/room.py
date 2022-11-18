@@ -2,7 +2,7 @@ import json
 import textwrap
 from .conditional import Conditional as Cond
 
-fill_width = 75
+fillWidth = 75
 
 
 class Room:
@@ -107,7 +107,7 @@ class Room:
         if self.droppedItems:
             desc = desc + self.getItemDescriptions()
 
-        return textwrap.fill(desc, fill_width)
+        return textwrap.fill(desc, fillWidth)
 
     def getShortDescription(self):
         """
@@ -124,7 +124,7 @@ class Room:
         if self.droppedItems:
             desc = desc + self.getItemDescriptions()
 
-        return textwrap.fill(desc, fill_width)
+        return textwrap.fill(desc, fillWidth)
 
     def getConditionalDesc(self):
         """
@@ -149,14 +149,20 @@ class Room:
         This function will describe any items dropped in the room
         which do not normally belong here.
         """
-        tempStr = " You left the "
+        tempStr = "You left the "
 
         for index, item in enumerate(self.droppedItems):
             tempStr = tempStr + item.name
+            listLen = len(self.droppedItems)
 
-            # Add a comma & space between additional items
-            if index != len(self.droppedItems) - 1:
-                tempStr = tempStr + ", "
+            # Add comma/space between additional items
+            if listLen == 2 and index == 0:
+                tempStr = tempStr + " and "
+            elif index != listLen - 1:
+                sep = ", "
+                if listLen > 2 and index == listLen - 2:
+                    sep = ", and "
+                tempStr = tempStr + sep
 
         tempStr = tempStr + " here."
 
@@ -370,7 +376,7 @@ class Room:
             result = self.removeDroppedItem(itemName)
         return result
 
-    def verbResponses(self, verb, feature):
+    def verbResponses(self, verb, feature, trigger=True):
         """
         This function is called when a player tries to perform an action on
         this Item object
@@ -393,13 +399,14 @@ class Room:
 
         # Trigger any conditions with this interaction.
         # If there is no valid trigger, this should do nothing.
-        self.triggerConditionRoom(feature, verb)
+        if trigger:
+            self.triggerConditionRoom(feature, verb)
 
         # Failure or empty descriptions provide an error
         if response is None or response == "" or response == "conditional":
             response = "I'm not sure what you mean. Try something else."
 
-        return textwrap.fill(response, fill_width)
+        return textwrap.fill(response, fillWidth)
 
     # TODO: The following function can be removed later, if desired.
 
@@ -411,7 +418,6 @@ class Room:
         dropItems = ""
         hidItems = ""
         visItems = ""
-        conditions = ""
 
         if self.droppedItems:
             for d in self.droppedItems:
@@ -425,11 +431,6 @@ class Room:
             for v in self.visibleItems:
                 visItems = visItems + v.name + ", "
 
-        if self.conditions:
-            for c in self.conditions:
-                for name in c.names:
-                    conditions = conditions + name + ", "
-
         print(f"######## Room name: {self.name} ########\n"
               f"- Locked? {self.locked}\n"
               f"- Visited? {self.visited}\n"
@@ -438,6 +439,5 @@ class Room:
               f"- Exits: {self.exits}\n"
               f"- Hidden items: {hidItems[:-2]}\n"
               f"- Visible items: {visItems[:-2]}\n"
-              f"- Dropped items: {dropItems[:-2]}\n"
-              f"- Condition triggers: {conditions[:-2]}")
+              f"- Dropped items: {dropItems[:-2]}\n")
         print("")
