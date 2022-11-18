@@ -605,10 +605,7 @@ def use(info):
 
     # Handles "use" on one item (if item2 doesn't exist)
     if numItems == 1:
-        if verbHelper(item1, player, currentRoom, "Use"):
-            currentRoom.triggerConditionRoom(item1, "Use")
-            return
-        print(currentRoom.verbResponses("Use", item1))
+        print(currentRoom.verbResponses("Use", item1, False))
         return
     # Handles "use" on two items with a valid combination word
     elif numItems == 2 and combo:
