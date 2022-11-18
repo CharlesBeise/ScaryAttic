@@ -3,16 +3,16 @@
     "description": "It's a red plastic flashlight, you've had it for as long as you can remember. It still needs one more battery.",
     "secondaryDescription": "None",
     "itemInteractions": {
-        "Ladder": "None",
-        "Flashlight": "None",
-        "Battery": "You slip the second battery into the flashlight. With a flicker, your flashlight comes to life. You let out a small sigh of relief.",
-        "Key": "None",
-        "Can opener": "None",
-        "Tin Can": "None",
-        "Silver Bell": "None",
-        "Combination Photo 1": "None",
-        "Combination Photo 2": "None",
-        "Combination Photo 3": "None"
+        "ladder": "None",
+        "flashlight": "None",
+        "battery": "You slip the second battery into the flashlight. With a flicker, your flashlight comes to life. You let out a small sigh of relief.",
+        "key": "None",
+        "canOpener": "None",
+        "tinCan": "None",
+        "silverBell": "None",
+        "polaroid1": "None",
+        "polaroid2": "None",
+        "polaroid3": "None"
     },
     "verbInteractions": {
         "Open": "You unscrew the cap of the Flashlight. It's still missing one battery.",

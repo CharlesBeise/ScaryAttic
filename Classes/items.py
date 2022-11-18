@@ -70,6 +70,13 @@ class Item:
             image = imageFile.read()
             return image
 
+    def getItemInteraction(self, itemName):
+        """
+        Retrieves a formatted description from the specified
+        item interaction.
+        """
+        return self.itemInteractions[itemName]
+
     def __eq__(self, other):
         """Checking a comparison"""
         if isinstance(other, str):
