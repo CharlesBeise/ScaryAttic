@@ -2,7 +2,6 @@ __all__ = ['examine', 'take', 'inventory', 'drop', 'hide', 'help',
            'listen', 'peel', 'use', 'go', 'openVerb', 'look', 'eat',
            'savegame', 'loadgame', 'close', 'shake', 'flip']
 
-
 """
 All functions take one parameter "info", which is a dict object containing the
 folowing:
@@ -163,7 +162,7 @@ def verbHelper(item, player, room, option):
             else:
                 print(errorString)
             return True
-    if item in room.getAccessibleItems():
+    if item in room.getVisibleItems():
         print("You have to pick it up first.")
         return True
     return False
@@ -325,17 +324,281 @@ def listen(info):
     print(room.verbResponses("Listen", item))
 
 
+def removeOldItem(player, item, location):
+    """
+    Helper function for 'use' and combining objects -
+    removes an Item instance from the specified location.
+    Location should be one of these strings: "inv", "roomVis", "roomDrop"
+    """
+    if location == "inv":
+        player.removeInventory(item)
+    elif location == "roomVis" or location == "roomDrop":
+        player.getLocation().removeAccessibleItem(item)
+
+
+def placeNewItem(player, item, location):
+    """
+    Helper function for 'use' and combining objects -
+    places an instance of the Item in the specified location.
+    Location should be one of these strings: "inv", "roomVis", "roomDrop"
+    """
+    if location == "inv":
+        player.addInventory(item)
+    elif location == "roomVis":
+        player.getLocation().addVisibleItem(item)
+    elif location == "roomDrop":
+        player.getLocation().addVisibleItem(item)
+
+
+def combineItemAndFeature(player, item, feature):
+    """
+    Helper function for 'useHandler'.
+    Takes player, and two strings of the item and feature names.
+    Returns None if the combination fails.
+    """
+    # Since order of words doesn't matter, choose an order for processing
+    if {item, feature} == {"catFood", "dish"}:
+        item = "catFood"
+        feature = "dish"
+        itemData = getItemDataForUse(player, item)
+    else:
+        itemData = []
+
+    currentRoom = player.getLocation()
+
+    # Look up item interaction response, if there is one
+    try:
+        response = currentRoom.verbResponses("Use", item, feature)
+        # If that doesn't get a valid response, try swapping the inputs
+        if response == "None":
+            response = currentRoom.verbResponses("Use", feature, item)
+    except (KeyError, ValueError, IndexError):
+        response = None
+
+    if response != "None":
+        # Case for "catFood", "dish"
+        if {item, feature} == {"catFood", "dish"} and currentRoom == "porch":
+            # Remove catFood from inventory
+            removeOldItem(player, itemData["object"], itemData["location"])
+            # TODO: Call 'use' description
+
+            # Trigger condition
+            currentRoom.triggerCondition(feature, "Use")
+        else:
+            response = "That won't work."
+        return response
+    else:
+        return None
+
+
+def canOpenerCatFood(player, game, itemData2):
+    """
+    Helper function for 'combineTwoItems' -
+    applies the can opener item to the tin can to get cat food.
+    """
+    # Remove & consume tinCan
+    removeOldItem(player, itemData2["object"], itemData2["location"])
+
+    # Replace the tinCan with the catFood from Game storage
+    catFood = game.removeFromItemStorage("catFood")
+    placeNewItem(player, catFood, itemData2["location"])
+
+
+def batteryFlashlight(player, game, itemData1, itemData2):
+    """
+    Helper function for 'combineTwoItems' -
+    applies a battery item to the flashlight item.
+    """
+    numFlashlights = 3
+
+    # Battery and previous flashlight are removed & consumed
+    removeOldItem(player, itemData1["object"], itemData1["location"])
+
+    # Remove existing flashlight from its location
+    removeOldItem(player, itemData2["object"], itemData2["location"])
+
+    # If the flashlight is still upgradable, get the upgrade name
+    if itemData2["index"] < numFlashlights:
+        upgradeIndex = str(itemData2["index"] + 1)
+
+        # Place the upgrade back where the old one was
+        upgrade = game.removeFromItemStorage(
+            itemData2["name"] + upgradeIndex)
+        placeNewItem(player, upgrade, itemData2["location"])
+        game.removeFromItemStorage(upgrade.name)
+
+
+def combineTwoItems(player, game, item1, item2):
+    """
+    Helper function for 'useHandler'.
+    Takes player and game data, and two strings of item names.
+    Returns None if the combination fails.
+    The order of the item1 and item2 does not matter.
+    """
+    # Since order of words doesn't matter, choose an order for processing
+    if {item1, item2} == {"battery", "flashlight"}:
+        item1 = "battery"
+        item2 = "flashlight"
+        itemData1 = getItemDataForUse(player, item1)
+        itemData2 = getItemDataForUse(player, item2)
+    elif {item1, item2} in {"canOpener", "tinCan"}:
+        item1 = "canOpener"
+        item2 = "tinCan"
+        itemData1 = []  # canOpener doesn't need data
+        itemData2 = getItemDataForUse(player, item2)
+    else:
+        return None
+
+    # Look up item interaction response, if there is one
+    try:
+        response = itemData2["object"].\
+            itemInteractions[itemData1["name"]]
+        # If that doesn't get a valid response, try swapping the items
+        if response == "None":
+            response = itemData1["object"].\
+                itemInteractions[itemData2["name"]]
+    except (KeyError, ValueError, IndexError):
+        return None
+
+    # Handle valid cases here
+    if {item1, item2} == {"battery", "flashlight"}:
+        batteryFlashlight(player, game, itemData1, itemData2)
+    elif {item1, item2} == {"canOpener", "tinCan"}:
+        canOpenerCatFood(player, game, itemData2)
+    return response
+
+
+def isItem(itemName, allItems):
+    """
+    Helper function for 'useHandler' - returns boolean based on whether the
+    item is an "item" or a "feature".
+    """
+    if itemName in allItems:
+        return True
+    else:
+        return False
+
+
+def useHandler(player, game, allItems, item1, item2):
+    """
+    Helper function for 'use' - reads the type of items and processes
+    them depending on the type.
+    Returns a response based on the case.
+    """
+    type1 = isItem(item1, allItems)
+    type2 = isItem(item2, allItems)
+
+    # Prevent using something on itself
+    if item1 == item2:
+        response = "You can't use an item on itself."
+    # If one input is an Item, and the other a room feature
+    elif {type1, type2} == {True, False}:
+        response = combineItemAndFeature(player, item1, item2)
+    # If both item1 and item2 are Items
+    elif {type1, type2} == {True, True}:
+        response = combineTwoItems(player, game, item1, item2)
+    # Disallow using a feature on another feature
+    elif {type1, type2} == {False, False}:
+        response = "You can't use that."
+    else:
+        response = errorString
+
+    return response
+
+
+def getItemDataForUse(player, itemName):
+    """
+    Helper function for 'use' - gathers data about an item
+    that the player is trying to use.
+    Takes player and game data, and the item's name string.
+    Returns a list with all the item's necessary data.
+    """
+    inv = player.getInventory()
+    roomVis = player.getLocation().getVisibleItems()
+    roomDrop = player.getLocation().getDroppedItems()
+
+    # "itemUseData" dict will hold, in this order:
+    # name (str): the item name provided by player
+    # object (Item): the actual Item instance
+    # location (str): "inv", "roomVis", or "roomDrop"
+    # itemIndex (int): the current index of an item with multiple modes
+    itemUseData = {"name": itemName}
+
+    # Locate item object
+    for item in inv:
+        if itemName == item.name:
+            itemUseData["object"] = item
+            itemUseData["location"] = "inv"
+            break
+    for item in roomVis:
+        if itemName == item.name:
+            itemUseData["object"] = item
+            itemUseData["location"] = "roomVis"
+            break
+    for item in roomDrop:
+        if itemName == item.name:
+            itemUseData["object"] = item
+            itemUseData["location"] = "roomDrop"
+            break
+
+    # Get step index for the current item (count starts with 1)
+    digits = [int(i) for i in itemUseData["object"].name if i.isdigit()]
+    try:
+        itemIndex = int("".join(str(i) for i in digits))
+        itemUseData["index"] = itemIndex
+    # Sets step to 1 if it doesn't exist
+    except ValueError:
+        itemUseData["index"] = 1
+
+    return itemUseData
+
+
 def use(info):
+    """
+    Action function allows the player to use an item or room feature.
+    """
+    # If no item is provided
     if len(info["Items"]) == 0:
         print(errorString)
         return
+
     player = info["Player"]
-    item = info["Items"][0]
-    room = player.getLocation()
-    if verbHelper(item, player, room, "Use"):
-        room.triggerConditionRoom(item, "Use")
+    game = info["Game"]
+    combo = info["Combination"]
+    currentRoom = player.getLocation()
+    allItems = player.getInventory() + currentRoom.getAccessibleItems()
+
+    # Identify the number of items provided
+    try:
+        item1 = info["Items"][0]
+        item2 = info["Items"][1]
+        numItems = 2
+    except IndexError:
+        item1 = info["Items"][0]
+        item2 = None
+        numItems = 1
+    except (KeyError, ValueError):
+        print("No items found")
+        print(errorString)
         return
-    print(room.verbResponses("Use", item))
+
+    # Handles "use" on one item (if item2 doesn't exist)
+    if numItems == 1:
+        if verbHelper(item1, player, currentRoom, "Use"):
+            currentRoom.triggerConditionRoom(item1, "Use")
+            return
+        print(currentRoom.verbResponses("Use", item1))
+        return
+    # Handles "use" on two items with a valid combination word
+    elif numItems == 2 and combo:
+        response = useHandler(player, game, allItems, item1, item2)
+
+        if response is None:
+            print("That won't work.")
+        else:
+            print(response)
+    else:
+        print(errorString)
 
 
 def goStairsHelper(roomTarget, currentRoomName):

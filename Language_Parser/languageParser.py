@@ -26,9 +26,9 @@ def findCompounds(phrase):
     # (e.g., "pick up, look at, tin can")
     for i in range(len(phrase)):
         for key, value in compoundWords.items():
-            if phrase[i] == value:
+            if phrase[i] in value:
                 if (i > 0) and (phrase[i - 1] == key):
-                    phrase[i - 1] = key + value
+                    phrase[i - 1] = key + phrase[i]
                     phrase[i] = ""
 
     return phrase
