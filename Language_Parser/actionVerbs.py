@@ -151,7 +151,7 @@ def drop(info):
                 return
 
     # If it couldn't be picked up
-    if item in room.getAccessibleItems():
+    if item in room.getVisibleItems():
         print("You have to pick it up first.")
     else:
         print(errorString)
