@@ -88,5 +88,6 @@ class Item:
     def __eq__(self, other):
         """Checking a comparison"""
         if isinstance(other, str):
-            return self.name.lower() == other.lower()
+            return self.name.lower() == other.lower() or \
+                   self.inventoryName.lower() == other.lower()
         return False
