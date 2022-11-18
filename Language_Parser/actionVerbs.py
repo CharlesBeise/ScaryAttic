@@ -135,6 +135,8 @@ def drop(info):
     game = info["Game"]
     player = game.getPlayer()
     room = player.getLocation()
+
+    # Try to pick up the item
     for item in info["Items"]:
         if item == "polaroid":
             item = identifyPolaroid(player)
@@ -147,6 +149,12 @@ def drop(info):
                 player.removeInventory(item)
                 room.addDroppedItem(possession)
                 return
+
+    # If it couldn't be picked up
+    if item in room.getAccessibleItems():
+        print("You have to pick it up first.")
+    else:
+        print(errorString)
 
 
 def verbHelper(item, player, room, option):
