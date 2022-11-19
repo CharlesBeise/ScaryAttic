@@ -29,6 +29,14 @@
             "0": "",
             "1": "There's a flashlight on the shelf.",
             "2": ""
+        },
+        "detergent": {
+            "triggerSequence": ["shelves"],
+            "triggerVerbs": [["Examine"]],
+            "loop": "False",
+            "type": "feature",
+            "0": "",
+            "1": "It's just some laundry detergent."
         }
     },
     "exits": {
@@ -42,7 +50,7 @@
             "floor": "The floor is covered in a brown linoleum tile.",
             "machines": "There's a washing machine and a dryer in here. They're both empty.",
             "shelves": "Feeling along the wooden shelves, you can make out the shape of a flashlight, along with a couple containers of laundry detergent.",
-            "detergent": "It's just some laundry detergent.",
+            "detergent": "conditional",
             "flashlight": "conditional"
         },
         "Listen": {

@@ -34,11 +34,18 @@ def examine(info):
         print(errorString)
         return
 
+    game = info["Game"]
+    player = game.getPlayer()
+    room = player.getLocation()
+    allItems = player.getInventory() + room.getAccessibleItems()
+
     # Get target name that the player wants to examine from input
     examineTarget = info["Items"][0]
 
     if examineTarget == "polaroid":
         examineTarget = identifyPolaroid(info["Player"])
+    if "flashlight" in examineTarget:
+        examineTarget = getSteppedItemName(allItems, examineTarget)
 
     # Gather list of accessible items
     inventoryList = info["Player"].getInventory()
@@ -53,11 +60,14 @@ def examine(info):
             if result == "None":  # This should not occur for defined Items
                 print("There is no information about this item.")
             else:
-                print(result)
+                print(textwrap.fill(
+                    result, fillWidth, replace_whitespace=False))
             return
 
     # Look for Examine verb and target in current room verb interactions
-    print(info["Player"].getLocation().verbResponses("Examine", examineTarget))
+    response = info["Player"].getLocation().verbResponses(
+        "Examine", examineTarget)
+    print(textwrap.fill(response, fillWidth, replace_whitespace=False))
 
 
 def identifyPolaroid(player):
@@ -320,7 +330,7 @@ def inventory(info):
              "-------------------\n"
     content = ""
     for item in info["Player"].getInventory():
-        content = content + "- " + item.getName() + "\n"
+        content = content + "- " + item.getInventoryName() + "\n"
 
     if content != "":
         print(header + content[:-1])
@@ -472,6 +482,8 @@ def batteryFlashlight(player, game, itemData1, itemData2):
 
     # Battery and previous flashlight are removed & consumed
     removeOldItem(player, itemData1["object"], itemData1["location"])
+    triggerOtherRoomCondition("upperHall", game, "flashlight", "Use")
+    player.getLocation().triggerConditionRoom(itemData1["name"], "Use")
 
     # Remove existing flashlight from its location
     removeOldItem(player, itemData2["object"], itemData2["location"])
