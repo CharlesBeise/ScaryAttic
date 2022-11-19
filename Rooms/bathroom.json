@@ -32,6 +32,10 @@
         "Eat": {
             "pills": "You hesitate and consider it for a moment... But you've already taken your daily dose."
         },
+        "Use": {
+            "pills": "You hesitate and consider it for a moment... But you've already taken your daily dose.",
+            "bandages": "You don't need that right now."
+        },
         "Hide": {
             "tub": "For a moment, you consider stepping into the tub, but you decide against it."
         },
