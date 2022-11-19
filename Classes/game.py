@@ -1,14 +1,16 @@
 import json
 import os
 import pickle
+import sys
 import textwrap
 import time
 from .player import Player
 from .room import Room
 from .items import Item
 
-# Width of the text on screen
-fillWidth = 75
+# Minimum terminal height and width required to play
+terminalMinHeight = 25
+terminalMinWidth = 75
 
 
 class Game:
@@ -70,6 +72,24 @@ class Game:
         """
         return self.running
 
+    def terminalSize(self):
+        """
+        Checks that the player terminal size is large enough to play
+        the game. Notifies user and exits game if not large enough.
+        """
+        size = os.get_terminal_size()
+        height, width = size[1], size[0]
+        notification = (
+            "Your terminal window is not currently large enough.\nScary "
+            f"Attic requires a minimum height of {terminalMinHeight} "
+            f"(rows) and a minimum width of {terminalMinWidth} (columns)."
+            f"\nYour current terminal has height of {height} and width of "
+            f"{width}.\nPlease update the size of your terminal and "
+            "restart the game to play.\n")
+        if height < terminalMinHeight or width < terminalMinWidth:
+            print(notification)
+            sys.exit()
+
     def getImage(self, filename):
         """
         Returns ASCII art from a given file name.
@@ -81,6 +101,8 @@ class Game:
         """
         Displays game title screen.
         """
+        self.terminalSize()  # Confirm terminal is large enough to play
+
         # Set directory path to narrative file
         path = os.path.realpath(__file__)
         dir = os.path.dirname(path)
@@ -118,7 +140,7 @@ class Game:
         # Open narrative file and print new game intro
         with open("../Narrative/newGameIntro.txt") as introFile:
             for line in introFile.read().split('\n'):
-                print(f"{textwrap.fill(line, fillWidth)}\n")
+                print(f"{textwrap.fill(line, terminalMinWidth)}\n")
                 time.sleep(1)
         print("                                  *****\n")
 
