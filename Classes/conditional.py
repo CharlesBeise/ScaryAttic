@@ -61,8 +61,6 @@ class Conditional:
         # If needed, increment to the next trigger
         result = self.nextTrigger()
 
-        # print(f"Incrementing to condition: {self.trigger}")
-
         # If this condition loops, it will go back around to step 0 at the
         # end of its steps
         if self.loop and self.currentStep >= (self.totalSteps - 1):
@@ -123,6 +121,7 @@ class Conditional:
         print(f"\nCondition name: {self.name}")
         print(f"Trigger sequence: {self.trigger}")
         print(f"Current trigger: {self.trigger}")
+        print(f"Current step: {self.currentStep}")
         print(f"Type of condition: {self.type}")
         print(f"Looping? {self.loop}")
         print("Descriptions:")
