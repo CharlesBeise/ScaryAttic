@@ -1,5 +1,6 @@
 {
     "name": "ladder",
+    "inventoryName": "Ladder",
     "description": "It's a small aluminum ladder. Useful for reaching high places.",
     "secondaryDescription": "You drop the ladder underneath the attic hatch. You open the hatch and climb up.",
     "itemInteractions": {

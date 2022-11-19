@@ -1,5 +1,6 @@
 {
     "name": "silverBell",
+    "inventoryName": "Silver Bell",
     "description": "A tiny silver bell. It shines in the light.",
     "secondaryDescription": "None",
     "itemInteractions": {

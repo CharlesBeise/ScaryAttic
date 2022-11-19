@@ -69,7 +69,7 @@ def identifyPolaroid(player):
     options = []
     for item in items:
         if item.getName()[:-1] == "polaroid":
-            options.append(item.getName())
+            options.append(item.getInventoryName())
     if len(options) == 0:
         return None
     elif len(options) == 1:
@@ -77,12 +77,13 @@ def identifyPolaroid(player):
     response = "Which one are you referring to: "
     for option in options:
         response = response + option + ', '
-    selection = input(response[:-2] + '?\n')
-    if (selection == "polaroid1" or "1") and "polaroid1" in options:
+    selection = input(response[:-2] + '?\n').lower().replace(" ", "")
+    if selection == "polaroid" and "Polaroid" in options:
         return "polaroid1"
-    elif (selection == "polaroid2" or "2") and "polaroid2" in options:
+    elif (selection == "oldpolaroid" or selection == "old") and "Old Polaroid" in options:
         return "polaroid2"
-    elif (selection == "polaroid3" or "3") and "polaroid3" in options:
+    elif (selection == "dustypolaroid" or selection == "dusty") and "Dusty Polaroid" in \
+            options:
         return "polaroid3"
     else:
         return None
