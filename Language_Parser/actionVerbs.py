@@ -169,10 +169,10 @@ def drop(info):
         if item is None:
             print(errorString)
             return
+    if "flashlight" in item:
+        item = getSteppedItemName(allItems, item)
     for possession in player.getInventory():
-        if "flashlight" in item:
-            item = getSteppedItemName(allItems, item)
-        if possession == item:
+        if possession.name == item:
             print(possession.verbResponses("Drop"))
             player.removeInventory(item)
             room.addDroppedItem(possession)
