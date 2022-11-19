@@ -88,6 +88,20 @@ def identifyPolaroid(player):
         return None
 
 
+def getFloorLocation(currentRoom):
+    """
+    Helper function takes player's current room and the game data.
+    Returns "upstairs" or "downstairs" string based on which floor
+    of the house the player is currently located in.
+    """
+    upstairs = ["masterBedroom", "bathroom", "secondBedroom",
+                "upperHall", "utilityRoom", "attic"]
+    if currentRoom in upstairs:
+        return "upstairs"
+    else:
+        return "downstairs"
+
+
 def take(info):
     """
     This function removes an item from the player's current room and adds it to
@@ -120,6 +134,17 @@ def take(info):
         room.triggerConditionRoom(result, "Take")
         player.addInventory(result)
         print(result.verbInteractions["Take"])
+
+        # If player is picking up the working flashlight...
+        if item == "flashlight3":
+            if getFloorLocation(room) == "upstairs":
+                game.unlockRoom("lowerHall")
+                triggerOtherRoomCondition(
+                    "upperHall", game, "flashlight", "Take")
+            else:
+                game.unlockRoom("upperHall")
+                triggerOtherRoomCondition(
+                    "lowerHall", game, "flashlight", "Take")
     else:
         print(errorString)
 
@@ -135,18 +160,40 @@ def drop(info):
     game = info["Game"]
     player = game.getPlayer()
     room = player.getLocation()
-    for item in info["Items"]:
-        if item == "polaroid":
-            item = identifyPolaroid(player)
-            if item is None:
-                print("You don't have that.")
-                return
-        for possession in player.getInventory():
-            if possession == item:
-                print(possession.verbResponses("Drop"))
-                player.removeInventory(item)
-                room.addDroppedItem(possession)
-                return
+    item = info["Items"]
+    allItems = player.getInventory() + room.getAccessibleItems()
+
+    # Try to pick up the item
+    if "polaroid" in item:
+        item = identifyPolaroid(player)
+        if item is None:
+            print(errorString)
+            return
+    if "flashlight" in item:
+        item = getSteppedItemName(allItems, item)
+    for possession in player.getInventory():
+        if possession.name == item:
+            print(possession.verbResponses("Drop"))
+            player.removeInventory(item)
+            room.addDroppedItem(possession)
+
+            # If player is dropping the working flashlight...
+            if possession == "flashlight3":
+                if getFloorLocation(room) == "upstairs":
+                    game.lockRoom("lowerHall")
+                    triggerOtherRoomCondition(
+                        "upperHall", game, "flashlight", "Drop")
+                else:
+                    game.lockRoom("upperHall")
+                    triggerOtherRoomCondition(
+                        "lowerHall", game, "flashlight", "Drop")
+            return
+
+    # If it couldn't be picked up
+    if item in room.getVisibleItems():
+        print("You have to pick it up first.")
+    else:
+        print(errorString)
 
 
 def verbHelper(item, player, room, option):
@@ -405,6 +452,16 @@ def canOpenerCatFood(player, game, itemData2):
     placeNewItem(player, catFood, itemData2["location"])
 
 
+def triggerOtherRoomCondition(roomName, game, condName, condVerb):
+    """
+    Helper function will trigger a condition in a specified room
+    (Useful for cases outside the player's current location.)
+    """
+    for room in game.rooms:
+        if room == roomName:
+            room.triggerConditionRoom(condName, condVerb)
+
+
 def batteryFlashlight(player, game, itemData1, itemData2):
     """
     Helper function for 'combineTwoItems' -
@@ -421,11 +478,18 @@ def batteryFlashlight(player, game, itemData1, itemData2):
     # If the flashlight is still upgradable, get the upgrade name
     if itemData2["index"] < numFlashlights:
         upgradeIndex = str(itemData2["index"] + 1)
+        upgradeName = "flashlight" + upgradeIndex
 
         # Place the upgrade back where the old one was
-        upgrade = game.removeFromItemStorage("flashlight" + upgradeIndex)
+        upgrade = game.removeFromItemStorage(upgradeName)
         placeNewItem(player, upgrade, itemData2["location"])
         game.removeFromItemStorage(upgrade.name)
+
+        # If this is the last (working) flashlight, unlock the stairs and
+        # light up the upperHall
+        if upgradeName == "flashlight3":
+            game.unlockRoom("lowerHall")
+            triggerOtherRoomCondition("upperHall", game, "flashlight", "Use")
 
 
 def combineTwoItems(player, game, item1, item2):
@@ -635,10 +699,12 @@ def goStairsHelper(roomTarget, currentRoomName):
     if currentRoomName not in stairsDict.keys():
         return None
     # If stairs in this room go up, return room name above
-    if roomTarget in ["upstairs", "up"] and stairsDict[currentRoomName]["upstairs"] is not None:
+    if roomTarget in ["upstairs", "up"] \
+            and stairsDict[currentRoomName]["upstairs"] is not None:
         return stairsDict[currentRoomName]["upstairs"]
     # If stairs in this room go down, return room name below
-    if roomTarget in ["downstairs", "down"] and stairsDict[currentRoomName]["downstairs"] is not None:
+    if roomTarget in ["downstairs", "down"] \
+            and stairsDict[currentRoomName]["downstairs"] is not None:
         return stairsDict[currentRoomName]["downstairs"]
     # Determine upstairs or downstairs if not specified
     if roomTarget not in ["stairs", "staircase"]:
@@ -670,6 +736,7 @@ def goLockedHelper(destination):
     lockedResponse = {
         "attic": "The attic door is too high to reach.",
         "lowerHall": "It's too dark to go down the stairs safely.",
+        "upperHall": "It's too dark to go up the stairs safely.",
         "basement": "There is a combination lock on the basement door."
     }
     if destination in lockedResponse.keys():
@@ -686,7 +753,8 @@ def goRoomHelper(roomInfo, currentRoom):
     """
     if len(roomInfo) == 0 or len(roomInfo) > 2:
         return None
-    if roomInfo[0] in ["stairs", "staircase", "upstairs", "downstairs", "up", "down"]:
+    if roomInfo[0] in ["stairs", "staircase", "upstairs", "downstairs",
+                       "up", "down"]:
         return goStairsHelper(roomInfo[0], currentRoom.getName())
     # Match name of connected Room to input room info
     for roomName, direction in currentRoom.getAllExits().items():

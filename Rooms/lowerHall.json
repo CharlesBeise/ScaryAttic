@@ -4,6 +4,14 @@
     "shortDescription": "You're in the Lower Hall. The east stairs lead back to the Upper Hall. To the west, another set of stairs lead to the Basement. The Garage is to the north. Southwest leads to the Kitchen, southeast to the Dining Room.",
     "lockRoom": "True",
     "conditionals": {
+        "stairs": {
+            "triggerSequence": ["flashlight"],
+            "triggerVerbs": [["Take", "Drop"]],
+            "loop": "True",
+            "type": "room",
+            "0": "The old staircase is next to you to the east.",
+            "1": "The old staircase is next to you to the east - too dangerous to navigate in the dark."
+        },
         "shadow": {
             "triggerSequence": ["shadow"],
             "triggerVerbs": [["Examine"]],
