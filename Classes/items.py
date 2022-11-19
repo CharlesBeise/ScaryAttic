@@ -85,6 +85,13 @@ class Item:
         """
         return self.itemInteractions[itemName]
 
+    def getVerbInteraction(self, verb):
+        """
+        Retrieves a formatted description from the specified
+        item interaction.
+        """
+        return self.verbInteractions[verb]
+
     def __eq__(self, other):
         """Checking a comparison"""
         if isinstance(other, str):

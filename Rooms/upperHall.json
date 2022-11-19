@@ -1,9 +1,17 @@
 {
     "name": "upperHall",
-    "longDescription": "You're in the Upper Hall of the house. Without any windows, it is one of the darkest rooms in the house. It feels drafty, and a chill runs over you. You wish you could just go back to bed. You know that you will find the Utility Room to the south, the Bathroom to the west, the Master Bedroom to the southwest, and the Second Bedroom to the northwest. There is an Attic hatch in the ceiling.",
-    "shortDescription": "You're in the Upper Hall. The Utility Room is to the south, the Bathroom west, the Master Bedroom southwest, and the Second Bedroom northwest. There is an Attic hatch in the ceiling.",
+    "longDescription": "You're in the Upper Hall of the house. Without any windows, it is one of the darkest rooms in the house. It feels drafty, and a chill runs over you. You wish you could just go back to bed. You know that you will find the Utility Room to the south, the Bathroom to the west, the Master Bedroom to the southwest, and the Second Bedroom to the northwest.",
+    "shortDescription": "You're in the Upper Hall. The Utility Room is to the south, the Bathroom west, the Master Bedroom southwest, and the Second Bedroom northwest.",
     "lockRoom": "False",
     "conditionals": {
+        "atticHatch": {
+            "triggerSequence": ["ladder"],
+            "triggerVerbs": [["Use"]],
+            "loop": "False",
+            "type": "room",
+            "0": "There is an Attic hatch in the ceiling, but it's too high to reach.",
+            "1": "There is an Attic hatch in the ceiling, with your ladder set up below it."
+        },
         "stairs": {
             "triggerSequence": ["flashlight"],
             "triggerVerbs": [["Use", "Take", "Drop"]],
@@ -13,12 +21,13 @@
             "1": "The old staircase is just ahead to the east."
         },
         "paintingRoom": {
-            "triggerSequence": ["flashlight"],
-            "triggerVerbs": [["Use", "Take", "Drop"]],
+            "triggerSequence": ["flashlight", "painting"],
+            "triggerVerbs": [["Use", "Take", "Drop"], ["Flip", "Shake", "Peel"]],
             "loop": "True",
             "type": "room",
             "0": "",
-            "1": "\n\nWith your flashlight, you can better see the walls, which have paintings hung from before you moved here. The previous owners seemed in a rush to sell the place, for some reason unknown to you, and they chose to leave some of their old furnishings - along with a few personal items, it seems. There are three framed paintings on the wall - various photos of a stranger's family. They look... mostly happy."
+            "1": "With your flashlight, you can better see the walls, which have paintings hung from before you moved here. The previous owners seemed in a rush to sell the place, for some reason unknown to you, and they chose to leave some of their old furnishings - along with a few personal items, it seems. There are three framed paintings on the wall - various pictures of a stranger's family. They look... mostly happy.",
+            "2": "There are three framed paintings on the wall - various pictures of the previous house owner's family."
         },
         "painting": {
             "triggerSequence": ["painting"],
@@ -36,6 +45,14 @@
             "0": "The hardwood floor creaks under your feet.",
             "1": "The hardwood floor creaks under your feet. There's a Polaroid photo on the ground.",
             "2": "The hardwood floor creaks under your feet."
+        },
+        "ladder": {
+            "triggerSequence": ["ladder"],
+            "triggerVerbs": [["Use"]],
+            "loop": "False",
+            "type": "feature",
+            "0": "",
+            "1": "It's a small aluminum ladder. It leads up to the attic."
         }
     },
     "exits": {
@@ -48,12 +65,13 @@
     },
     "verbInteractions": {
         "Examine": {
-            "hatch": "It's a square hole in the ceiling. There's a handle to pull down the hatch.",
-            "ceiling": "The ceilings are tall above you in here.",
+            "hatch": "There's a square hole in the ceiling. There's a handle to pull down the hatch door.",
+            "ceiling": "The ceilings are tall above you in here. There's a hatch that leads to the attic at the end of the hall.",
             "walls": "The walls are painted red. A bold choice.",
             "floor": "conditional",
+            "ladder": "conditional",
             "stairs": "The stairs are narrow and uneven. They're a little dangerous even when the light is on.",
-            "painting": "There are three paintings. The first shows an old, thin woman sitting in the backyard with a child - perhaps her grandchild. The second shows a large group of people standing in front of the house with smiles on their faces, except for a young man near the back with a stern look. The third picture frame has an image of a woman in her 30's or 40's. She is smiling, but the smile isn’t quite reaching her eyes. Despite the fading of the photo, it feels like her gaze is looking straight through you. All three pictures are probably from at least a couple generations ago. One of the paintings is hanging slightly askew."
+            "painting": "There are three paintings. The first shows an old, thin woman sitting in the backyard with a child - perhaps her grandchild.\n\nThe second shows a large group of people standing in front of the house with smiles on their faces, except for a young man near the back with a stern look. The third picture frame has an image of a woman in her 30's or 40's. She is smiling, but the smile isn’t quite reaching her eyes. Despite the fading of the photo, it feels like her gaze is looking straight through you. All three pictures are probably from at least a couple generations ago. One of the paintings is hanging slightly askew."
         },
         "Flip": {
             "painting": "conditional"

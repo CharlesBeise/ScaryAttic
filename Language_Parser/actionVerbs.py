@@ -56,13 +56,13 @@ def examine(info):
                 print("There is no information about this item.")
             else:
                 print(textwrap.fill(
-                    result, fillWidth, replace_whitespace=False))
+                    result, fillWidth))
             return
 
     # Look for Examine verb and target in current room verb interactions
     response = info["Player"].getLocation().verbResponses(
         "Examine", examineTarget)
-    print(textwrap.fill(response, fillWidth, replace_whitespace=False))
+    print(textwrap.fill(response, fillWidth))
 
 
 def identifyPolaroid(player):
@@ -404,40 +404,39 @@ def placeNewItem(player, item, location):
         player.getLocation().addVisibleItem(item)
 
 
-def combineItemAndFeature(player, item, feature):
+def combineItemAndFeature(player, game, item, feature):
     """
     Helper function for 'useHandler'.
-    Takes player, and two strings of the item and feature names.
+    Takes player, game, and two strings of the item and feature names.
     Returns None if the combination fails.
     """
+    atticValues = {"attic", "hatch", "ceiling", "up", "upstairs"}
     # Since order of words doesn't matter, choose an order for processing
-    if {item, feature} == {"catFood", "dish"}:
-        item = "catFood"
-        feature = "dish"
+    if "ladder" in (item, feature) and \
+            (item in atticValues or feature in atticValues):
+        item = "ladder"
+        feature = "hatch"
         itemData = getItemDataForUse(player, item)
     else:
         itemData = []
 
     currentRoom = player.getLocation()
 
-    # Look up item interaction response, if there is one
+    # Look up the item's verb interaction response, if there is one
     try:
-        response = currentRoom.verbResponses("Use", item, feature)
-        # If that doesn't get a valid response, try swapping the inputs
-        if response == "None":
-            response = currentRoom.verbResponses("Use", feature, item)
+        response = itemData["object"].getVerbInteraction("Use")
     except (KeyError, ValueError, IndexError):
         response = None
 
     if response != "None":
-        # Case for "catFood", "dish"
-        if {item, feature} == {"catFood", "dish"} and currentRoom == "porch":
-            # Remove catFood from inventory
+        # Case for "ladder", "hatch"
+        if {item, feature} == {"ladder", "hatch"}:
+            # Remove ladder from inventory
             removeOldItem(player, itemData["object"], itemData["location"])
-            # TODO: Call 'use' description
-
-            # Trigger condition
-            currentRoom.triggerConditionRoom(feature, "Use")
+            # Trigger any room conditions
+            currentRoom.triggerConditionRoom(item, "Use")
+            # Unlock attic
+            game.unlockRoomByName("attic")
         else:
             response = "That won't work."
         return response
@@ -586,7 +585,7 @@ def useHandler(player, game, allItems, item1, item2):
         response = "You can't use an item on itself."
     # If one input is an Item, and the other a room feature
     elif {type1, type2} == {True, False}:
-        response = combineItemAndFeature(player, item1, item2)
+        response = combineItemAndFeature(player, game, item1, item2)
     # If both item1 and item2 are Items
     elif {type1, type2} == {True, True}:
         response = combineTwoItems(player, game, item1, item2)
@@ -707,7 +706,7 @@ def goStairsHelper(roomTarget, currentRoomName):
     if currentRoomName not in stairsDict.keys():
         return None
     # If stairs in this room go up, return room name above
-    if roomTarget in ["upstairs", "up"] \
+    if roomTarget in ["upstairs", "up", "hatch", "ceiling"] \
             and stairsDict[currentRoomName]["upstairs"] is not None:
         return stairsDict[currentRoomName]["upstairs"]
     # If stairs in this room go down, return room name below
@@ -762,8 +761,9 @@ def goRoomHelper(roomInfo, currentRoom):
     if len(roomInfo) == 0 or len(roomInfo) > 2:
         return None
     if roomInfo[0] in ["stairs", "staircase", "upstairs", "downstairs",
-                       "up", "down"]:
-        return goStairsHelper(roomInfo[0], currentRoom.getName())
+                       "up", "down", "hatch", "ceiling"]:
+        i = goStairsHelper(roomInfo[0], currentRoom.getName())
+        return i
     # Match name of connected Room to input room info
     for roomName, direction in currentRoom.getAllExits().items():
         if roomInfo[0] == roomName.lower() or roomInfo[0] == direction:
