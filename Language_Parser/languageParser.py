@@ -53,12 +53,10 @@ def siftInput(longText, player: Player, game: Game):
     for token in longText:
         for key, value in verbDict.items():
             if token in value:
-                # print(f"Verb: {key}")
                 wordDict["Verb"].append(key)
                 break
         for key, value in itemDict.items():
             if token in value:
-                # print(f"Items: {key}")
                 wordDict["Items"].append(key)
                 break
         if token in combinationWords:

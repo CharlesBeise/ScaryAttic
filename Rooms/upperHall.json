@@ -42,6 +42,9 @@
     "verbInteractions": {
         "Examine": {
             "hatch": "It's a square hole in the ceiling. There's a handle to pull down the hatch.",
+            "ceiling": "The ceilings are tall above you in here.",
+            "walls": "The walls are painted red. A bold choice.",
+            "floor": "The floor is a nice dark hardwood, the same as most of the house.",
             "stairs": "The stairs are narrow and uneven. They're a little dangerous even when the light is on.",
             "painting": "conditional"
         },
