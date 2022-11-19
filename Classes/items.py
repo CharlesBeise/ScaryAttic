@@ -23,18 +23,18 @@ class Item:
         if "polaroid" in self.name:
             self.image = self.readImageFromFile()
 
+    def getName(self):
+        """
+        This function returns the Item's name
+        """
+        return self.name
+
     def getInventoryName(self):
         """
         This function returns the name to be used for the Item in the player's
         inventory
         """
         return self.inventoryName
-
-    def getName(self):
-        """
-        This function returns the Item's name
-        """
-        return self.name
 
     def getDescription(self):
         """
