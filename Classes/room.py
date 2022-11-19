@@ -107,7 +107,7 @@ class Room:
         if self.droppedItems:
             desc = desc + self.getItemDescriptions()
 
-        return textwrap.fill(desc, fillWidth)
+        return textwrap.fill(desc, fillWidth, replace_whitespace=False)
 
     def getShortDescription(self):
         """
@@ -124,7 +124,7 @@ class Room:
         if self.droppedItems:
             desc = desc + self.getItemDescriptions()
 
-        return textwrap.fill(desc, fillWidth)
+        return textwrap.fill(desc, fillWidth, replace_whitespace=False)
 
     def getConditionalDesc(self):
         """
