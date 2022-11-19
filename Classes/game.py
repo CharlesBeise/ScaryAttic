@@ -8,7 +8,7 @@ from .player import Player
 from .room import Room
 from .items import Item
 
-# Width of the text on screen
+# Minimum terminal height and width required to play
 terminalMinHeight = 25
 terminalMinWidth = 75
 
