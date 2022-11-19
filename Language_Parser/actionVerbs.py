@@ -47,11 +47,6 @@ def examine(info):
     if "flashlight" in examineTarget:
         examineTarget = getSteppedItemName(allItems, examineTarget)
 
-    # Gather list of accessible items
-    inventoryList = info["Player"].getInventory()
-    roomItemList = info["Player"].getLocation().getAccessibleItems()
-    allItems = inventoryList + roomItemList
-
     # Look for item with target name in player inventory and current room
     for item in allItems:
         if examineTarget == item.getName():
