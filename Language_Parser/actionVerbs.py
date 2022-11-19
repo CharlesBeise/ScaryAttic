@@ -139,11 +139,11 @@ def take(info):
         # If player is picking up the working flashlight...
         if item == "flashlight3":
             if getFloorLocation(room) == "upstairs":
-                game.unlockRoom("lowerHall")
+                game.unlockRoomByName("lowerHall")
                 triggerOtherRoomCondition(
                     "upperHall", game, "flashlight", "Take")
             else:
-                game.unlockRoom("upperHall")
+                game.unlockRoomByName("upperHall")
                 triggerOtherRoomCondition(
                     "lowerHall", game, "flashlight", "Take")
     else:
@@ -161,7 +161,7 @@ def drop(info):
     game = info["Game"]
     player = game.getPlayer()
     room = player.getLocation()
-    item = info["Items"]
+    item = info["Items"][0]
     allItems = player.getInventory() + room.getAccessibleItems()
 
     # Try to pick up the item
@@ -181,7 +181,7 @@ def drop(info):
             # If player is dropping the working flashlight...
             if possession == "flashlight3":
                 if getFloorLocation(room) == "upstairs":
-                    game.lockRoom("lowerHall")
+                    game.lockRoomByName("lowerHall")
                     triggerOtherRoomCondition(
                         "upperHall", game, "flashlight", "Drop")
                 else:
@@ -432,7 +432,7 @@ def combineItemAndFeature(player, item, feature):
             # TODO: Call 'use' description
 
             # Trigger condition
-            currentRoom.triggerCondition(feature, "Use")
+            currentRoom.triggerConditionRoom(feature, "Use")
         else:
             response = "That won't work."
         return response
@@ -489,7 +489,7 @@ def batteryFlashlight(player, game, itemData1, itemData2):
         # If this is the last (working) flashlight, unlock the stairs and
         # light up the upperHall
         if upgradeName == "flashlight3":
-            game.unlockRoom("lowerHall")
+            game.unlockRoomByName("lowerHall")
             triggerOtherRoomCondition("upperHall", game, "flashlight", "Use")
 
 

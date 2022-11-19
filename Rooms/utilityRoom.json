@@ -37,12 +37,19 @@
     "verbInteractions": {
         "Examine": {
             "vent": "Nothing here.",
+            "walls": "The walls are flat white.",
+            "ceiling": "It's a low ceiling, with a light fixture that isn't working right now.",
+            "floor": "The floor is covered in a brown linoleum tile.",
+            "machines": "There's a washing machine and a dryer in here. They're both empty.",
             "shelves": "Feeling along the wooden shelves, you can make out the shape of a flashlight, along with a couple containers of laundry detergent.",
             "detergent": "It's just some laundry detergent.",
             "flashlight": "conditional"
         },
         "Listen": {
             "noise": "You listen closely for where the noise is coming from. It seems you can hear the rain's rhythmic tapping through the laundry vents. Not loud enough to be the source of the noise you heard earlier."
+        },
+        "Open": {
+            "machines": "There's nothing in there."
         },
         "Take": {
             "detergent": "You probably don't need that.",

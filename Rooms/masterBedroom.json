@@ -61,6 +61,8 @@
             "pillow": "Soft... and useless, when you can't sleep.",
             "blanket": "It's a blue and white quilt that you've owned for many years. Your mom made it for you.",
             "switch": "Just a normal light switch.",
+            "door": "Just a normal door.",
+            "mattress": "It's just a queen mattress, sitting directly on the floor. It's fairly comfortable, even if it isn't fancy.",
             "sheets": "conditional",
             "clock": "conditional",
             "clothes": "conditional"
@@ -81,7 +83,7 @@
         "Use": {
             "switch": "The light won't turn on. Looks like the power is still out.",
             "window": "You're on the second story of the house. You're not going out there.",
-            "mattress": "You curl up in your bed, pulling the blankets over yourself. You hear another THUMP from downstairs. You are not going to be able to sleep until you find out what it is."
+            "mattress": "You sure wish you could go back to sleep, but that's not happening."
         }
     }
 }

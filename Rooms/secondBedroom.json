@@ -30,11 +30,14 @@
         "Examine": {
             "boxes": "conditional",
             "desk": "It's a simple desk, without any drawers or extra shelves. But it does the job.",
-            "bookcase": "One of the things you liked about this house was the huge built-in bookcase here. You're not sure where exactly the movers put your boxes of books, but you were looking forward to organizing your new library... if you can just get through tonight.",
-            "battery": "It looks like a standard C cell battery."
+            "switch": "Just a normal light switch.",
+            "ceiling": "This ceiling is painted white, like the one in your bedroom.",
+            "walls": "The walls are painted cream. You'll probably change it someday.",
+            "floor": "The floor is a nice dark hardwood, the same as most of the house.",
+            "bookcase": "One of the things you liked about this house was the huge built-in bookcase here. You're not sure where exactly the movers put your boxes of books, but you were looking forward to organizing your new library... if you can just get through tonight."
         },
         "Hide": {
-            "desk": "You cram yourself into the space under the desk. You almost can feel the house shaking in the wind of the storm... but maybe you're just imagining it."
+            "desk": "You cram yourself into the space under the desk. You almost can feel the house shaking in the wind of the storm... but maybe you're just imagining it. You quickly feel uncomfortable and crawl back out."
         },
         "Use": {
             "switch": "No luck. The lights won't turn on."
