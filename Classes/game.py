@@ -81,10 +81,11 @@ class Game:
         height, width = size[1], size[0]
         notification = (
             "Your terminal window is not currently large enough.\nScary "
-            "Attic requires a minimum height of 25 (rows) and a minimum "
-            "width of 75 (columns).\nYour current terminal has height of "
-            f"{height} and width of {width}.\nPlease update the size of "
-            "your terminal and restart the game to play.\n")
+            f"Attic requires a minimum height of {terminalMinHeight} "
+            f"(rows) and a minimum width of {terminalMinWidth} (columns)."
+            f"\nYour current terminal has height of {height} and width of "
+            f"{width}.\nPlease update the size of your terminal and "
+            "restart the game to play.\n")
         if height < terminalMinHeight or width < terminalMinWidth:
             print(notification)
             sys.exit()
