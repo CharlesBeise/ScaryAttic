@@ -202,8 +202,12 @@ class Room:
             self.unlockItem("polaroid1")
         elif self.name == "kitchen" and "drawer" in name:
             self.unlockItem("canOpener")
+        elif self.name == "familyRoom" and "hooks" in name:
+            self.unlockItem("key")
         elif self.name == "kitchen" and "cabinet" in name:
             self.unlockItem("polaroid2")
+        elif self.name == "diningRoom" and "hole" in name:
+            self.unlockItem("silverBell")
 
     def lock(self):
         """

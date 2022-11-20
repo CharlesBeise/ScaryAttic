@@ -40,10 +40,7 @@ class Item:
         """
         This function returns the Item description
         """
-        if self.image != "":
-            return self.image + "\n" + self.description
-        else:
-            return self.description
+        return self.description
 
     def getSecondDescription(self):
         """

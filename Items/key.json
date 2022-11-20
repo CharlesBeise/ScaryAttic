@@ -1,7 +1,7 @@
 {
     "name": "key",
     "inventoryName": "Key",
-    "description": "A small brass key that is old and tarnished.",
+    "description": "A brass key that is old and tarnished. It's smaller than a house key.",
     "secondaryDescription": "None",
     "itemInteractions": {
         "ladder": "None",
@@ -23,7 +23,7 @@
         "Use": "The key doesn't seem useful without a lock.",
         "Eat": "Eating the key seems like a bad idea.",
         "Flip": "Each side of the key looks no different from the other.",
-        "Examine": "A small brass key that is old and tarnished.",
+        "Examine": "A brass key that is old and tarnished. It's smaller than a house key.",
         "Take": "You pick up the key.",
         "Peel": "None",
         "Drop": "You set the key down.",
