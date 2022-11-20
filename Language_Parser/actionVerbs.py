@@ -55,12 +55,14 @@ def examine(info):
     for item in allItems:
         if examineTarget == item.getName():
             # Get examine verb interaction for item
-            result = item.verbResponses("Examine")
+            result = item.getDescription()
             if result == "None":  # This should not occur for defined Items
                 print("There is no information about this item.")
             else:
                 # Print both image and description
-                print(item.getImage())
+                image = item.getImage()
+                if image != "":
+                    print(image)
                 print(textwrap.fill(result, fillWidth))
             return
 
@@ -218,7 +220,7 @@ def drop(info):
                     triggerOtherRoomCondition(
                         "upperHall", game, "flashlight", "Drop")
                 else:
-                    game.lockRoom("upperHall")
+                    game.lockRoomByName("upperHall")
                     triggerOtherRoomCondition(
                         "lowerHall", game, "flashlight", "Drop")
             return
@@ -235,7 +237,7 @@ def verbHelper(item, player, room, option):
     This is a helper function for openVerb(), it handles the scenario where the
     item the user is trying to interact with is an Item object
     """
-    if item == "polaroid":
+    if "polaroid" in item:
         item = identifyPolaroid(player)
     for possession in player.getInventory():
         if possession == item:
@@ -704,7 +706,11 @@ def use(info):
 
     # Handles "use" on one item (if item2 doesn't exist)
     if numItems == 1:
-        print(currentRoom.verbResponses("Use", item1, False))
+        response = currentRoom.verbResponses("Use", item1, False)
+        if response is None:
+            print("That won't work.")
+        else:
+            print(textwrap.fill(response, fillWidth))
         return
     # Handles "use" on two items with a valid combination word
     elif numItems == 2 and combo:

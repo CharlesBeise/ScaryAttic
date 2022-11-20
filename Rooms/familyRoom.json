@@ -1,10 +1,10 @@
 {
     "name": "familyRoom",
-    "longDescription": "You're in the Family Room. The walls are a solid dark green, and the floor is covered by an antique rug. There's a large shelving unit holding the TV along the west wall. A couple moving boxes that you remember hold your favorite movies. There's a window on the south wall. The Kitchen is to the north, and the door to the Porch is to the east. Next to the east door is a coat rack and some hooks. As you look toward the door, you swear you can hear... scratching.",
+    "longDescription": "You're in the Family Room. The walls are a solid dark green, and the floor is covered by an antique rug. There's a large shelving unit holding the TV along the west wall. A couple moving boxes that hold your favorite movies. There's a window on the south wall. The Kitchen is to the north, and the door to the Porch is to the east. Next to the east door is a coat rack and some hooks. As you look toward the door, you swear you can hear... scratching.",
     "shortDescription": "You're in the Family Room. There's a large shelving unit holding the TV along the west wall. A couple moving boxes that hold your movies, and a window on the south wall. The Kitchen is to the north, and the Porch to the east. Next to the east door is a coat rack.",
     "lockRoom": "False",
     "conditionals": {
-        "key": {
+        "keyRoom": {
             "triggerSequence": ["hooks", "key"],
             "triggerVerbs": [["Examine"], ["Take"]],
             "loop": "False",
@@ -12,6 +12,14 @@
             "0": "There are some hooks on the wall by the door.",
             "1": "There are some hooks on the wall by the door. One of them holds a key.",
             "2": "There are some hooks on the wall by the door."
+        },
+        "hooks": {
+            "triggerSequence": ["hooks", "key"],
+            "triggerVerbs": [["Examine"], ["Take"]],
+            "loop": "False",
+            "type": "feature",
+            "0": "There are four hooks screwed into the wall. One of them is holding a key.",
+            "1": "There are four hooks screwed into the wall."
         }
     },
     "exits": {
@@ -22,16 +30,17 @@
         "Examine": {
             "walls": "The paint is a rich green. Your favorite color.",
             "floor": "The floor is a nice dark hardwood, the same as most of the house.",
+            "ceiling": "The ceiling is painted white. There's a half-globe lamp attached in the middle.",
             "shelves": "It's a heavy wooden shelving unit, made to hold entertainment equipment. There's not much in it yet.",
             "boxes": "You glance through the moving boxes, but there's nothing useful in here.",
             "tv": "You wish you could believe it was just the TV making noise in the house, but that seems unlikely with the power being out.",
             "rack": "It's just a simple metal pole. Your jacket is hanging from it.",
-            "jacket": "It's mostly fake leather. There is nothing in the pockets.",
-            "hooks": "There are four hooks screwed into the wall. One of them is holding a key.",
-            "key": "It's smaller than a house key, made of tarnished brass. What could this be for?"
-        },
-        "Take": {
-            "key": "You take the key from its hook."
+            "jacket": "The jacket is mostly fake leather. There is nothing in the pockets.",
+            "door": "The front door is painted dark brown. There are no windows in it.",
+            "window": "The front windows are large and look out onto the street, if it wasn't so dark outside.",
+            "hooks": "conditional",
+            "switch": "The lights aren't working in here either.",
+            "movies": "You flip through the movies in one of the boxes. 'The Shining', 'Silence of the Lambs', 'Psycho'... You're normally a bit of a horror movie buff, but for tonight, you don't want to think about it. You shiver and close the box."
         }
     }
 }
