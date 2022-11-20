@@ -43,7 +43,7 @@ def examine(info):
     examineTarget = info["Items"][0]
 
     if "polaroid" in examineTarget:
-        examineTarget = identifyPolaroid(info["Player"])
+        examineTarget = polaroidHelper(info["Player"], examineTarget, allItems)
 
     try:
         if "flashlight" in examineTarget:
@@ -119,6 +119,11 @@ def polaroidHelper(player, itemName, itemList):
     in the given item list or not.
     """
     foundItem = itemName
+
+    if itemName == "oldpolaroid":
+        return "polaroid2"
+    elif itemName == "dustypolaroid":
+        return "polaroid3"
 
     # Check if there is more than one polaroid in the list
     polaroidsCount = 0
