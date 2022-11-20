@@ -122,10 +122,8 @@ def polaroidHelper(player, itemName, itemList):
     """
     foundItem = itemName
 
-    if itemName == "oldpolaroid":
-        return "polaroid2"
-    elif itemName == "dustypolaroid":
-        return "polaroid3"
+    if itemName == "polaroid2" or itemName == "polaroid3":
+        return itemName
 
     # Check if there is more than one polaroid in the list
     polaroidsCount = 0
