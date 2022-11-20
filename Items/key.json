@@ -20,7 +20,7 @@
         "Close": "The key doesn't seem useful without a lock.",
         "Hide": "None",
         "Listen": "None",
-        "Use": "The key doesn't seem useful without a lock.",
+        "Use": "You stick the key into the padlock and turn. You hear a click, and the padlock pops open.",
         "Eat": "Eating the key seems like a bad idea.",
         "Flip": "Each side of the key looks no different from the other.",
         "Examine": "A brass key that is old and tarnished. It's smaller than a house key.",

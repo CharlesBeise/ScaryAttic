@@ -4,15 +4,23 @@
     "shortDescription": "You're in the Attic of the house. The hatch to the Upper Hall is to the east. There's a wooden chest, a box full of winter clothes, and a vanity table with a mirror.",
     "lockRoom": "True",
     "conditionals": {
-        "chest": {
-            "triggerSequence": ["chest", "key", "polaroid"],
-            "triggerVerbs": [["Examine"], ["Use", "Open"], ["Take"]],
+        "chestRoom": {
+            "triggerSequence": ["key", "polaroid3"],
+            "triggerVerbs": [["Use", "Open"], ["Take"]],
             "loop": "False",
             "type": "room",
             "0": "",
-            "1": "The chest is locked with a padlock.",
-            "2": "The chest contains a Polaroid.",
-            "3": "The chest is empty."
+            "1": "The chest contains a Polaroid covered in a thin layer of dust.",
+            "2": ""
+        },
+        "chest": {
+            "triggerSequence": ["key", "polaroid3"],
+            "triggerVerbs": [["Use", "Open"], ["Take"]],
+            "loop": "False",
+            "type": "feature",
+            "0": "The sturdy chest is locked with a padlock. It looks ancient.",
+            "1": "The sturdy chest looks ancient. Inside, there's nothing but a Polaroid covered in a thin layer of dust.",
+            "2": "The chest is unlocked, but empty."
         }
     },
     "exits": {
@@ -20,16 +28,20 @@
     },
     "verbInteractions": {
         "Examine": {
-            "box": "The box contains a bunch of thick coats, boots, scarves, and gloves.",
-            "clothes": "Just a bunch of thick coats, boots, scarves, and gloves.",
+            "boxes": "The box contains a bunch of thick coats, boots, scarves, and gloves.",
+            "clothes": "Just a bunch of someone else's winter clothes. Thick coats, boots, scarves, and gloves.",
             "table": "It's an engraved table with a mirror on top. The whole thing is painted white.",
-            "chest": "conditional"
+            "chest": "conditional",
+            "hatch": "It's a square hole in the ground. Your ladder leads down to the hall below."
         },
         "Open": {
             "chest": "conditional"
         },
-        "Use": {
-            "key": "IMPLEMENT HOW KEY AND CHEST WILL INTERACT"
+        "Hide": {
+            "chest": "You briefly wonder if you can fit inside the chest. It's pretty big... Nah. The slightest chance of getting stuck inside freaks you out."
+        },
+        "Listen": {
+            "rain": "The loud rain pattering against the roof with all makes you wish you could hide away from it all."
         }
     }
 }

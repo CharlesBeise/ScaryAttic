@@ -208,6 +208,8 @@ class Room:
             self.unlockItem("polaroid2")
         elif self.name == "diningRoom" and "hole" in name:
             self.unlockItem("silverBell")
+        elif self.name == "attic" and "key" in name:
+            self.unlockItem("polaroid3")
 
     def lock(self):
         """

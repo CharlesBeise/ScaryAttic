@@ -165,6 +165,10 @@ def take(info):
         allItems = player.getInventory() + room.getAccessibleItems()
         item = getSteppedItemName(allItems, item)
 
+    # Counts number of Polaroids player has collected
+    if "polaroid" in item and item in room.getVisibleItems():
+        player.incPolaroids()
+
     result = room.removeAccessibleItem(item)
 
     if result:
@@ -445,6 +449,10 @@ def combineItemAndFeature(player, game, item, feature):
         item = "ladder"
         feature = "hatch"
         itemData = getItemDataForUse(player, item)
+    elif {item, feature} == {"key", "chest"}:
+        item = "key"
+        feature = "chest"
+        itemData = getItemDataForUse(player, item)
     else:
         itemData = []
 
@@ -465,6 +473,11 @@ def combineItemAndFeature(player, game, item, feature):
             currentRoom.triggerConditionRoom(item, "Use")
             # Unlock attic
             game.unlockRoomByName("attic")
+        elif {item, feature} == {"key", "chest"}:
+            # Remove key from inventory
+            removeOldItem(player, itemData["object"], itemData["location"])
+            # Trigger any room conditions (unlock chest)
+            currentRoom.triggerConditionRoom(item, "Use")
         else:
             response = "That won't work."
         return response
@@ -767,7 +780,33 @@ def goStairsHelper(roomTarget, currentRoomName):
     return None
 
 
-def goLockedHelper(destination):
+def unlockBasement(prompt, game):
+    """
+    Helper function allows the player to try a combination code
+    to unlock the basement.
+    """
+    correctCode = "597"
+
+    print(f"{prompt} ")
+    selection = input(
+        "Would you like to try entering a code? (Y/N) ").lower()
+    if selection == "y":
+        print("There are spaces for three numbers. "
+              "You can enter as many as you like.")
+        code = 0
+        while code != "cancel":
+            code = input(
+                "Enter 3-digit code or 'cancel' to go back: ").lower()
+            if code == correctCode:
+                print("\nYou hear the lock slide open. "
+                      "The door is now unlocked.")
+                game.unlockRoomByName("basement")
+                return
+    else:
+        return
+
+
+def goLockedHelper(destination, player, game):
     """
     Helper function prints the appropriate response to the player
     attempting to enter a locked room. Response depends on destination.
@@ -778,6 +817,12 @@ def goLockedHelper(destination):
         "upperHall": "It's too dark to go up the stairs safely.",
         "basement": "There is a combination lock on the basement door."
     }
+
+    # Check if player has all polaroids to try a code on the basement
+    if destination == "basement" and player.polaroidsCollected == 3:
+        unlockBasement(lockedResponse[destination], game)
+        return
+
     if destination in lockedResponse.keys():
         print(lockedResponse[destination])
     else:
@@ -826,7 +871,7 @@ def go(info):
     for room in info["Game"].getRooms():
         if room.getName() == destination:
             if room.isLocked():
-                goLockedHelper(destination)
+                goLockedHelper(destination, info["Player"], info["Game"])
                 return
             info["Player"].setLocation(room)
             if room.isVisited():
