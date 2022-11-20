@@ -5,7 +5,7 @@
     "lockRoom": "False",
     "conditionals": {
         "cabinetsRoom": {
-            "triggerSequence": ["cabinet", "polaroid2"],
+            "triggerSequence": ["cabinet", "polaroid"],
             "triggerVerbs": [["Open", "Examine"], ["Take"]],
             "loop": "False",
             "type": "room",
@@ -23,7 +23,7 @@
             "2": "There are several drawers containing some plastic silverware."
         },
         "cabinet": {
-            "triggerSequence": ["cabinet", "polaroid2"],
+            "triggerSequence": ["cabinet", "polaroid"],
             "triggerVerbs": [["Open", "Examine"], ["Take"]],
             "loop": "False",
             "type": "feature",
@@ -91,7 +91,7 @@
             "plates": "conditional",
             "silverware": "conditional",
             "sink": "The faucet is off and the sink is empty.",
-            "polaroid2": "An old polaroid photo. Weird.",
+            "polaroid": "An old polaroid photo. Weird.",
             "canOpener": "A basic can opener for opening cans of food. Nothing fancy, but it works."
         },
         "Use": {
