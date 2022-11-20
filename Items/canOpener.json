@@ -24,7 +24,7 @@
         "Eat": "None",
         "Flip": "None",
         "Examine": "A basic can opener for opening cans of food. Nothing fancy, but it works.",
-        "Take": "You take the can opener from a drawer.",
+        "Take": "You take the can opener from where it sits.",
         "Peel": "None",
         "Drop": "You put the can opener down.",
         "Shake": "None"
