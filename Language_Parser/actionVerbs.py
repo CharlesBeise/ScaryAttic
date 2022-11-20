@@ -201,7 +201,6 @@ def drop(info):
     if "flashlight" in item:
         item = getSteppedItemName(allItems, item)
     for possession in player.getInventory():
-        print(f"Does {possession.name} == {item}?")
         if possession.name == item:
             print(possession.verbResponses("Drop"))
             player.removeInventory(item)
