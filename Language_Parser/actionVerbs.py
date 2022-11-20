@@ -888,3 +888,13 @@ def loadgame(info):
     saved game state.
     """
     info["Game"].loadGame()
+
+
+def sudo(info):
+    """
+    Temporary shortcut to unlock lower levels
+    """
+    game = info["Game"]
+    game.unlockRoomByName("lowerHall")
+    triggerOtherRoomCondition("upperHall", game, "flashlight", "Use")
+    return
