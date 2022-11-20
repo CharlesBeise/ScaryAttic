@@ -42,10 +42,14 @@ def examine(info):
     # Get target name that the player wants to examine from input
     examineTarget = info["Items"][0]
 
-    if examineTarget == "polaroid":
+    if "polaroid" in examineTarget:
         examineTarget = identifyPolaroid(info["Player"])
-    if "flashlight" in examineTarget:
-        examineTarget = getSteppedItemName(allItems, examineTarget)
+
+    try:
+        if "flashlight" in examineTarget:
+            examineTarget = getSteppedItemName(allItems, examineTarget)
+    except TypeError:
+        pass
 
     # Look for item with target name in player inventory and current room
     for item in allItems:
@@ -55,8 +59,9 @@ def examine(info):
             if result == "None":  # This should not occur for defined Items
                 print("There is no information about this item.")
             else:
-                print(textwrap.fill(
-                    result, fillWidth))
+                # Print both image and description
+                print(item.getImage())
+                print(textwrap.fill(result, fillWidth))
             return
 
     # Look for Examine verb and target in current room verb interactions
@@ -108,6 +113,31 @@ def getFloorLocation(currentRoom):
         return "downstairs"
 
 
+def polaroidHelper(player, itemName, itemList):
+    """
+    Helper function checks if this polaroid is the only polaroid
+    in the given item list or not.
+    """
+    foundItem = itemName
+
+    # Check if there is more than one polaroid in the list
+    polaroidsCount = 0
+    for i in itemList:
+        if "polaroid" in i.name:
+            polaroidsCount += 1
+
+    # If there's more than one in the list, prompt the player to specify
+    if "polaroid" in itemName and polaroidsCount > 1:
+        foundItem = identifyPolaroid(player)
+    # Otherwise, just return the only polaroid available
+    else:
+        for i in itemList:
+            if itemName in i.name:
+                foundItem = i.name
+                break
+    return foundItem
+
+
 def take(info):
     """
     This function removes an item from the player's current room and adds it to
@@ -125,11 +155,7 @@ def take(info):
 
     # Remove item from the room
     if "polaroid" in item:
-        options = ["polaroid1", "polaroid2", "polaroid3"]
-        for i in room.getAccessibleItems():
-            if i in options:
-                item = i.name
-                break
+        item = polaroidHelper(player, item, room.getAccessibleItems())
     elif "flashlight" in item:
         allItems = player.getInventory() + room.getAccessibleItems()
         item = getSteppedItemName(allItems, item)
@@ -169,15 +195,13 @@ def drop(info):
     item = info["Items"][0]
     allItems = player.getInventory() + room.getAccessibleItems()
 
-    # Try to pick up the item
+    # Remove item from the room
     if "polaroid" in item:
-        item = identifyPolaroid(player)
-        if item is None:
-            print(errorString)
-            return
+        item = polaroidHelper(player, item, player.getInventory())
     if "flashlight" in item:
         item = getSteppedItemName(allItems, item)
     for possession in player.getInventory():
+        print(f"Does {possession.name} == {item}?")
         if possession.name == item:
             print(possession.verbResponses("Drop"))
             player.removeInventory(item)

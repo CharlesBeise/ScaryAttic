@@ -29,6 +29,16 @@
             "1": "With your flashlight, you can better see the walls, which have paintings hung from before you moved here. The previous owners seemed in a rush to sell the place, for some reason unknown to you, and they chose to leave some of their old furnishings - along with a few personal items, it seems. There are three framed paintings on the wall - various pictures of a stranger's family. They look... mostly happy.",
             "2": "There are three framed paintings on the wall - various pictures of the previous house owner's family."
         },
+        "polaroidRoom": {
+            "triggerSequence": ["flashlight", "painting", "polaroid"],
+            "triggerVerbs": [["Use", "Take", "Drop"], ["Flip", "Shake", "Peel"], ["Take"]],
+            "loop": "False",
+            "type": "room",
+            "0": "",
+            "1": "",
+            "2": "There's a Polaroid sitting on the ground.",
+            "3": ""
+        },
         "painting": {
             "triggerSequence": ["painting"],
             "triggerVerbs": [["Flip", "Shake", "Peel"]],

@@ -1,7 +1,7 @@
 {
     "name": "polaroid2",
     "inventoryName": "Old Polaroid",
-    "description": "It's a picture of this house from the street. It looks empty without any trees out front. You wonder when this was taken.",
+    "description": "The Polaroid looks slightly faded from age. It's a picture of this house from the street. It looks empty without any trees out front. You wonder when this was taken.",
     "secondaryDescription": "None",
     "itemInteractions": {
         "ladder": "None",
@@ -23,10 +23,10 @@
         "Use": "None",
         "Eat": "That doesn't sound like a good idea.",
         "Flip": "There's a number 5 on the back.",
-        "Examine": "It's a picture of this house from the street. It looks empty without any trees out front. You wonder when this was taken.",
-        "Take": "You take the Polaroid with you.",
+        "Examine": "The Polaroid looks slightly faded from age. It's a picture of this house from the street. It looks empty without any trees out front. You wonder when this was taken.",
+        "Take": "You put the Old Polaroid in your pocket.",
         "Peel": "None",
-        "Drop": "You set the Polaroid down.",
+        "Drop": "You set the Old Polaroid down.",
         "Shake": "It does nothing."
     }
 }

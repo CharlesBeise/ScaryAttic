@@ -10,7 +10,7 @@
             "loop": "False",
             "type": "room",
             "0": "Tall cabinets line the walls above the counter.",
-            "1": "The cabinets above the counter contain salt, pepper, paper plates, and a Polaroid.",
+            "1": "The cabinets above the counter contain salt, pepper, paper plates, and an old Polaroid.",
             "2": "The cabinets above the counter contain salt, pepper, paper plates."
         },
         "drawersRoom": {
@@ -27,8 +27,8 @@
             "triggerVerbs": [["Open", "Examine"], ["Take"]],
             "loop": "False",
             "type": "feature",
-            "0": "The cabinets above the counter contain salt, pepper, paper plates, and a Polaroid.",
-            "1": "The cabinets above the counter contain salt, pepper, paper plates, and a Polaroid.",
+            "0": "The cabinets above the counter contain salt, pepper, paper plates, and an old Polaroid.",
+            "1": "The cabinets above the counter contain salt, pepper, paper plates, and an old Polaroid.",
             "2": "The cabinets above the counter contain salt, pepper, paper plates."
         },
         "drawers": {

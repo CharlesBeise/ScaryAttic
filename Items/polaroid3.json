@@ -1,7 +1,7 @@
 {
     "name": "polaroid3",
     "inventoryName": "Dusty Polaroid",
-    "description": "It's a picture of this house. The view is from the street, and you recognize two of the trees from the front yard, but the third is missing.",
+    "description": "It's covered in a fine layer of dust. It's a picture of this house. The view is from the street, and you recognize two of the trees from the front yard, but the third is missing.",
     "secondaryDescription": "None",
     "itemInteractions": {
         "ladder": "None",
@@ -24,9 +24,9 @@
         "Eat": "Not today.",
         "Flip": "There's a number 7 on the back.",
         "Examine": "It's a picture of this house. The view is from the street, and you recognize two of the trees from the front yard, but the third is missing.",
-        "Take": "You take the Polaroid with you.",
+        "Take": "You brush off most of the dust and take the Dusty Polaroid with you.",
         "Peel": "None",
-        "Drop": "You put the Polaroid down.",
+        "Drop": "You put the Dusty Polaroid down.",
         "Shake": "It does nothing."
     }
 }
