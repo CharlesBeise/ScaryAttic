@@ -10,7 +10,7 @@
             "loop": "False",
             "type": "room",
             "0": "Tall cabinets line the walls above the counter.",
-            "1": "The cabinets above the counter contain salt, pepper, paper plates, and a Polaroid.",
+            "1": "The cabinets above the counter contain salt, pepper, paper plates, and an old Polaroid.",
             "2": "The cabinets above the counter contain salt, pepper, paper plates."
         },
         "drawersRoom": {
@@ -27,8 +27,8 @@
             "triggerVerbs": [["Open", "Examine"], ["Take"]],
             "loop": "False",
             "type": "feature",
-            "0": "The cabinets above the counter contain salt, pepper, paper plates, and a Polaroid.",
-            "1": "The cabinets above the counter contain salt, pepper, paper plates, and a Polaroid.",
+            "0": "The cabinets above the counter contain salt, pepper, paper plates, and an old Polaroid.",
+            "1": "The cabinets above the counter contain salt, pepper, paper plates, and an old Polaroid.",
             "2": "The cabinets above the counter contain salt, pepper, paper plates."
         },
         "drawers": {
@@ -39,6 +39,38 @@
             "0": "There are several drawers containing some plastic silverware and a can opener.",
             "1": "There are several drawers containing some plastic silverware and a can opener.",
             "2": "There are several drawers containing some plastic silverware."
+        },
+        "salt": {
+            "triggerSequence": ["cabinet"],
+            "triggerVerbs": [["Open", "Examine"]],
+            "loop": "False",
+            "type": "feature",
+            "0": "",
+            "1": "Just a container of salt. It matches the pepper container."
+        },
+        "pepper": {
+            "triggerSequence": ["cabinet"],
+            "triggerVerbs": [["Open", "Examine"]],
+            "loop": "False",
+            "type": "feature",
+            "0": "",
+            "1": "Just a container of pepper. It matches the salt container."
+        },
+        "plates": {
+            "triggerSequence": ["cabinet"],
+            "triggerVerbs": [["Open", "Examine"]],
+            "loop": "False",
+            "type": "feature",
+            "0": "",
+            "1": "They are plain white paper plates. You still need to buy yourself some dishes."
+        },
+        "silverware": {
+            "triggerSequence": ["drawers"],
+            "triggerVerbs": [["Open", "Examine"]],
+            "loop": "False",
+            "type": "feature",
+            "0": "",
+            "1": "It's a varied assortment of plastic silverware collected from your take-out orders."
         }
     },
     "exits": {
@@ -48,8 +80,16 @@
     },
     "verbInteractions": {
         "Examine": {
+            "window": "The window is above the sink. It's still dark and stormy out there.",
+            "walls": "The walls are painted light blue and grey.",
+            "floor": "It's covered in a modern grey tile that looks like wood.",
+            "ceiling": "It's painted white. There's a rack of lights that would normally light the kitchen up nicely.",
             "drawers": "conditional",
             "cabinet": "conditional",
+            "salt": "conditional",
+            "pepper": "conditional",
+            "plates": "conditional",
+            "silverware": "conditional",
             "sink": "The faucet is off and the sink is empty.",
             "polaroid": "An old polaroid photo. Weird.",
             "canOpener": "A basic can opener for opening cans of food. Nothing fancy, but it works."

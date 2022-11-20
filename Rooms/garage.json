@@ -12,7 +12,7 @@
             "0": "You have a bag of basic tools sitting along the north wall, next to a ladder and garden hose.",
             "1": "You have a bag of basic tools sitting along the north wall, next to a garden hose."
         },
-        "garageDoor": {
+        "door": {
             "triggerSequence": ["garageDoor", "garageDoor"],
             "triggerVerbs": [["Open"], ["Close"]],
             "loop": "True",
@@ -26,7 +26,7 @@
     },
     "verbInteractions": {
         "Examine": {
-            "garageDoor": "It's a thin metal door big enough for one car. It rolls up to the ceiling.",
+            "door": "It's a thin metal door big enough for one car. It rolls up to the ceiling.",
             "bag": "You only have a few things in here. Nothing important.",
             "ladder": "It's a small aluminum ladder. Useful for reaching high places."
         },
@@ -35,10 +35,10 @@
             "ladder": "You lift the ladder onto your shoulder."
         },
         "Open": {
-            "garageDoor": "You cross the garage and yank the roll-up door open. Wind and rain rush inside, drenching the floor. You peer into the darkness, but don't see anything outside, except, maybe... No. It's nothing. No way you're going out in that rain."
+            "door": "You cross the garage and yank the roll-up door open. Wind and rain rush inside, drenching the floor. You peer into the darkness, but don't see anything outside, except, maybe... No. It's nothing. No way you're going out in that rain."
         },
         "Close": {
-            "garageDoor": "You pull the garage door closed and immediately feel a little better without the wind and rain coming in."
+            "door": "You pull the garage door closed and immediately feel a little better without the wind and rain coming in."
         }
     }
 }

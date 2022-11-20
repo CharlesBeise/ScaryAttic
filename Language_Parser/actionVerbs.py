@@ -42,10 +42,14 @@ def examine(info):
     # Get target name that the player wants to examine from input
     examineTarget = info["Items"][0]
 
-    if examineTarget == "polaroid":
+    if "polaroid" in examineTarget:
         examineTarget = identifyPolaroid(info["Player"])
-    if "flashlight" in examineTarget:
-        examineTarget = getSteppedItemName(allItems, examineTarget)
+
+    try:
+        if "flashlight" in examineTarget:
+            examineTarget = getSteppedItemName(allItems, examineTarget)
+    except TypeError:
+        pass
 
     # Look for item with target name in player inventory and current room
     for item in allItems:
@@ -55,14 +59,15 @@ def examine(info):
             if result == "None":  # This should not occur for defined Items
                 print("There is no information about this item.")
             else:
-                print(textwrap.fill(
-                    result, fillWidth, replace_whitespace=False))
+                # Print both image and description
+                print(item.getImage())
+                print(textwrap.fill(result, fillWidth))
             return
 
     # Look for Examine verb and target in current room verb interactions
     response = info["Player"].getLocation().verbResponses(
         "Examine", examineTarget)
-    print(textwrap.fill(response, fillWidth, replace_whitespace=False))
+    print(textwrap.fill(response, fillWidth))
 
 
 def identifyPolaroid(player):
@@ -108,6 +113,31 @@ def getFloorLocation(currentRoom):
         return "downstairs"
 
 
+def polaroidHelper(player, itemName, itemList):
+    """
+    Helper function checks if this polaroid is the only polaroid
+    in the given item list or not.
+    """
+    foundItem = itemName
+
+    # Check if there is more than one polaroid in the list
+    polaroidsCount = 0
+    for i in itemList:
+        if "polaroid" in i.name:
+            polaroidsCount += 1
+
+    # If there's more than one in the list, prompt the player to specify
+    if "polaroid" in itemName and polaroidsCount > 1:
+        foundItem = identifyPolaroid(player)
+    # Otherwise, just return the only polaroid available
+    else:
+        for i in itemList:
+            if itemName in i.name:
+                foundItem = i.name
+                break
+    return foundItem
+
+
 def take(info):
     """
     This function removes an item from the player's current room and adds it to
@@ -125,11 +155,7 @@ def take(info):
 
     # Remove item from the room
     if "polaroid" in item:
-        options = ["polaroid1", "polaroid2", "polaroid3"]
-        for i in room.getAccessibleItems():
-            if i in options:
-                item = i.name
-                break
+        item = polaroidHelper(player, item, room.getAccessibleItems())
     elif "flashlight" in item:
         allItems = player.getInventory() + room.getAccessibleItems()
         item = getSteppedItemName(allItems, item)
@@ -169,12 +195,9 @@ def drop(info):
     item = info["Items"][0]
     allItems = player.getInventory() + room.getAccessibleItems()
 
-    # Try to pick up the item
+    # Remove item from the room
     if "polaroid" in item:
-        item = identifyPolaroid(player)
-        if item is None:
-            print(errorString)
-            return
+        item = polaroidHelper(player, item, player.getInventory())
     if "flashlight" in item:
         item = getSteppedItemName(allItems, item)
     for possession in player.getInventory():
@@ -404,40 +427,39 @@ def placeNewItem(player, item, location):
         player.getLocation().addVisibleItem(item)
 
 
-def combineItemAndFeature(player, item, feature):
+def combineItemAndFeature(player, game, item, feature):
     """
     Helper function for 'useHandler'.
-    Takes player, and two strings of the item and feature names.
+    Takes player, game, and two strings of the item and feature names.
     Returns None if the combination fails.
     """
+    atticValues = {"attic", "hatch", "ceiling", "up", "upstairs"}
     # Since order of words doesn't matter, choose an order for processing
-    if {item, feature} == {"catFood", "dish"}:
-        item = "catFood"
-        feature = "dish"
+    if "ladder" in (item, feature) and \
+            (item in atticValues or feature in atticValues):
+        item = "ladder"
+        feature = "hatch"
         itemData = getItemDataForUse(player, item)
     else:
         itemData = []
 
     currentRoom = player.getLocation()
 
-    # Look up item interaction response, if there is one
+    # Look up the item's verb interaction response, if there is one
     try:
-        response = currentRoom.verbResponses("Use", item, feature)
-        # If that doesn't get a valid response, try swapping the inputs
-        if response == "None":
-            response = currentRoom.verbResponses("Use", feature, item)
+        response = itemData["object"].getVerbInteraction("Use")
     except (KeyError, ValueError, IndexError):
         response = None
 
     if response != "None":
-        # Case for "catFood", "dish"
-        if {item, feature} == {"catFood", "dish"} and currentRoom == "porch":
-            # Remove catFood from inventory
+        # Case for "ladder", "hatch"
+        if {item, feature} == {"ladder", "hatch"}:
+            # Remove ladder from inventory
             removeOldItem(player, itemData["object"], itemData["location"])
-            # TODO: Call 'use' description
-
-            # Trigger condition
-            currentRoom.triggerConditionRoom(feature, "Use")
+            # Trigger any room conditions
+            currentRoom.triggerConditionRoom(item, "Use")
+            # Unlock attic
+            game.unlockRoomByName("attic")
         else:
             response = "That won't work."
         return response
@@ -586,7 +608,7 @@ def useHandler(player, game, allItems, item1, item2):
         response = "You can't use an item on itself."
     # If one input is an Item, and the other a room feature
     elif {type1, type2} == {True, False}:
-        response = combineItemAndFeature(player, item1, item2)
+        response = combineItemAndFeature(player, game, item1, item2)
     # If both item1 and item2 are Items
     elif {type1, type2} == {True, True}:
         response = combineTwoItems(player, game, item1, item2)
@@ -707,7 +729,7 @@ def goStairsHelper(roomTarget, currentRoomName):
     if currentRoomName not in stairsDict.keys():
         return None
     # If stairs in this room go up, return room name above
-    if roomTarget in ["upstairs", "up"] \
+    if roomTarget in ["upstairs", "up", "hatch", "ceiling"] \
             and stairsDict[currentRoomName]["upstairs"] is not None:
         return stairsDict[currentRoomName]["upstairs"]
     # If stairs in this room go down, return room name below
@@ -762,7 +784,7 @@ def goRoomHelper(roomInfo, currentRoom):
     if len(roomInfo) == 0 or len(roomInfo) > 2:
         return None
     if roomInfo[0] in ["stairs", "staircase", "upstairs", "downstairs",
-                       "up", "down"]:
+                       "up", "down", "hatch", "ceiling"]:
         return goStairsHelper(roomInfo[0], currentRoom.getName())
     # Match name of connected Room to input room info
     for roomName, direction in currentRoom.getAllExits().items():

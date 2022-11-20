@@ -152,7 +152,7 @@ class Room:
         tempStr = "You left the "
 
         for index, item in enumerate(self.droppedItems):
-            tempStr = tempStr + item.name
+            tempStr = tempStr + item.getInventoryName()
             listLen = len(self.droppedItems)
 
             # Add comma/space between additional items
