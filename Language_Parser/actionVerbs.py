@@ -785,8 +785,7 @@ def goRoomHelper(roomInfo, currentRoom):
         return None
     if roomInfo[0] in ["stairs", "staircase", "upstairs", "downstairs",
                        "up", "down", "hatch", "ceiling"]:
-        i = goStairsHelper(roomInfo[0], currentRoom.getName())
-        return i
+        return goStairsHelper(roomInfo[0], currentRoom.getName())
     # Match name of connected Room to input room info
     for roomName, direction in currentRoom.getAllExits().items():
         if roomInfo[0] == roomName.lower() or roomInfo[0] == direction:
