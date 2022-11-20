@@ -2,7 +2,7 @@ import re
 import json
 from Language_Parser.actionVerbs import \
     examine, take, inventory, drop, help, hide, listen, peel, use, go, \
-    openVerb, look, eat, savegame, loadgame, close, shake, flip, sudo  # noqa: F401
+    openVerb, look, eat, savegame, loadgame, close, shake, flip  # noqa: F401
 from Classes.player import Player
 from Classes.game import Game
 
