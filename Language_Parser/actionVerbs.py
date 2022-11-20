@@ -886,3 +886,11 @@ def loadgame(info):
     saved game state.
     """
     info["Game"].loadGame()
+
+
+def sudo(info):
+    game = info["Game"]
+    game.unlockRoomByName("lowerHall")
+    triggerOtherRoomCondition(
+        "upperHall", game, "flashlight", "Take")
+    return

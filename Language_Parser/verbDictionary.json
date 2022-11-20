@@ -16,5 +16,6 @@
   "drop": ["drop", "leave", "putdown", "setdown", "discard"],
   "eat": ["eat"],
   "shake": ["shake", "ring"],
-  "flip": ["flip"]
+  "flip": ["flip"],
+  "sudo": ["sudo"]
 }
