@@ -41,6 +41,9 @@
             "hooks": "conditional",
             "switch": "The lights aren't working in here either.",
             "movies": "You flip through the movies in one of the boxes. 'The Shining', 'Silence of the Lambs', 'Psycho'... You're normally a bit of a horror movie buff, but for tonight, you don't want to think about it. You shiver and close the box."
+        },
+        "Open": {
+            "boxes": "You glance through the moving boxes, but there's nothing useful in here."
         }
     }
 }
