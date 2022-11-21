@@ -16,12 +16,12 @@
         "polaroid3": "None"
     },
     "verbInteractions": {
-        "Open": "The key doesn't seem useful without a lock.",
-        "Close": "The key doesn't seem useful without a lock.",
+        "Open": "The key doesn't seem useful without the right lock.",
+        "Close": "The key doesn't seem useful without the right lock.",
         "Hide": "None",
-        "Listen": "None",
+        "Listen": "It doesn't make a sound.",
         "Use": "You stick the key into the padlock and turn. You hear a click, and the padlock pops open.",
-        "Eat": "Eating the key seems like a bad idea.",
+        "Eat": "It might be small enough, but eating the key seems like a bad idea.",
         "Flip": "Each side of the key looks no different from the other.",
         "Examine": "A brass key that is old and tarnished. It's smaller than a house key.",
         "Take": "You pick up the key.",

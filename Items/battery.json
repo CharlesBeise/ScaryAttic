@@ -16,17 +16,17 @@
         "polaroid3": "None"
     },
     "verbInteractions": {
-        "Open": "None",
-        "Close": "None",
+        "Open": "You can't open it.",
+        "Close": "You can't close it.",
         "Hide": "None",
-        "Listen": "None",
-        "Use": "None",
-        "Eat": "None",
-        "Flip": "None",
+        "Listen": "It doesn't make a sound.",
+        "Use": "It could power something.",
+        "Eat": "Don't do that, you'll choke.",
+        "Flip": "That did nothing.",
         "Examine": "It looks like a standard C cell battery.",
         "Take": "This might be useful. You'll hold onto it for now.",
-        "Peel": "None",
+        "Peel": "That does nothing.",
         "Drop": "You set the battery down.",
-        "Shake": "None"
+        "Shake": "That does nothing."
     }
 }

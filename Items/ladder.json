@@ -16,17 +16,17 @@
         "polaroid3": "None"
     },
     "verbInteractions": {
-        "Open": "None",
-        "Close": "None",
-        "Hide": "The ladder is too big to hide there.",
+        "Open": "You pull the ladder open. It's much harder to carry that way...",
+        "Close": "You fold the ladder closed.",
+        "Hide": "None",
         "Listen": "You put your ear up against the ladder.......... Nothing happens.",
         "Use": "You prop up the ladder underneath the attic hatch.",
         "Eat": "Unless you've had some serious dental work done I don't think that's a good idea.",
-        "Flip": "None",
+        "Flip": "That does nothing.",
         "Examine": "It's a small aluminum ladder. Useful for reaching high places.",
         "Take": "You lift the ladder onto your shoulder.",
-        "Peel": "None",
+        "Peel": "You pull the ladder open. It's much harder to carry that way...",
         "Drop": "You set the ladder down and stretch your shoulders.",
-        "Shake": "None"
+        "Shake": "It rattles loudly, but nothing happens."
     }
 }
