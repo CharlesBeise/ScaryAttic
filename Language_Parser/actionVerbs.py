@@ -42,8 +42,7 @@ def examine(info):
     # Get target name that the player wants to examine from input
     examineTarget = info["Items"][0]
 
-    if "polaroid" in examineTarget:
-        examineTarget = polaroidHelper(info["Player"], examineTarget, allItems)
+    examineTarget = polaroidHelper(player, examineTarget, allItems)
 
     try:
         if "flashlight" in examineTarget:
@@ -60,9 +59,7 @@ def examine(info):
                 print("There is no information about this item.")
             else:
                 # Print both image and description
-                image = item.getImage()
-                if image != "":
-                    print(image)
+                printItemImage(item, "front")
                 print(textwrap.fill(result, fillWidth))
             return
 
@@ -70,6 +67,21 @@ def examine(info):
     response = info["Player"].getLocation().verbResponses(
         "Examine", examineTarget)
     print(textwrap.fill(response, fillWidth))
+
+
+def printItemImage(item, imageName):
+    """
+    Attempts to print an item's image, if it exists.
+    Input 'item' is an Item object, 'imageName' is the image being requested.
+    Returns True is successful or False if it fails.
+    """
+    if item.images:
+        try:
+            print(item.images[imageName])
+            return True
+        except (KeyError, ValueError, AttributeError, IndexError):
+            pass
+    return False
 
 
 def identifyPolaroid(player):
@@ -117,12 +129,12 @@ def getFloorLocation(currentRoom):
 
 def polaroidHelper(player, itemName, itemList):
     """
-    Helper function checks if this polaroid is the only polaroid
-    in the given item list or not.
+    Helper function checks if this item is a polaroid, and if so,
+    if it's the only polaroid in the given item list or not.
     """
     foundItem = itemName
 
-    if itemName == "polaroid2" or itemName == "polaroid3":
+    if itemName in ["polaroid2", "polaroid3"] or "polaroid" not in itemName:
         return itemName
 
     # Check if there is more than one polaroid in the list
@@ -158,10 +170,9 @@ def take(info):
     player = game.getPlayer()
     room = player.getLocation()
 
-    # Remove item from the room
-    if "polaroid" in item:
-        item = polaroidHelper(player, item, room.getAccessibleItems())
-    elif "flashlight" in item:
+    # Check item name
+    item = polaroidHelper(player, item, room.getAccessibleItems())
+    if "flashlight" in item:
         allItems = player.getInventory() + room.getAccessibleItems()
         item = getSteppedItemName(allItems, item)
 
@@ -169,6 +180,7 @@ def take(info):
     if "polaroid" in item and item in room.getVisibleItems():
         player.incPolaroids()
 
+    # Remove item
     result = room.removeAccessibleItem(item)
 
     if result:
@@ -205,8 +217,7 @@ def drop(info):
     allItems = player.getInventory() + room.getAccessibleItems()
 
     # Remove item from the room
-    if "polaroid" in item:
-        item = polaroidHelper(player, item, player.getInventory())
+    item = polaroidHelper(player, item, player.getInventory())
     if "flashlight" in item:
         item = getSteppedItemName(allItems, item)
     for possession in player.getInventory():
@@ -234,17 +245,19 @@ def drop(info):
         print(errorString)
 
 
-def verbHelper(item, player, room, option):
+def verbHelper(item, player, room, verb):
     """
     This is a helper function for openVerb(), it handles the scenario where the
     item the user is trying to interact with is an Item object
     """
-    if "polaroid" in item:
-        item = identifyPolaroid(player)
+    allItems = player.getInventory() + room.getAccessibleItems()
+    item = polaroidHelper(player, item, allItems)
     for possession in player.getInventory():
         if possession == item:
-            if possession.verbResponses(option) != "None":
-                print(possession.verbResponses(option))
+            if possession.verbResponses(verb) != "None":
+                if verb == "Flip" and "polaroid" in item:
+                    printItemImage(possession, "back")
+                print(possession.verbResponses(verb))
             else:
                 print(errorString)
             return True
@@ -280,6 +293,7 @@ def close(info):
     player = info["Player"]
     item = info["Items"][0]
     room = player.getLocation()
+
     if verbHelper(item, player, room, "Close"):
         return
     print(room.verbResponses("Close", item))
@@ -320,6 +334,7 @@ def flip(info):
     player = info["Player"]
     item = info["Items"][0]
     room = player.getLocation()
+
     if verbHelper(item, player, room, "Flip"):
         return
     print(room.verbResponses("Flip", item))
@@ -388,6 +403,7 @@ def hide(info):
     player = info["Player"]
     item = info["Items"][0]
     room = player.getLocation()
+
     if verbHelper(item, player, room, "Hide"):
         return
     print(room.verbResponses("Hide", item))
@@ -403,6 +419,7 @@ def peel(info):
     player = info["Player"]
     item = info["Items"][0]
     room = player.getLocation()
+
     if verbHelper(item, player, room, "Peel"):
         return
     print(room.verbResponses("Peel", item))
@@ -418,6 +435,7 @@ def listen(info):
     player = info["Player"]
     item = info["Items"][0]
     room = player.getLocation()
+
     if verbHelper(item, player, room, "Listen"):
         return
     print(room.verbResponses("Listen", item))
@@ -718,6 +736,30 @@ def getItemDataForUse(player, itemName):
     return itemUseData
 
 
+def useSingleItem(player, currentRoom, item):
+    """
+    Helper function for 'use' processes the use of just one target item.
+    Returns a string response back to 'use', or None if it fails.
+    """
+    allItems = player.getInventory() + currentRoom.getAccessibleItems()
+    # This is a list of items that are restricted because they're used
+    # on room features. Alternate 'use' descriptions are provided.
+    featureItems = ["key", "catFood", "ladder"]
+    if isItem(item, allItems):
+        if item not in featureItems:
+            if verbHelper(item, player, currentRoom, "Use"):
+                return ""
+            return currentRoom.verbResponses("Use", item, False)
+        if item == "key":
+            return "It could unlock something, but what?"
+        elif item == "catFood":
+            return "You could maybe use it if you were hungry."
+        elif item == "ladder":
+            return "It's good for reaching high places."
+    else:
+        return None
+
+
 def use(info):
     """
     Action function allows the player to use an item or room feature.
@@ -733,36 +775,26 @@ def use(info):
     currentRoom = player.getLocation()
     allItems = player.getInventory() + currentRoom.getAccessibleItems()
 
-    # Identify the number of items provided
-    try:
+    # Handles "use" on one item (if item2 doesn't exist)
+    if len(info["Items"]) == 1:
+        item = info["Items"][0]
+        item = polaroidHelper(player, item, allItems)
+        response = useSingleItem(player, currentRoom, item)
+        if response == "":
+            return
+    elif len(info["Items"]) == 2 and combo:
         item1 = info["Items"][0]
         item2 = info["Items"][1]
-        numItems = 2
-    except IndexError:
-        item1 = info["Items"][0]
-        item2 = None
-        numItems = 1
-    except (KeyError, ValueError):
-        print(errorString)
-        return
-
-    # Handles "use" on one item (if item2 doesn't exist)
-    if numItems == 1:
-        response = currentRoom.verbResponses("Use", item1, False)
-        if response is None:
-            print("That won't work.")
-        else:
-            print(textwrap.fill(response, fillWidth))
-        return
-    # Handles "use" on two items with a valid combination word
-    elif numItems == 2 and combo:
+        item1 = polaroidHelper(player, item1, allItems)
+        item2 = polaroidHelper(player, item2, allItems)
         response = useHandler(player, game, allItems, item1, item2)
-        if response is None:
-            print("That won't work.")
-        else:
-            print(textwrap.fill(response, fillWidth))
     else:
-        print(errorString)
+        response = errorString
+
+    if response is None:
+        response = "That won't work."
+
+    print(textwrap.fill(response, fillWidth))
 
 
 def goStairsHelper(roomTarget, currentRoomName):
