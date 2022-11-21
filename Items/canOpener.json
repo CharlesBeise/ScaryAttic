@@ -16,17 +16,17 @@
         "polaroid3": "None"
     },
     "verbInteractions": {
-        "Open": "None",
-        "Close": "None",
+        "Open": "That does nothing.",
+        "Close": "That does nothing.",
         "Hide": "None",
-        "Listen": "None",
+        "Listen": "It doesn't make a sound.",
         "Use": "It could open a tin can if you had one.",
-        "Eat": "None",
-        "Flip": "None",
+        "Eat": "It's metal. You'd break your teeth.",
+        "Flip": "That does nothing.",
         "Examine": "A basic can opener for opening cans of food. Nothing fancy, but it works.",
         "Take": "You take the can opener from where it sits.",
-        "Peel": "None",
+        "Peel": "That does nothing.",
         "Drop": "You put the can opener down.",
-        "Shake": "None"
+        "Shake": "That does nothing."
     }
 }

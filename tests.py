@@ -43,48 +43,6 @@ class TestCase(unittest.TestCase):
         "southeast",
         "southwest"]
 
-    ###################################################################
-    #                                                                 #
-    #                        Game tests                               #
-    #                                                                 #
-    ###################################################################
-
-    def test_gamePlaceholder(self):
-        pass
-
-    ###################################################################
-    #                                                                 #
-    #                       Player tests                              #
-    #                                                                 #
-    ###################################################################
-
-    def test_playerPlaceholder(self):
-        pass
-
-    ###################################################################
-    #                                                                 #
-    #                       Parser tests                              #
-    #                                                                 #
-    ###################################################################
-
-    def test_parserPlaceholder(self):
-        pass
-
-    ###################################################################
-    #                                                                 #
-    #                        Item tests                               #
-    #                                                                 #
-    ###################################################################
-
-    def test_itemPlaceholder(self):
-        pass
-
-    ###################################################################
-    #                                                                 #
-    #                        Room tests                               #
-    #                                                                 #
-    ###################################################################
-
     def test_allRoomsCreated(self):
         """
         Compare the number of room files in the 'Rooms' directory
@@ -209,45 +167,6 @@ class TestCase(unittest.TestCase):
                             randomStr(res), str, f"{res} is not String")
                         self.assertNotEqual(
                             randomStr(res), "", f"{res} is empty String")
-
-    def test_attic(self):
-        pass
-
-    def test_basement(self):
-        pass
-
-    def test_bathroom(self):
-        pass
-
-    def test_diningRoom(self):
-        pass
-
-    def test_familyRoom(self):
-        pass
-
-    def test_garage(self):
-        pass
-
-    def test_kitchen(self):
-        pass
-
-    def test_lowerHall(self):
-        pass
-
-    def test_masterBedroom(self):
-        pass
-
-    def test_porch(self):
-        pass
-
-    def test_secondBedroom(self):
-        pass
-
-    def test_upperHall(self):
-        pass
-
-    def test_utilityRoom(self):
-        pass
 
 
 if __name__ == '__main__':

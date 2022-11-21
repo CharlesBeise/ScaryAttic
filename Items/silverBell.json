@@ -16,16 +16,16 @@
         "polaroid3": "None"
     },
     "verbInteractions": {
-        "Open": "None",
+        "Open": "You'd rather not break it open.",
         "Close": "None",
         "Hide": "None",
         "Listen": "You can hear the bell jingle as it moves.",
         "Use": "There's nowhere to put it.",
         "Eat": "You'd definitely choke on that.",
-        "Flip": "None",
+        "Flip": "It jingles, but nothing else happens.",
         "Examine": "A tiny silver bell. It shines in the light.",
         "Take": "You pick up the bell and slip it into your pocket.",
-        "Peel": "None",
+        "Peel": "You'd rather not break it open.",
         "Drop": "You leave the bell somewhere safe.",
         "Shake": "You shake the silver bell. It makes a pleasant tinkling sound."
     }

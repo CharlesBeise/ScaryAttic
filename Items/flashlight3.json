@@ -19,13 +19,13 @@
         "Open": "You unscrew the cap of the flashlight. There are two batteries inside. You'd better leave those there.",
         "Close": "None",
         "Hide": "None",
-        "Listen": "None",
-        "Use": "You shine the flashlight around the room. This creates shadows which shift around eerily.",
-        "Eat": "None",
-        "Flip": "None",
+        "Listen": "The batteries lightly rattle inside.",
+        "Use": "You shine the flashlight around the room. This creates shadows, which shift around eerily.",
+        "Eat": "It won't even fit in your mouth.",
+        "Flip": "You flip it over, and the light darts around the room. Nothing happens.",
         "Examine": "It's a red plastic flashlight, you've had it for as long as you can remember. It gives off a steady light.",
         "Take": "You pick up the flashlight and hold it in your hand.",
-        "Peel": "None",
+        "Peel": "You'll break it if you try to pull it apart.",
         "Drop": "You set the flashlight down.",
         "Shake": "You shake the flashlight. It feels heavier now that there are batteries inside."
     }

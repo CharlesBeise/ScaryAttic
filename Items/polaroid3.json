@@ -19,14 +19,14 @@
         "Open": "None",
         "Close": "None",
         "Hide": "None",
-        "Listen": "None",
-        "Use": "None",
+        "Listen": "It doesn't make a sound.",
+        "Use": "You're not sure how you would use it...",
         "Eat": "Not today.",
-        "Flip": "There's a number 7 on the back.",
+        "Flip": "There's a number 7 on the back, written with a pen.",
         "Examine": "It's a picture of this house. The view is from the street, and you recognize two of the trees from the front yard, but the third is missing.",
         "Take": "You try to brush off most of the dust and take the Dusty Polaroid with you.",
         "Peel": "None",
         "Drop": "You put the Dusty Polaroid down.",
-        "Shake": "It does nothing."
+        "Shake": "It's already developed. You don't need to shake it more."
     }
 }

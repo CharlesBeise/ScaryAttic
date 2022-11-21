@@ -17,16 +17,16 @@
     },
     "verbInteractions": {
         "Open": "The can could probably be opened by a can opener.",
-        "Close": "None",
+        "Close": "It's already closed.",
         "Hide": "None",
-        "Listen": "None",
+        "Listen": "There's a very quiet sloshing from the contents inside when you move the can around.",
         "Use": "The can could probably be opened by a can opener.",
         "Eat": "You have to open it first.",
         "Flip": "You flip the can over and there is nothing on the bottom.",
         "Examine": "An unopened tin can with no label. Anything could be inside...",
         "Take": "You pick up the unopened tin can.",
-        "Peel": "None",
+        "Peel": "That won't work.",
         "Drop": "You set the tin can down.",
-        "Shake": "Shaking the can, you can tell that it is full of something dense."
+        "Shake": "Shaking the can, you can tell that it is full of something thick."
     }
 }
