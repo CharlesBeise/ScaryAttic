@@ -189,7 +189,7 @@ class Game:
         with open("../Narrative/endGameOutro.txt") as endFile:
             for line in endFile.read().split('\n'):
                 print(f"{textwrap.fill(line, terminalMinWidth)}\n")
-                time.sleep(1)
+                time.sleep(3)
 
         print("\n                    Thank you for playing Scary Attic.\n"
               "                    We sincerely hope you enjoyed it.\n\n"
