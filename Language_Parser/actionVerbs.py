@@ -895,25 +895,13 @@ def eat(info):
     if len(info["Items"]) == 0:
         print("You're thinking about eating something, but what?")
         return
-    # Get target name that the player wants to eat from input
-    eatTarget = info["Items"][0]
-    # Look for item with target name in player inventory and current room
-    inventoryList = info["Player"].getInventory()
-    roomItemList = info["Player"].getLocation().getAccessibleItems()
-    allItems = inventoryList + roomItemList
-    if eatTarget == "polaroid":
-        eatTarget = identifyPolaroid(info["Player"])
-    for item in allItems:
-        if eatTarget == item.getName():
-            # Get eat verb interaction for item
-            result = item.verbResponses("Eat")
-            if result == "None":
-                print("You can't eat that.")
-            else:
-                print(result)
-            return
-    # Look for Eat verb and target in current room verb interactions
-    print(info["Player"].getLocation().verbResponses("Eat", eatTarget))
+    player = info["Player"]
+    item = info["Items"][0]
+    room = player.getLocation()
+
+    if verbHelper(item, player, room, "Eat"):
+        return
+    print(room.verbResponses("Eat", item))
 
 
 def savegame(info):

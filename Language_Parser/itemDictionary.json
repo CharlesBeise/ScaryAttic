@@ -59,7 +59,7 @@
     "switch": ["switch", "lightswitch", "light"],
     "table": ["table", "vanity", "vanitytable"],
     "tinCan": ["tincan", "can"],
-    "tools": ["bag", "toolbag", "tools"],
+    "tools": ["bag", "toolbag", "tools", "tool"],
     "towel": ["towel", "towels"],
     "trees": ["trees", "tree"],
     "tub": ["tub", "bathtub"],

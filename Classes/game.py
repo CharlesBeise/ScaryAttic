@@ -112,6 +112,7 @@ class Game:
         size = os.get_terminal_size()
         height, width = size[1], size[0]
         notification = (
+            "This game must be played from a terminal.\n"
             "Your terminal window is not currently large enough.\nScary "
             f"Attic requires a minimum height of {terminalMinHeight} "
             f"(rows) and a minimum width of {terminalMinWidth} (columns)."
@@ -142,11 +143,12 @@ class Game:
         os.chdir(dir)
 
         welcome = "Welcome to Scary Attic: A Text-Based Adventure Game!"
+        credits = "Created by: Charles Beise, Andrew Blair, and Hannah Moon"
         titleImage = self.getImage("titleScreen")
         houseImage = self.getImage("introHouse")
 
         print(f"{houseImage}\n{titleImage}\n"
-              f"          {welcome}\n")
+              f"          {welcome}\n        {credits}\n")
 
     def displayStartMessages(self):
         """
@@ -173,7 +175,7 @@ class Game:
         with open("../Narrative/newGameIntro.txt") as introFile:
             for line in introFile.read().split('\n'):
                 print(f"{textwrap.fill(line, terminalMinWidth)}\n")
-                time.sleep(1)
+                time.sleep(3)
         print("                                  *****\n")
 
         self.displayStartMessages()
@@ -204,9 +206,9 @@ class Game:
         dir = dir.replace("Classes", "Narrative")
         os.chdir(dir)
 
-        # Open narrative file and print new game intro
-        with open("../Narrative/endGameOutro.txt") as endFile:
-            for line in endFile.read().split('\n'):
+        # Open narrative file and print end game intro
+        with open("../Narrative/endGameOutro.txt") as outroFile:
+            for line in outroFile.read().split('\n'):
                 print(f"{textwrap.fill(line, terminalMinWidth)}\n")
                 time.sleep(3)
 
