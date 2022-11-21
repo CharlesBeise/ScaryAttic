@@ -19,14 +19,14 @@
         "Open": "None",
         "Close": "None",
         "Hide": "None",
-        "Listen": "None",
-        "Use": "None",
+        "Listen": "It doesn't make a sound.",
+        "Use": "You're not sure how you would use it...",
         "Eat": "Ew, no thank you.",
-        "Flip": "There's a number 9 on the back.",
+        "Flip": "There's a number 9 written on the back.",
         "Examine": "It looks like a picture of this house, from the street. There's a tree you recognize from the front yard, but it's a lot smaller in this picture.",
         "Take": "You'll hold onto the Polaroid for now.",
         "Peel": "None",
         "Drop": "You set the Polaroid down.",
-        "Shake": "It does nothing."
+        "Shake": "It's already developed. You don't need to shake it more."
     }
 }

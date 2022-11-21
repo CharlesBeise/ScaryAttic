@@ -19,13 +19,13 @@
         "Open": "You unscrew the cap of the Flashlight. It's missing two batteries.",
         "Close": "None",
         "Hide": "None",
-        "Listen": "None",
+        "Listen": "It doesn't make any sound.",
         "Use": "You flick the switch on and off, but nothing happens.",
-        "Eat": "None",
-        "Flip": "None",
+        "Eat": "It won't even fit in your mouth.",
+        "Flip": "You flip it over, but nothing happens.",
         "Examine": "It's a red plastic flashlight. You've had it for as long as you can remember.",
         "Take": "You grab the flashlight and push the switch. It isn't working.",
-        "Peel": "None",
+        "Peel": "You'll break it if you try to pull it apart.",
         "Drop": "You set the flashlight down.",
         "Shake": "No good. Still not working."
     }
