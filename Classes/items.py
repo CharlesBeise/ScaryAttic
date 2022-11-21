@@ -19,9 +19,12 @@ class Item:
         self.verbInteractions = data["verbInteractions"]
 
         # Items without ASCII art are just assigned an empty string
-        self.image = ""
+        self.images = {}
         if "polaroid" in self.name:
-            self.image = self.readImageFromFile()
+            frontImage = self.readImageFromFile(self.name)
+            backImage = self.readImageFromFile(self.name + "back")
+            self.images["front"] = frontImage
+            self.images["back"] = backImage
 
     def getName(self):
         """
@@ -60,18 +63,18 @@ class Item:
             pass
         return response
 
-    def getImage(self):
+    def getImage(self, imageName):
         """
         This function returns the item's ASCII art string, when applicable
         """
-        return self.image
+        return self.images[imageName]
 
-    def readImageFromFile(self):
+    def readImageFromFile(self, fileName):
         """
         Gets ASCII art for this item from file and saves it to
         the image attribute. Returns the image as a string.
         """
-        with open("Art/" + self.name + ".txt") as imageFile:
+        with open("Art/" + fileName + ".txt") as imageFile:
             image = imageFile.read()
             return image
 
