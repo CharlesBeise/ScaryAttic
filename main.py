@@ -16,7 +16,11 @@ def gameStart():
             game.exitGame()
         else:
             parse(userInput, player, game)
-    game.outro()
+    if game.checkForWin():
+        game.outro()
+    else:
+        print("\nThank you for playing Scary Attic.")
+        print("We sincerely hope you enjoyed it.\n")
 
 
 if __name__ == "__main__":
