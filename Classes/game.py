@@ -206,7 +206,7 @@ class Game:
         dir = dir.replace("Classes", "Narrative")
         os.chdir(dir)
 
-        # Open narrative file and print new game outro
+        # Open narrative file and print end game outro
         with open("../Narrative/endGameOutro.txt") as outroFile:
             for line in outroFile.read().split('\n'):
                 print(f"{textwrap.fill(line, terminalMinWidth)}\n")
