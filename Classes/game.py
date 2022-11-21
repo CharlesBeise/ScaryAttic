@@ -208,7 +208,7 @@ class Game:
 
         # Open narrative file and print new game outro
         with open("../Narrative/endGameOutro.txt") as outroFile:
-            for line in introFile.read().split('\n'):
+            for line in outroFile.read().split('\n'):
                 print(f"{textwrap.fill(line, terminalMinWidth)}\n")
                 time.sleep(3)
 
