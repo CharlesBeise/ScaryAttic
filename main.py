@@ -10,12 +10,13 @@ def gameStart():
     game.selectGameState()
     player = game.getPlayer()
     # Begin user input loop to play game
-    while game.isRunning():
+    while game.isRunning() and not game.checkForWin():
         userInput = input("\n> ")
         if userInput.replace(" ", "").lower() == "exitgame":
             game.exitGame()
         else:
             parse(userInput, player, game)
+    game.outro()
 
 
 if __name__ == "__main__":

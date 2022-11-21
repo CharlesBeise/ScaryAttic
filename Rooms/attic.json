@@ -32,7 +32,10 @@
             "clothes": "Just a bunch of someone else's winter clothes. Thick coats, boots, scarves, and gloves.",
             "table": "It's an engraved table with a mirror on top. The whole thing is painted white.",
             "chest": "conditional",
-            "hatch": "It's a square hole in the ground. Your ladder leads down to the hall below."
+            "walls": "It's a square hole in the ground. Your ladder leads down to the hall below.",
+            "floor": "The floor is wooden and poorly maintained. You'd better be careful where you step.",
+            "ceiling": "The wooden rafters are stuffed with insulation.",
+            "insulation": "Best not to touch it."
         },
         "Open": {
             "chest": "conditional"

@@ -264,6 +264,7 @@ def openVerb(info):
     player = info["Player"]
     item = info["Items"][0]
     room = player.getLocation()
+
     if verbHelper(item, player, room, "Open"):
         return
     print(room.verbResponses("Open", item))
@@ -292,8 +293,18 @@ def shake(info):
         print(errorString)
         return
     player = info["Player"]
+    game = info["Game"]
     item = info["Items"][0]
     room = player.getLocation()
+
+    # Case for game win condition
+    if room == "porch" and item == "silverBell":
+        print("You jingle the silver bell. "
+              "There's a sudden, violent rustle from the bushes.")
+        if game.foodInDish:
+            game.triggerBellCondition()
+        return
+
     if verbHelper(item, player, room, "Shake"):
         return
     print(room.verbResponses("Shake", item))
@@ -331,6 +342,7 @@ def help(info):
     go = "Go: Switch rooms through a described exit."
     take = "Take: Pick up an item."
     drop = "Drop: Leave an item in the current room."
+    pull = "Pull: Pull or peel an object."
     use = "Use: Use an object somewhere or with something."
 
     keywords = [
@@ -343,6 +355,7 @@ def help(info):
         go,
         take,
         drop,
+        pull,
         use
     ]
 
@@ -453,6 +466,10 @@ def combineItemAndFeature(player, game, item, feature):
         item = "key"
         feature = "chest"
         itemData = getItemDataForUse(player, item)
+    elif {item, feature} == {"catFood", "dish"}:
+        item = "catFood"
+        feature = "dish"
+        itemData = getItemDataForUse(player, item)
     else:
         itemData = []
 
@@ -461,7 +478,7 @@ def combineItemAndFeature(player, game, item, feature):
     # Look up the item's verb interaction response, if there is one
     try:
         response = itemData["object"].getVerbInteraction("Use")
-    except (KeyError, ValueError, IndexError):
+    except (KeyError, ValueError, IndexError, TypeError):
         response = None
 
     if response != "None":
@@ -478,6 +495,13 @@ def combineItemAndFeature(player, game, item, feature):
             removeOldItem(player, itemData["object"], itemData["location"])
             # Trigger any room conditions (unlock chest)
             currentRoom.triggerConditionRoom(item, "Use")
+        elif {item, feature} == {"catFood", "dish"}:
+            # Remove cat food from inventory
+            removeOldItem(player, itemData["object"], itemData["location"])
+            # Trigger any room conditions (unlock chest)
+            currentRoom.triggerConditionRoom(item, "Use")
+            # Trigger game win condition
+            game.triggerFoodCondition()
         else:
             response = "That won't work."
         return response
@@ -555,10 +579,10 @@ def combineTwoItems(player, game, item1, item2):
             item2 = flashlight
         itemData1 = getItemDataForUse(player, item1)
         itemData2 = getItemDataForUse(player, item2)
-    elif {"canOpener", "tinCan"} in {item1, item2}:
+    elif {"canOpener", "tinCan"} == {item1, item2}:
         item1 = "canOpener"
         item2 = "tinCan"
-        itemData1 = []  # canOpener doesn't need data
+        itemData1 = getItemDataForUse(player, item1)
         itemData2 = getItemDataForUse(player, item2)
     else:
         return None
@@ -571,14 +595,15 @@ def combineTwoItems(player, game, item1, item2):
         if response == "None":
             response = \
                 itemData1["object"].getItemInteraction(itemData2["name"])
-
-    except (KeyError, ValueError, IndexError):
+    except (KeyError, ValueError, IndexError, TypeError):
         return None
 
     # Handle valid cases here
     if "battery" in (item1, item2):
         batteryFlashlight(player, game, itemData1, itemData2)
     elif {item1, item2} == {"canOpener", "tinCan"}:
+        if itemData2["location"] != "inv":
+            return "You have to pick it up first."
         canOpenerCatFood(player, game, itemData2)
     return response
 
@@ -656,32 +681,39 @@ def getItemDataForUse(player, itemName):
     # location (str): "inv", "roomVis", or "roomDrop"
     # itemIndex (int): the current index of an item with multiple modes
     itemUseData = {"name": itemName}
+    itemExists = False
 
     # Locate item object
     for item in inv:
         if itemName in item.name:
             itemUseData["object"] = item
             itemUseData["location"] = "inv"
+            itemExists = True
             break
     for item in roomVis:
         if itemName in item.name:
             itemUseData["object"] = item
             itemUseData["location"] = "roomVis"
+            itemExists = True
             break
     for item in roomDrop:
         if itemName in item.name:
             itemUseData["object"] = item
             itemUseData["location"] = "roomDrop"
+            itemExists = True
             break
 
-    # Get step index for the current item (count starts with 1)
-    digits = [int(i) for i in itemUseData["object"].name if i.isdigit()]
-    try:
-        itemIndex = int("".join(str(i) for i in digits))
-        itemUseData["index"] = itemIndex
-    # Sets step to 1 if it doesn't exist
-    except ValueError:
-        itemUseData["index"] = 1
+    if itemExists:
+        # Get step index for the current item (count starts with 1)
+        digits = [int(i) for i in itemUseData["object"].name if i.isdigit()]
+        try:
+            itemIndex = int("".join(str(i) for i in digits))
+            itemUseData["index"] = itemIndex
+        # Sets step to 1 if it doesn't exist
+        except ValueError:
+            itemUseData["index"] = 1
+    else:
+        return None
 
     return itemUseData
 
@@ -711,7 +743,6 @@ def use(info):
         item2 = None
         numItems = 1
     except (KeyError, ValueError):
-        print("No items found")
         print(errorString)
         return
 
@@ -726,7 +757,6 @@ def use(info):
     # Handles "use" on two items with a valid combination word
     elif numItems == 2 and combo:
         response = useHandler(player, game, allItems, item1, item2)
-
         if response is None:
             print("That won't work.")
         else:
@@ -791,15 +821,17 @@ def unlockBasement(prompt, game):
     selection = input(
         "Would you like to try entering a code? (Y/N) ").lower()
     if selection == "y":
-        print("There are spaces for three numbers. "
+        print("\nThere are spaces for three numbers. "
               "You can enter as many as you like.")
         code = 0
         while code != "cancel":
             code = input(
-                "Enter 3-digit code or 'cancel' to go back: ").lower()
+                "Enter 3-digit code or 'cancel' to go back: ")
+            code = ''.join(e for e in code if e.isnumeric())
             if code == correctCode:
                 print("\nYou hear the lock slide open. "
-                      "The door is now unlocked.")
+                      "The door is now unlocked."
+                      "\nYou step back into the Lower Hall.")
                 game.unlockRoomByName("basement")
                 return
     else:
