@@ -10,7 +10,7 @@
   "family": "room",
   "garage": "door",
   "light": "switch",
-  "look": ["at", "in", "inside"],
+  "look": ["at", "in", "inside", "out"],
   "lower": "hall",
   "master": "bedroom",
   "medicine": "cabinet",
