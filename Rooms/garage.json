@@ -27,11 +27,11 @@
     "verbInteractions": {
         "Examine": {
             "door": "It's a thin metal door big enough for one car. It rolls up to the ceiling.",
-            "bag": "You only have a few things in here. Nothing important.",
+            "tools": "You only have a few things in here. Nothing important.",
             "ladder": "It's a small aluminum ladder. Useful for reaching high places."
         },
         "Take": {
-            "bag": "You don't need that.",
+            "tools": "You don't need that.",
             "ladder": "You lift the ladder onto your shoulder."
         },
         "Open": {
