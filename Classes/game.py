@@ -24,6 +24,9 @@ class Game:
         self.player = Player()
         self.itemStorage = []
 
+        # Load help menu
+        self.helpMenu = self.loadHelp()
+
         # Build instances of all the rooms
         self.buildRooms()
         self.buildItems()
@@ -84,6 +87,22 @@ class Game:
         if self.foodInDish and self.bellRung:
             return True
         return False
+
+    def loadHelp(self):
+        """
+        Loads the help menu for the game.
+        """
+        helpString = ""
+        with open("Narrative/helpMenu.txt") as helpFile:
+            for line in helpFile.read().split('\n'):
+                helpString = helpString + line + "\n"
+        return helpString
+
+    def printHelp(self):
+        """
+        Prints the help menu for the game.
+        """
+        print(self.helpMenu)
 
     def terminalSize(self):
         """
