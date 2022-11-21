@@ -29,6 +29,10 @@ class Game:
         self.buildItems()
         self.setStartRoom()
 
+        # Win conditions
+        self.foodInDish = False
+        self.bellRung = False
+
     def getRooms(self):
         """
         Returns the list of Room objects in the current game.
@@ -71,6 +75,15 @@ class Game:
         has exited the game.
         """
         return self.running
+
+    def checkForWin(self):
+        """
+        Checks if the game's win conditions have been met.
+        Returns True/False.
+        """
+        if self.foodInDish and self.bellRung:
+            return True
+        return False
 
     def terminalSize(self):
         """
@@ -146,6 +159,42 @@ class Game:
 
         self.displayStartMessages()
         self.getPlayer().getLocation().setVisited()
+
+    def triggerFoodCondition(self):
+        """
+        Triggers cat food win condition
+        """
+        self.foodInDish = True
+
+    def triggerBellCondition(self):
+        """
+        Triggers silver bell win condition
+        """
+        self.bellRung = True
+
+    def outro(self):
+        """
+        Displays the game's conclusion at the end.
+        """
+        print("")
+        print("                                  *****\n")
+
+        # Set directory path to narrative file
+        path = os.path.realpath(__file__)
+        dir = os.path.dirname(path)
+        dir = dir.replace("Classes", "Narrative")
+        os.chdir(dir)
+
+        # Open narrative file and print new game intro
+        with open("../Narrative/endGameOutro.txt") as endFile:
+            for line in endFile.read().split('\n'):
+                print(f"{textwrap.fill(line, terminalMinWidth)}\n")
+                time.sleep(1)
+
+        print("\n                    Thank you for playing Scary Attic.\n"
+              "                    We sincerely hope you enjoyed it.\n\n"
+              "                          S C A R Y A T T I C\n"
+              "                          I T S A C A T C R Y\n\n")
 
     def getAllSavedGames(self):
         # Set directory path to save files

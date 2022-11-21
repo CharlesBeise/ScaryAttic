@@ -21,7 +21,7 @@
         "Hide": "None",
         "Listen": "None",
         "Use": "The can could probably be opened by a can opener.",
-        "Eat": "None",
+        "Eat": "You have to open it first.",
         "Flip": "You flip the can over and there is nothing on the bottom.",
         "Examine": "An unopened tin can with no label. Anything could be inside...",
         "Take": "You pick up the unopened tin can.",

@@ -5,6 +5,7 @@ class Player:
     def __init__(self) -> None:
         self.location = None
         self.inventory = []
+        self.polaroidsCollected = 0
 
     def getLocation(self):
         """
@@ -50,6 +51,18 @@ class Player:
             return True
         else:
             return False
+
+    def getNumPolaroids(self):
+        """
+        Returns number of Polaroids the player has collected
+        """
+        return self.polaroidsCollected
+
+    def incPolaroids(self):
+        """
+        Increments number of Polaroids the player has collected by one
+        """
+        self.polaroidsCollected += 1
 
     def hasFlashlight(self):
         """

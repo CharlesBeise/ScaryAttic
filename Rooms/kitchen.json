@@ -90,9 +90,7 @@
             "pepper": "conditional",
             "plates": "conditional",
             "silverware": "conditional",
-            "sink": "The faucet is off and the sink is empty.",
-            "polaroid2": "An old polaroid photo. Weird.",
-            "canOpener": "A basic can opener for opening cans of food. Nothing fancy, but it works."
+            "sink": "The faucet is off and the sink is empty."
         },
         "Use": {
             "sink": "You turn the water on, but nothing happens. You turn it back off."
