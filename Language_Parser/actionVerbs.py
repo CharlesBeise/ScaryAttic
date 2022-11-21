@@ -326,43 +326,10 @@ def flip(info):
 
 
 def help(info):
-    response = "\n============= HELP =============\n" \
-               "To play the game, enter a command.\n" \
-               "Below is a list of verbs the game will accept.\n" \
-               "Combine these verbs with objects in order to progress.\n" \
-               "This is not an exhaustive list, so if you're stuck,\n" \
-               "try something different and keep exploring!\n\n"
-
-    help = "Help: Show this menu again."
-    inventory = "Inventory: Show the items you currently hold."
-    save = "Savegame: Save your current progress."
-    load = "Loadgame: Load an existing game file."
-    look = "Look: Display an extended description of the current room."
-    lookat = "Look at: Describe an object."
-    go = "Go: Switch rooms through a described exit."
-    take = "Take: Pick up an item."
-    drop = "Drop: Leave an item in the current room."
-    pull = "Pull: Pull or peel an object."
-    use = "Use: Use an object somewhere or with something."
-
-    keywords = [
-        help,
-        inventory,
-        save,
-        load,
-        look,
-        lookat,
-        go,
-        take,
-        drop,
-        pull,
-        use
-    ]
-
-    for word in keywords:
-        response = response + "- " + word + '\n'
-
-    print(response[:-1])
+    """
+    Calls the game's help menu.
+    """
+    info["Game"].printHelp()
 
 
 def inventory(info):
