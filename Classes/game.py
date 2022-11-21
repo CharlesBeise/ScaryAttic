@@ -186,8 +186,8 @@ class Game:
         os.chdir(dir)
 
         # Open narrative file and print new game intro
-        with open("../Narrative/endGameOutro.txt") as introFile:
-            for line in introFile.read().split('\n'):
+        with open("../Narrative/endGameOutro.txt") as endFile:
+            for line in endFile.read().split('\n'):
                 print(f"{textwrap.fill(line, terminalMinWidth)}\n")
                 time.sleep(1)
 
