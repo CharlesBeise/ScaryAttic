@@ -278,6 +278,14 @@ def openVerb(info):
     item = info["Items"][0]
     room = player.getLocation()
 
+    if len(info["Items"]) == 2 and combo:
+        try:
+            if {"canOpener", "tinCan"} == {info["Items"][0], info["Items"][1]}:
+                use(info)
+            return
+        except IndexError:
+            pass
+
     if verbHelper(item, player, room, "Open"):
         return
     print(room.verbResponses("Open", item))
