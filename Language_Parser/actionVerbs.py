@@ -277,6 +277,15 @@ def openVerb(info):
     player = info["Player"]
     item = info["Items"][0]
     room = player.getLocation()
+    combo = info["Combination"]
+
+    if len(info["Items"]) == 2 and combo:
+        try:
+            if {"canOpener", "tinCan"} == {info["Items"][0], info["Items"][1]}:
+                use(info)
+            return
+        except IndexError:
+            pass
 
     if verbHelper(item, player, room, "Open"):
         return
@@ -826,7 +835,7 @@ def unlockBasement(prompt, game):
         while code != "cancel":
             code = input(
                 "Enter 3-digit code or 'cancel' to go back: ")
-            code = ''.join(e for e in code if e.isnumeric())
+            code = ''.join(e for e in code if e.alnum())
             if code == correctCode:
                 print("\nYou hear the lock slide open. "
                       "The door is now unlocked."
