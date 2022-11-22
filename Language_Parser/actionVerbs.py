@@ -826,7 +826,7 @@ def unlockBasement(prompt, game):
         while code != "cancel":
             code = input(
                 "Enter 3-digit code or 'cancel' to go back: ")
-            code = ''.join(e for e in code if e.isnumeric())
+            code = ''.join(e for e in code if e.alnum())
             if code == correctCode:
                 print("\nYou hear the lock slide open. "
                       "The door is now unlocked."
