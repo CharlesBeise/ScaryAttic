@@ -277,6 +277,7 @@ def openVerb(info):
     player = info["Player"]
     item = info["Items"][0]
     room = player.getLocation()
+    combo = info["Combination"]
 
     if len(info["Items"]) == 2 and combo:
         try:
