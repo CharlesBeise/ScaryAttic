@@ -2,7 +2,7 @@
   "look": ["look"],
   "examine": ["lookat", "lookin", "lookinside", "lookout", "examine", "inspect"],
   "go": ["go", "exit"],
-  "take": ["take", "grab", "pickup"],
+  "take": ["take", "grab", "pickup", "get"],
   "help": ["help"],
   "inventory": ["inventory"],
   "savegame": ["savegame"],
