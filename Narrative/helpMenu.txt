@@ -27,6 +27,7 @@
 | Flip : Flip an object.                               |
 | Shake : Shake an object.                             |
 | Hide in : Hide in something.                         |
+| Listen : Listen to something.                        |
 | Eat : Eat something.                                 |
 | Open : Open something.                               |
 | Close : Close something.                             |
