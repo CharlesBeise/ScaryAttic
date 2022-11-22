@@ -1,7 +1,7 @@
 {
     "name": "bathroom",
     "longDescription": "You're in the Bathroom. It's a cramped, dank room. The sink is dripping, but you can barely hear it over the storm outside. On the west wall, there is a small window next to the claw foot tub. There's a medicine cabinet above the sink, and a towel hanging next to the door. The floor is covered in tile, the walls in dark floral wallpaper. The door back to the Upper Hall is to the east.",
-    "shortDescription": "You're in the Bathroom The sink is quietly dripping. There's a window, tub, medicine cabinet, and towel in the room. The door to the Upper Hall is east.",
+    "shortDescription": "You're in the Bathroom. The sink is quietly dripping. There's a window, tub, medicine cabinet, and towel in the room. The door to the Upper Hall is east.",
     "lockRoom": "False",
     "conditionals": {
         "cabinet": {
@@ -27,28 +27,49 @@
             "sink": "The brass-colored faucet is dripping quietly.",
             "walls": "The wallpaper looks old, but you kinda like it.",
             "floor": "The floor tiles are in a black and white checker pattern.",
-            "ceiling": "It's white and covered in a popcorn texture."
+            "ceiling": "It's white and covered in a popcorn texture.",
+            "toilet": "It's just a white porcelain toilet."
         },
         "Eat": {
-            "pills": "You hesitate and consider it for a moment... But you've already taken your daily dose."
+            "pills": "You hesitate and consider it for a moment... But you've already taken your daily dose.",
+            "towel": "No thank you.",
+            "bandages": "They're not edible."
         },
         "Use": {
             "pills": "You hesitate and consider it for a moment... But you've already taken your daily dose.",
             "bandages": "You don't need that right now."
         },
         "Hide": {
-            "tub": "For a moment, you consider stepping into the tub, but you decide against it."
+            "tub": "For a moment, you consider stepping into the tub, but you decide against it.",
+            "toilet": "Ew. No thank you."
         },
         "Listen": {
             "sink": "It keeps dripping, even with the faucet turned off."
         },
         "Open": {
+            "pills": "You don't need to do that.",
             "window": "You don't need to do that. There's probably enough dampness and mold in here already.",
             "cabinet": "The cabinet creaks as you swing the door open. There’s a box of bandages and a bottle of medicine inside."
         },
         "Flip": {
+            "bandages": "They're just simple bandages. They're simple to use.",
+            "tub": "It's too heavy.",
+            "towel": "That doesn't do anything.",
             "switch": "The light isn't working in here either.",
             "pills": "You have had this prescription for years, but just now notice that the side effects of this medicine include 'seeing or hearing things that others do not see or hear'... You chuckle to yourself. Maybe you ARE imagining things..."
+        },
+        "Pull": {
+            "cabinet": "It's stuck to the wall."
+        },
+        "Shake": {
+            "pills": "You rattle the pills around in the bottle.",
+            "towel": "You shake the towel. Nothing happens.",
+            "bandages": "The bandages slide around in the box."
+        },
+        "Take": {
+            "bandages": "You don't need those right now.",
+            "towel": "You don't need that right now.",
+            "pills": "Those should probably stay here."
         }
     }
 }

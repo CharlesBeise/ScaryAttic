@@ -12,7 +12,7 @@
   "hide": ["hide"],
   "listen": ["listen"],
   "peel": ["peel", "pull"],
-  "use": ["use"],
+  "use": ["use", "put", "putin"],
   "drop": ["drop", "leave", "putdown", "setdown", "discard"],
   "eat": ["eat"],
   "shake": ["shake", "ring"],

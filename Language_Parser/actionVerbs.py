@@ -198,6 +198,11 @@ def take(info):
                 game.unlockRoomByName("upperHall")
                 triggerOtherRoomCondition(
                     "lowerHall", game, "flashlight", "Take")
+        return
+
+    response = room.verbResponses("Take", item)
+    if response:
+        print(response)
     else:
         print(errorString)
 
@@ -829,13 +834,12 @@ def unlockBasement(prompt, game):
     selection = input(
         "Would you like to try entering a code? (Y/N) ").lower()
     if selection == "y":
-        print("\nThere are spaces for three numbers. "
-              "You can enter as many as you like.")
+        print("\nYou can enter as many as you like.")
         code = 0
         while code != "cancel":
             code = input(
                 "Enter 3-digit code or 'cancel' to go back: ")
-            code = ''.join(e for e in code if e.alnum())
+            code = ''.join(e for e in code if e.isalnum())
             if code == correctCode:
                 print("\nYou hear the lock slide open. "
                       "The door is now unlocked."
@@ -855,7 +859,7 @@ def goLockedHelper(destination, player, game):
         "attic": "The attic door is too high to reach.",
         "lowerHall": "It's too dark to go down the stairs safely.",
         "upperHall": "It's too dark to go up the stairs safely.",
-        "basement": "There is a combination lock on the basement door."
+        "basement": "There is a 3-digit combination lock on the basement door."
     }
 
     # Check if player has all polaroids to try a code on the basement
@@ -907,6 +911,7 @@ def go(info):
     if currentRoom.getName() == destination:
         print("You are already in that room.")
         return
+
     # Update Player location to valid destination Room
     for room in info["Game"].getRooms():
         if room.getName() == destination:

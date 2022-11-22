@@ -37,14 +37,26 @@
             "ceiling": "The wooden rafters are stuffed with insulation.",
             "insulation": "Best not to touch it."
         },
-        "Open": {
-            "chest": "conditional"
+        "Use": {
+            "clothes": "They probably won't fit."
+        },
+        "Flip": {
+            "chest": "It's too heavy.",
+            "boxes": "You knock the boxes over. Nothing happens.",
+            "table": "You push the table onto its side. Nothing happens."
+        },
+        "Eat": {
+            "clothes": "No thank you.",
+            "insulation": "That's a bad idea."
         },
         "Hide": {
             "chest": "You briefly wonder if you can fit inside the chest. It's pretty big... Nah. The slightest chance of getting stuck inside freaks you out."
         },
         "Listen": {
             "rain": "The loud rain pattering against the roof with all makes you wish you could hide away from it all."
+        },
+        "Open": {
+            "chest": "conditional"
         }
     }
 }
