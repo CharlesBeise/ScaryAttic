@@ -41,7 +41,7 @@
     "pillow": ["pillow", "pillows"],
     "pills": ["pills", "pill", "pillbottle", "bottle", "medicine", "medicinebottle", "medication"],
     "plates": ["plates", "paperplates"],
-    "polaroid": ["polaroid", "polaroids", "picture"],
+    "polaroid": ["polaroid", "polaroids", "picture", "photo"],
     "polaroid2": ["oldpolaroid"],
     "polaroid3": ["dustypolaroid"],
     "rack": ["rack", "coatrack"],
