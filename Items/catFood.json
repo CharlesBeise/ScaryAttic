@@ -8,7 +8,7 @@
         "flashlight": "None",
         "battery": "None",
         "key": "None",
-        "canOpener": "The tin can is already open.",
+        "canOpener": "The can is already open.",
         "tinCan": "None",
         "silverBell": "None",
         "polaroid1": "None",
@@ -24,9 +24,9 @@
         "Eat": "You really shouldn't, but... You pick out a small shred of meat from the can and eat it. Blech. It's pretty gross, but not as bad as you expected.",
         "Flip": "Flipping the can over would make a stinky mess. You already have enough cleaning to do.",
         "Examine": "An open can of some weird wet brown stuff. It smells like cat food.",
-        "Take": "You pick up the open tin can.",
+        "Take": "You pick up the cat food.",
         "Peel": "None",
-        "Drop": "You set the open tin can down.",
+        "Drop": "You set the cat food down.",
         "Shake": "You gently shake the can, trying not to spill its contents."
     }
 }
