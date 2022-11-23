@@ -98,10 +98,10 @@ def identifyPolaroid(player):
         return None
     elif len(options) == 1:
         return options[0]
-    response = "Which one are you referring to: "
+    response = "Which one are you referring to - "
     for option in options:
         response = response + option + ', '
-    selection = input(response[:-2] + '?\n').lower().replace(" ", "")
+    selection = input(response[:-2] + '?\nSelect item: ').lower().replace(" ", "")
     if selection == "polaroid" and "Polaroid" in options:
         return "polaroid1"
     elif (selection == "oldpolaroid" or selection == "old") and "Old Polaroid" in options:
@@ -455,17 +455,18 @@ def combineItemAndFeature(player, game, item, feature):
     Returns None if the combination fails.
     """
     atticValues = {"attic", "hatch", "ceiling", "up", "upstairs"}
+    currentRoom = player.getLocation()
     # Since order of words doesn't matter, choose an order for processing
     if "ladder" in (item, feature) and \
-            (item in atticValues or feature in atticValues):
+            (item in atticValues or feature in atticValues) and currentRoom == "upperHall":
         item = "ladder"
         feature = "hatch"
         itemData = getItemDataForUse(player, item)
-    elif {item, feature} == {"key", "chest"}:
+    elif {item, feature} == {"key", "chest"} and currentRoom == "attic":
         item = "key"
         feature = "chest"
         itemData = getItemDataForUse(player, item)
-    elif {item, feature} == {"catFood", "dish"}:
+    elif {item, feature} == {"catFood", "dish"} and currentRoom == "porch":
         item = "catFood"
         feature = "dish"
         itemData = getItemDataForUse(player, item)
