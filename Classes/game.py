@@ -96,7 +96,7 @@ class Game:
         with open("Narrative/helpMenu.txt") as helpFile:
             for line in helpFile.read().split('\n'):
                 helpString = helpString + line + "\n"
-        return helpString
+        return helpString[:-1]
 
     def printHelp(self):
         """
