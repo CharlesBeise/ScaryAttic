@@ -15,7 +15,7 @@
         },
         "drawersRoom": {
             "triggerSequence": ["drawers", "canOpener"],
-            "triggerVerbs": [["Open", "Examine"], ["Take"]],
+            "triggerVerbs": [["Open", "Peel", "Examine"], ["Take"]],
             "loop": "False",
             "type": "room",
             "0": "There are several drawers at waist height.",
@@ -33,7 +33,7 @@
         },
         "drawers": {
             "triggerSequence": ["drawers", "canOpener"],
-            "triggerVerbs": [["Open", "Examine"], ["Take"]],
+            "triggerVerbs": [["Open", "Peel", "Examine"], ["Take"]],
             "loop": "False",
             "type": "feature",
             "0": "There are several drawers containing some plastic silverware and a can opener.",
@@ -66,7 +66,7 @@
         },
         "silverware": {
             "triggerSequence": ["drawers"],
-            "triggerVerbs": [["Open", "Examine"]],
+            "triggerVerbs": [["Open", "Peel", "Examine"]],
             "loop": "False",
             "type": "feature",
             "0": "",
@@ -99,6 +99,9 @@
         "Open": {
             "drawers": "conditional",
             "cabinet": "conditional"
+        },
+        "Peel": {
+            "drawers": "conditional"
         }
     }
 }
