@@ -213,9 +213,11 @@ class Game:
                 time.sleep(3)
 
         print("\n                    Thank you for playing Scary Attic.\n"
-              "                    We sincerely hope you enjoyed it.\n\n"
-              "                          S C A R Y A T T I C\n"
-              "                          I T S A C A T C R Y\n\n")
+              "                    We sincerely hope you enjoyed it.\n\n")
+
+        time.sleep(3)
+        outImage = self.getImage("outroScreen")
+        print(f"{outImage}")
 
     def getAllSavedGames(self):
         # Set directory path to save files
