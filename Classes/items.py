@@ -1,4 +1,7 @@
 import json
+import textwrap
+
+fillWidth = 75
 
 
 class Item:
@@ -43,7 +46,7 @@ class Item:
         """
         This function returns the Item description
         """
-        return self.description
+        return textwrap.fill(self.description, fillWidth)
 
     def getSecondDescription(self):
         """
@@ -61,7 +64,7 @@ class Item:
             response = self.verbInteractions[verb]
         except KeyError:
             pass
-        return response
+        return textwrap.fill(response, fillWidth)
 
     def getImage(self, imageName):
         """
@@ -83,14 +86,14 @@ class Item:
         Retrieves a formatted description from the specified
         item interaction.
         """
-        return self.itemInteractions[itemName]
+        return textwrap.fill(self.itemInteractions[itemName], fillWidth)
 
     def getVerbInteraction(self, verb):
         """
         Retrieves a formatted description from the specified
         item interaction.
         """
-        return self.verbInteractions[verb]
+        return textwrap.fill(self.verbInteractions[verb], fillWidth)
 
     def __eq__(self, other):
         """Checking a comparison"""

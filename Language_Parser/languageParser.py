@@ -95,4 +95,4 @@ def parse(userText, player, game):
     elif len(parsedInput["Verb"]) == 0 and len(parsedInput["Rooms"]) > 0:
         go(parsedInput)
     else:
-        print("I'm sorry, I don't understand that command.")
+        print("I'm sorry, I don't understand that command. Try using 'help' if you're lost.")

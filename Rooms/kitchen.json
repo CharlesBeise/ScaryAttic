@@ -90,6 +90,7 @@
             "pepper": "conditional",
             "plates": "conditional",
             "silverware": "conditional",
+            "trees": "The tree is bare without any leaves.",
             "sink": "The faucet is off and the sink is empty."
         },
         "Use": {

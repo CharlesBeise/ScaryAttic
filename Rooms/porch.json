@@ -4,13 +4,21 @@
     "shortDescription": "You're on the Porch. There are three big trees in the yard, and some bushes along the edge of the house. The door back to the Family room is to the west, and there is a gash in the wood.",
     "lockRoom": "False",
     "conditionals": {
-        "dish": {
+        "dishRoom": {
             "triggerSequence": ["catFood"],
             "triggerVerbs": [["Use"]],
             "loop": "False",
             "type": "room",
             "0": "A dirty dish sits against the wall that looks like it hasn't been washed in a while.",
             "1": "The dish with cat food is sitting against the wall."
+        },
+        "dish": {
+            "triggerSequence": ["catFood"],
+            "triggerVerbs": [["Use"]],
+            "loop": "False",
+            "type": "feature",
+            "0": "The dish is empty and dirty.",
+            "1": "The dirty dish is filled with cat food."
         }
     },
     "exits": {
@@ -21,6 +29,9 @@
             "gash": "There's a chunk of wood scraped away. You don't remember seeing it there before.",
             "dish": "conditional",
             "trees": "The bare branches reaching towards the porch kind of creep you out.",
+            "walls": "The wall is covered in gray siding, like the rest of the exterior.",
+            "ceiling": "The porch roof is above you.",
+            "floor": "The porch deck is made of wood.",
             "bushes": "Scraggly, dense bushes line the edge of the house.",
             "yard": "The yard stretches quite a way out to the road. The driveway curves around to the back of the house.",
             "door": "The door is painted dark brown. There is a gash in the wood."

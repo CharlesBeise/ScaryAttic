@@ -3,12 +3,15 @@
 +======================================================+
 | To play the game, enter a command into the console.  |
 | Commands are made up of simple verbs and nouns.      |
-| Example: "go west" or "look at floor"                |
 |                                                      |
-| Below is a list of verbs the game will accept.       |
-| Try using different commands in order to progress.   |
-| This is not an exhaustive list, so if you're stuck,  |
-| try something different and keep exploring!          |
+| Examples: "go west" or "look at floor"               |
+|                                                      |
+| If you're stuck, try a different phrasing using the  |
+| commands and descriptions provided to you.           |
+|                                                      |
+| Use items and the world around you to progress.      |
+| Experiment using things in different ways, and       |
+| keep exploring!                                      |
 |                                                      |
 | Help : Show this menu again.                         |
 | Inventory : Show the items you currently hold.       |
@@ -16,13 +19,17 @@
 | Loadgame : Load an existing game file.               |
 | Look : Display an extended description of this room. |
 | Look at : Describe an object.                        |
-| Go : Switch rooms through a described exit.          |
+| Go : Switch rooms by direction or name               |
 | Take : Pick up an item.                              |
 | Drop : Leave an item in the current room.            |
 | Pull : Pull or peel an object.                       |
-| Use : Use an object somewhere or with something.     |
-| Flip : Flip an object over.                          |
+| Use : Use something by itself or on something else.  |
+| Flip : Flip an object.                               |
 | Shake : Shake an object.                             |
+| Hide in : Hide in something.                         |
+| Listen : Listen to something.                        |
 | Eat : Eat something.                                 |
+| Open : Open something.                               |
+| Close : Close something.                             |
 | Exit game : Stop playing and close the game.         |
 +======================================================+

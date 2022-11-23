@@ -4,7 +4,7 @@
     "shortDescription": "You're in the Utility Room. The exit to the Upper Hall is to the north.",
     "lockRoom": "False",
     "conditionals": {
-        "shelves": {
+        "shelvesRoom": {
             "triggerSequence": ["shelves", "flashlight"],
             "triggerVerbs": [["Examine"], ["Take"]],
             "loop": "False",
@@ -37,6 +37,14 @@
             "type": "feature",
             "0": "",
             "1": "It's just some laundry detergent."
+        },
+        "shelves": {
+            "triggerSequence": ["flashlight"],
+            "triggerVerbs": [["Take"]],
+            "loop": "False",
+            "type": "feature",
+            "0": "Feeling along the wooden shelves, you can make out the shape of a flashlight, along with a couple containers of laundry detergent.",
+            "1": "Feeling along the wooden shelves, you can make out a couple containers of laundry detergent."
         }
     },
     "exits": {
@@ -49,7 +57,7 @@
             "ceiling": "It's a low ceiling, with a light fixture that isn't working right now.",
             "floor": "The floor is covered in a brown linoleum tile.",
             "machines": "There's a washing machine and a dryer in here. They're both empty.",
-            "shelves": "Feeling along the wooden shelves, you can make out the shape of a flashlight, along with a couple containers of laundry detergent.",
+            "shelves": "conditional",
             "detergent": "conditional",
             "flashlight": "conditional"
         },

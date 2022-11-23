@@ -23,7 +23,7 @@
   "pill": "bottle",
   "plastic": "silverware",
   "polaroid": "photo",
-  "put": "down",
+  "put": ["down", "in"],
   "second": "bedroom",
   "set": "down",
   "shelving": "unit",

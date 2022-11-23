@@ -261,7 +261,8 @@ class Game:
         dir = dir.replace("Classes", "SaveFiles")
         os.chdir(dir)
         # Save game state to save file
-        gameState = [self.rooms, self.player]
+        gameState = [self.rooms, self.player, self.itemStorage,
+                     self.foodInDish, self.bellRung]
         with open(saveFile, "wb") as file:
             pickle.dump(gameState, file)
 
@@ -346,6 +347,9 @@ class Game:
         loadedGame = self.unpickleGameState(loadFile)
         self.setRooms(loadedGame[0])
         self.setPlayer(loadedGame[1])
+        self.itemStorage = loadedGame[2]
+        self.foodInDish = loadedGame[3]
+        self.bellRung = loadedGame[4]
         self.setSaveFile(loadFile)
         print("\nGame load successful!\n")
         self.displayStartMessages()

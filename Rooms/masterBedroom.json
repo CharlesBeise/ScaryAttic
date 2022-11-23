@@ -81,6 +81,7 @@
             "mattress": "It's probably not a good idea to make a mess right now."
         },
         "Use": {
+            "clothes": "You don't need to change your clothes right now.",
             "switch": "The light won't turn on. Looks like the power is still out.",
             "window": "You're on the second story of the house. You're not going out there.",
             "mattress": "You sure wish you could go back to sleep, but that's not happening."

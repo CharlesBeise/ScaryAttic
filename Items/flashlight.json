@@ -6,7 +6,7 @@
     "itemInteractions": {
         "ladder": "None",
         "flashlight": "None",
-        "battery": "You put the battery into the flashlight. It's still missing one battery.",
+        "battery": "You put one battery into the flashlight. It's still missing one battery.",
         "key": "None",
         "canOpener": "None",
         "tinCan": "None",
