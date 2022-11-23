@@ -12,7 +12,7 @@
     "catFood": ["catfood"],
     "ceiling": ["ceiling", "roof"],
     "chandelier": ["chandelier"],
-    "chest": ["chest"],
+    "chest": ["chest", "padlock"],
     "clock": ["clock"],
     "closet": ["closet"],
     "clothes": ["clothes", "coats", "coat", "boots", "boot", "scarf", "scarves", "gloves", "glove"],
