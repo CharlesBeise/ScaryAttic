@@ -504,7 +504,9 @@ def combineItemAndFeature(player, game, item, feature):
             game.triggerFoodCondition()
         else:
             response = "That won't work."
-    return response
+        return response
+    else:
+        return None
 
 
 def canOpenerCatFood(player, game, itemData2):
