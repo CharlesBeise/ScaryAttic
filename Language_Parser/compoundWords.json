@@ -18,7 +18,7 @@
   "moving": "boxes",
   "north": ["west", "east"],
   "old": "polaroid",
-  "paper": "plates",
+  "paper": ["plates", "plate"],
   "pick": "up",
   "pile": "of",
   "pileof": "cans",
