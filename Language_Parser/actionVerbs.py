@@ -471,7 +471,7 @@ def combineItemAndFeature(player, game, item, feature):
         feature = "dish"
         itemData = getItemDataForUse(player, item)
     else:
-        itemData = []
+        itemData = {}
 
     currentRoom = player.getLocation()
 
@@ -481,7 +481,7 @@ def combineItemAndFeature(player, game, item, feature):
     except (KeyError, ValueError, IndexError, TypeError):
         response = None
 
-    if response != "None":
+    if response:
         # Case for "ladder", "hatch"
         if {item, feature} == {"ladder", "hatch"}:
             # Remove ladder from inventory
@@ -504,9 +504,7 @@ def combineItemAndFeature(player, game, item, feature):
             game.triggerFoodCondition()
         else:
             response = "That won't work."
-        return response
-    else:
-        return None
+    return response
 
 
 def canOpenerCatFood(player, game, itemData2):
@@ -669,7 +667,7 @@ def getItemDataForUse(player, itemName):
     Helper function for 'use' - gathers data about an item
     that the player is trying to use.
     Takes player and game data, and the item's name string.
-    Returns a list with all the item's necessary data.
+    Returns a dictionary with all the item's necessary data.
     """
     inv = player.getInventory()
     roomVis = player.getLocation().getVisibleItems()
@@ -847,7 +845,10 @@ def unlockBasement(prompt, game):
                       "\nYou step back into the Lower Hall.")
                 game.unlockRoomByName("basement")
                 return
+    elif selection == 'n':
+        return
     else:
+        print("Please enter 'Y' or 'N'")
         return
 
 
