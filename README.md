@@ -36,24 +36,24 @@ Start game:
 
 5. Here is a list and description of all the verb functions the player can use:
 
-| Verb | Description |
-| --- | --- |
-| `Help` | Show the help menu. |
-| `Inventory` | Show the items you currently hold. |
-| `Savegame` | Save your current progress. |
-| `Loadgame` | Load an existing game file. |
-| `Look` | Display an extended description of the room you are in. |
-| `Look at` | Display a description of the target of the command. |
-| `Go` | Switch rooms by direction or name. |
-| `Take` | Pick up an item. |
-| `Drop` | Leave an item in the current room. |
-| `Pull` | Pull or peel on an object. |
-| `Use` | Use something by itself or on something else. |
-| `Flip` | Flip an object. |
-| `Shake` | Shake an object. |
-| `Hide in` | Hide in something. |
-| `Listen` | Listen to something. |
-| `Eat` | Eat something. |
-| `Open` | Open something. |
-| `Close` | Close something. |
-| `Exit game` | Stop playing and close the game. |
+   | Verb | Description |
+   | --- | --- |
+   | `Help` | Show the help menu. |
+   | `Inventory` | Show the items you currently hold. |
+   | `Savegame` | Save your current progress. |
+   | `Loadgame` | Load an existing game file. |
+   | `Look` | Display an extended description of the room you are in. |
+   | `Look at` | Display a description of the target of the command. |
+   | `Go` | Switch rooms by direction or name. |
+   | `Take` | Pick up an item. |
+   | `Drop` | Leave an item in the current room. |
+   | `Pull` | Pull or peel on an object. |
+   | `Use` | Use something by itself or on something else. |
+   | `Flip` | Flip an object. |
+   | `Shake` | Shake an object. |
+   | `Hide in` | Hide in something. |
+   | `Listen` | Listen to something. |
+   | `Eat` | Eat something. |
+   | `Open` | Open something. |
+   | `Close` | Close something. |
+   | `Exit game` | Stop playing and close the game. |
