@@ -2,7 +2,7 @@
 Scary Attic is a text-based game that is played within a terminal window. The player must navigate their way through an old house, observing and interacting with various objects and their surroundings to uncover the source of strange sounds being heard at night. They will need to problem solve and be resourceful to make it to the end of the game.
 
 ## Installation Instructions
-This game was written using Python 3, so it can be downloaded and played using a Python interpreter of your choice. We strongly reommend Python version 3.10 or later. The following commands will help to get started.
+This game was written using Python 3, so it can be downloaded and played using a Python interpreter of your choice. We strongly recommend Python version 3.10 or later. The following commands will help to get started.
 
 Clone repository to your local environment:
 
